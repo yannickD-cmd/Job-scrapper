@@ -24,6 +24,7 @@ import db
 
 COMPANY_NAMES = {
     "sanofi": "Sanofi",
+    "bnp": "BNP Paribas",
 }
 
 
