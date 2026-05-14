@@ -2,3 +2,6 @@ requests>=2.31
 beautifulsoup4>=4.12
 psycopg[binary]>=3.2
 python-dotenv>=1.0
+# curl_cffi only used by scrapers/loreal — for sites behind Cloudflare
+# Bot Management's TLS fingerprint check (plain `requests` is 403'd).
+curl_cffi>=0.7
