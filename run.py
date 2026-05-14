@@ -1,7 +1,9 @@
-"""Run a single company scraper and persist results to Supabase.
+"""Run one or more company scrapers and persist results to Supabase.
 
 Usage:
-    python run.py sanofi
+    python run.py              # runs every scraper in COMPANY_NAMES
+    python run.py sanofi       # runs just Sanofi
+    python run.py sanofi bnp   # runs Sanofi and BNP
 
 Each scraper module under `scrapers/` must expose a `scrape() -> list[dict]`
 returning rows compatible with `db.persist_run_results`.
@@ -27,18 +29,14 @@ COMPANY_NAMES = {
     "bnp": "BNP Paribas",
     "loreal": "L'Oréal",
     "accenture": "Accenture",
+    "orange": "Orange",
+    "deezer": "Deezer",
+    "adobe": "Adobe",
+    "thales": "Thales",
 }
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description="Run a scraper and persist to Supabase.")
-    parser.add_argument("scraper", help="Scraper module name under scrapers/ (e.g. sanofi)")
-    args = parser.parse_args()
-
-    if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
-        sys.stdout.reconfigure(encoding="utf-8")
-
-    key = args.scraper.lower()
+def run_one(key: str) -> int:
     company = COMPANY_NAMES.get(key, key.title())
 
     try:
@@ -47,16 +45,15 @@ def main() -> int:
         print(f"No scraper module: scrapers/{key}.py", file=sys.stderr)
         return 2
 
-    db.init_db()
-
+    print(f">>> Scraping {company}...")
     started = time.time()
     try:
         jobs = module.scrape()
     except Exception as exc:
         duration_ms = int((time.time() - started) * 1000)
         db.log_failed_run(company, f"{type(exc).__name__}: {exc}", duration_ms)
-        print(f"\nFAILED: {type(exc).__name__}: {exc}", file=sys.stderr)
-        raise
+        print(f"\nFAILED ({company}): {type(exc).__name__}: {exc}", file=sys.stderr)
+        return 1
 
     duration_ms = int((time.time() - started) * 1000)
     summary = db.persist_run_results(company, jobs, duration_ms=duration_ms)
@@ -82,6 +79,30 @@ def main() -> int:
         alerts.send_new_jobs_email(company, new_jobs)
 
     return 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Run one or more scrapers and persist to Supabase.")
+    parser.add_argument(
+        "scrapers",
+        nargs="*",
+        help="Scraper module names under scrapers/ (e.g. sanofi bnp). Empty = run all.",
+    )
+    args = parser.parse_args()
+
+    if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+        sys.stdout.reconfigure(encoding="utf-8")
+
+    keys = [s.lower() for s in args.scrapers] if args.scrapers else list(COMPANY_NAMES.keys())
+
+    db.init_db()
+
+    exit_code = 0
+    for key in keys:
+        rc = run_one(key)
+        if rc != 0:
+            exit_code = rc
+    return exit_code
 
 
 if __name__ == "__main__":
