@@ -26,6 +26,7 @@ COMPANY_NAMES = {
     "sanofi": "Sanofi",
     "bnp": "BNP Paribas",
     "loreal": "L'Oréal",
+    "accenture": "Accenture",
 }
 
 

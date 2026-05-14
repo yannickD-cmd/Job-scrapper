@@ -125,7 +125,14 @@ RETURNING id
 
 
 def get_connection() -> psycopg.Connection:
-    return psycopg.connect(DATABASE_URL)
+    # `prepare_threshold=None` disables psycopg3's automatic prepared
+    # statements. Required for the Supabase Transaction pooler (port 6543):
+    # pgbouncer multiplexes client sessions over a smaller real-Postgres
+    # connection pool, so a prepared-statement name set up by one client
+    # collides with the next client that lands on the same underlying
+    # connection (psycopg.errors.DuplicatePreparedStatement). For ~tens
+    # of upserts per run the cost of skipping prepare is negligible.
+    return psycopg.connect(DATABASE_URL, prepare_threshold=None)
 
 
 def init_db() -> None:
