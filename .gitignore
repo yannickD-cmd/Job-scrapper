@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/
+*.db
+sanofi_*.html
+sanofi_*.xml
+sanofi_*.json
+_*.html
+.claude/
