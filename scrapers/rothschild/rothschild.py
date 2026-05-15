@@ -182,11 +182,15 @@ def _fetch_listing(
     }
     last_exc: Exception | None = None
     for attempt in range(1, MAX_RETRIES + 1):
+        # Drop cookies before each attempt. Workday tags a session with
+        # __cf_bm / wd-browser-id / PLAY_SESSION cookies on first response;
+        # if any one of those is associated with a flagged fingerprint, every
+        # follow-up on the same Session keeps 400-ing even after a backoff.
+        # Bare cookie-free requests recover after the rate-limit window.
+        session.cookies.clear()
         response = session.post(LIST_URL, json=body, timeout=REQUEST_TIMEOUT)
         if response.status_code == 200:
             return response.json()
-        # Workday's CF front sometimes returns 400 with empty body on bursts
-        # but the same request succeeds after a backoff. Retry these.
         last_exc = requests.HTTPError(
             f"{response.status_code} on attempt {attempt}: {response.text[:120]}",
             response=response,
@@ -201,6 +205,7 @@ def _fetch_detail(session: requests.Session, external_path: str) -> dict:
     url = DETAIL_URL_TEMPLATE.format(external_path=external_path)
     last_exc: Exception | None = None
     for attempt in range(1, MAX_RETRIES + 1):
+        session.cookies.clear()
         response = session.get(url, timeout=REQUEST_TIMEOUT)
         if response.status_code == 200:
             return response.json()
@@ -310,25 +315,14 @@ def _collect_division_rows(
     return rows
 
 
-def _warmup(session: requests.Session) -> None:
-    """Workday's CF front blocks fresh sessions that go straight to the JSON
-    API. Hit the careers HTML once to bank cookies (__cf_bm, PLAY_SESSION,
-    wd-browser-id) before the first POST."""
-    try:
-        session.get(
-            f"{HOST}/en-US/{SITE}",
-            headers={"Accept": "text/html,application/xhtml+xml"},
-            timeout=REQUEST_TIMEOUT,
-        )
-    except requests.RequestException as exc:
-        print(f"  warmup GET failed (non-fatal): {exc}", flush=True)
-
-
 def scrape() -> list[dict]:
+    # We use a Session for header reuse but explicitly clear cookies before
+    # every request. Cloudflare's __cf_bm and Workday's PLAY_SESSION /
+    # wd-browser-id cookies get tagged "suspicious" after a few rapid filtered
+    # POSTs and every subsequent request from that fingerprint returns 400
+    # with no body. Cookie-free callers recover on their own.
     session = requests.Session()
     session.headers.update(HEADERS)
-    _warmup(session)
-    time.sleep(REQUEST_DELAY_SECONDS)
 
     started = time.time()
     print("Fetch phase (per-Division listing)...", flush=True)
