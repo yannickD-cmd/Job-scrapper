@@ -12,14 +12,16 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       max-parallel: 10
       matrix:
+        # BNP is excluded: group.bnpparibas sits behind Akamai Bot Manager
+        # which blocks GitHub Actions IP ranges (datacenter ASN reputation).
+        # Run BNP locally — see scrapers/bnp/bnp.py.
         company:
           - sanofi
-          - bnp
           - loreal
           - accenture
           - orange
