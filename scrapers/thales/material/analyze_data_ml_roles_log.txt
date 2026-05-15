@@ -1,0 +1,74 @@
+Pulling sitemap...
+  sitemap1: 500 entries (500 new, 500 cumulative)
+  sitemap2: 500 entries (500 new, 1000 cumulative)
+  sitemap3: 500 entries (498 new, 1498 cumulative)
+  sitemap4: 500 entries (498 new, 1996 cumulative)
+  sitemap5: 500 entries (500 new, 2496 cumulative)
+  sitemap6: 500 entries (500 new, 2996 cumulative)
+  sitemap7: 500 entries (498 new, 3494 cumulative)
+  sitemap8: 69 entries (69 new, 3563 cumulative)
+  → 3563 URLs to classify
+
+Fetching detail pages with 6 workers...
+  ...250/3563 fetched, 100 France/Permanent kept, 53s
+  ...500/3563 fetched, 198 France/Permanent kept, 107s
+  ...750/3563 fetched, 288 France/Permanent kept, 167s
+  ...1000/3563 fetched, 299 France/Permanent kept, 207s
+  ...1250/3563 fetched, 299 France/Permanent kept, 246s
+  ...1500/3563 fetched, 299 France/Permanent kept, 282s
+  ...1750/3563 fetched, 299 France/Permanent kept, 314s
+  ...2000/3563 fetched, 299 France/Permanent kept, 347s
+  ...2250/3563 fetched, 299 France/Permanent kept, 379s
+  ...2500/3563 fetched, 299 France/Permanent kept, 412s
+  ...2750/3563 fetched, 299 France/Permanent kept, 451s
+  ...3000/3563 fetched, 299 France/Permanent kept, 490s
+  ...3250/3563 fetched, 299 France/Permanent kept, 522s
+  ...3500/3563 fetched, 299 France/Permanent kept, 556s
+
+============================================================
+ANALYSIS — Thales France · Permanent
+============================================================
+  total France/Permanent jobs : 299
+  data/AI/ML keyword matches  : 10
+  fetch runtime               : 564s
+
+--- Category distribution (ALL France/Permanent) ---
+    51  Software
+    47  Industry
+    43  System
+    33  Hardware
+    30  Engineering and Technical specialities
+    23  Engineering and Technical Management
+    21  Customer Service
+    18  Bid and Project Management
+    10  Information Systems - Information Technology
+     9  Finance
+     4  Other
+     4  Procurement
+     3  Strategy, Marketing, Sales
+     3  HSE, Real Estate, Security, Personal Assistance, Medical Welfare
+
+--- Category distribution (TITLES matching data/AI/ML/research) ---
+     7  ( 23% of category) Engineering and Technical specialities
+     2  (  4% of category) Software
+     1  (  3% of category) Hardware
+
+--- Matching titles, grouped by category ---
+
+  ### Engineering and Technical specialities (7 matches) ###
+    [Gennevilliers] Ingénieur IA sur système de cybersécurité F/H
+    [Lambersart] Data Engineer Visualisation Qlik et Power BI (minimum 4 ans d'expérience) - F/H
+    [Palaiseau] Ingénieur de Recherche en Intelligence Artificielle Embarquée (H/F)
+    [Toulouse] Data Engineer Expérimenté Azure Databricks (H/F)
+    [Vélizy-Villacoublay] Data Engineer GCP (H/F)
+    [Vélizy-Villacoublay] AI Experience and Design Lead F/H
+    [Élancourt] Ingénieur Docteur en traitement du signal RADAR-SAR H/F
+
+  ### Software (2 matches) ###
+    [Gémenos] Software Solution Engineer - Secure & Cloud Platform (F/H)
+    [Valbonne] Software Solutions Engineer - Java (F/H)
+
+  ### Hardware (1 matches) ###
+    [Gennevilliers] Ingénieur Développement FPGA et Traitement du Signal – H/F
+
+Full classified rows written to: analyze_data_ml_roles_output.tsv

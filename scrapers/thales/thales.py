@@ -69,9 +69,18 @@ HEADERS = {
 }
 
 REQUEST_TIMEOUT = 30
-MAX_WORKERS = 6
-JITTER_MIN = 0.15
-JITTER_MAX = 0.45
+# Conservative concurrency: 6 workers / 0.15s jitter triggered Thales's
+# WAF around request 780 with 403 storms. Backed off to 3 workers + ~0.85s
+# avg jitter (~3 req/s peak). Combined with the shared Session below this
+# clears the catalog without trips through the rate-limit ceiling.
+MAX_WORKERS = 3
+JITTER_MIN = 0.5
+JITTER_MAX = 1.2
+
+# Backoff schedule when we hit a 403. Same IP comes off Thales's
+# sliding window within ~minute, so we wait + retry rather than failing
+# the row. Three attempts total: 5s → 15s → 45s.
+RETRY_BACKOFFS = (5, 15, 45)
 
 SCOPE_COUNTRY = "France"
 SCOPE_EMPLOYMENT_TYPE = "Permanent"  # surfaced as workerSubType="Regular Employee"
@@ -79,19 +88,19 @@ SCOPE_WORKER_SUBTYPE = "Regular Employee"
 
 # Phenom's authoritative `multi_category[*].category` values — these are
 # the strings the facet UI shows and the strings the JSON DDO emits.
+# Picked from the data analysis (scrapers/thales/material/analyze_data_ml_roles.py):
+# these two buckets hold 9 of the 10 France/Permanent data/AI/ML roles.
+# "Information Systems - Information Technology" had 0 matches (it's
+# internal corporate IT at Thales, not data platform engineering).
 SCOPE_CATEGORIES = {
+    "Engineering and Technical specialities",
     "Software",
-    "Information Systems / Information Technology",
-    "Engineering & Technical Specialities",
 }
 
-# DDO `city` field is the canonical Phenom city name. Thales France posts
-# under Paris arrondissement names (not "Paris"), so match those exactly.
-SCOPE_CITIES = {
-    "Issy-les-Moulineaux",
-    "Paris 9e Arrondissement",
-    "Rungis",
-}
+# No city filter — data/AI/ML roles are spread across Thales's R&D
+# campuses (Vélizy, Palaiseau, Gennevilliers, Élancourt, Toulouse, etc.)
+# and pinning to specific communes drops too many matches. The Phenom
+# `city` field is still surfaced in raw_payload for downstream filtering.
 
 
 @dataclass
@@ -202,10 +211,7 @@ def _parse_detail(html: str, url: str) -> Job | None:
     if category not in SCOPE_CATEGORIES:
         return None
 
-    city = job.get("city")
-    if city not in SCOPE_CITIES:
-        return None
-
+    city = job.get("city") or ""
     req_id = job.get("reqId") or ""
     title = job.get("title") or ""
     posted = job.get("postedDate") or job.get("datePosted")
@@ -255,17 +261,37 @@ def _collect_job_urls(session: requests.Session) -> list[str]:
     return ordered
 
 
+# Shared across worker threads. requests.Session is safe for concurrent
+# .get() calls because the underlying urllib3 PoolManager is thread-safe
+# and the cookie jar uses an RLock. Sharing one Session lets cookies and
+# the keep-alive connection pool persist across workers — without it
+# every fetch looks like a brand-new visitor to Thales's WAF, which is
+# what got us into trouble the first run.
+_SESSION = requests.Session()
+_SESSION.headers.update(HEADERS)
+
+
 def _fetch_and_filter(url: str) -> Job | None:
-    """Worker-pool task. Owns its own Session so retries/keep-alive don't
-    cross threads. Politeness jitter spreads the load over the run.
+    """Worker-pool task. Jitter + per-403 backoff keeps us below the
+    rate-limit window. Returns None for 404 (delisted) and for retries
+    that exhaust the backoff schedule.
     """
     time.sleep(random.uniform(JITTER_MIN, JITTER_MAX))
-    session = requests.Session()
-    response = session.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
-    if response.status_code == 404:
-        return None
-    response.raise_for_status()
-    return _parse_detail(response.text, url)
+
+    for attempt, backoff in enumerate((0,) + RETRY_BACKOFFS):
+        if backoff:
+            time.sleep(backoff)
+        response = _SESSION.get(url, timeout=REQUEST_TIMEOUT)
+        if response.status_code == 404:
+            return None
+        if response.status_code == 403:
+            # WAF; keep trying with progressively longer waits.
+            if attempt == len(RETRY_BACKOFFS):
+                response.raise_for_status()  # final attempt failed → surface it
+            continue
+        response.raise_for_status()
+        return _parse_detail(response.text, url)
+    return None  # unreachable, satisfies type checker
 
 
 def scrape() -> list[dict]:

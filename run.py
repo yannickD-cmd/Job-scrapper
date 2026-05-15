@@ -33,6 +33,8 @@ COMPANY_NAMES = {
     "deezer": "Deezer",
     "adobe": "Adobe",
     "thales": "Thales",
+    "sg": "Société Générale",
+    "databricks": "Databricks",
 }
 
 

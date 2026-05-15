@@ -32,8 +32,8 @@ import sys
 import time
 from dataclasses import asdict, dataclass
 
-import requests
 from bs4 import BeautifulSoup
+from curl_cffi import requests as cffi_requests
 
 HOST = "https://group.bnpparibas"
 BASE_URL = (
@@ -67,6 +67,12 @@ HEADERS = {
 REQUEST_DELAY_SECONDS = 2.0
 REQUEST_TIMEOUT = 30
 
+# curl_cffi TLS fingerprint profile. Akamai checks the JA3/JA4 of the
+# TLS handshake, not just headers — plain `requests` uses a Python-shaped
+# fingerprint that's instantly flagged from datacenter IPs (GitHub Actions).
+# Impersonating Chrome makes the handshake match a real browser.
+IMPERSONATE_PROFILE = "chrome131"
+
 # Hardcoded because every job we return matches these by construction
 # (the filter is in BASE_URL's path). Storing the values explicitly so
 # downstream readers don't have to re-derive the filter from the URL.
@@ -90,7 +96,7 @@ class Job:
     raw_payload: dict | None = None
 
 
-def _warmup(session: requests.Session) -> None:
+def _warmup(session: cffi_requests.Session) -> None:
     """One throwaway GET so Akamai issues us session cookies.
 
     Returns 403 — that's expected and fine. The point is that the
@@ -101,7 +107,7 @@ def _warmup(session: requests.Session) -> None:
     session.get(HOST + "/", headers=HEADERS, timeout=REQUEST_TIMEOUT)
 
 
-def _request(session: requests.Session, url: str, *, referer: str) -> requests.Response:
+def _request(session: cffi_requests.Session, url: str, *, referer: str) -> cffi_requests.Response:
     headers = dict(HEADERS)
     headers["Referer"] = referer
     headers["Sec-Fetch-Site"] = "same-origin"
@@ -196,7 +202,7 @@ def _extract_identifier(payload: dict) -> str | None:
     return None
 
 
-def _enrich(session: requests.Session, job: Job, referer: str) -> bool:
+def _enrich(session: cffi_requests.Session, job: Job, referer: str) -> bool:
     """Fetch detail page, fill enrichment fields. Returns True on success."""
     response = _request(session, job.apply_url, referer=referer)
     payload = _parse_detail_payload(response.text)
@@ -211,7 +217,7 @@ def _enrich(session: requests.Session, job: Job, referer: str) -> bool:
 
 
 def scrape() -> list[dict]:
-    session = requests.Session()
+    session = cffi_cffi_requests.Session(impersonate=IMPERSONATE_PROFILE)
     session.headers.update(HEADERS)
 
     print("Akamai warmup...", flush=True)

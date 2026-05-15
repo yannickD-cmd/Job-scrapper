@@ -1,0 +1,260 @@
+{
+  "ProcessingTime": " 2 ms",
+  "RowFetchTime": null,
+  "Profile": "ces_profile_sgcareers",
+  "DocumentCount": 21,
+  "TotalCount": 21,
+  "PageCount": 21,
+  "CurrentPage": 1,
+  "DocumentsPerPage": 1,
+  "DocumentsThisPage": 1,
+  "ProductTitle": "Quantum",
+  "Result": {
+    "queryid": "",
+    "resultid": "E7A177764B3747689261A8C83149577F",
+    "queryanalysis": {
+      "initial": true,
+      "text": ""
+    },
+    "TabColumn": "collection",
+    "TabValue": "*",
+    "Tabs": [
+      {
+        "Name": "All",
+        "Value": "*",
+        "Count": 21
+      }
+    ],
+    "Docs": [
+      {
+        "docid": "/ces_src_sgcareers/collection_sgcareers/|https://careers.societegenerale.com/offres-d-emploi/techlead-security-hardening-active-directory-25000GY7-fr",
+        "collection": "/ces_src_sgcareers/collection_sgcareers/",
+        "company": "SOCIETE GENERALE;Société Générale;2532,16,3915,16,5552,16;82163,20,84323,20,93028,20;SI;SI;602,9;78828,9;MICROSOFT;Microsoft;1929,9;81034,9",
+        "docrank": 0,
+        "docformat": "gWeb",
+        "exacthash": "rDIAAElfKIiA48r78Ag2UQ==",
+        "fileext": "htm",
+        "filename": "techlead-security-hardening-active-directory-25000GY7-fr",
+        "flags": "c__NoConversion",
+        "geo": "FRANCE;France;163,6,2779,6,5969,6;76689,6,82475,6,99754,6;ILE-DE-FRANCE;Ile-de-France;148,13,5954,13;76674,13,99739,13;FONTENAY-SOUS-BOIS;Fontenay-sous-Bois;128,18,5934,18;76654,18,99719,18",
+        "index": "ces_index_sgcareers",
+        "indexationtime": "2026-05-14 13:30:11",
+        "imageurl": "skins/_v10/formats/defaut-35.png",
+        "languages": "fr",
+        "modified": "2026-05-14 10:15:01",
+        "meta": "{\"$version\":\"v1\",\"Converters\":[{\"Name\":\"_NoConversion\",\"Type\":\"NoConversion\"}]}",
+        "nearhash": "5nyUH8PzBZaYDj1sVe3oqg==",
+        "source": "ces_src_sgcareers",
+        "version": "2026-05-14T10:15:01+02:00",
+        "title": "TechLead Security Hardening Active Directory",
+        "treepath": "/SG Careers/",
+        "size": 734480,
+        "smallimageurl": "skins/_v10/formats/defaut-16.png",
+        "tinyimageurl": "skins/_v10/formats/defaut-12.png",
+        "resultid": "E7A177764B3747689261A8C83149577F",
+        "resulturl": "https://careers.societegenerale.com/offres-d-emploi/techlead-security-hardening-active-directory-25000GY7-fr",
+        "resulttitle": "TechLead Security Hardening Active Directory",
+        "tabsearchselecteddisplaytab": "All[fr]Tout",
+        "tabsearchselectedvaluetab": "*",
+        "urlcachehtmltext": "xdownload/htmltext/%252Fces_src_sgcareers%252Fcollection_sgcareers%252F%257Chttps%253A%252F%252Fcareers.societegenerale.com%252Foffres-d-emploi%252Ftechlead-security-hardening-active-directory-25000GY7-fr/file.htm?profile=ces_profile_sgcareers",
+        "urlcachehtml": "xdownload/html/%252Fces_src_sgcareers%252Fcollection_sgcareers%252F%257Chttps%253A%252F%252Fcareers.societegenerale.com%252Foffres-d-emploi%252Ftechlead-security-hardening-active-directory-25000GY7-fr/file.htm?profile=ces_profile_sgcareers",
+        "urldocresult": "xdocresult?id=%2Fces_src_sgcareers%2Fcollection_sgcareers%2F%7Chttps%3A%2F%2Fcareers.societegenerale.com%2Foffres-d-emploi%2Ftechlead-security-hardening-active-directory-25000GY7-fr&docrank=0&resultid=E7A177764B3747689261A8C83149577F&profile=ces_profile_sgcareers",
+        "urldocresultontext": "xdocresult?id=%2Fces_src_sgcareers%2Fcollection_sgcareers%2F%7Chttps%3A%2F%2Fcareers.societegenerale.com%2Foffres-d-emploi%2Ftechlead-security-hardening-active-directory-25000GY7-fr&docrank=0&resultid=E7A177764B3747689261A8C83149577F&on=text&profile=ces_profile_sgcareers",
+        "urldocresultleft": "xdocresultleft?id=%2Fces_src_sgcareers%2Fcollection_sgcareers%2F%7Chttps%3A%2F%2Fcareers.societegenerale.com%2Foffres-d-emploi%2Ftechlead-security-hardening-active-directory-25000GY7-fr&docrank=0&resultid=E7A177764B3747689261A8C83149577F&profile=ces_profile_sgcareers",
+        "urldocresultvert": "xdocresultvert?id=%2Fces_src_sgcareers%2Fcollection_sgcareers%2F%7Chttps%3A%2F%2Fcareers.societegenerale.com%2Foffres-d-emploi%2Ftechlead-security-hardening-active-directory-25000GY7-fr&docrank=0&resultid=E7A177764B3747689261A8C83149577F&profile=ces_profile_sgcareers",
+        "urldocresulthorz": "xdocresulthorz?id=%2Fces_src_sgcareers%2Fcollection_sgcareers%2F%7Chttps%3A%2F%2Fcareers.societegenerale.com%2Foffres-d-emploi%2Ftechlead-security-hardening-active-directory-25000GY7-fr&docrank=0&resultid=E7A177764B3747689261A8C83149577F&profile=ces_profile_sgcareers",
+        "url1": "https://careers.societegenerale.com/offres-d-emploi/techlead-security-hardening-active-directory-25000GY7-fr",
+        "url2": "https://careers.societegenerale.com/themes/custom/sg_careers/images/og_default.jpg",
+        "url3": "https://socgen.taleo.net/careersection/sgcareers/jobapply.ftl?job=25000GY7&src=CWS-1&lang=fr-FR",
+        "sourcestr4": "25000GY7",
+        "sourcestr6": "job",
+        "sourcestr7": "Fontenay-Sous-Bois, France",
+        "sourcestr8": "CDI",
+        "sourcestr10": "IT (Systèmes d'information)",
+        "sourcestr12": "25000GY7-fr",
+        "sourcestr13": "Vous cherchez un CDI en tant que TechLead Security Hardening Active Directory à Fontenay-Sous-Bois ? Alors cette offre est pour vous ! Postulez vite et rejoignez-nous !",
+        "sourcestr15": "Fonctions centrales groupes",
+        "sourcevarchar2": "<p>Active Directory, cœur de la sécurité IT : devenez le chef d’orchestre du hardening Active Directory au sein d’un environnement critique et stratégique. En tant que Product Owner et TechLead, vous pilotez la sécurisation, l’industrialisation et la conformité des infrastructures les plus sensibles du SI Groupe.</p><p><strong>Concrètement, vous serez amené à :</strong></p><ul><li><p>Piloter la sécurité des infrastructures Tier 0 : coordonner les actions de hardening, gérer les incidents, prioriser les demandes et assurer la gouvernance technique</p></li><li><p>Assurer la conformité réglementaire : veiller à l’alignement avec les exigences internes et externes (pentests, audits IGAD, BCE, ANSSI etc.) en lien avec les équipes sécurité et architecture</p></li><li><p>Industrialiser et automatiser les processus : simplifier les opérations, formaliser les exigences techniques et piloter les évolutions des outils (ADSAF, ADRAC)</p></li><li><p>Maintenir les référentiels techniques : documenter les infrastructures, gérer les assets et tenir à jour la cartographie du périmètre Tier 0</p></li><li><p>Animer les équipes et la veille technologique : organiser les réunions, recruter les experts et anticiper les nouvelles pratiques de sécurité, gérer le backlog de l’équipe</p></li></ul><p><strong>Livrables :</strong></p><ul><li><p>Dossiers d'architecture technique détaillée</p></li><li><p>Roadmaps sécurité</p></li><li><p>Outillage Hardening</p></li><li><p>Tableaux de bord global de suivi (conformité, avancée, incidents)</p></li><li><p>Traitement des recommandation d'audit</p></li></ul>",
+        "sourcebool1": true,
+        "sourcedatetime1": "2026-05-14 14:00:00",
+        "sourcedatetime2": "2025-10-01 14:00:00",
+        "sourcecsv1": ""
+      }
+    ],
+    "Boxes": [
+      {
+        "type": "List",
+        "name": "ces_box_sgcareers_job_location",
+        "display": "Location[fr]Localisation",
+        "tooltip": null,
+        "column": "sourcecsv1",
+        "items": [
+          {
+            "Type": "boxlist",
+            "Name": "FRA",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra;FRA\"",
+            "Count": 21,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra%3BFRA%22",
+            "Trad": "France"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A20",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a20;FRA_A20\"",
+            "Count": 18,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a20%3BFRA_A20%22",
+            "Trad": "Ile de France"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A20_D005",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a20_d005;FRA_A20_D005\"",
+            "Count": 10,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a20_d005%3BFRA_A20_D005%22",
+            "Trad": "Hauts-de-Seine"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A20_D007",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a20_d007;FRA_A20_D007\"",
+            "Count": 8,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a20_d007%3BFRA_A20_D007%22",
+            "Trad": "Val-de-Marne"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A20_D007_L012",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a20_d007_l012;FRA_A20_D007_L012\"",
+            "Count": 8,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a20_d007_l012%3BFRA_A20_D007_L012%22",
+            "Trad": "Fontenay-Sous-Bois"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A20_D005_L005",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a20_d005_l005;FRA_A20_D005_L005\"",
+            "Count": 4,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a20_d005_l005%3BFRA_A20_D005_L005%22",
+            "Trad": "Boulogne-Billancourt"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_PUTEAUX",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_puteaux;FRA_PUTEAUX\"",
+            "Count": 3,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_puteaux%3BFRA_PUTEAUX%22",
+            "Trad": "Puteaux"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A01",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a01;FRA_A01\"",
+            "Count": 2,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a01%3BFRA_A01%22",
+            "Trad": "Grand Est"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A15_D001",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a15_d001;FRA_A15_D001\"",
+            "Count": 2,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a15_d001%3BFRA_A15_D001%22",
+            "Trad": "Meurthe-et-Moselle"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A15_D001_L012",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a15_d001_l012;FRA_A15_D001_L012\"",
+            "Count": 2,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a15_d001_l012%3BFRA_A15_D001_L012%22",
+            "Trad": "Nancy"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A20_D005_L025",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a20_d005_l025;FRA_A20_D005_L025\"",
+            "Count": 2,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a20_d005_l025%3BFRA_A20_D005_L025%22",
+            "Trad": "La Defense"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A20_D005_L013",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a20_d005_l013;FRA_A20_D005_L013\"",
+            "Count": 1,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a20_d005_l013%3BFRA_A20_D005_L013%22",
+            "Trad": "Courbevoie"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A28",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a28;FRA_A28\"",
+            "Count": 1,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a28%3BFRA_A28%22",
+            "Trad": "DOM-TOM"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A28_D003",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a28_d003;FRA_A28_D003\"",
+            "Count": 1,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a28_d003%3BFRA_A28_D003%22",
+            "Trad": "Réunion"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "FRA_A28_D003_L001",
+            "Value": "\"ces_box_sgcareers_job_location;sourcecsv1;fra_a28_d003_l001;FRA_A28_D003_L001\"",
+            "Count": 1,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_location%3Bsourcecsv1%3Bfra_a28_d003_l001%3BFRA_A28_D003_L001%22",
+            "Trad": "Saint-Denis"
+          }
+        ]
+      },
+      {
+        "type": "List",
+        "name": "ces_box_sgcareers_job_contract",
+        "display": "Contract[fr]Contrat",
+        "tooltip": null,
+        "column": "sourcestr8",
+        "items": [
+          {
+            "Type": "boxlist",
+            "Name": "STANDARD",
+            "Value": "\"ces_box_sgcareers_job_contract;sourcestr8;standard;STANDARD\"",
+            "Count": 21,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_contract%3Bsourcestr8%3Bstandard%3BSTANDARD%22",
+            "Trad": "CDI"
+          }
+        ]
+      },
+      {
+        "type": "List",
+        "name": "ces_box_sgcareers_job_function",
+        "display": "Job function[fr]Métier",
+        "tooltip": null,
+        "column": "sourcestr10",
+        "items": [
+          {
+            "Type": "boxlist",
+            "Name": "BJ725",
+            "Value": "\"ces_box_sgcareers_job_function;sourcestr10;bj725;BJ725\"",
+            "Count": 12,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_function%3Bsourcestr10%3Bbj725%3BBJ725%22",
+            "Trad": "IT (Systèmes d'information)"
+          },
+          {
+            "Type": "boxlist",
+            "Name": "JN482",
+            "Value": "\"ces_box_sgcareers_job_function;sourcestr10;jn482;JN482\"",
+            "Count": 9,
+            "Url": "search?action=select&resultid=E7A177764B3747689261A8C83149577F&item=%22ces_box_sgcareers_job_function%3Bsourcestr10%3Bjn482%3BJN482%22",
+            "Trad": "Innovation / Digital / Projet / Organisation"
+          }
+        ]
+      }
+    ],
+    "Links": []
+  },
+  "methodresult": "ok"
+}
