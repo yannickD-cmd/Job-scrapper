@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-zinc-950">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job offers · dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { font-family: 'Inter', system-ui, sans-serif; }
+    .modal-body :where(p, ul, ol) { margin-bottom: 0.75rem; }
+    .modal-body ul { list-style: disc; padding-left: 1.25rem; }
+    .modal-body ol { list-style: decimal; padding-left: 1.25rem; }
+    .modal-body a { color: #a5b4fc; text-decoration: underline; }
+    .modal-body h1, .modal-body h2, .modal-body h3 {
+      font-weight: 600; margin: 1rem 0 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen">
+
+<header class="max-w-6xl mx-auto px-6 pt-12 pb-8">
+  <div class="flex items-baseline justify-between gap-4 flex-wrap">
+    <div>
+      <h1 class="text-4xl font-bold tracking-tight">Job offers</h1>
+      <p class="text-zinc-400 mt-1">Latest scrape across {{ stats.companies }} companies.</p>
+    </div>
+    <div class="flex gap-6 text-sm">
+      <div>
+        <div class="text-zinc-500 uppercase tracking-wider text-xs">Open jobs</div>
+        <div class="text-2xl font-semibold">{{ stats.total_open }}</div>
+      </div>
+      <div>
+        <div class="text-zinc-500 uppercase tracking-wider text-xs">Companies</div>
+        <div class="text-2xl font-semibold">{{ stats.companies }}</div>
+      </div>
+      <div>
+        <div class="text-zinc-500 uppercase tracking-wider text-xs">New this week</div>
+        <div class="text-2xl font-semibold text-emerald-400">{{ stats.new_this_week }}</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="max-w-6xl mx-auto px-6 pb-6">
+  <form method="get" action="/" class="grid gap-3 sm:grid-cols-[1fr_1fr_2fr_auto_auto] items-center bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4">
+    <select name="company" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
+      <option value="">All companies</option>
+      {% for c in companies %}
+        <option value="{{ c }}" {% if c == selected_company %}selected{% endif %}>{{ c }}</option>
+      {% endfor %}
+    </select>
+
+    <select name="location" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
+      <option value="">All locations</option>
+      {% for l in locations %}
+        <option value="{{ l }}" {% if l == selected_location %}selected{% endif %}>{{ l }}</option>
+      {% endfor %}
+    </select>
+
+    <input type="text" name="q" value="{{ q }}" placeholder="Search title or description…"
+           class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
+
+    <label class="flex items-center gap-2 text-sm text-zinc-400 cursor-pointer select-none">
+      <input type="checkbox" name="show_closed" value="true" {% if show_closed %}checked{% endif %}
+             class="rounded border-zinc-700 bg-zinc-950">
+      Show closed
+    </label>
+
+    <div class="flex gap-2">
+      <button type="submit" class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-200">
+        Filter
+      </button>
+      <a href="/" class="px-4 py-2 rounded-lg text-sm text-zinc-400 hover:text-white">Reset</a>
+    </div>
+  </form>
+
+  <div class="text-zinc-500 text-xs mt-3 ml-1">
+    {{ result_count }} result{% if result_count != 1 %}s{% endif %}
+    {% if result_count == 1000 %}<span class="text-amber-400"> (capped — refine filters)</span>{% endif %}
+  </div>
+</section>
+
+<main class="max-w-6xl mx-auto px-6 pb-24">
+  <div class="border border-zinc-800 rounded-2xl overflow-hidden divide-y divide-zinc-800/70">
+    {% for job in jobs %}
+      <button type="button"
+              data-job-id="{{ job.id }}"
+              class="job-row w-full text-left grid grid-cols-[auto_1fr_auto] gap-4 items-center px-5 py-4 hover:bg-zinc-900/60 transition {% if not job.still_open %}opacity-50{% endif %}">
+        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-semibold text-zinc-300">
+          {{ job.company[:1] }}
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <span class="font-medium truncate">{{ job.title }}</span>
+            {% if job.is_new and job.still_open %}
+              <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">NEW</span>
+            {% endif %}
+            {% if not job.still_open %}
+              <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-zinc-700 text-zinc-300">CLOSED</span>
+            {% endif %}
+          </div>
+          <div class="text-sm text-zinc-400 truncate">
+            {{ job.company }}{% if job.location %} · {{ job.location }}{% endif %}{% if job.category %} · {{ job.category }}{% endif %}
+          </div>
+        </div>
+        <div class="text-xs text-zinc-500 text-right whitespace-nowrap">
+          {% if job.posted_date %}
+            {{ job.posted_date.strftime('%Y-%m-%d') }}
+          {% else %}
+            seen {{ job.first_seen_at.strftime('%Y-%m-%d') }}
+          {% endif %}
+        </div>
+      </button>
+    {% else %}
+      <div class="px-5 py-12 text-center text-zinc-500">No jobs match these filters.</div>
+    {% endfor %}
+  </div>
+</main>
+
+<!-- Modal -->
+<div id="modal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-hidden flex flex-col">
+    <div class="flex items-start justify-between gap-4 px-6 py-5 border-b border-zinc-800">
+      <div>
+        <div id="modal-title" class="text-xl font-semibold leading-tight"></div>
+        <div id="modal-meta" class="text-sm text-zinc-400 mt-1"></div>
+      </div>
+      <button id="modal-close" class="text-zinc-500 hover:text-white text-2xl leading-none">&times;</button>
+    </div>
+    <div id="modal-body" class="modal-body px-6 py-5 overflow-y-auto text-sm text-zinc-300 leading-relaxed flex-1">
+      Loading…
+    </div>
+    <div class="px-6 py-4 border-t border-zinc-800 flex justify-end">
+      <a id="modal-apply" href="#" target="_blank" rel="noopener"
+         class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-200">
+        Apply →
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalMeta  = document.getElementById('modal-meta');
+  const modalBody  = document.getElementById('modal-body');
+  const modalApply = document.getElementById('modal-apply');
+
+  function openModal() { modal.classList.remove('hidden'); }
+  function closeModal() { modal.classList.add('hidden'); }
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  document.querySelectorAll('.job-row').forEach(row => {
+    row.addEventListener('click', async () => {
+      const id = row.dataset.jobId;
+      modalTitle.textContent = 'Loading…';
+      modalMeta.textContent = '';
+      modalBody.textContent = 'Loading…';
+      modalApply.href = '#';
+      openModal();
+      try {
+        const r = await fetch(`/api/jobs/${id}/description`);
+        if (!r.ok) throw new Error('fetch failed');
+        const j = await r.json();
+        modalTitle.textContent = j.title;
+        const meta = [j.company, j.location, j.category, j.posted_date]
+          .filter(Boolean).join(' · ');
+        modalMeta.textContent = meta + (j.still_open ? '' : ' · CLOSED');
+        // Personal dashboard, single user — render scraper HTML directly.
+        modalBody.innerHTML = j.description
+          || '<span class="text-zinc-500">No description captured for this job.</span>';
+        modalApply.href = j.apply_url;
+      } catch (e) {
+        modalBody.textContent = 'Failed to load description.';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

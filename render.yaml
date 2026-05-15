@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: jobs-dashboard
+    runtime: python
+    plan: free
+    region: frankfurt
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn web.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"
+      - key: SUPABASE_PROJECT_REF
+        sync: false
+      - key: supabasePW
+        sync: false
+      - key: SUPABASE_POOLER_HOST
+        sync: false
