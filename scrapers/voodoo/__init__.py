@@ -1,0 +1,1 @@
+from .voodoo import scrape
