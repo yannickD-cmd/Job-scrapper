@@ -33,6 +33,7 @@ jobs:
           - decathlon
           - capgemini
           - voodoo
+          - rothschild
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

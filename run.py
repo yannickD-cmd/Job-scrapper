@@ -38,6 +38,7 @@ COMPANY_NAMES = {
     "decathlon": "Decathlon Digital",
     "capgemini": "Capgemini",
     "voodoo": "Voodoo",
+    "rothschild": "Rothschild & Co",
 }
 
 
