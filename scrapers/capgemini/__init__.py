@@ -1,0 +1,1 @@
+from .capgemini import scrape

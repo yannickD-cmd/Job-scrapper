@@ -36,6 +36,7 @@ COMPANY_NAMES = {
     "sg": "Société Générale",
     "databricks": "Databricks",
     "decathlon": "Decathlon Digital",
+    "capgemini": "Capgemini",
 }
 
 
