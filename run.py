@@ -40,6 +40,8 @@ COMPANY_NAMES = {
     "voodoo": "Voodoo",
     "rothschild": "Rothschild & Co",
     "doctolib": "Doctolib",
+    "cgi": "CGI",
+    "allianz": "Allianz",
 }
 
 

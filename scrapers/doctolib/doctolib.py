@@ -1,8 +1,7 @@
 """Doctolib job scraper — Paris office, tech-track departments.
 
-The careers UI at https://careers.doctolib.com/ links every posting to
-boards.greenhouse.io/doctolib, i.e. Doctolib's ATS is a public Greenhouse
-job board. We hit the standard Greenhouse Job Board API:
+Doctolib's ATS is a public Greenhouse job board, and we hit the standard
+Greenhouse Job Board API:
 
   https://boards-api.greenhouse.io/v1/boards/doctolib/jobs?content=true
 
@@ -19,10 +18,26 @@ A posting may be cross-listed across offices (same role, distinct Greenhouse
 ids per office), so we don't try to dedup by title — each posting id is a
 distinct row.
 
-Native job id: Greenhouse `id` (e.g. 7583949003), the same id that appears in
-the public URL `boards.greenhouse.io/doctolib/jobs/<id>`. Stable across the
-posting's lifetime. The Greenhouse `internal_job_id` is a separate internal
-key we don't need.
+Native job id: Greenhouse `id` (e.g. 7583949003). Stable across the posting's
+lifetime. The Greenhouse `internal_job_id` is a separate internal key we
+don't need.
+
+Apply URL: prefer the rich careers.doctolib.com page (which renders the full
+description in Doctolib's own layout) over the bare Greenhouse board page.
+URL shape is `careers.doctolib.com/jobs/<slug>-<id>/`. We can NOT derive the
+slug from the current title — Doctolib's WordPress permalinks are frozen at
+posting-creation time, so when a role gets retitled the slug stays stale
+(seen in the wild: id 6681347003's current title is "Machine Learning
+Engineer …" but its live URL still says "senior-machine-learning-engineer-…").
+
+So we look up the real slug from Doctolib's job sitemap, which lists every
+indexed posting's URL with the Greenhouse id as the trailing segment:
+
+  https://careers.doctolib.com/dl_job-sitemap.xml
+
+The sitemap covers ~80% of Greenhouse postings — the gap is recently-
+published roles that haven't been crawled yet. For those, we fall back to
+the Greenhouse board URL, which always resolves.
 
 Description: Greenhouse double-encodes the HTML (entities wrap tags), so we
 html.unescape once, then strip tags with BeautifulSoup. Same pattern as
@@ -33,6 +48,7 @@ To widen scope, edit OFFICES_IN_SCOPE or DEPARTMENTS_IN_SCOPE.
 from __future__ import annotations
 
 import html
+import re
 import sys
 import time
 from dataclasses import asdict, dataclass
@@ -41,7 +57,8 @@ import requests
 from bs4 import BeautifulSoup
 
 API_URL = "https://boards-api.greenhouse.io/v1/boards/doctolib/jobs"
-PUBLIC_JOB_URL_TEMPLATE = "https://boards.greenhouse.io/doctolib/jobs/{job_id}"
+SITEMAP_URL = "https://careers.doctolib.com/dl_job-sitemap.xml"
+GREENHOUSE_JOB_URL_TEMPLATE = "https://boards.greenhouse.io/doctolib/jobs/{job_id}"
 
 OFFICES_IN_SCOPE = {"Paris"}
 DEPARTMENTS_IN_SCOPE = {"Engineering", "Product", "Design", "IT & Security"}
@@ -60,6 +77,12 @@ HEADERS = {
 
 REQUEST_TIMEOUT = 30
 
+# Each entry in the job sitemap ends with `-<greenhouse_id>/`. Capture both
+# the full URL and the trailing id so we can build the lookup map.
+_SITEMAP_URL_RE = re.compile(
+    r"https://careers\.doctolib\.com/jobs/[a-z0-9-]+-(\d+)/"
+)
+
 
 @dataclass
 class Job:
@@ -67,7 +90,8 @@ class Job:
     title: str
     location: str              # location.name from payload (free-text)
     category: str | None       # in-scope dept names joined by " | "
-    apply_url: str             # canonical boards.greenhouse.io/doctolib/jobs/<id>
+    apply_url: str             # careers.doctolib.com/jobs/<slug>-<id>/ if indexed,
+                               # else boards.greenhouse.io/doctolib/jobs/<id>
     employment_type: str       # from metadata "Employment Type" (or "")
     description: str | None = None
     posted_date: str | None = None    # first_published, YYYY-MM-DD
@@ -114,38 +138,6 @@ def _posted_date(doc: dict) -> str | None:
     return raw[:10]
 
 
-def _doc_to_job(doc: dict) -> Job:
-    job_id = doc.get("id")
-    if not job_id:
-        raise RuntimeError(f"Doctolib posting missing id (title={doc.get('title')!r})")
-    job_id = str(job_id)
-
-    # absolute_url points at job-boards.greenhouse.io (the new host); the
-    # public-facing careers links use boards.greenhouse.io. Both resolve, but
-    # boards.greenhouse.io is what the careers page renders, so keep parity.
-    apply_url = PUBLIC_JOB_URL_TEMPLATE.format(job_id=job_id)
-
-    location_obj = doc.get("location") or {}
-    location = (location_obj.get("name") or "").strip()
-
-    req_id = doc.get("requisition_id")
-    if isinstance(req_id, str):
-        req_id = req_id.strip() or None
-
-    return Job(
-        native_job_id=job_id,
-        title=(doc.get("title") or "").strip(),
-        location=location,
-        category=_category(doc),
-        apply_url=apply_url,
-        employment_type=_employment_type(doc),
-        description=_clean_description(doc.get("content")),
-        posted_date=_posted_date(doc),
-        identifier=req_id,
-        raw_payload=doc,
-    )
-
-
 def _fetch_jobs(session: requests.Session) -> list[dict]:
     print(f"  GET {API_URL}?content=true ...", flush=True)
     response = session.get(
@@ -162,6 +154,59 @@ def _fetch_jobs(session: requests.Session) -> list[dict]:
     return jobs
 
 
+def _fetch_sitemap_urls(session: requests.Session) -> dict[str, str]:
+    """Return {greenhouse_id: doctolib_url} from the job sitemap. If the
+    sitemap is unavailable, return an empty map and rely on Greenhouse
+    fallbacks — the scrape stays functional, links just look less polished."""
+    try:
+        response = session.get(SITEMAP_URL, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        response.raise_for_status()
+    except Exception as exc:
+        print(
+            f"  WARN: sitemap fetch failed ({type(exc).__name__}: {exc}); "
+            f"every apply_url will fall back to Greenhouse",
+            flush=True,
+        )
+        return {}
+
+    mapping: dict[str, str] = {}
+    for match in _SITEMAP_URL_RE.finditer(response.text):
+        url, job_id = match.group(0), match.group(1)
+        mapping.setdefault(job_id, url)
+    print(f"  sitemap has {len(mapping)} indexed job URLs", flush=True)
+    return mapping
+
+
+def _doc_to_job(doc: dict, sitemap_urls: dict[str, str]) -> Job:
+    job_id = doc.get("id")
+    if not job_id:
+        raise RuntimeError(f"Doctolib posting missing id (title={doc.get('title')!r})")
+    job_id = str(job_id)
+
+    title = (doc.get("title") or "").strip()
+    apply_url = sitemap_urls.get(job_id) or GREENHOUSE_JOB_URL_TEMPLATE.format(job_id=job_id)
+
+    location_obj = doc.get("location") or {}
+    location = (location_obj.get("name") or "").strip()
+
+    req_id = doc.get("requisition_id")
+    if isinstance(req_id, str):
+        req_id = req_id.strip() or None
+
+    return Job(
+        native_job_id=job_id,
+        title=title,
+        location=location,
+        category=_category(doc),
+        apply_url=apply_url,
+        employment_type=_employment_type(doc),
+        description=_clean_description(doc.get("content")),
+        posted_date=_posted_date(doc),
+        identifier=req_id,
+        raw_payload=doc,
+    )
+
+
 def scrape() -> list[dict]:
     session = requests.Session()
     session.headers.update(HEADERS)
@@ -169,6 +214,9 @@ def scrape() -> list[dict]:
     started = time.time()
     print("Listing phase...", flush=True)
     docs = _fetch_jobs(session)
+
+    print("Sitemap phase...", flush=True)
+    sitemap_urls = _fetch_sitemap_urls(session)
 
     print("Filter phase...", flush=True)
     candidates = [d for d in docs if _in_scope(d)]
@@ -178,18 +226,27 @@ def scrape() -> list[dict]:
     )
 
     kept: dict[str, Job] = {}
+    gh_fallback = 0
     for doc in candidates:
-        job = _doc_to_job(doc)
+        job = _doc_to_job(doc, sitemap_urls)
         if job.native_job_id in kept:
             continue
         kept[job.native_job_id] = job
+        from_sitemap = job.apply_url.startswith("https://careers.doctolib.com/")
+        if not from_sitemap:
+            gh_fallback += 1
         print(
-            f"  {job.native_job_id} {job.title!r} -> KEEP",
+            f"  {job.native_job_id} {job.title!r} -> KEEP "
+            f"({'doctolib' if from_sitemap else 'greenhouse'})",
             flush=True,
         )
 
     elapsed = time.time() - started
-    print(f"\n  -> {len(kept)} jobs in {elapsed:.1f}s\n", flush=True)
+    print(
+        f"\n  -> {len(kept)} jobs in {elapsed:.1f}s "
+        f"({gh_fallback} fell back to greenhouse URL)\n",
+        flush=True,
+    )
     return [asdict(j) for j in kept.values()]
 
 

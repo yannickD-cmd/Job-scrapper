@@ -35,6 +35,8 @@ jobs:
           - voodoo
           - rothschild
           - doctolib
+          - cgi
+          - allianz
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

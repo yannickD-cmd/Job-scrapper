@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+ 
+	<link rel="icon" href="//www.ibm.com/favicon.ico">
+	
+	<meta name="dcterms.date" content="2024-04-12">
+	<meta name="dcterms.rights" content="© Copyright IBM Corp. 2016">
+    <meta name="geo.country" content="US">
+    <meta name="robots" content="index,follow">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="The page you requested cannot be displayed (HTTP response code 404)">
+    <meta name="keywords" content="The page you requested cannot be displayed (HTTP response code 404)">
+	<title>IBM notice: The page you requested cannot be displayed</title>
+	
+	<script>
+		window.digitalData = {
+			page: {
+				category: {
+					primaryCategory: 'error'
+				},
+				pageInfo: {
+					language: 'en-ZZ',
+					ibm: {
+						country: 'ZZ',
+						siteID: 'error',
+						subject: 'ZZ999',
+						type: 'CT030'
+					},
+				},
+				isDataLayerReady: true,
+			},
+		};
+	</script>
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/v1/latest/plex.css"/>
+	<link rel="stylesheet" href="https://1.www.s81c.com/common/carbon/web-components/tag/latest/themes.css" />
+	<link rel="stylesheet" href="https://1.www.s81c.com/common/carbon/web-components/tag/latest/cssgrid.css" />
+    <link rel="stylesheet" href="https://1.www.s81c.com/common/carbon/plex/sans.css"/>
+	
+	<!-- Styles customization -->
+	<style>
+		.content-wrapper {position: relative;}
+		.content-wrapper.lead {padding: 0 5vw 60px;background: #121212;}
+		.content-wrapper.side {padding: 50px 5vw;background: #f4f4f4;}
+		.content-wrapper.lead c4d-content-block-simple {padding-bottom: 0; margin-top: 0; margin-bottom:2rem; padding-top: 4rem; max-width: 600px;}
+		.content-wrapper.lead .search-wrapper {max-width: 350px;margin: 1rem;}
+		.search-wrapper > c4d-search-with-typeahead {z-index: 10;}
+		c4d-link-with-icon {
+			--cds-link-primary: #0f62fe;
+			--cds-link-visited: #0f62fe;
+		}
+		.error-code {position: absolute;bottom: -3.5vw;right: 0;font-size: 30vw;font-weight: 700;line-height: 30vw;color: #fff;opacity: .05;}
+	</style>
+
+	<!-- Import Components -->
+	<script 
+		type="module" 
+		src="https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/latest/masthead.min.js"></script>
+	<script 
+		type="module"
+		src="https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/latest/footer.min.js"></script>
+	<script 
+		type="module"
+		src="https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/latest/content-block-simple.min.js"></script>
+	<script 
+		type="module"
+		src="https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/latest/search-with-typeahead.min.js"></script>
+	<script
+		type="module"
+		src="https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/latest/link-with-icon.min.js"></script>
+	
+	<!-- IBM Tag Management and Site Analytics -->
+	<script 
+		type="text/javascript"
+		src="//1.www.s81c.com/common/stats/ibm-common.js"
+		async="async"></script>
+	
+</head>
+<body>
+	<!-- MASTHEAD -->
+	<header>
+		<c4d-masthead-container 
+			data-endpoint="/common/carbon-for-ibm-dotcom/translations/masthead-footer/v2.1">
+		</c4d-masthead-container>
+	</header>
+	<!-- /MASTHEAD -->
+
+	<!-- BODY -->
+	<section class="content-wrapper lead cds-theme-zone-g90">
+		<div class="error-code">
+			404
+		</div>
+		<c4d-content-block-simple>
+			<c4d-content-block-heading>We’re sorry!</c4d-content-block-heading>
+			<c4d-content-block-copy>The page you're looking for may have been moved or deleted. Start a new search on ibm.com or visit one of the popular sites shown below.</c4d-content-block-copy>
+		</c4d-content-block-simple>
+
+		<div class="search-wrapper">
+			<c4d-search-with-typeahead leadspace-search active should-remain-open></search-with-typeahead>
+		</div>
+	</section>
+
+	<section class="content-wrapper side cds-theme-zone-g10">
+		<h3 style="margin-left: 1rem;">Continue exploring</h3>
+			<div class="cds--css-grid" style="padding: 1.5rem 0 0;">
+				<div class="cds--css-grid-column cds--sm:col-span-4">
+					<!-- Homepage link -->
+					<c4d-content-item>
+						<c4d-link-with-icon
+							href="https://www.ibm.com/"
+						>
+							IBM Homepage
+							
+							<svg
+								slot="icon"
+								focusable="false"
+								preserveAspectRatio="xMidYMid meet"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+								width="20"
+								height="20"
+								viewBox="0 0 32 32"
+								>
+								<path d="M16,10a6,6,0,0,0-6,6v8a6,6,0,0,0,12,0V16A6,6,0,0,0,16,10Zm-4.25,7.87h8.5v4.25h-8.5ZM16,28.25A4.27,4.27,0,0,1,11.75,24v-.13h8.5V24A4.27,4.27,0,0,1,16,28.25Zm4.25-12.13h-8.5V16a4.25,4.25,0,0,1,8.5,0Z"/>
+								<path d="M30.66,19.21,24,13v9.1a4,4,0,0,0,8,0A3.83,3.83,0,0,0,30.66,19.21ZM28,24.35a2.25,2.25,0,0,1-2.25-2.25V17l3.72,3.47h0A2.05,2.05,0,0,1,30.2,22,2.25,2.25,0,0,1,28,24.35Z"/>
+								<path d="M0,22.1a4,4,0,0,0,8,0V13L1.34,19.21A3.88,3.88,0,0,0,0,22.1Zm2.48-1.56h0L6.25,17v5.1a2.25,2.25,0,0,1-4.5,0A2.05,2.05,0,0,1,2.48,20.54Z"/>
+								<path d="M15,5.5A3.5,3.5,0,1,0,11.5,9,3.5,3.5,0,0,0,15,5.5Zm-5.25,0A1.75,1.75,0,1,1,11.5,7.25,1.77,1.77,0,0,1,9.75,5.5Z"/>
+								<path d="M20.5,2A3.5,3.5,0,1,0,24,5.5,3.5,3.5,0,0,0,20.5,2Zm0,5.25A1.75,1.75,0,1,1,22.25,5.5,1.77,1.77,0,0,1,20.5,7.25Z"/>
+							</svg>
+						</c4d-link-with-icon>
+					</c4d-content-item>
+				</div>
+				<div class="cds--css-grid-column cds--sm:col-span-4">
+					<!-- Products link -->
+					<c4d-content-item>
+						<c4d-link-with-icon 
+							href="https://www.ibm.com/products"
+						>
+							Our products
+							
+							<svg
+								slot="icon"
+								focusable="false"
+								preserveAspectRatio="xMidYMid meet"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+								width="20"
+								height="20"
+								viewBox="0 0 32 32"
+								>
+								
+								<path d="M28,10H22V6a2,2,0,0,0-2-2H12a2,2,0,0,0-2,2v4H4a2,2,0,0,0-2,2V26a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V12A2,2,0,0,0,28,10ZM12,6h8v4H12ZM4,26V12H28V26Z"/>
+							</svg>
+						</c4d-link-with-icon>
+					</c4d-content-item>
+				</div>
+				<div class="cds--css-grid-column cds--sm:col-span-4">
+					<!-- Careers link -->
+					<c4d-content-item>
+						<c4d-link-with-icon 
+							href="https://www.ibm.com/careers"
+						>
+							Careers
+							
+							<svg
+								slot="icon"
+								focusable="false"
+								preserveAspectRatio="xMidYMid meet"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+								width="20"
+								height="20"
+								viewBox="0 0 32 32"
+								>
+								
+								<polygon points="32 14 28 14 28 10 26 10 26 14 22 14 22 16 26 16 26 20 28 20 28 16 32 16 32 14"/>
+								<path d="M12,4A5,5,0,1,1,7,9a5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,12,2Z" transform="translate(0 0)"/>
+								<path d="M22,30H20V25a5,5,0,0,0-5-5H9a5,5,0,0,0-5,5v5H2V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z" transform="translate(0 0)"/>
+							</svg>
+						</c4d-link-with-icon>
+					</c4d-content-item>
+				</div>
+				<div class="cds--css-grid-column cds--sm:col-span-4">
+					<!-- Contact link -->
+					<c4d-content-item>
+						<c4d-link-with-icon 
+							href="https://www.ibm.com/contact"
+						>
+							Contact us
+							
+							<svg
+								slot="icon"
+								focusable="false"
+								preserveAspectRatio="xMidYMid meet"
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+								width="20"
+								height="20"
+								viewBox="0 0 32 32"
+								>
+								
+								<path d="M26,29h-.17C6.18,27.87,3.39,11.29,3,6.23A3,3,0,0,1,5.76,3h5.51a2,2,0,0,1,1.86,1.26L14.65,8a2,2,0,0,1-.44,2.16l-2.13,2.15a9.37,9.37,0,0,0,7.58,7.6l2.17-2.15A2,2,0,0,1,24,17.35l3.77,1.51A2,2,0,0,1,29,20.72V26A3,3,0,0,1,26,29ZM6,5A1,1,0,0,0,5,6v.08C5.46,12,8.41,26,25.94,27A1,1,0,0,0,27,26.06V20.72l-3.77-1.51-2.87,2.85L19.88,22C11.18,20.91,10,12.21,10,12.12l-.06-.48,2.84-2.87L11.28,5Z" transform="translate(0)"/>
+							</svg>
+						</c4d-link-with-icon>
+					</c4d-content-item>
+				</div>
+			</div>
+	</section>
+	<!-- /BODY -->
+
+	<!-- FOOTER -->
+	<footer>
+		<c4d-footer-container></c4d-footer-container>
+	</footer>
+	<!-- /FOOTER -->
+<script type="text/javascript"  src="/9KWnV4/axHkI/0V64b/KA/NiXuDkNmLttctttuY9/WRZ9AQ/B0/MBHRxJNzcB"></script><link rel="stylesheet" type="text/css"  href="/9KWnV4/axHkI/0V64b/KA/JDXuO3/clJdAQ/EV/89GREffihZ"><script  src="/9KWnV4/axHkI/0V64b/KA/JDXuO3/clJdAQ/BF/ZrEQhIW1Up" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div></body>
+</html>

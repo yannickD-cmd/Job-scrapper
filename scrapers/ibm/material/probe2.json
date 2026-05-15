@@ -1,0 +1,1 @@
+{"matched_rule":{"source":"/(.*)","target":"//www.ibm.com/","target_rule":"//www.ibm.com/","status":301,"hostname":"default","extracted_host":"www-api.ibm.com"}}

@@ -1,0 +1,1 @@
+from .allianz import scrape
