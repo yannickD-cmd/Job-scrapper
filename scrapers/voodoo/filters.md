@@ -2,19 +2,22 @@
 
 | Axis | Kept value | Applied where |
 |---|---|---|
-| Location | **Paris** | client (Lever `categories.location`) |
-| Commitment | **Permanent** | client (Lever `categories.commitment`) |
-| Team / Department | *all* | no filter — Paris office spans Gaming, BeReal, Engineering & Data, Apps, Strategy & Operations |
+| Location | **Paris** | client (`locationName == "Paris"`) |
+| Department | **Engineering & Data** | client (`departmentName == "Engineering & Data"`) |
+| Listed | **isListed == true** | client (defensive; the board never returned False but the field exists) |
+| Employment type | *all* | no filter — page itself doesn't filter on this; the team mixes FullTime + Contract + Freelance |
+| Workplace type | *all* | no filter — postings mix On-site / Hybrid / Remote |
 
-Out of scope on the same board: Internship postings, and every non-Paris office (Barcelona, London, Tokyo, Los Angeles, New York, Chicago, Amsterdam, Shanghai).
+**Source URLs** (no auth, JSON — Voodoo's own Ashby-backed board):
+- Board listing: `https://jobs.voodoo.io/board/989a55fe-f19c-4379-b680-2029aab87cbe`
+  - returns `{success, results: [...]}` — single response, no pagination (matches the page's own fetch)
+- Detail (per job, for description text): `https://jobs.voodoo.io/job/<id>`
+  - returns `{success, results: {descriptionPlain, descriptionHtml, ...}}`
 
-`workplaceType` (onsite / hybrid / remote) is **not** used for filtering — Paris-listed jobs mix all three and the careers UI also shows the full mix when "Paris" is selected.
+**Do NOT use** `api.lever.co/v0/postings/voodoo` even though it resolves — it returns a stale superset that includes postings the careers page deliberately hides.
 
-**Source URL** (no auth, JSON, single response — Lever public posting API):
-- `https://api.lever.co/v0/postings/voodoo?mode=json`
+**Sanity check**: filtering the API by `departmentName == "Engineering & Data"` and `locationName == "Paris"` returns **9** postings, which matches the chip count on the public page when those filters are selected.
 
-`mode=json` returns the full posting list in one response (~34 postings total board-wide as of 2026-05). No pagination logic needed.
+**Native job id**: Ashby UUID (the same `id` Voodoo uses at `/careers/job?id=<id>`). Stable per posting.
 
-**Native job id**: Lever's posting `id` (UUID) — stable per posting, used for the `(company, native_job_id)` unique key.
-
-**Scraper**: [scrapers/voodoo/voodoo.py](voodoo.py) — see `LOCATIONS_IN_SCOPE`, `COMMITMENTS_IN_SCOPE` constants to change.
+**Scraper**: [scrapers/voodoo/voodoo.py](voodoo.py) — see `LOCATIONS_IN_SCOPE` to change the scope.

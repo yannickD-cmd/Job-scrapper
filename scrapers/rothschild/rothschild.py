@@ -117,7 +117,12 @@ HEADERS = {
 PAGE_SIZE = 50
 MAX_PAGES = 20  # per (division × employment-type) — defensive cap
 REQUEST_TIMEOUT = 30
-REQUEST_DELAY_SECONDS = 0.6
+# Workday is fronted by Cloudflare and is aggressive: ~10 POSTs within 2s
+# from the same IP starts returning empty-body HTTP 400. Observed recovery
+# window is ~60s. So we go slow and we back off long when blocked.
+REQUEST_DELAY_SECONDS = 2.0
+RETRY_BACKOFF_SECONDS = 30.0
+MAX_RETRIES = 3
 
 
 @dataclass
@@ -175,16 +180,38 @@ def _fetch_listing(
         "offset": (page - 1) * PAGE_SIZE,
         "searchText": "",
     }
-    response = session.post(LIST_URL, json=body, timeout=REQUEST_TIMEOUT)
-    response.raise_for_status()
-    return response.json()
+    last_exc: Exception | None = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        response = session.post(LIST_URL, json=body, timeout=REQUEST_TIMEOUT)
+        if response.status_code == 200:
+            return response.json()
+        # Workday's CF front sometimes returns 400 with empty body on bursts
+        # but the same request succeeds after a backoff. Retry these.
+        last_exc = requests.HTTPError(
+            f"{response.status_code} on attempt {attempt}: {response.text[:120]}",
+            response=response,
+        )
+        if attempt < MAX_RETRIES:
+            time.sleep(RETRY_BACKOFF_SECONDS)
+    assert last_exc is not None
+    raise last_exc
 
 
 def _fetch_detail(session: requests.Session, external_path: str) -> dict:
     url = DETAIL_URL_TEMPLATE.format(external_path=external_path)
-    response = session.get(url, timeout=REQUEST_TIMEOUT)
-    response.raise_for_status()
-    return response.json()
+    last_exc: Exception | None = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        response = session.get(url, timeout=REQUEST_TIMEOUT)
+        if response.status_code == 200:
+            return response.json()
+        last_exc = requests.HTTPError(
+            f"{response.status_code} on attempt {attempt}: {response.text[:120]}",
+            response=response,
+        )
+        if attempt < MAX_RETRIES:
+            time.sleep(RETRY_BACKOFF_SECONDS)
+    assert last_exc is not None
+    raise last_exc
 
 
 def _infer_employment_type(detail_info: dict, listing_row: dict) -> str:
@@ -283,9 +310,25 @@ def _collect_division_rows(
     return rows
 
 
+def _warmup(session: requests.Session) -> None:
+    """Workday's CF front blocks fresh sessions that go straight to the JSON
+    API. Hit the careers HTML once to bank cookies (__cf_bm, PLAY_SESSION,
+    wd-browser-id) before the first POST."""
+    try:
+        session.get(
+            f"{HOST}/en-US/{SITE}",
+            headers={"Accept": "text/html,application/xhtml+xml"},
+            timeout=REQUEST_TIMEOUT,
+        )
+    except requests.RequestException as exc:
+        print(f"  warmup GET failed (non-fatal): {exc}", flush=True)
+
+
 def scrape() -> list[dict]:
     session = requests.Session()
     session.headers.update(HEADERS)
+    _warmup(session)
+    time.sleep(REQUEST_DELAY_SECONDS)
 
     started = time.time()
     print("Fetch phase (per-Division listing)...", flush=True)
@@ -294,11 +337,12 @@ def scrape() -> list[dict]:
     for division_id, division_name in DIVISIONS.items():
         try:
             rows = _collect_division_rows(session, division_id, division_name)
+            all_rows.extend(rows)
         except requests.HTTPError as exc:
             # A single division failing shouldn't kill the run — log and continue.
             print(f"  {division_name}: HTTP error {exc}; skipping", flush=True)
-            continue
-        all_rows.extend(rows)
+        # Sleep on both success and failure so a 400-storm can't fire 13
+        # requests in <2s and trip Cloudflare further.
         time.sleep(REQUEST_DELAY_SECONDS)
 
     # A job belonging to multiple divisions would in theory appear twice; dedup
