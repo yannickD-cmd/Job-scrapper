@@ -35,6 +35,7 @@ COMPANY_NAMES = {
     "thales": "Thales",
     "sg": "Société Générale",
     "databricks": "Databricks",
+    "decathlon": "Decathlon Digital",
 }
 
 

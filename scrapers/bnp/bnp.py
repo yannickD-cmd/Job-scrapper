@@ -217,7 +217,7 @@ def _enrich(session: cffi_requests.Session, job: Job, referer: str) -> bool:
 
 
 def scrape() -> list[dict]:
-    session = cffi_cffi_requests.Session(impersonate=IMPERSONATE_PROFILE)
+    session = cffi_requests.Session(impersonate=IMPERSONATE_PROFILE)
     session.headers.update(HEADERS)
 
     print("Akamai warmup...", flush=True)

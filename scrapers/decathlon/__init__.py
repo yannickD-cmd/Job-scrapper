@@ -1,0 +1,1 @@
+from .decathlon import scrape
