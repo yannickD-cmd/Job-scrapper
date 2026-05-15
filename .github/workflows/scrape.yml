@@ -1,0 +1,45 @@
+name: scrape
+
+on:
+  schedule:
+    # Cron is UTC and doesn't track DST. Times below target Paris in summer
+    # (UTC+2); in winter (UTC+1) they fire 1h later.
+    - cron: '0 5 * * *'    # 07:00 Paris (summer)
+    - cron: '0 10 * * *'   # 12:00 Paris (summer)
+    - cron: '0 18 * * *'   # 20:00 Paris (summer)
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        company:
+          - sanofi
+          - bnp
+          - loreal
+          - accenture
+          - orange
+          - deezer
+          - adobe
+          - thales
+          - sg
+          - databricks
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python run.py ${{ matrix.company }}
+        env:
+          supabasePW: ${{ secrets.supabasePW }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          SUPABASE_POOLER_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
