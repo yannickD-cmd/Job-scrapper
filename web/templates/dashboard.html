@@ -88,17 +88,42 @@
       Show closed
     </label>
 
-    <div class="flex gap-2">
+    <div class="flex gap-2 flex-wrap">
       <button type="submit" class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-200">
         Filter
       </button>
       <a href="/" class="px-4 py-2 rounded-lg text-sm text-zinc-400 hover:text-white">Reset</a>
+      {% if selected_company %}
+        <button type="button" id="fresh-run-btn"
+                data-company="{{ selected_company }}"
+                class="bg-emerald-500 text-zinc-950 px-4 py-2 rounded-lg text-sm font-medium hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed">
+          Fresh run
+        </button>
+      {% endif %}
+      <button type="button" id="refresh-btn"
+              class="border border-zinc-700 text-zinc-300 px-4 py-2 rounded-lg text-sm hover:border-zinc-500 hover:text-white">
+        Refresh
+      </button>
     </div>
   </form>
 
   <div class="text-zinc-500 text-xs mt-3 ml-1">
     {{ result_count }} result{% if result_count != 1 %}s{% endif %}
     {% if result_count == 1000 %}<span class="text-amber-400"> (capped — refine filters)</span>{% endif %}
+  </div>
+
+  <div id="run-status" class="hidden mt-4 bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4 text-sm">
+    <div class="flex items-center justify-between gap-3 flex-wrap">
+      <div class="flex items-center gap-2">
+        <span id="run-spinner" class="inline-block w-3 h-3 rounded-full bg-amber-400 animate-pulse"></span>
+        <span id="run-label" class="text-zinc-300"></span>
+      </div>
+      <a id="run-link" href="#" target="_blank" rel="noopener"
+         class="text-xs text-indigo-300 hover:text-indigo-200 underline">
+        Open on GitHub Actions →
+      </a>
+    </div>
+    <pre id="run-log" class="hidden mt-3 max-h-64 overflow-auto text-xs text-zinc-400 bg-zinc-950/70 border border-zinc-800 rounded p-3 whitespace-pre-wrap"></pre>
   </div>
 </section>
 
@@ -182,6 +207,82 @@
   document.getElementById('modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // --- Refresh: preserve filters via the existing querystring ---
+  document.getElementById('refresh-btn').addEventListener('click', () => {
+    window.location.reload();
+  });
+
+  // --- Fresh run: POST dispatch, then poll status until completed ---
+  const freshBtn   = document.getElementById('fresh-run-btn');
+  const statusBox  = document.getElementById('run-status');
+  const runSpinner = document.getElementById('run-spinner');
+  const runLabel   = document.getElementById('run-label');
+  const runLink    = document.getElementById('run-link');
+  const runLog     = document.getElementById('run-log');
+
+  // Use literal class strings so Tailwind's JIT/CDN can resolve them.
+  const STATUS_DOT = {
+    amber:   'inline-block w-3 h-3 rounded-full bg-amber-400 animate-pulse',
+    emerald: 'inline-block w-3 h-3 rounded-full bg-emerald-400',
+    rose:    'inline-block w-3 h-3 rounded-full bg-rose-400',
+  };
+  function setStatus(color, text) {
+    runSpinner.className = STATUS_DOT[color];
+    runLabel.textContent = text;
+  }
+
+  async function pollRun(runId) {
+    try {
+      const r = await fetch(`/api/run/${runId}/status`);
+      const j = await r.json();
+      runLink.href = j.html_url;
+      if (j.status !== 'completed') {
+        setStatus('amber', `Running on GitHub Actions… (${j.status})`);
+        setTimeout(() => pollRun(runId), 4000);
+        return;
+      }
+      if (j.conclusion === 'success') {
+        setStatus('emerald', 'Done. Reloading dashboard…');
+        if (j.log_tail) { runLog.textContent = j.log_tail; runLog.classList.remove('hidden'); }
+        setTimeout(() => window.location.reload(), 1500);
+      } else {
+        setStatus('rose', `Finished: ${j.conclusion}`);
+        if (j.log_tail) { runLog.textContent = j.log_tail; runLog.classList.remove('hidden'); }
+        if (freshBtn) freshBtn.disabled = false;
+      }
+    } catch (e) {
+      setStatus('rose', 'Lost connection to status endpoint.');
+      if (freshBtn) freshBtn.disabled = false;
+    }
+  }
+
+  if (freshBtn) {
+    freshBtn.addEventListener('click', async () => {
+      const company = freshBtn.dataset.company;
+      freshBtn.disabled = true;
+      statusBox.classList.remove('hidden');
+      runLog.classList.add('hidden');
+      runLog.textContent = '';
+      runLink.href = '#';
+      setStatus('amber', `Dispatching ${company} on GitHub Actions…`);
+      try {
+        const r = await fetch(`/api/run/${encodeURIComponent(company)}`, { method: 'POST' });
+        const j = await r.json();
+        if (j.html_url) runLink.href = j.html_url;
+        if (!j.run_id) {
+          setStatus('amber', j.detail || 'Dispatched. Track on GitHub Actions.');
+          freshBtn.disabled = false;
+          return;
+        }
+        setStatus('amber', `Queued (run #${j.run_id})…`);
+        pollRun(j.run_id);
+      } catch (e) {
+        setStatus('rose', 'Failed to dispatch.');
+        freshBtn.disabled = false;
+      }
+    });
+  }
 
   document.querySelectorAll('.job-row').forEach(row => {
     row.addEventListener('click', async () => {

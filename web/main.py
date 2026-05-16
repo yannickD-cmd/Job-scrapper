@@ -5,15 +5,21 @@ so it picks up the same Supabase pooler env vars (SUPABASE_PROJECT_REF,
 supabasePW, SUPABASE_POOLER_HOST) as the scrapers.
 
 Routes:
-  GET /                          dashboard page with filters
-  GET /api/jobs/{id}/description JSON payload for the description modal
+  GET  /                                dashboard page with filters
+  GET  /api/jobs/{id}/description       JSON payload for the description modal
+  POST /api/run/{company}               dispatch scrape-one.yml on GitHub Actions
+  GET  /api/run/{run_id}/status         poll run status + log tail when finished
 """
 from __future__ import annotations
 
+import os
 import re
 import sys
+import time
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+import requests
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
@@ -21,9 +27,13 @@ from fastapi.templating import Jinja2Templates
 # Make `import db` work whether we're launched from repo root or web/.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import db  # noqa: E402
+from run import COMPANY_NAMES  # noqa: E402
 
 app = FastAPI(title="Jobs dashboard", docs_url=None, redoc_url=None)
 templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
+
+GITHUB_API = "https://api.github.com"
+WORKFLOW_FILE = "scrape-one.yml"
 
 
 def _all(cur, sql: str, params: tuple = ()) -> list[tuple]:
@@ -168,6 +178,122 @@ def job_description(job_id: int):
         "apply_url": row[6],
         "still_open": row[7],
     })
+
+
+def _gh_session() -> tuple[requests.Session, str]:
+    token = os.environ.get("GH_DISPATCH_TOKEN")
+    repo = os.environ.get("GH_REPO")
+    if not token or not repo:
+        raise HTTPException(
+            status_code=503,
+            detail="Fresh run is disabled (GH_DISPATCH_TOKEN / GH_REPO not set).",
+        )
+    s = requests.Session()
+    s.headers.update({
+        "Authorization": f"Bearer {token}",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": "job-scrapper-dashboard",
+    })
+    return s, repo
+
+
+@app.post("/api/run/{company}")
+def trigger_run(company: str):
+    if company not in COMPANY_NAMES:
+        raise HTTPException(status_code=404, detail=f"Unknown company key: {company}")
+
+    s, repo = _gh_session()
+    # Record the dispatch moment to filter the run list and avoid grabbing
+    # an older run for the same workflow. Small back-buffer for clock skew.
+    dispatch_at = datetime.now(timezone.utc) - timedelta(seconds=10)
+
+    r = s.post(
+        f"{GITHUB_API}/repos/{repo}/actions/workflows/{WORKFLOW_FILE}/dispatches",
+        json={"ref": "main", "inputs": {"company": company}},
+        timeout=15,
+    )
+    if r.status_code != 204:
+        raise HTTPException(
+            status_code=502,
+            detail=f"GitHub dispatch failed ({r.status_code}): {r.text[:300]}",
+        )
+
+    # workflow_dispatch doesn't return a run id — find it by listing recent runs
+    # of this workflow created after dispatch_at. The new run usually appears
+    # within 1-3 seconds.
+    created_filter = dispatch_at.strftime("%Y-%m-%dT%H:%M:%SZ")
+    runs_url = (
+        f"{GITHUB_API}/repos/{repo}/actions/workflows/{WORKFLOW_FILE}/runs"
+        f"?event=workflow_dispatch&created=>={created_filter}&per_page=5"
+    )
+    for _ in range(8):
+        time.sleep(1)
+        rr = s.get(runs_url, timeout=15)
+        if rr.status_code != 200:
+            continue
+        runs = rr.json().get("workflow_runs", [])
+        if runs:
+            run = max(runs, key=lambda x: x["created_at"])
+            return JSONResponse({
+                "run_id": run["id"],
+                "html_url": run["html_url"],
+                "status": run["status"],
+            })
+
+    # Dispatch succeeded but the run didn't show up in time. Hand back the
+    # Actions page so the user can still follow it.
+    return JSONResponse(
+        status_code=202,
+        content={
+            "run_id": None,
+            "html_url": f"https://github.com/{repo}/actions/workflows/{WORKFLOW_FILE}",
+            "status": "queued",
+            "detail": "Dispatched. Run id not visible yet — check the Actions page.",
+        },
+    )
+
+
+@app.get("/api/run/{run_id}/status")
+def run_status(run_id: int):
+    s, repo = _gh_session()
+
+    r = s.get(f"{GITHUB_API}/repos/{repo}/actions/runs/{run_id}", timeout=15)
+    if r.status_code == 404:
+        raise HTTPException(status_code=404, detail="Run not found")
+    if r.status_code != 200:
+        raise HTTPException(status_code=502, detail=f"GitHub error {r.status_code}")
+    run = r.json()
+
+    payload = {
+        "run_id": run["id"],
+        "status": run["status"],
+        "conclusion": run["conclusion"],
+        "html_url": run["html_url"],
+        "log_tail": None,
+    }
+
+    # Logs are only available after the run completes. Fetch the first job's
+    # plain-text log and keep the tail — the Persisted summary block is the
+    # last interesting thing run.py prints, so it's always near the bottom.
+    if run["status"] == "completed":
+        jobs_resp = s.get(
+            f"{GITHUB_API}/repos/{repo}/actions/runs/{run_id}/jobs",
+            timeout=15,
+        )
+        jobs = jobs_resp.json().get("jobs", []) if jobs_resp.status_code == 200 else []
+        if jobs:
+            job_id = jobs[0]["id"]
+            log_resp = s.get(
+                f"{GITHUB_API}/repos/{repo}/actions/jobs/{job_id}/logs",
+                timeout=20,
+                allow_redirects=True,
+            )
+            if log_resp.status_code == 200:
+                lines = log_resp.text.splitlines()
+                payload["log_tail"] = "\n".join(lines[-60:])
+
+    return JSONResponse(payload)
 
 
 @app.get("/healthz")

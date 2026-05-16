@@ -1,0 +1,33 @@
+name: scrape-one
+
+# Triggered manually (or from the dashboard "Fresh run" button via the
+# GitHub REST API). Runs python run.py for a single company.
+# The full matrix scrape lives in scrape.yml.
+
+on:
+  workflow_dispatch:
+    inputs:
+      company:
+        description: 'Scraper key from run.COMPANY_NAMES (e.g. sanofi, dassault.systemes)'
+        required: true
+        type: string
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python run.py ${{ inputs.company }}
+        env:
+          supabasePW: ${{ secrets.supabasePW }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          SUPABASE_POOLER_HOST: ${{ secrets.SUPABASE_POOLER_HOST }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
