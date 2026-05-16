@@ -53,6 +53,7 @@ jobs:
           - creditagricole.bforbank
           - creditagricole.assurances
           - orano
+          - soprasteria
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

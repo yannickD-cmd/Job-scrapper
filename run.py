@@ -57,6 +57,7 @@ COMPANY_NAMES = {
     "creditagricole.bforbank": "BforBank",
     "creditagricole.assurances": "Crédit Agricole Assurances",
     "orano": "Orano",
+    "soprasteria": "Sopra Steria",
 }
 
 
