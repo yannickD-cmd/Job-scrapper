@@ -91,11 +91,17 @@ def dashboard(
             cur,
             "SELECT DISTINCT company FROM jobs WHERE still_open = TRUE ORDER BY company",
         )]
-        raw_locations = [r[0] for r in _all(
-            cur,
+        loc_sql = (
             "SELECT DISTINCT location FROM jobs "
-            "WHERE still_open = TRUE AND location IS NOT NULL AND location <> ''",
-        )]
+            "WHERE location IS NOT NULL AND location <> ''"
+        )
+        loc_params: list = []
+        if not show_closed:
+            loc_sql += " AND still_open = TRUE"
+        if company:
+            loc_sql += " AND company = %s"
+            loc_params.append(company)
+        raw_locations = [r[0] for r in _all(cur, loc_sql, tuple(loc_params))]
         locations = _extract_cities(raw_locations)
         stats_row = _all(cur, """
             SELECT

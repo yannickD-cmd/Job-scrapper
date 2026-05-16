@@ -13,7 +13,7 @@ Each hit's `metas` is a flat list of `{name, value}` pairs. Names of interest:
   - card_id                  : stable Exalead card id (our native_job_id)
   - content_title            : posting title
   - content_summary          : HTML description
-  - content_info_1_value     : employment type ("Internship" / "Permanent" / "Apprenticeship" / ...)
+  - content_info_1_value     : employment type ("Internship" / "Regular" / "Apprenticeship" / ...)
   - content_info_2_value     : location string ("Country, State, City")
   - content_start_datetime   : "YYYY/MM/DD HH:MM:SS"
   - content_type_display_text: 3DS category ("Research & Development", "Information Technology", ...)
@@ -29,7 +29,7 @@ deduplicate after fetching every page.
 
 Filter (broad Data/AI incl. SWE adjacent, per user scope):
   - CORE_CATEGORIES kept entirely for France (R&D and IT cover all SWE/data/AI roles)
-  - Other categories (Services, Industry, Strategy, …) only if the title
+  - Other categories (Sales, Services, Finance, …) only if the title
     matches AI_KEYWORDS_RE
 
 To widen scope, edit SCOPE_COUNTRY, CORE_CATEGORIES, or AI_KEYWORDS_RE.
@@ -41,6 +41,7 @@ import re
 import sys
 import time
 from dataclasses import asdict, dataclass
+from urllib.parse import quote
 
 import requests
 
@@ -61,12 +62,12 @@ CORE_CATEGORIES: set[str] = {
     "Information Technology",
 }
 
-# Other categories sometimes carry data/AI-adjacent roles (e.g. Services has
-# "Consultant Logiciel Services, Sciences de données et IA") — keep those
-# only when the title matches.
+# Other categories sometimes carry data/AI-adjacent roles (e.g. Sales has
+# "Technical Offer Manager (IA / LLMaaS)", Services has "Consultant Logiciel
+# Sciences de données et IA") — keep those only when the title matches.
 AI_KEYWORDS_RE = re.compile(
     r"\b("
-    r"AI|IA|ML|MLOps|NLP|LLM|LLMs|GenAI"
+    r"AI|IA|ML|MLOps|NLP|LLM|LLMs|GenAI|LLMaaS"
     r"|Machine\s+Learning|Deep\s+Learning|Generative\s+AI|Foundation\s+Models?"
     r"|Data\s+(?:Scientist|Engineer|Analyst|Architect|Science|Engineering|Analytics)"
     r"|Données|Donnees"
@@ -98,29 +99,27 @@ REQUEST_DELAY_SECONDS = 1.0
 class Job:
     native_job_id: str         # 3DS Exalead card_id (integer string)
     title: str
-    location: str              # "Country, State, City" as exposed by content_info_2_value
+    location: str              # "Country, State, City" from content_info_2_value
     category: str | None       # 3DS category (Research & Development, Information Technology, …)
-    apply_url: str             # public detail page (which contains the Apply CTA)
-    employment_type: str       # raw content_info_1_value (Internship / Permanent / Apprenticeship / …)
+    apply_url: str             # public detail page (which carries the Apply CTA)
+    employment_type: str       # raw content_info_1_value (Internship / Regular / Apprenticeship / …)
     description: str | None = None
     posted_date: str | None = None    # YYYY-MM-DD
-    identifier: str | None = None     # content_funnel (same as card_id for 3DS)
+    identifier: str | None = None     # content_funnel (same as card_id)
     raw_payload: dict | None = None
 
 
 def _build_query(offset: int, page_size: int) -> str:
     """Reproduce the formatQuery() string the page JS builds.
 
-    Translated 1:1 from /core/CPkP2NEG.js (function s). With no keyword and
+    Translated 1:1 from /core/CPkP2NEG.js (function `s`). With no keyword and
     no facets, the result is:
 
-        q=#all <langCode-clause> (<special>) &s=desc(<sort>)&b=<offset>&hf=<page_size>&output_format=json
+      q=#all <langCode-clause> (<special>) &s=desc(<sort>)&b=<offset>&hf=<page_size>&output_format=json
     """
     lang_clause = f"card_content_lang:{LANG_CODE} "
     special_clause = f" ({SPECIAL_QUERY}) " if SPECIAL_QUERY else " "
     inner = f"{lang_clause}{special_clause}"
-    # mirror the encoder's URL-encoding behaviour: only the inside of q is encoded
-    from urllib.parse import quote
     return (
         f"q=%23all%20{quote(inner)}"
         f"&s=desc({SORT_KEY})"
@@ -179,7 +178,6 @@ _WS_RE = re.compile(r"[ \t]+")
 def _html_to_text(s: str | None) -> str | None:
     if not s:
         return None
-    # turn block boundaries into line breaks before stripping tags
     s = re.sub(r"</p\s*>", "\n\n", s, flags=re.IGNORECASE)
     s = re.sub(r"<br\s*/?>", "\n", s, flags=re.IGNORECASE)
     s = re.sub(r"</li\s*>", "\n", s, flags=re.IGNORECASE)

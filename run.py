@@ -45,6 +45,8 @@ COMPANY_NAMES = {
     "ibm": "IBM",
     "totalenergies": "TotalEnergies",
     "visa": "Visa",
+    "dassault.systemes": "Dassault Systèmes",
+    "dassault.aviation": "Dassault Aviation",
 }
 
 
