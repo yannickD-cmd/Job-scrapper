@@ -95,7 +95,7 @@ def dashboard(
                (first_seen_at >= NOW() - INTERVAL '7 days') AS is_new
         FROM jobs
         {where_sql}
-        ORDER BY first_seen_at DESC
+        ORDER BY posted_date DESC NULLS LAST, first_seen_at DESC
         LIMIT 1000
     """
 
