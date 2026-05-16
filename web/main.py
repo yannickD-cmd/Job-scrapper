@@ -35,6 +35,10 @@ templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
 GITHUB_API = "https://api.github.com"
 WORKFLOW_FILE = "scrape-one.yml"
 
+# Dashboard rows store the display name ("Sanofi") but the workflow expects
+# the scraper key ("sanofi"). Reverse-map at startup.
+KEY_BY_DISPLAY = {v: k for k, v in COMPANY_NAMES.items()}
+
 
 def _all(cur, sql: str, params: tuple = ()) -> list[tuple]:
     cur.execute(sql, params)
@@ -149,6 +153,7 @@ def dashboard(
             "new_this_week": stats_row[2],
         },
         "selected_company": company or "",
+        "selected_company_key": KEY_BY_DISPLAY.get(company or ""),
         "selected_locations": location,
         "q": q or "",
         "show_closed": show_closed,
