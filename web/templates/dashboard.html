@@ -46,14 +46,14 @@
 
 <section class="max-w-6xl mx-auto px-6 pb-6">
   <form method="get" action="/" class="grid gap-3 sm:grid-cols-[1fr_1fr_2fr_auto_auto] items-center bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4">
-    <select name="company" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
+    <select name="company" class="min-w-0 w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
       <option value="">All companies</option>
       {% for c in companies %}
         <option value="{{ c }}" {% if c == selected_company %}selected{% endif %}>{{ c }}</option>
       {% endfor %}
     </select>
 
-    <select name="location" class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
+    <select name="location" class="min-w-0 w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
       <option value="">All locations</option>
       {% for l in locations %}
         <option value="{{ l }}" {% if l == selected_location %}selected{% endif %}>{{ l }}</option>
@@ -61,7 +61,7 @@
     </select>
 
     <input type="text" name="q" value="{{ q }}" placeholder="Search title or description…"
-           class="bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
+           class="min-w-0 w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
 
     <label class="flex items-center gap-2 text-sm text-zinc-400 cursor-pointer select-none">
       <input type="checkbox" name="show_closed" value="true" {% if show_closed %}checked{% endif %}
