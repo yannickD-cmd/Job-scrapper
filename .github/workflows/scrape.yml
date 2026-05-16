@@ -6,6 +6,7 @@ on:
     # (UTC+2); in winter (UTC+1) they fire 1h later.
     - cron: '0 5 * * *'    # 07:00 Paris (summer)
     - cron: '0 10 * * *'   # 12:00 Paris (summer)
+    - cron: '0 14 * * *'   # 16:00 Paris (summer)
     - cron: '0 18 * * *'   # 20:00 Paris (summer)
   workflow_dispatch:
 
@@ -42,6 +43,16 @@ jobs:
           - visa
           - dassault.systemes
           - dassault.aviation
+          - creditagricole.carecrute
+          - creditagricole.amundi
+          - creditagricole.lcl
+          - creditagricole.cacib
+          - creditagricole.caceis
+          - creditagricole.indosuez
+          - creditagricole.sofinco
+          - creditagricole.bforbank
+          - creditagricole.assurances
+          - orano
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

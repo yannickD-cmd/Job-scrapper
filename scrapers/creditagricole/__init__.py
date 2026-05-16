@@ -13,10 +13,16 @@
 #   creditagricole.cacib      -> jobs.ca-cib.com         (Talentsoft)
 #   creditagricole.caceis     -> jobs.caceis.com         (Talentsoft)
 #   creditagricole.indosuez   -> jobs.ca-indosuez.com    (Talentsoft)
-#   creditagricole.sofinco    -> cacf.talentview.io      (Talentview SPA)
-#   creditagricole.bforbank   -> groupecreditagricole.jobs filtered to BforBank
-#   creditagricole.assurances -> groupecreditagricole.jobs filtered to CA Assurances
+#   creditagricole.sofinco    -> groupecreditagricole.jobs / credit-agricole-personal-finance-mobility
+#   creditagricole.bforbank   -> groupecreditagricole.jobs / bforbank
+#   creditagricole.assurances -> groupecreditagricole.jobs / credit-agricole-assurances
+#
+# Sofinco's own site (cacf.talentview.io) is a Talentview SPA with no public
+# JSON API; BforBank's own site (welcometothejungle.com/.../bforbank) sits
+# behind Cloudflare. groupecreditagricole.jobs surfaces all three with
+# server-rendered listings, so we scrape there.
 #
 # The five Talentsoft tenants share the same engine — see _talentsoft.py for
-# the shared crawl helper. Dassault Aviation also runs Talentsoft but predates
-# this helper and is kept self-contained.
+# the shared crawl helper. The three groupeca-scraped brands share
+# _groupeca.py. Dassault Aviation also runs Talentsoft but predates the
+# helper and is kept self-contained.

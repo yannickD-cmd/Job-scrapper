@@ -47,6 +47,16 @@ COMPANY_NAMES = {
     "visa": "Visa",
     "dassault.systemes": "Dassault Systèmes",
     "dassault.aviation": "Dassault Aviation",
+    "creditagricole.carecrute": "Crédit Agricole Recrute",
+    "creditagricole.amundi": "Amundi",
+    "creditagricole.lcl": "LCL",
+    "creditagricole.cacib": "Crédit Agricole CIB",
+    "creditagricole.caceis": "CACEIS",
+    "creditagricole.indosuez": "Indosuez Wealth Management",
+    "creditagricole.sofinco": "Crédit Agricole Personal Finance & Mobility",
+    "creditagricole.bforbank": "BforBank",
+    "creditagricole.assurances": "Crédit Agricole Assurances",
+    "orano": "Orano",
 }
 
 
