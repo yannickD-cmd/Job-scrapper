@@ -10,6 +10,7 @@ Routes:
 """
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -30,6 +31,24 @@ def _all(cur, sql: str, params: tuple = ()) -> list[tuple]:
     return cur.fetchall()
 
 
+# Scraped locations are messy: "Paris, Paris, France", "PUTEAUX, Hauts-de-Seine,
+# France", multi-location jobs joined by "|" or ";". Reduce to a clean list of
+# unique city names for the dropdown.
+def _extract_cities(raw_locations: list[str]) -> list[str]:
+    seen: dict[str, str] = {}
+    for loc in raw_locations:
+        if not loc:
+            continue
+        for chunk in re.split(r"[|;]", loc):
+            city = chunk.split(",")[0].strip()
+            if not city:
+                continue
+            key = city.lower()
+            if key not in seen:
+                seen[key] = city.title() if city.isupper() else city
+    return sorted(seen.values(), key=str.lower)
+
+
 @app.get("/", response_class=HTMLResponse)
 def dashboard(
     request: Request,
@@ -47,8 +66,8 @@ def dashboard(
         where.append("company = %s")
         params.append(company)
     if location:
-        where.append("location = %s")
-        params.append(location)
+        where.append("location ILIKE %s")
+        params.append(f"%{location}%")
     if q:
         where.append("(title ILIKE %s OR COALESCE(description, '') ILIKE %s)")
         like = f"%{q}%"
@@ -72,12 +91,12 @@ def dashboard(
             cur,
             "SELECT DISTINCT company FROM jobs WHERE still_open = TRUE ORDER BY company",
         )]
-        locations = [r[0] for r in _all(
+        raw_locations = [r[0] for r in _all(
             cur,
             "SELECT DISTINCT location FROM jobs "
-            "WHERE still_open = TRUE AND location IS NOT NULL AND location <> '' "
-            "ORDER BY location",
+            "WHERE still_open = TRUE AND location IS NOT NULL AND location <> ''",
         )]
+        locations = _extract_cities(raw_locations)
         stats_row = _all(cur, """
             SELECT
               COUNT(*) FILTER (WHERE still_open),
