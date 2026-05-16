@@ -39,7 +39,8 @@ from . import _talentsoft  # only for the TECH_KEYWORDS_RE pattern reuse
 LISTING_URL = "https://www.ca-recrute.fr/fr/jobs?page={page}"
 MAX_PAGES = 50  # safety cap; real count ≈ 40
 REQUEST_TIMEOUT = 30
-REQUEST_DELAY_SECONDS = 0.7
+REQUEST_DELAY_SECONDS = 1.5
+LISTING_RETRY_BACKOFFS = (5, 15, 45)  # seconds between attempts on 5xx/429
 
 SCOPE_COUNTRY = "France"
 TECH_KEYWORDS_RE = _talentsoft.TECH_KEYWORDS_RE
@@ -124,9 +125,26 @@ def _parse_listing(html: str) -> list[dict]:
 
 
 def _fetch_listing_page(session: requests.Session, page: int) -> list[dict]:
-    response = session.get(LISTING_URL.format(page=page), timeout=REQUEST_TIMEOUT)
-    response.raise_for_status()
-    return _parse_listing(response.text)
+    url = LISTING_URL.format(page=page)
+    last_exc: Exception | None = None
+    for attempt, backoff in enumerate((0, *LISTING_RETRY_BACKOFFS), start=1):
+        if backoff:
+            print(
+                f"  page {page}: retry {attempt - 1}/{len(LISTING_RETRY_BACKOFFS)} "
+                f"after {backoff}s ({type(last_exc).__name__})",
+                flush=True,
+            )
+            time.sleep(backoff)
+        try:
+            response = session.get(url, timeout=REQUEST_TIMEOUT)
+            if response.status_code in (429, 500, 502, 503, 504):
+                response.raise_for_status()
+            response.raise_for_status()
+            return _parse_listing(response.text)
+        except requests.RequestException as exc:
+            last_exc = exc
+    assert last_exc is not None
+    raise last_exc
 
 
 def _parse_json_ld(html: str) -> dict | None:
