@@ -54,6 +54,12 @@ jobs:
           - creditagricole.assurances
           - orano
           - soprasteria
+          - airbus
+          - kering
+          - stellantis
+          - criteo
+          - natixis
+          - axa
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

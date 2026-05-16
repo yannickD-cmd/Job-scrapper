@@ -1,0 +1,2375 @@
+{
+  "props": {
+    "pageProps": {
+      "_socialNetworks": {
+        "instagram": "https://www.instagram.com/kering_official/",
+        "twitter": "https://twitter.com/KeringGroup",
+        "facebook": "https://www.facebook.com/keringgroup",
+        "linkedin": "https://www.linkedin.com/company/kering",
+        "youtube": "https://www.youtube.com/channel/UCMDZYZibcyrf99iEa4CQJkA",
+        "tiktok": "https://www.tiktok.com/@keringgroup",
+        "weibo": "https://www.weibo.com/keringcorp",
+        "wechat": "https://mp.weixin.qq.com/s/lKkoa5MFFJ8G_BkdRJOhSA",
+        "youku": "https://www.youku.com/profile/index?uid=UNTk3NDE2NTc2"
+      },
+      "_breadcrumbs": [
+        {
+          "title": "Kering",
+          "path": "/"
+        },
+        {
+          "title": "Talent",
+          "path": "/talent/"
+        },
+        {
+          "title": "Jobs for you",
+          "path": "/talent/job-offers"
+        }
+      ],
+      "_headerTabs": [
+        {
+          "text": "Group",
+          "link": "/group",
+          "mobileThumbnail": {
+            "id": "545045",
+            "src": "https://assets-keringcom.keringapps.com/group_f52ed79e13.jpg",
+            "width": 267,
+            "height": 49,
+            "alt": "group.jpg"
+          },
+          "sections": [
+            {
+              "title": "Discover Kering",
+              "link": "/group/discover-kering",
+              "thumbnail": {
+                "id": "545760",
+                "src": "https://assets-keringcom.keringapps.com/a_propos_de_kering_desktop_groupe_2cc0282d89.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "a-propos-de-kering-desktop-groupe.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Creativity is our Legacy",
+                  "pageLink": "/group/discover-kering/creativity-is-our-legacy"
+                },
+                {
+                  "pageTitle": "Our strategy",
+                  "pageLink": "/group/discover-kering/our-strategy"
+                },
+                {
+                  "pageTitle": "Kering at a glance",
+                  "pageLink": "/group/discover-kering/kering-at-a-glance"
+                }
+              ]
+            },
+            {
+              "title": "Culture and Heritage",
+              "link": "/group/culture-and-heritage",
+              "thumbnail": {
+                "id": "545802",
+                "src": "https://assets-keringcom.keringapps.com/histoire_et_culture_desktop_groupe_85acfb7901.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "histoire-et-culture-desktop-groupe.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Group history",
+                  "pageLink": "/group/culture-and-heritage/group-history"
+                },
+                {
+                  "pageTitle": "40, rue de Sèvres",
+                  "pageLink": "/group/culture-and-heritage/40-rue-de-sevres"
+                },
+                {
+                  "pageTitle": "Celebrating our history with \"Kering, of granite and dreams\"",
+                  "pageLink": "/group/culture-and-heritage/kering-of-granite-and-dreams"
+                }
+              ]
+            },
+            {
+              "title": "Our governance",
+              "link": "/group/our-governance",
+              "thumbnail": {
+                "id": "545055",
+                "src": "https://assets-keringcom.keringapps.com/gouvernance_desktop_groupe_bf34d9ecbb.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "gouvernance-desktop-groupe.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Board of Directors",
+                  "pageLink": "/group/our-governance/board-of-directors"
+                },
+                {
+                  "pageTitle": "Executive Committee",
+                  "pageLink": "/group/our-governance/executive-committee"
+                },
+                {
+                  "pageTitle": "Ethics and business conduct",
+                  "pageLink": "/group/our-governance/ethics-and-business-conduct"
+                }
+              ]
+            },
+            {
+              "title": "Kering for Women",
+              "link": "/group/kering-for-women",
+              "thumbnail": {
+                "id": "546961",
+                "src": "https://assets-keringcom.keringapps.com/engagements_desktop_groupe_4745747b7f.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "engagements-desktop-groupe.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Empowering Women",
+                  "pageLink": "/group/kering-for-women/empowering-women"
+                },
+                {
+                  "pageTitle": "Kering Foundation",
+                  "pageLink": "/group/kering-for-women/kering-foundation"
+                },
+                {
+                  "pageTitle": "Women In Motion",
+                  "pageLink": "/group/kering-for-women/women-in-motion"
+                }
+              ]
+            },
+            {
+              "title": "News",
+              "link": "/group/news",
+              "thumbnail": {
+                "id": "545752",
+                "src": "https://assets-keringcom.keringapps.com/actualites_dd_130a0bc64e.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "actualites-dd.jpg"
+              },
+              "pages": []
+            },
+            {
+              "title": "Kering Highlights",
+              "link": "/group/kering-highlights",
+              "thumbnail": {
+                "id": "552376",
+                "src": "https://assets-keringcom.keringapps.com/Kering_Highlights_menu_c30f83d4b4.png",
+                "width": 380,
+                "height": 50,
+                "alt": ""
+              },
+              "pages": []
+            }
+          ]
+        },
+        {
+          "text": "Houses",
+          "link": "/houses",
+          "mobileThumbnail": {
+            "id": "546012",
+            "src": "https://assets-keringcom.keringapps.com/maisons_cc89ca159a.jpg",
+            "width": 267,
+            "height": 49,
+            "alt": "maisons.jpg"
+          },
+          "sections": [
+            {
+              "title": "Fashion and Leather Goods",
+              "link": "/houses/fashion-and-leather-goods",
+              "thumbnail": {
+                "id": "546111",
+                "src": "https://assets-keringcom.keringapps.com/marques_menu_couture_maroquinerie_desktop_maisons_798a62574c.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "marques-menu-couture-maroquinerie-desktop-maisons.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Gucci",
+                  "pageLink": "/houses/fashion-and-leather-goods/gucci"
+                },
+                {
+                  "pageTitle": "Saint Laurent",
+                  "pageLink": "/houses/fashion-and-leather-goods/saint-laurent"
+                },
+                {
+                  "pageTitle": "Bottega Veneta",
+                  "pageLink": "/houses/fashion-and-leather-goods/bottega-veneta"
+                },
+                {
+                  "pageTitle": "Balenciaga",
+                  "pageLink": "/houses/fashion-and-leather-goods/balenciaga"
+                },
+                {
+                  "pageTitle": "McQueen",
+                  "pageLink": "/houses/fashion-and-leather-goods/mcqueen"
+                },
+                {
+                  "pageTitle": "Brioni",
+                  "pageLink": "/houses/fashion-and-leather-goods/brioni"
+                }
+              ]
+            },
+            {
+              "title": "Jewelry",
+              "link": "/houses/jewelry",
+              "thumbnail": {
+                "id": "546022",
+                "src": "https://assets-keringcom.keringapps.com/marques_menu_horlogerie_joaillerie_desktop_maisons_5fbc0736f0.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "marques-menu-horlogerie-joaillerie-desktop-maisons.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Boucheron",
+                  "pageLink": "/houses/jewelry/boucheron"
+                },
+                {
+                  "pageTitle": "Pomellato",
+                  "pageLink": "/houses/jewelry/pomellato"
+                },
+                {
+                  "pageTitle": "DoDo",
+                  "pageLink": "/houses/jewelry/dodo"
+                },
+                {
+                  "pageTitle": "Qeelin",
+                  "pageLink": "/houses/jewelry/qeelin"
+                }
+              ]
+            },
+            {
+              "title": "Others",
+              "link": "/houses/others",
+              "thumbnail": {
+                "id": "551869",
+                "src": "https://assets-keringcom.keringapps.com/visuel_mobile_8be2d68e53.jpg",
+                "width": 349,
+                "height": 113,
+                "alt": ""
+              },
+              "pages": [
+                {
+                  "pageTitle": "Ginori 1735",
+                  "pageLink": "/houses/others/ginori-1735"
+                },
+                {
+                  "pageTitle": "Kering Eyewear",
+                  "pageLink": "/houses/others/kering-eyewear"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Talent",
+          "link": "/talent",
+          "mobileThumbnail": {
+            "id": "546187",
+            "src": "https://assets-keringcom.keringapps.com/talent_b839a56536.jpg",
+            "width": 267,
+            "height": 49,
+            "alt": "talent.jpg"
+          },
+          "sections": [
+            {
+              "title": "Who we are",
+              "link": "/talent/who-we-are",
+              "thumbnail": {
+                "id": "546192",
+                "src": "https://assets-keringcom.keringapps.com/who_we_are_desktop_rh_f91ee39d59.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "who-we-are-desktop-rh.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "The Kering Group",
+                  "pageLink": "/talent/who-we-are/the-kering-group"
+                },
+                {
+                  "pageTitle": "Our Houses",
+                  "pageLink": "/talent/who-we-are/our-houses"
+                },
+                {
+                  "pageTitle": "Our approach to luxury",
+                  "pageLink": "/talent/who-we-are/our-approach-to-luxury"
+                }
+              ]
+            },
+            {
+              "title": "Empowering talent",
+              "link": "/talent/empowering-talent",
+              "thumbnail": {
+                "id": "546208",
+                "src": "https://assets-keringcom.keringapps.com/empowering_talent_at_kering_desktop_rh_a230f4f327.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "empowering-talent-at-kering-desktop-rh.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Working at Kering",
+                  "pageLink": "/talent/empowering-talent/working-at-kering"
+                },
+                {
+                  "pageTitle": "Managing dynamic careers",
+                  "pageLink": "/talent/empowering-talent/managing-dynamic-careers"
+                },
+                {
+                  "pageTitle": "Getting the balance right",
+                  "pageLink": "/talent/empowering-talent/getting-the-balance-right"
+                },
+                {
+                  "pageTitle": "A place for every talent",
+                  "pageLink": "/talent/empowering-talent/a-place-for-every-talent"
+                },
+                {
+                  "pageTitle": "Empowering young talent",
+                  "pageLink": "/talent/empowering-talent/empowering-young-talent"
+                },
+                {
+                  "pageTitle": "Kering Keys programs",
+                  "pageLink": "/talent/empowering-talent/kering-keys-programs"
+                }
+              ]
+            },
+            {
+              "title": "Life at Kering",
+              "link": "/talent/life-at-kering",
+              "thumbnail": {
+                "id": "546991",
+                "src": "https://assets-keringcom.keringapps.com/LIFE_AT_KERING_0abf85aa7e.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "LIFE-AT-KERING.jpg"
+              },
+              "pages": []
+            },
+            {
+              "title": "Jobs for you",
+              "link": "/talent/job-offers",
+              "thumbnail": {
+                "id": "547002",
+                "src": "https://assets-keringcom.keringapps.com/menu_workday_4ffc3e43ad.jpg",
+                "width": 270,
+                "height": 50,
+                "alt": "menu-workday.jpg"
+              },
+              "pages": []
+            }
+          ]
+        },
+        {
+          "text": "Sustainability",
+          "link": "/sustainability",
+          "mobileThumbnail": {
+            "id": "546461",
+            "src": "https://assets-keringcom.keringapps.com/dd_f737932bd7.jpg",
+            "width": 267,
+            "height": 49,
+            "alt": "dd.jpg"
+          },
+          "sections": [
+            {
+              "title": "Crafting tomorrow's Luxury",
+              "link": "/sustainability/crafting-tomorrow-s-luxury",
+              "thumbnail": {
+                "id": "546480",
+                "src": "https://assets-keringcom.keringapps.com/faconner_desktop_22138d921f.jpg",
+                "width": 211,
+                "height": 50,
+                "alt": "faconner-desktop.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "2017-2025 roadmap",
+                  "pageLink": "/sustainability/crafting-tomorrow-s-luxury/2017-2025-roadmap"
+                },
+                {
+                  "pageTitle": "Historic commitment",
+                  "pageLink": "/sustainability/crafting-tomorrow-s-luxury/historic-commitment"
+                }
+              ]
+            },
+            {
+              "title": "Measuring our impact",
+              "link": "/sustainability/measuring-our-impact",
+              "thumbnail": {
+                "id": "546659",
+                "src": "https://assets-keringcom.keringapps.com/MESURER_NOTRE_IMPACT_DESKTOP_74fef16cbc.jpg",
+                "width": 211,
+                "height": 50,
+                "alt": "MESURER-NOTRE-IMPACT-DESKTOP.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Our EP&L",
+                  "pageLink": "/sustainability/measuring-our-impact/our-ep-l"
+                },
+                {
+                  "pageTitle": "ESG Disclosures",
+                  "pageLink": "/sustainability/measuring-our-impact/esg-disclosures"
+                },
+                {
+                  "pageTitle": "ESG Performance",
+                  "pageLink": "/sustainability/measuring-our-impact/esg-performance"
+                }
+              ]
+            },
+            {
+              "title": "Mitigating climate change",
+              "link": "/sustainability/mitigating-climate-change",
+              "thumbnail": {
+                "id": "546914",
+                "src": "https://assets-keringcom.keringapps.com/climat_desktop_09b51e3419.jpg",
+                "width": 211,
+                "height": 50,
+                "alt": "climat-desktop.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Climate strategy",
+                  "pageLink": "/sustainability/mitigating-climate-change/climate-strategy"
+                },
+                {
+                  "pageTitle": "Reduce",
+                  "pageLink": "/sustainability/mitigating-climate-change/reduce"
+                },
+                {
+                  "pageTitle": "Restore and regenerate",
+                  "pageLink": "/sustainability/mitigating-climate-change/restore-and-regenerate"
+                }
+              ]
+            },
+            {
+              "title": "Safeguarding the planet",
+              "link": "/sustainability/safeguarding-the-planet",
+              "thumbnail": {
+                "id": "546545",
+                "src": "https://assets-keringcom.keringapps.com/N2_preserver_la_planete_menu_211x50px_v3_8d7eeb0e4f.png",
+                "width": 211,
+                "height": 50,
+                "alt": "N2_preserver_la_planete_menu_211x50px_v3.png"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Biodiversity strategy",
+                  "pageLink": "/sustainability/safeguarding-the-planet/biodiversity-strategy"
+                },
+                {
+                  "pageTitle": "Water strategy",
+                  "pageLink": "/sustainability/safeguarding-the-planet/water-strategy"
+                },
+                {
+                  "pageTitle": "Regenerative Fund for Nature",
+                  "pageLink": "/sustainability/safeguarding-the-planet/regenerative-fund-for-nature"
+                },
+                {
+                  "pageTitle": "Animal welfare",
+                  "pageLink": "/sustainability/safeguarding-the-planet/animal-welfare"
+                }
+              ]
+            },
+            {
+              "title": "People in the supply chain",
+              "link": "/sustainability/people-in-the-supply-chain",
+              "thumbnail": {
+                "id": "546883",
+                "src": "https://assets-keringcom.keringapps.com/videos_et_publications_dd_c701e6c2a2.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "videos-et-publications-dd.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Human rights in the supply chain",
+                  "pageLink": "/sustainability/people-in-the-supply-chain/human-rights-in-the-supply-chain"
+                },
+                {
+                  "pageTitle": "Women in the supply chain",
+                  "pageLink": "/sustainability/people-in-the-supply-chain/women-in-the-supply-chain"
+                },
+                {
+                  "pageTitle": "Preserving craftsmanship",
+                  "pageLink": "/sustainability/people-in-the-supply-chain/preserving-craftsmanship"
+                }
+              ]
+            },
+            {
+              "title": "Innovating for tomorrow",
+              "link": "/sustainability/innovating-for-tomorrow",
+              "thumbnail": {
+                "id": "546822",
+                "src": "https://assets-keringcom.keringapps.com/N2_innover_pour_demain_menu_211x50px_v3_a1435094a6.png",
+                "width": 211,
+                "height": 50,
+                "alt": "N2_innover_pour_demain_menu_211x50px_v3.png"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Circularity ambition",
+                  "pageLink": "/sustainability/innovating-for-tomorrow/circularity-ambition"
+                },
+                {
+                  "pageTitle": "Raw materials",
+                  "pageLink": "/sustainability/innovating-for-tomorrow/raw-materials"
+                },
+                {
+                  "pageTitle": "Innovation Labs",
+                  "pageLink": "/sustainability/innovating-for-tomorrow/innovation-labs"
+                },
+                {
+                  "pageTitle": "Production processes",
+                  "pageLink": "/sustainability/innovating-for-tomorrow/production-processes"
+                },
+                {
+                  "pageTitle": "New business models",
+                  "pageLink": "/sustainability/innovating-for-tomorrow/new-business-models"
+                },
+                {
+                  "pageTitle": "Upcycling, recycling and regeneration",
+                  "pageLink": "/sustainability/innovating-for-tomorrow/upcycling-and-recycling"
+                }
+              ]
+            },
+            {
+              "title": "News and resources",
+              "link": "/sustainability/news-and-resources",
+              "thumbnail": {
+                "id": "545752",
+                "src": "https://assets-keringcom.keringapps.com/actualites_dd_130a0bc64e.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "actualites-dd.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "News",
+                  "pageLink": "/sustainability/news-and-resources/news"
+                },
+                {
+                  "pageTitle": "Publications and videos",
+                  "pageLink": "/sustainability/news-and-resources/publications-and-videos"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Finance",
+          "link": "/finance",
+          "mobileThumbnail": {
+            "id": "546365",
+            "src": "https://assets-keringcom.keringapps.com/finance_2b8a520996.jpg",
+            "width": 267,
+            "height": 49,
+            "alt": "finance.jpg"
+          },
+          "sections": [
+            {
+              "title": "About Kering & key figures",
+              "link": "/finance/about-kering",
+              "thumbnail": {
+                "id": "546376",
+                "src": "https://assets-keringcom.keringapps.com/le_groupe_desktop_finance_ef2920ac48.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "le-groupe-desktop-finance.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Corporate governance",
+                  "pageLink": "/finance/about-kering/corporate-governance"
+                },
+                {
+                  "pageTitle": "Breakdown of share capital",
+                  "pageLink": "/finance/about-kering/breakdown-of-share-capital"
+                }
+              ]
+            },
+            {
+              "title": "Kering share & Dividend",
+              "link": "/finance/kering-share",
+              "thumbnail": {
+                "id": "546380",
+                "src": "https://assets-keringcom.keringapps.com/kering_en_bourse_desktop_finance_015df46cb4.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "kering-en-bourse-desktop-finance.jpg"
+              },
+              "pages": []
+            },
+            {
+              "title": "Publications",
+              "link": "/finance/publications",
+              "thumbnail": {
+                "id": "546383",
+                "src": "https://assets-keringcom.keringapps.com/publications_desktop_finance_e83368e3a9.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "publications-desktop-finance.jpg"
+              },
+              "pages": []
+            },
+            {
+              "title": "Regulated information",
+              "link": "/finance/regulated-information",
+              "thumbnail": {
+                "id": "546386",
+                "src": "https://assets-keringcom.keringapps.com/information_reglementee_desktop_finance_af8dff40a7.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "information-reglementee-desktop-finance.jpg"
+              },
+              "pages": []
+            },
+            {
+              "title": "Shareholders information",
+              "link": "/finance/shareholders-information",
+              "thumbnail": {
+                "id": "546395",
+                "src": "https://assets-keringcom.keringapps.com/actionnaires_desktop_finance_1c850fba5d.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "actionnaires-desktop-finance.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Being a shareholder",
+                  "pageLink": "/finance/shareholders-information/being-a-shareholder"
+                },
+                {
+                  "pageTitle": "Your publications",
+                  "pageLink": "/finance/shareholders-information/your-publications"
+                },
+                {
+                  "pageTitle": "General Meeting",
+                  "pageLink": "/finance/shareholders-information/general-meeting"
+                }
+              ]
+            },
+            {
+              "title": "Debt financing and other information",
+              "link": "/finance/debt-financing-and-other-information",
+              "thumbnail": {
+                "id": "546423",
+                "src": "https://assets-keringcom.keringapps.com/financement_et_autres_informations_desktop_finance_47f662bf56.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "financement-et-autres-informations-desktop-finance.jpg"
+              },
+              "pages": []
+            },
+            {
+              "title": "Financial calendar",
+              "link": "/finance/financial-calendar",
+              "thumbnail": {
+                "id": "546425",
+                "src": "https://assets-keringcom.keringapps.com/agenda_financier_desktop_finance_8fa9d0d163.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "agenda-financier-desktop-finance.jpg"
+              },
+              "pages": []
+            },
+            {
+              "title": "Capital Markets Day",
+              "link": "/finance/capital-markets-day",
+              "thumbnail": {
+                "id": "553877",
+                "src": "https://assets-keringcom.keringapps.com/CMD_a631f862c4.png",
+                "width": 330,
+                "height": 110,
+                "alt": ""
+              },
+              "pages": []
+            },
+            {
+              "title": "Shareholders' contacts",
+              "link": "/finance/shareholders-contacts",
+              "thumbnail": {
+                "id": "545753",
+                "src": "https://assets-keringcom.keringapps.com/contact_desktop_d32dda0eed.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "contact-desktop.jpg"
+              },
+              "pages": []
+            }
+          ]
+        },
+        {
+          "text": "Press",
+          "link": "/press",
+          "mobileThumbnail": {
+            "id": "546977",
+            "src": "https://assets-keringcom.keringapps.com/press_cb2b194c92.jpg",
+            "width": 267,
+            "height": 49,
+            "alt": "press.jpg"
+          },
+          "sections": [
+            {
+              "title": "News",
+              "link": "/press/news",
+              "thumbnail": {
+                "id": "545752",
+                "src": "https://assets-keringcom.keringapps.com/actualites_dd_130a0bc64e.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "actualites-dd.jpg"
+              },
+              "pages": []
+            },
+            {
+              "title": "Special Reports",
+              "link": "/press/special-reports",
+              "thumbnail": {
+                "id": "546267",
+                "src": "https://assets-keringcom.keringapps.com/dossiers_thematiques_desktop_presse_f03cd54167.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "dossiers-thematiques-desktop-presse.jpg"
+              },
+              "pages": []
+            },
+            {
+              "title": "Resources",
+              "link": "/press/resources",
+              "thumbnail": {
+                "id": "546964",
+                "src": "https://assets-keringcom.keringapps.com/ressources_desktop_a7d0be9e81.jpg",
+                "width": 211,
+                "height": 50,
+                "alt": "ressources-desktop.jpg"
+              },
+              "pages": [
+                {
+                  "pageTitle": "Logo library",
+                  "pageLink": "/press/resources/logo-library"
+                }
+              ]
+            },
+            {
+              "title": "Contacts",
+              "link": "/press/contacts",
+              "thumbnail": {
+                "id": "546352",
+                "src": "https://assets-keringcom.keringapps.com/contact_desktop_presse_78660bce71.jpg",
+                "width": 211,
+                "height": 51,
+                "alt": "contact-desktop-presse.jpg"
+              },
+              "pages": []
+            }
+          ]
+        }
+      ],
+      "_footerLinks": {
+        "links": [
+          {
+            "title": "SITEMAP",
+            "url": "/sitemap"
+          },
+          {
+            "title": "CONTACT US",
+            "url": "/group/contact-us"
+          },
+          {
+            "title": "LEGAL",
+            "url": "/legal"
+          },
+          {
+            "title": "CREDITS",
+            "url": "/credits"
+          },
+          {
+            "title": "PRIVACY POLICY",
+            "url": "/legal/#customer-privacy-policy"
+          },
+          {
+            "title": "COOKIE POLICY",
+            "url": "/legal/#use-of-cookies-on-kering-com"
+          }
+        ]
+      },
+      "_categories": [
+        {
+          "label": "Sustainability",
+          "key": "dd"
+        },
+        {
+          "label": "Finance",
+          "key": "finance"
+        },
+        {
+          "label": "Press",
+          "key": "press"
+        },
+        {
+          "label": "Talent",
+          "key": "talent"
+        },
+        {
+          "label": "Group",
+          "key": "group"
+        },
+        {
+          "label": "Houses",
+          "key": "houses"
+        }
+      ],
+      "_settings": {
+        "env": "prod",
+        "facebookAppId": "1281112392046354",
+        "frontHost": "https://www.kering.com",
+        "recaptchaKey": "6LdoSxAmAAAAAPifOCPJ920C59bS1go7xFKkRW5f",
+        "titleSuffix": " | Kering",
+        "gtmId": "GTM-TQMCKB6"
+      },
+      "_singleTypeEvent": {
+        "eventName": "event",
+        "startDate": null,
+        "endDate": null,
+        "eventPageUrl": "/",
+        "videoIntro": null,
+        "stickerAnimation": null
+      },
+      "_pageLocalizations": [
+        {
+          "path": "/talent/offres-d-emploi",
+          "locale": "fr"
+        },
+        {
+          "path": "/talenti/offerte-di-lavoro",
+          "locale": "it"
+        },
+        {
+          "path": "/talent/job-offers-cn",
+          "locale": "cn"
+        },
+        {
+          "path": "/talent/job-offers-jp",
+          "locale": "jp"
+        },
+        {
+          "path": "/talent/job-offers",
+          "locale": "en"
+        }
+      ],
+      "_nextI18Next": {
+        "initialI18nStore": {
+          "en": {
+            "common": {
+              "discover": "Discover",
+              "send": "Send",
+              "sharePrice": "Share price",
+              "commonSharePrice": "Share price",
+              "keringShare": "Kering share",
+              "isoCode": "en",
+              "financeText": "finance",
+              "financeSearchResultHeader": "Look for a document",
+              "financeSearchPlaceholder": "keywords",
+              "financeSearchOk": "ok",
+              "filterHelperText": "Refine your search",
+              "filterByDocument": "by document",
+              "filterByDocumentEnOrFr": "by document",
+              "filterByEvent": "by event",
+              "filterByEventEnOrFr": "by event",
+              "filterByYear": "year",
+              "filterByYearEnOrFr": "year",
+              "published-on-text": "Published on",
+              "download": "download",
+              "financePressRelease": "press release",
+              "financePresentations": "presentations",
+              "financeWebcasts": "webcasts",
+              "financeTranscripts": "transcripts",
+              "financialDoc": "financial documents",
+              "financeComparative": "comparative information",
+              "financeActivity": "activity report",
+              "financeIntegrated": "integrated report",
+              "financePermanent": "permanent information",
+              "financeAnnualReport": "annual financial report",
+              "financefirstReport": "first-half report",
+              "financeQuarterly": "quarterly financial information",
+              "financeReportCorporated": "report on corporate governance and internal control procedures",
+              "financeShare": "share movements",
+              "financeNotice": "notice on availability of documents",
+              "financeOther": "other information",
+              "financeIncide": "inside information",
+              "financeSales": "sales",
+              "financeHousesNews": "houses news",
+              "financeRoadShows": "roadshows, conferences and investor days",
+              "financeOtherOp": "other operations",
+              "financeLetter": "letter to the shareholders",
+              "financeguide": "shareholder guide",
+              "no-result-for": "No result for",
+              "financeMapLegend": {
+                "eu": "Western Europe",
+                "na": "North America",
+                "japan": "Japan",
+                "asia": "Asia-Pacific",
+                "other": "Rest of the world"
+              },
+              "financeMapUpdated": "Updated on",
+              "financeMapRevenue": "of revenue",
+              "financeSeeMore": "see more",
+              "financeSharePrice": "share price",
+              "searchExpander.publishedOn": "Published on",
+              "searchExpander.search": "Search...",
+              "searchExpander.filterBy": "Filter by",
+              "searchExpander.byDate": "By date",
+              "searchExpander.fromMostRecentToOldest": "From most recent to oldest",
+              "searchExpander.fromOldestToMostRecent": "From oldest to most recent",
+              "searchExpander.bySection": "By section",
+              "searchExpander.resultCount_one": "{{resultCount}} result for \"{{query}}\"",
+              "searchExpander.resultCount_other": "{{resultCount}} results for \"{{query}}\"",
+              "searchExpander.results": "results",
+              "searchExpander.searchResultError": "Oops, an error has occurred!",
+              "searchExpander.searchNoResult": "Oops, we couldn't find what you're looking for",
+              "updateOn": "update on",
+              "jobSearchBar.placeholder": "Enter job title, keywords or maison",
+              "talentJobSearch.title": "talent",
+              "publicationList.searchTitle": "refine your search",
+              "publicationList.byDocument": "By document",
+              "publicationList.byEvent": "By event",
+              "publicationList.from": "from",
+              "publicationList.to": "to",
+              "publicationList.date": "date",
+              "publicationList.submit": "submit",
+              "and": "and",
+              "here": "here",
+              "language": {
+                "defaultLangSelection": "Language",
+                "fr": "French",
+                "en": "English",
+                "it": "Italian"
+              },
+              "titles": {
+                "financeNewsSubscription": "Subscribe to our alerts",
+                "alertChoice": "alert choice",
+                "subscriptionMessage": "Thank you, your subscription has been recognised.",
+                "subscriptionHighlightsMessage": "Thank you for your subscription to the Kering Highlights newsletter. ",
+                "shareholdersContacts": "Shareholders contacts"
+              },
+              "releases": {
+                "finance": "finance press releases",
+                "all": "all press releases"
+              },
+              "legal": {
+                "morePrivacyInfo": "to learn more about our privacy policy and your rights. please click",
+                "accept": "You must accept our",
+                "privacyPolicy": "privacy policy",
+                "terms": "terms of use",
+                "receiveAlerts": "to benefit from these alerts. Please do so if you agree by ticking the \"I agree\" box."
+              },
+              "mentionsLegales": {
+                "privacyPolicyLink": "https://www.kering.com/en/legal/#privacy-policy",
+                "termsLink": "https://www.kering.com/en/legal/#terms-of-use",
+                "morePrivacyInfo": "https://www.kering.com/en/legal/"
+              },
+              "validationErrorMessage": {
+                "required": "This field is required",
+                "email": "Invalid email",
+                "minLength": "This field must be at least 2 characters long",
+                "alreadySubscribed": "You have already subscribed to email alerts"
+              },
+              "formPlaceholder": {
+                "firstName": "first name",
+                "lastName": "last name",
+                "email": "email"
+              },
+              "CompanyShare.title": "Breakdown of share capital",
+              "CompanyShare.updatedAt": "Update on",
+              "accept": "Accept",
+              "decline": "Decline",
+              "close": "Close",
+              "iframe": {
+                "youtubeVideo": "YouTube Video",
+                "podcast": "Podcast",
+                "podcastWomenInMotion": "Women in Motion Podcast",
+                "sharePrice": "Kering Share Price",
+                "recaptcha": "ReCaptcha Verification"
+              },
+              "dropDowntab.updateOn": "Update on",
+              "jobOffersTitle": "jobs for you",
+              "job-offers.path": "/talent/job-offers/",
+              "job-offers.path.region": "/talent/job-offers/",
+              "job-offers.slug": "job-offers",
+              "job-offers.link": "en-US",
+              "news.path": "/press/news/",
+              "signin": "sign in",
+              "join-us": "join us",
+              "talentJobSearchFilter": {
+                "searchBy": "search\n by",
+                "selected": "selected",
+                "remove": "remove",
+                "house": "house",
+                "region": "Country / Territory / Region",
+                "department": "Department",
+                "contractType": "Contract type"
+              },
+              "governanceChartTitle": "BOARD OF DIRECTORS",
+              "sustainabilityCommittee": "SUSTAINABILITY COMMITTEE",
+              "remunerationCommittee": "REMUNERATION COMMITTEE",
+              "appointmentsCommittee": "APPOINTMENTS COMMITTEE",
+              "auditCommittee": "AUDIT COMMITTEE",
+              "executiveCommittee": "EXECUTIVE COMMITTEE",
+              "chairmanCeo": "CHAIRMAN & CEO",
+              "groupManagingDirector": "GROUP MANAGING DIRECTOR",
+              "sustainability": "SUSTAINABILITY",
+              "people": "PEOPLE",
+              "youngLeadersAdvisoryGroup": "YOUNG LEADERS ADVISORY GROUP",
+              "organisationOfEthics": "ORGANISATION OF ETHICS",
+              "groupEthicsCommittee": "GROUP ETHICS COMMITTEE",
+              "ethicsCommittee": "ETHICS COMMITTEE",
+              "codeOfEthics": "CODE OF ETHICS",
+              "apacEthicsCommittee": "APAC ETHICS COMMITTEE",
+              "americasEthicsCommittee": "AMERICAS ETHICS COMMITTEE",
+              "brands": "BRANDS",
+              "teamsCommitted": "Teams committed to sustainability whithin each brand",
+              "sustainabilityLead": "SUSTAINABILITY LEAD",
+              "sustainabilityDepartment": "KERING SUSTAINABILITY DEPARTMENT",
+              "sustainabilityCommitteeDesc": "Established in 2012 at Board level, the Sustainability Committee provides advice on and guides the Group’s sustainability strategy.",
+              "ethicsCommitteeDesc": "Set up in 2005, Kering’s Ethics Committee is supported by two regional Ethics Committees: the Asia-Pacific Ethics Committee and the Americas Ethics Committee, with an international hotline available for all Group staff and external partners. The Ethics Committees are composed of representatives of the Group’s brands and Kering staff.",
+              "sustainabilityDepartmentDesc1": "Kering’s Sustainability Department defines the Group’s sustainability strategy and policies, and supports the Group’s brands by operating as a resource platform and sounding board, with a view to setting out and building on the initiatives taken individually by each brand.",
+              "sustainabilityDepartmentDesc2": "20 specialists, who report to the Group’s Chief Sustainability Officer, a member of the Executive Committee, assist the brands with the implementation of the Group’s sustainability strategy by systematically looking for potential synergies and continuous improvement.",
+              "sustainabilityLeadDesc": "Each brand has at least one Sustainability Lead and for the larger brands, entire sustainability teams. Sustainability Leads ensure the cohesive advancement of our sustainability strategy, whilst implementing their individual brand’s specific roadmap. As a result, Kering’s sustainability team numbers over 50 people.",
+              "archives": "archives",
+              "downloadError": "Something went wrong",
+              "archivesFileNotSelected": "Select at least one file",
+              "south-africa": "South Africa",
+              "argentina": "Argentina",
+              "france": "France",
+              "india": "India",
+              "mongolia": "Mongolia",
+              "spain": "Spain",
+              "pakistan": "Pakistan",
+              "uganda": "Uganda",
+              "talent.path": "talent",
+              "nothern-america": "North America",
+              "south-america": "South America",
+              "europe": "Europe",
+              "africa": "Africa / Middle East",
+              "asia": "Asia",
+              "oceania": "Australasia / South Pacific",
+              "job-alert": {
+                "createA": "Create a job alert",
+                "createYour": "Create your job alert",
+                "policy": "To learn more about our privacy policy and your rights. please click",
+                "here": "here.",
+                "after-here": "",
+                "toBenefit": "To benefit from job alerts, please accept our",
+                "and": "and",
+                "clicking": "by clicking here",
+                "I-want-to-create": "I want to create a job alert!",
+                "confirmation": "Your job alert has been created. Look out for notifications from us about jobs which might suit you.",
+                "confirmationPage": "Your job alert has been created !",
+                "unsubscribed": "You have been unsubscribed to job alerts",
+                "confirmationPageTitle": "Job alert creation confirmed"
+              },
+              "talent.favorites": "my favorites",
+              "press": "Press",
+              "seeMoreTwitter": "See more on Twitter",
+              "follow": "Follow",
+              "news": {
+                "title": "news",
+                "unsubscribe": {
+                  "success": "Your press release alert has been deactivated.",
+                  "error": "An error occurred while unsubscribing to press releases."
+                },
+                "about": {
+                  "title": "About",
+                  "text": "A global Luxury group, Kering manages the development of a series of renowned Houses in Fashion, Leather Goods and Jewelry : Gucci, Saint Laurent, Bottega Veneta, Balenciaga, Alexander McQueen, Brioni, Boucheron, Pomellato, DoDo, Qeelin, as well as Kering Eyewear. By placing creativity at the heart of its strategy, Kering enables its Houses to set new limits in terms of their creative expression while crafting tomorrow’s Luxury in a sustainable and responsible way. We capture these beliefs in our signature: “Empowering Imagination”. In 2021, Kering had over 42,000 employees and revenue of €17.6 billion."
+                },
+                "loadMore": "Read more"
+              },
+              "JobSearch": {
+                "NoResults": {
+                  "partOne": "Oops! Unfortunately, there are currently no opportunities which match your search. Click",
+                  "partTwo": "to create an email alert to receive other job opportunities which might interest you."
+                }
+              },
+              "financeAgenda": {
+                "title": "calendar",
+                "buttonText": "see all events",
+                "noEventMessage": "No events are coming soon."
+              },
+              "generalMeeting": "Annual General Meeting",
+              "subscriptionPressError": "An error occured, please try later",
+              "removeAll": "remove all",
+              "talent": {
+                "backToJobOffers": "Back to job offers",
+                "apply": "Apply",
+                "sendByEmail": "Send this job offer by email",
+                "mailto": {
+                  "subject": "{{houseName}} is now hiring: {{job}}",
+                  "body": "This job offer might interest you.\n\nAre you fearless in the face of a challenge? Do you have a passion for Luxury, the drive to make a difference and the desire to shape the future of our business?\n\nIf so, we want you on our team!\n\n{{jobName}} : {{jobLink}}\n\nJoin the world’s most influential luxury group, today!"
+                }
+              },
+              "continent": {
+                "europe": "Europe",
+                "asia": "Asia",
+                "northern-america": "Northern America",
+                "central-america": "Central America",
+                "south-america": "South America",
+                "oceania": "Oceania",
+                "africa": "Africa"
+              },
+              "countriesList": [
+                "Aruba",
+                "Australia",
+                "Austria",
+                "Belgium",
+                "Brazil",
+                "Canada",
+                "Chile",
+                "Czechia",
+                "Denmark",
+                "France",
+                "Germany",
+                "Guam",
+                "Hong Kong SAR",
+                "Hungary",
+                "India",
+                "Ireland",
+                "Italy",
+                "Japan",
+                "Korea, Republic of",
+                "Kuwait",
+                "Macau SAR",
+                "Mainland China",
+                "Malaysia",
+                "Mexico",
+                "Netherlands",
+                "New Zealand",
+                "Norway",
+                "Panama",
+                "Philippines",
+                "Puerto Rico",
+                "Qatar",
+                "Saudi Arabia",
+                "Singapore",
+                "Spain",
+                "Sweden",
+                "Switzerland",
+                "Taiwan Region",
+                "Thailand",
+                "Türkiye",
+                "United Arab Emirates",
+                "United Kingdom",
+                "United States of America",
+                "Vietnam"
+              ],
+              "workerSubTypesList": [
+                "Agency",
+                "Casual",
+                "Fixed Term (Fixed Term)",
+                "Regular",
+                "Trainee / Apprentice",
+                "Student (Fixed Term) (Trainee)",
+                "Apprentice (Fixed Term)",
+                "Seasonal (Fixed Term) (Seasonal)",
+                "Contractor",
+                "Consultant"
+              ],
+              "back": "back",
+              "myFavorites": "My Favorites",
+              "sustainabilityKeys": {
+                "removeFilters": "remove filters"
+              },
+              "clickHere": "click here",
+              "similarOffers": "Similar jobs",
+              "byTopic": "by topic",
+              "houses": {
+                "houses": "houses",
+                "scrollToDiscover": "Scroll to discover",
+                "path": "/houses/"
+              },
+              "contacts": "Contacts",
+              "sitemap": "Sitemap",
+              "item.homepage": "{{item}} homepage",
+              "playVideo": "play the video",
+              "selection": "the selection",
+              "no-result": "No result.",
+              "agenda": {
+                "pastEvent": "Past event",
+                "addTo": "+ add to:"
+              },
+              "cookiesOptions": "Cookie settings",
+              "playAll": "Play All",
+              "allRightsReserved": "All rights reserved",
+              "noResultFound": "No result found",
+              "circularGraphLegend": "{{percent}}%\n in {{year}}",
+              "circularGraphCenterText": "{{percent}}%\n in {{year}}",
+              "genericPageDescription": "As a world-class Luxury group, Kering promotes a modern and sustainable luxury at the service of creation that translates into unique and authentic experiences.",
+              "error": "Error",
+              "epl": {
+                "whatIsEpl": "WHAT IS AN EP&L?",
+                "ampouleText": "An Environmental Profit & Loss Account facilitates a better way of thinking",
+                "teteText": "and is an innovative tool imagined by Kering",
+                "activityText": "in our own operations and across our entire supply chain",
+                "chainesText": "it measures the environmental footprint",
+                "moneyText": "and then calculates its \n monetary value",
+                "whatPurpose": "WHY \n AN EP&L?",
+                "understand": "UNDERSTAND WHERE IMPACTS ARE",
+                "develop": "DEVELOP A KNOWLEDGEABLE DECISION-MAKING PROCESS",
+                "steer": "STEER OUR BUSINESS STRATEGY RESPONSIBLY",
+                "strengthen": "STRENGTHEN OUR BUSINESS AND MANAGE RISKS FOR THE FUTURE",
+                "transparent": "BE TRANSPARENT WITH STAKEHOLDERS",
+                "footprint": "UNDERSTANDING OUR FOOTPRINT",
+                "footprintDesc": "TO MEASURE OUR TRUE ENVIRONMENTAL FOOTPRINT WE EXAMINE:",
+                "carbon": "Carbon emissions",
+                "waterUse": "Water use",
+                "waterPollution": "Water pollution",
+                "land": "Land use",
+                "air": "Air pollution",
+                "waster": "Waste",
+                "footprintDetails": "AND TO REALLY UNDERSTAND OUR IMPACT \n WE ANALYSE THESE FACTORS THROUGH OUR VALUE CHAIN:",
+                "raw": "Raw materials",
+                "processing": "Processing",
+                "manufacturing": "Manufacturing",
+                "assembly": "Assembly",
+                "retail": "Operations & Retail",
+                "translationMoney": "TRANSLATION INTO MONETARY VALUE",
+                "translationMoneyDesc1": "We analyse the environmental outcomes and their impact on people",
+                "translationMoneyDesc2": "The data collected is translated into a monetary value to accurately measure and provide a good understanding of the cost of our activity",
+                "translationMoneyExplain": "WHY IS IT RELEVANT TO GIVE A MONETARY VALUE TO OUR ENVIRONMENTAL FOOTPRINT? \n BECAUSE IT ALLOWS US TO COMPARE OUR ENVIRONMENTAL PERFORMANCE:",
+                "areaCompare1": "In different areas of the business",
+                "areaCompare2": "The results are easier to read for executives and stakeholders",
+                "impactsCompare1": "Between our \n different impacts",
+                "impactsCompare2": "It shows where is best to implement initiatives",
+                "timeCompare1": "Over time",
+                "timeCompare2": "It shows where we are making progress and how we can decrease our footprint",
+                "nature": "This allows us to quantify our use of natural resources",
+                "footer": "A MORE HOLISTIC APPROACH TO SUSTAINABILITY \n REPORTING FOR THE FUTURE. \n A NEW WAY OF DOING BUSINESS \n THAT RESPECTS NATURAL RESOURCES."
+              },
+              "newsSearchFilter": {
+                "refine your search": "refine your search",
+                "thematics": "topic",
+                "period": "by period",
+                "last_three_months": "last 3 months",
+                "last_six_months": "last 6 months",
+                "last_year": "last year"
+              },
+              "seeMore": "see more",
+              "womoSearchFilter": {
+                "last_three_months": "last 3 months",
+                "last_six_months": "last 6 months",
+                "last_year": "this year"
+              },
+              "allTradClose": "Close",
+              "previous": "previous",
+              "next": "next",
+              "404ErrorMessage": {
+                "firstLine": "Oops, it looks like something went wrong.",
+                "secondLine": "We’re doing our best to try to fix it."
+              },
+              "500ErrorMessage": {
+                "firstLine": "Oops, it looks like something went wrong.",
+                "secondLine": "We’re doing our best to try to fix it."
+              },
+              "backToHomePage": "Back to the homepage",
+              "target": "Target",
+              "ep&lMaterials": {
+                "airPollution": "Air emissions",
+                "landUse": "Land use",
+                "ghg": "GHG emissions",
+                "waste": "Waste production",
+                "waterConsumption": "Water consumption",
+                "waterPollution": "Water pollution",
+                "cotton": "Cotton",
+                "wool": "Wool",
+                "gold": "Gold",
+                "leather": "Leather"
+              },
+              "highlight": {
+                "article": {
+                  "title": "Kering Highlights",
+                  "path": "/kering-highlights/"
+                },
+                "button": {
+                  "readArticle": "Read",
+                  "seeAll": "See all articles"
+                },
+                "filters": {
+                  "byYear": "By year",
+                  "mostRecent": "Latest",
+                  "oldest": "Oldest",
+                  "label": "Filters"
+                },
+                "ourNews": "News",
+                "loadMore": "Learn more",
+                "subscription": {
+                  "title": "Subscribe to the Kering Highlights newsletter",
+                  "checkbox-before": "By checking this box, you agree to our Privacy Policy and terms of use to receive these alerts. ",
+                  "checkbox-after": "to learn more about our Privacy Policy and your rights.",
+                  "click": "Click here ",
+                  "cta": "I subscribe"
+                }
+              },
+              "group": {
+                "title": "Group",
+                "path": "/group"
+              },
+              "articles": "Articles",
+              "siteMapFooterSection": "Legal information"
+            }
+          }
+        },
+        "initialLocale": "en",
+        "ns": [
+          "common"
+        ],
+        "userConfig": {
+          "i18n": {
+            "locales": [
+              "default",
+              "en",
+              "fr",
+              "it",
+              "cn",
+              "jp"
+            ],
+            "defaultLocale": "default",
+            "localeDetection": false
+          },
+          "default": {
+            "i18n": {
+              "locales": [
+                "default",
+                "en",
+                "fr",
+                "it",
+                "cn",
+                "jp"
+              ],
+              "defaultLocale": "default",
+              "localeDetection": false
+            }
+          }
+        }
+      },
+      "type": "generic-page",
+      "props": {
+        "hideHeaderPage": false,
+        "headerImage": {
+          "mediaDesktop": {
+            "id": "547001",
+            "src": "https://assets-keringcom.keringapps.com/workday_background_ca9a64c5d7.jpg",
+            "width": 1760,
+            "height": 316,
+            "alt": "workday-background.jpg"
+          },
+          "mediaMobile": {
+            "src": "/images/fallback.jpg",
+            "width": 313,
+            "height": 313
+          }
+        },
+        "hasReadSpeaker": true,
+        "pageTitle": "Jobs for you",
+        "introText": "<p>Are you fearless in the face of a challenge? Are you tenacious? Do you have the ambition and work ethic for a successful career in luxury? If so, we want you on our team. We are looking for people with a passion for luxury, the drive to make a difference and the desire to shape the future of our business.&nbsp;<br>Explore our job opportunities and join the world’s most influential luxury Group</p>",
+        "pageCategory": null,
+        "inPageNavigation": {
+          "links": []
+        },
+        "seo": {
+          "pageTitle": "Jobs in Fashion | Luxury Industry Jobs & Career",
+          "pageDescription": "Do you make Luxury rhyme with ethics? Are you dedicated to making a difference? If so come thrive at Kering and be a part of something unique and inspiring."
+        },
+        "linkThumbnail": {
+          "src": "/images/fallback.jpg",
+          "width": 313,
+          "height": 313
+        },
+        "updatedAt": "2026-04-14T13:14:08.559Z",
+        "sections": [
+          {
+            "key": "ComponentJobsJobSearch1394",
+            "type": "job-search",
+            "props": {
+              "image": {
+                "mediaDesktop": {
+                  "src": "/images/fallback.jpg",
+                  "width": 313,
+                  "height": 313
+                },
+                "mediaMobile": {
+                  "src": "/images/fallback.jpg",
+                  "width": 313,
+                  "height": 313
+                }
+              },
+              "withJobsList": true,
+              "jobList": [
+                {
+                  "jobId": "9b42c1495d2210021e72e2bc479c0001",
+                  "houseName": "Gucci",
+                  "houseImage": {
+                    "id": "554061",
+                    "src": "https://assets-keringcom.keringapps.com/GUCCI_PRIMAVERA_JOBOFFER_c387a19761.png",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "531608",
+                    "src": "https://assets-keringcom.keringapps.com/gucci_logo_transparent_320x320_b344a52611.png",
+                    "alt": "gucci_logo_transparent_320x320.png"
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "554062",
+                      "src": "https://assets-keringcom.keringapps.com/GUCCI_PRIMAVERA_JOBDESCRIPTION_DESKTOP_eb23a66f81.png",
+                      "width": 1760,
+                      "height": 564,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "554063",
+                      "src": "https://assets-keringcom.keringapps.com/GUCCI_PRIMAVERA_JOBDESCRIPTION_MOBILE_d021910580.png",
+                      "width": 515,
+                      "height": 300,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "531612",
+                    "src": "https://assets-keringcom.keringapps.com/gucci_logo_transparent_1760x564_v2_bd40f319a6.png",
+                    "width": 1760,
+                    "height": 564,
+                    "alt": "gucci-logo-transparent-1760x564-v2.png"
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-16T04:08:10.113Z",
+                  "jobPosting": "GUCCI Store Director - Cancun",
+                  "description": "<p><b>Summary</b></p><p>Influential, innovative, and progressive, Gucci is reinventing a wholly modern approach to fashion reinforcing its position as one of the world’s most desirable fashion houses.<br />Gucci products represent the pinnacle of Italian craftsmanship and are unsurpassed for their quality and attention to detail.</p><p></p><p><b>Role Mission</b></p><p>As Store Director, you will be the brand ambassador and leader of a team dedicated to delivering an exceptional shopping experience. Your primary focus will be on driving sales, building lasting relationships with our customers, and ensuring that every interaction reflects our brand&#39;s values of excellence. You will be responsible for exceeding store sales targets, inspiring your team to reach their full potential, and maintaining the highest standards of customer service.</p><p></p><p><b>Key Responsibilities:</b></p><ul><li>Develop and implement innovative strategies to exceed store sales objectives, analyzing market trends, identifying growth opportunities, and optimizing the performance of each product category.</li><li>Master the analysis of sales data and KPIs to identify areas for improvement and growth opportunities.</li><li>Cultivate a customer-centric culture where every team member strives to exceed expectations and create memorable experiences.</li><li>Lead by example, interacting directly with customers, building personal relationships, and resolving issues quickly and efficiently.</li><li>Establish and maintain strong relationships with key customers, business partners, and members of the local community.</li><li>Organize exclusive events and strategic collaborations to increase brand visibility and attract new customers.</li><li>Recruit, train, and motivate a team of passionate and customer-oriented sales professionals.</li><li>Provide ongoing coaching and constructive feedback to help team members develop their skills and achieve their goals.</li><li>Foster a positive and collaborative work environment where success is celebrated, and personal and professional growth is promoted.</li><li>Oversee all store operations, ensuring compliance with brand standards in terms of visual presentation, inventory management, and loss prevention.</li><li>Manage the store&#39;s budget responsibly, identifying opportunities to reduce costs and increase profitability.</li></ul><p><b>Requirements:</b></p><ul><li>Minimum of 10 years of experience in sales management in the luxury retail sector or in a customer service-related industry.</li><li>Demonstrable experience in developing and implementing successful sales strategies.</li><li>Excellent communication, interpersonal, and leadership skills.</li><li>Proficiency in Microsoft Office and Customer Relationship Management (CRM) systems.</li><li>Passion for fashion and luxury, and a deep understanding of market trends.</li><li>Availability to work a flexible schedule, including nights, weekends, and holidays.</li></ul><p><b>What We Offer:</b></p><ul><li>The opportunity to lead a high-performing team in a world-renowned brand.</li><li>A dynamic and challenging work environment where creativity and innovation are valued.</li><li>A competitive compensation package, including base salary, performance-based bonuses, and additional benefits.</li><li>Opportunities for professional growth and personal development.</li><li>The chance to make a difference in the lives of our customers and contribute to the success of our brand.</li></ul><p></p><p>This is a fantastic opportunity to join the Gucci adventure and become part of a thriving team that offers possibilities to learn and grow. Talent development is a managerial principle at Kering, and we are committed to fostering internal mobility. Our common vision promotes leadership skills and helps every employee to reach their full potential in a stimulating and fulfilling workplace environment.</p><p></p><p>Gucci is committed to building a diverse workforce. We believe diversity in all its forms – gender, age, disability, nationality, culture, religious beliefs, and sexual orientation – enriches the workplace. It opens opportunities for people to express their talent, both individually and collectively and it helps foster our ability to adapt to a changing world. As an Equal Opportunity Employer, we welcome and consider applications from all qualified candidates, regardless of their background.<br /><br />Discover more about Gucci at <a href=\"http://www.gucci.com/\" target=\"_blank\">www.gucci.com</a></p><p></p>",
+                  "summary": "",
+                  "workerSubType": "Regular",
+                  "jobFamily": "Sales",
+                  "jobFamilyId": "Sales_/_Omni-Channel",
+                  "jobTimeType": "Full time",
+                  "locationCity": "CANCUN",
+                  "locationCountry": "Mexico",
+                  "continent": "central_america",
+                  "url": "https://careers.kering.com/careers/R165571",
+                  "path": "gucci-store-director-cancun"
+                },
+                {
+                  "jobId": "da5c0a811abf10021097a09c22b30001",
+                  "houseName": "Gucci",
+                  "houseImage": {
+                    "id": "554061",
+                    "src": "https://assets-keringcom.keringapps.com/GUCCI_PRIMAVERA_JOBOFFER_c387a19761.png",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "531608",
+                    "src": "https://assets-keringcom.keringapps.com/gucci_logo_transparent_320x320_b344a52611.png",
+                    "alt": "gucci_logo_transparent_320x320.png"
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "554062",
+                      "src": "https://assets-keringcom.keringapps.com/GUCCI_PRIMAVERA_JOBDESCRIPTION_DESKTOP_eb23a66f81.png",
+                      "width": 1760,
+                      "height": 564,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "554063",
+                      "src": "https://assets-keringcom.keringapps.com/GUCCI_PRIMAVERA_JOBDESCRIPTION_MOBILE_d021910580.png",
+                      "width": 515,
+                      "height": 300,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "531612",
+                    "src": "https://assets-keringcom.keringapps.com/gucci_logo_transparent_1760x564_v2_bd40f319a6.png",
+                    "width": 1760,
+                    "height": 564,
+                    "alt": "gucci-logo-transparent-1760x564-v2.png"
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T23:54:29.663Z",
+                  "jobPosting": "GUCCI Client Advisor - Rodeo Drive Beverly Hills",
+                  "description": "<div><p><b><span>Role Mission</span></b><span> </span></p></div><div><div><p><span><span>As the Client Advisor,<span> </span></span><span>you<span> </span></span><span>are the<span> </span></span><span>Gucci brand ambassador<span> </span></span><span>responsible for achieving<span> </span></span><span>sales</span><span><span> </span></span><span>objectives</span><span><span> </span>by deepening<span> </span></span><span>client</span><span><span> </span>connections to<span> </span></span><span>Gucci<span> </span></span><span>and providing them with the</span><span><span> </span></span><span>best-in-class service</span><span>,</span><span><span> </span></span><span>elevated and<span> </span></span><span>uniq</span><span>ue experience</span><span>, and<span> </span></span><span>strong client<span> </span></span><span>relationships</span><span>. </span></span><span> </span></p></div><div><p><span> </span></p></div><div><p><b><span>Key Accountabilities</span></b><span> </span></p></div><div><p><b><span>Client Journey</span></b><span><span> </span></span><span> </span></p></div><div><ul><li><p><span><span>Proactively engage and<span> </span></span><span>establish</span><span><span> </span></span><span>strong relationships with clients, making the client feel valued</span><span><span> </span>and at ease</span><span><span> </span>from the first point of contact by offering best</span><span>-</span><span>in</span><span>-</span><span>class service be it<span> </span></span><span>in-store</span><span><span> </span>or remotely. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Deliver a personalized, client-centric experience, fostering strong and lasting relationships to drive repeat business and enhance brand loyalty.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Build rapport with clients by discovering their needs</span><span><span> </span>and aspirations</span><span>,</span><span><span> </span>creating</span><span><span> </span></span><span>connections</span><span><span> </span>and<span> </span></span><span>bonds</span><span>,<span> </span></span><span>and<span> </span></span><span>demonstrating</span><span><span> </span>generosity and desire to exceed their expectations</span><span>. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Develop client base by recruiting new clients and developing existing ones. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Leverage in-store technology to ensure every client’s experience<span> </span></span><span>is s</span><span>mooth, pleasant, and<span> </span></span><span>relevant.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Collect meaningful client information throughout the client journey to understand their preferences to customize the service provided to them. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Create and add value</span><span><span> </span>to the client’s experience by providing them with useful insights on local lifestyle trends (Theater, arts, travel,<span> </span></span><span>etc</span><span>…</span><span>)</span><span>.</span></span><span> </span></p></li></ul></div><div><p><span><span> </span></span><span> </span></p></div><div><p><b><span>Sales Excellence</span></b><span> </span></p></div><div><ul><li><p><span><span>Drive individual and collective sales results and maxim</span><span>ize</span><span><span> </span>selling opportunities<span> </span></span><span>in-store</span><span><span> </span>and remotely. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Provide exceptional<span> </span></span><span>client</span><span><span> </span>experience, focusing on hospitality and elevation through selling skills, luxury gestures</span><span>,</span><span><span> </span>and product rituals.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Use effective selling techniques in a natural, warm, and elevated manner</span><span><span> </span>to<span> </span></span><span>drive sales<span> </span></span><span>and<span> </span></span><span>a<span> </span></span><span>client</span><span>-centric</span><span><span> </span>attitude</span><span>.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Select the right products matched to client needs and benefits and effectively<span> </span></span><span>use</span><span><span> </span></span><span>cross and</span><span><span> </span>upselling techniques. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Proactively promote virtual appointments and distance sales by seeking to recruit clients to create selling opportunities.</span><span> </span></span><span> </span></p></li></ul></div></div><div><div><ul><li><p><span><span>Maintain a “</span><span>One-</span><span>Gucci</span><span>-</span><span>Client” perspective<span> </span></span><span>regardless of purchase location,<span> </span></span><span>on<span> </span></span><span>exchange,</span><span><span> </span>returns,<span> </span></span><span>repairs,<span> </span></span><span>and other<span> </span></span><span>such transactions</span><span><span> </span>that are critical to a positive<span> </span></span><span>client</span><span><span> </span>experience. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Guide and inspire the client to make the best possible decision to buy the right product. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Foster open and constructive communication with team members</span><span>, being</span><span><span> </span>always collaborative and proposing effective solutions</span><span>.</span></span><span> </span></p></li></ul></div><div><p><span> </span></p></div><div><p><b><span>Brand &amp; Product </span></b><span> </span></p></div><div><ul><li><p><span><span>Using knowledge of Gucci and our products,<span> </span></span><span>engage</span><span><span> </span>with the<span> </span></span><span>clients</span><span><span> </span>using storytelling</span><span>, expert product knowledge,<span> </span></span><span>and<span> </span></span><span>honest styling advice to<span> </span></span><span>assist</span><span><span> </span>them in making informed purchasing decisions.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Proactively attend<span> </span></span><span>trainings</span><span><span> </span>to gain insights on product knowledge</span><span><span> </span>and selling techniques. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Ensure</span><span><span> </span>to be up-to-date knowing fashion trends and competitors (products, campaigns, fashion trends, services,<span> </span></span><span>etc</span><span>) and clients’ segmentation<span> </span></span><span>to</span><span><span> </span></span><span>come up with</span><span><span> </span>the best<span> </span></span><span>possible solutions</span><span><span> </span>for our clients. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Combines styling knowledge with the ability to offer products to best serve the client. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Embody<span> </span></span><span>Gucci&#39;s philosophy, values, and lifestyle<span> </span></span><span>with an enthusiastic attitude.</span></span><span> </span></p></li></ul></div><div><p><span> </span></p></div><div><p><b><span>Operational</span></b><span><span><span> </span></span></span><b><span>Excellence</span></b><span> </span></p></div><div><ul><li><p><span><span>Actively<span> </span></span><span>participate</span><span><span> </span></span><span>in</span><span><span> </span>all store operations such as stock maintenance, stock inventories, etc</span><span>.</span><span> </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Adhere to all policies and procedures with a focus on loss prevention and operational excellence.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Accurately process all POS transactions and ensure<span> </span></span><span>accurate</span><span><span> </span>capture of<span> </span></span><span>client</span><span><span> </span></span><span>information.</span><span> </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Contribute to upholding the visual display of all products<span> </span></span><span>following</span><span><span> </span>Gucci visual standards.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Follow Company<span> </span></span><span>grooming at all times</span><span><span> </span>and according<span> </span></span><span>to</span><span><span> </span>Gucci standards and policies.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Ensure<span> </span></span><span>optimal</span><span><span> </span></span><span>levels of products on the sales floor in line with corporate policies and<span> </span></span><span>procedures.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Manage general store administration</span><span><span> </span>and functionality. </span></span><span> </span></p></li></ul></div><div><p><span> </span></p></div></div><div><div><p><b><span>Requirements</span></b><span> </span></p></div><div><ul><li><p><span><span>2</span><span>&#43; years of luxury fashion sales experience</span><span><span> </span>and excellent<span> </span></span><span>track record</span><span>,</span><span><span> </span>preferably in a similar role or customer service setting.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Proven ability to drive and exceed individual and store results and build lasting relationships with customers and colleagues.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>High degree of ethics, professionalism, integrity, and ability to inspire trust and collaboration amongst colleagues. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Flexibility to<span> </span></span><span>work</span><span><span> </span>a retail schedule which will include evenings, weekends, and holidays.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Deep</span><span><span> </span>knowledge<span> </span></span><span>about and</span><span><span> </span>passion for</span><span><span> </span>fashion and luxury</span><span>.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Excellent commercial awareness and<span> </span></span><span>client</span><span><span> </span>attitude</span><span>.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>High flexibility and ability to adapt to different<span> </span></span><span>client</span><span>s</span><span><span> </span>and complex situations. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Strong communication</span><span><span> </span>skills</span><span>.</span><span> </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Ability to work in a<span> </span></span><span>fast-moving</span><span><span> </span>and dynamic<span> </span></span><span>environment</span><span>.</span></span><span> </span></p></li></ul></div><div><p></p><div><p><b><span>Salary Range –<span> </span></span><span>California</span></b><span> </span></p></div><div><p><span> </span></p></div><div><p><span><span>For individuals assigned and/or hired to work in<span> </span></span></span><span><span>California</span><span>,</span></span><span><span><span> </span>GUCCI includes a reasonable estimate of the salary or hourly rate range for this role. This<span> </span></span><span>takes into account</span><span><span> </span>the wide range of factors that are considered in making compensation decisions; including but not limited to business or organizational needs, skill sets, experience and training, licensure, and certifications. In addition, where a candidate falls within the disclosed<span> </span></span><span>range</span><span><span> </span>estimate may be dependent on the applicable geographic differential associated with the location in which the position may be filled</span><span>.  </span></span><span> </span></p></div><div><p><span> </span></p></div><div><p><span><span>A reasonable estimate of the current base salary range is $18.00 </span></span><span><span>USD to $20.00 </span></span><span><span>USD.</span></span><span> </span></p><p></p></div><div><p><span><span>Eligible employees may also<span> </span></span><span>participate</span><span><span> </span>in an employee benefits program as well as an incentive program, subject to the rules governing the program, whereby an award, if any, depends on<span> </span></span><span>various factors</span><span>, including, without limitation, individual and organizational performance.</span></span><span> </span></p></div><div><p><span><span>Benefits includ</span><span>e</span><span>:  </span></span><span> </span></p></div><div><ul><li><p><span><span>Medical </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Dental </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Vision</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Paid Time Off (PTO) </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>401K</span></span><span> </span></p></li></ul></div><p><span><span>We are passionate makers</span><span><span> </span>and bold</span><span><span> </span>thought leaders. If you feel like us, grab this chance and be part of our community! &#34;Gucci is committed to building a diverse workforce. We believe diversity in all its forms – gender, age, disability, race, ethnicity, nationality, culture, religious </span><span>beliefs</span><span> and sexual orientation – enriches the workplace. It </span><span>opens up</span><span> opportunities for people to express their talent, both individually and collectively, and it helps foster our ability to adapt to a changing world. As an Equal Opportunity Employer, we welcome and consider applications from all qualified candidates, regardless of their background.</span></span><span> </span></p></div><div><p><span> </span></p></div><div><p><span><span>Our Gucci community is committed to providing a culture of inclusivity and accessibility in all aspects of the employee life cycle – starting with the candidate experience.  If you are interested in applying for employment with us and require reasonable accommodation to </span><span>assist</span><span> with any part of the application and/or interview process, please contact us by email at </span></span><a href=\"mailto:name.nom&#64;kering.com\" target=\"_blank\"><b><span>accessibility.americas&#64;gucci.com</span></b></a><span><span>.     </span></span><span> </span></p><p></p></div><div><p><span><span>When contacting us, please provide your contact information, the role you have applied to, and the nature of your accessibility </span><span>need</span><span>. Please only send inquiries concerning requests for reasonable accommodations</span></span></p></div></div>",
+                  "summary": "Founded in Florence, Italy, in 1921, Gucci is one of the world’s leading luxury brands. Under the leadership of President and CEO Francesca Bellettini and the artistic direction of Demna, the House continues to redefine luxury and fashion while celebrating creativity, Italian craftsmanship, and innovation\n\nGucci is part of the global luxury group Kering, which manages renowned Houses in fashion, leather goods, jewelry, and eyewear.",
+                  "workerSubType": "Regular",
+                  "jobFamily": "Sales",
+                  "jobFamilyId": "Sales_/_Omni-Channel",
+                  "jobTimeType": "Full time",
+                  "locationCity": "BEVERLY HILLS",
+                  "locationCountry": "United States of America",
+                  "continent": "northern_america",
+                  "url": "https://careers.kering.com/careers/R164679",
+                  "path": "gucci-client-advisor-rodeo-drive-beverly-hills"
+                },
+                {
+                  "jobId": "da5c0a811abf100208689cc8ff760001",
+                  "houseName": "Bottega Veneta",
+                  "houseImage": {
+                    "id": "553840",
+                    "src": "https://assets-keringcom.keringapps.com/Kering_job_offer_asset_7ed632ebc7.jpg",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "531628",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_Bottega_Veneta_320x320px_d41c634ecb.png",
+                    "alt": "Logo_Bottega-Veneta_320x320px.png"
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "553841",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_desktop_5fe05efc10.jpg",
+                      "width": 3520,
+                      "height": 1128,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "553842",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_mobile_0739eec612.jpg",
+                      "width": 1030,
+                      "height": 600,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "531632",
+                    "src": "https://assets-keringcom.keringapps.com/Bottega_Veneta_Logo_Transparent_Job_Desc_936cc50b34.png",
+                    "width": 1760,
+                    "height": 564,
+                    "alt": "Bottega_Veneta_Logo_Transparent_Job_Desc.png"
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T21:24:31.568Z",
+                  "jobPosting": "BOTTEGA VENETA Store Director, NY Flagship",
+                  "description": "<p><b>We are currently seeking a Store Director who will report to the Head of Retail US &amp; Canada, as part of our dynamic team in New York, on Madison Avenue.</b></p><p></p><p><b>How you will contribute:</b></p><ul><li>Support the operations of the store, including the business performance, customer service and company image in the store</li><li>Drive the achievement of the store’s sale targets while also meeting individual sales goals </li><li>Assist in maximizing the business potential of the store and maximizing sales by department in line with company strategy </li><li>Mentor and coach retail associates in order to develop their competencies and support their growth while driving their individual sales and ultimately the sales of the store as a whole  </li><li>Monitor proper use and ensure the quality of data in the sales staff’s client books, as well as working with sales staff to propose action plans</li><li>Manage recruiting for store associates and maintaining a pool of potential candidates</li><li>Facilitate staff trainings and new hire inductions, as well as ensuring the proper follow up steps are taken</li><li>Comply with and enforce Bottega Veneta standards and procedures</li><li>Deliver exceptional service to all clientele by upholding brand service values and standards while managing customer relationships in a timely, professional manner</li><li>Effectively perform operational functions: opens and closes the store, register, and back office management procedures</li><li>Maintain an environment where all associates are treated fairly and with dignity and respect</li></ul><p></p><p><b>Who you are:</b></p><p></p><ul><li>Minimum of 8-10 years of retail experience in a managerial role</li><li>Ability to work in a team, possess organization awareness and flexibility</li><li>Demonstrate ability to adapt, strong knowledge of products and philosophy of the brand</li><li>Exemplary verbal and written communication skills</li></ul><p></p><p><b>New York Salary Range:</b></p><p>Annual base salary range of $170,000 - $185,000 (plus discretionary bonus)</p><p></p><p><b><i>Why work with us?</i></b><br /> </p><p>This is a fabulous opportunity to join the Kering adventure and to actively contribute to the development of the business by becoming part of a global Luxury Group that offers endless possibilities to learn and grow. Talent development is a managerial principle at Kering and we are committed to fostering internal mobility. Our common vision promotes leadership skills and helps every employee to reach their full potential in a stimulating and fulfilling workplace environment.</p><p></p><p><i>Kering is committed to building a diverse workforce. We believe diversity in all its forms – gender, age, nationality, culture, religious beliefs and sexual orientation – enriches the workplace. It opens up opportunities for people to express their talent, both individually and collectively and it helps foster our ability to adapt to a changing world. As an Equal Opportunity Employer we welcome and consider applications from all qualified candidates, regardless of their background.  </i></p><p></p><p><b>EOE MDFV</b></p>",
+                  "summary": "Inspiring individuality with innovative craft since 1966, creativity lies at the heart of Bottega Veneta. Born in Vicenza, the house is rooted in Italian culture yet maintains a global outlook. An inclusive brand with exclusive products, Bottega Veneta is as much a feeling as it is an aesthetic.",
+                  "workerSubType": "Regular",
+                  "jobFamily": "Sales",
+                  "jobFamilyId": "Sales_/_Omni-Channel",
+                  "jobTimeType": "Full time",
+                  "locationCity": "NEW YORK",
+                  "locationCountry": "United States of America",
+                  "continent": "northern_america",
+                  "url": "https://careers.kering.com/careers/R165569",
+                  "path": "bottega-veneta-store-director-ny-flagship"
+                },
+                {
+                  "jobId": "da5c0a811abf10020813bf24e4030001",
+                  "houseName": "Bottega Veneta",
+                  "houseImage": {
+                    "id": "553840",
+                    "src": "https://assets-keringcom.keringapps.com/Kering_job_offer_asset_7ed632ebc7.jpg",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "531628",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_Bottega_Veneta_320x320px_d41c634ecb.png",
+                    "alt": "Logo_Bottega-Veneta_320x320px.png"
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "553841",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_desktop_5fe05efc10.jpg",
+                      "width": 3520,
+                      "height": 1128,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "553842",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_mobile_0739eec612.jpg",
+                      "width": 1030,
+                      "height": 600,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "531632",
+                    "src": "https://assets-keringcom.keringapps.com/Bottega_Veneta_Logo_Transparent_Job_Desc_936cc50b34.png",
+                    "width": 1760,
+                    "height": 564,
+                    "alt": "Bottega_Veneta_Logo_Transparent_Job_Desc.png"
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T21:18:27.122Z",
+                  "jobPosting": "BOTTEGA VENETA Store Manager, Chicago Oak Street",
+                  "description": "<p><b>We are currently seeking a Store Manager who will report to the Market Director, Northeast as part of our dynamic team in Chicago Oak Street.</b></p><p></p><p><b>How you will contribute:</b></p><ul><li>Support the operations of the store, including the business performance, customer service and company image in the store</li><li>Drive the achievement of the store’s sale targets while also meeting individual sales goals </li><li>Assist in maximizing the business potential of the store and maximizing sales by department in line with company strategy </li><li>Mentor and coach retail associates in order to develop their competencies and support their growth while driving their individual sales and ultimately the sales of the store as a whole  </li><li>Monitor proper use and ensure the quality of data in the sales staff’s client books, as well as working with sales staff to propose action plans</li><li>Manage recruiting for store associates and maintaining a pool of potential candidates</li><li>Facilitate staff trainings and new hire inductions, as well as ensuring the proper follow up steps are taken</li><li>Comply with and enforce Bottega Veneta standards and procedures</li><li>Deliver exceptional service to all clientele by upholding brand service values and standards while managing customer relationships in a timely, professional manner</li><li>Effectively perform operational functions: opens and closes the store, register, and back office management procedures</li><li>Maintain an environment where all associates are treated fairly and with dignity and respect</li></ul><p></p><p><b>Who you are:</b></p><p></p><ul><li>Minimum of 5 years of retail experience in a managerial role</li><li>Ability to work in a team, possess organization awareness and flexibility</li><li>Demonstrate ability to adapt, strong knowledge of products and philosophy of the brand</li><li>Exemplary verbal and written communication skills</li></ul><p></p><p><b>Illinois Salary Range:</b></p><p></p><p>Annual base salary range of $120,000 - $130,000 (plus discretionary bonus)</p><p></p><p><b><i>Why work with us?</i></b></p><p></p><p>This is a fabulous opportunity to join the Kering adventure and to actively contribute to the development of the business by becoming part of a global Luxury Group that offers endless possibilities to learn and grow. Talent development is a managerial principle at Kering and we are committed to fostering internal mobility. Our common vision promotes leadership skills and helps every employee to reach their full potential in a stimulating and fulfilling workplace environment.</p><p></p><p><i>Kering is committed to building a diverse workforce. We believe diversity in all its forms – gender, age, nationality, culture, religious beliefs and sexual orientation – enriches the workplace. It opens up opportunities for people to express their talent, both individually and collectively and it helps foster our ability to adapt to a changing world. As an Equal Opportunity Employer we welcome and consider applications from all qualified candidates, regardless of their background.  </i></p><p></p><p><b>EOE MDFV</b></p>",
+                  "summary": "Inspiring individuality with innovative craft since 1966, creativity lies at the heart of Bottega Veneta. Born in Vicenza, the house is rooted in Italian culture yet maintains a global outlook. An inclusive brand with exclusive products, Bottega Veneta is as much a feeling as it is an aesthetic.",
+                  "workerSubType": "Regular",
+                  "jobFamily": "Sales",
+                  "jobFamilyId": "Sales_/_Omni-Channel",
+                  "jobTimeType": "Full time",
+                  "locationCity": "CHICAGO",
+                  "locationCountry": "United States of America",
+                  "continent": "northern_america",
+                  "url": "https://careers.kering.com/careers/R165568",
+                  "path": "bottega-veneta-store-manager-chicago-oak-street"
+                },
+                {
+                  "jobId": "da5c0a811abf100206b9e4be59a70001",
+                  "houseName": "Saint Laurent",
+                  "houseImage": {
+                    "id": "553766",
+                    "src": "https://assets-keringcom.keringapps.com/SAINT_LAURENT_SUMMER_26_Kering_Job_Offer_320x320_808d35782f.jpg",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "550181",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_blanc_320_320_7c701386f6.png",
+                    "alt": ""
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "553767",
+                      "src": "https://assets-keringcom.keringapps.com/SAINT_LAURENT_SUMMER_26_Kering_Job_Description_Desktop_6f36eb2555.jpg",
+                      "width": 3520,
+                      "height": 1128,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "553768",
+                      "src": "https://assets-keringcom.keringapps.com/SAINT_LAURENT_SUMMER_26_Kering_Job_Description_Mobile_2eb3d193cf.jpg",
+                      "width": 1030,
+                      "height": 600,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "550180",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_blanc_1760_544_abcfdeae31.png",
+                    "width": 3520,
+                    "height": 1088,
+                    "alt": ""
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T20:53:41.707Z",
+                  "jobPosting": "SAINT LAURENT Senior Client Advisor Toronto Outlet",
+                  "description": "<p><b>We <span>a</span>re <span>c</span>urr<span>e</span><span>n</span>t<span>l</span>y <span>seek</span>ing a Senior Client Advisor<span> to join our dynamic boutique leadership team</span><span>.</span></b></p><p></p><p></p><p><b>ROLE</b></p><p></p><p><span>The Senior Client Advisor</span> will oversee the client advisor team in partnership with the store leadership team, and contribute actively to the store sales and key indicators achievement. They are providing a unique, memorable, sophisticated, and everlasting experience to all external and internal clients. They also support the management team and colleagues while consistently upholding our Maison values, image, and standards.</p><p></p><p><b>MISSION</b></p><p></p><ul><li>Manage the client advisor team and lead by example by achieving individual sales targets as well as ensuring the team meets their targets.</li><li>Train new client advisors and provide ongoing training and development for existing team members.</li><li>Create and maintain a positive work environment that encourages teamwork, creativity, and collaboration.</li><li>Provide an outstanding client and after-sale service to all visitors and clients</li><li>Show passion in connecting and reconnecting with clients, putting them at the center, identifying their needs and anticipating their future requests</li><li>Cultivate a robust client portfolio to secure a proactive and growing business</li><li>Drive performance to exceed individual sales and KPI goals by having a business mindset and an entrepreneurial approach</li><li>Know how to create personalized, versatile, and timeless silhouettes for the client and demonstrating your passion for the fashion culture</li><li>Show a transparent and genuine attitude with the client and create a unique connection with them</li><li>Communicate in a professional and authentic way, with clients and colleagues</li><li>Effectively use all the available tools to optimize business opportunities</li><li>Proactively support the front and back-of-house teams, their achievements and ultimately the overall team spirit</li><li>Upholds and adheres to all company policies and operational procedures</li></ul><p></p><p><b><span>PROFILE</span></b></p><p></p><ul><li>A preferred professional experience in providing a high-quality service focused on Client expectations, i.e. in fashion &amp; accessory retail, in customer service or in luxury hospitality</li><li>Strong leadership and management skills, with the ability to motivate and inspire a team.</li><li>Have personal taste and passion for the fashion culture, likes to create personalized looks</li><li>Have a natural business mindset and an entrepreneurial spirit</li><li>Open-minded and looking for a company valuing audacity and authenticity</li><li>Strong team centric attitude to achieve common goals</li><li>At ease with using tools and applications; learns fast with new technologies</li><li>Motivation to work in a fast-paced environment, able to multitask &amp; prioritize</li><li>Proactive, enthusiastic, &amp; with a problem-solving attitude</li><li>Excellent written, oral &amp; listening skills, in English and local language</li><li>Embrace change and see it as an opportunity to grow and develop</li></ul><p></p><p></p><p><i><span>A reasonable estimate of the compensation range for this position is $20-$22/hr. inclusive of commission compensation.</span></i></p><p></p><p></p><p><b>Artificial Intelligence (AI) Disclosure</b></p><p><i>Please be advised that we may use artificial intelligence tools during the recruitment process. All hiring decisions are made by our recruitment team.</i></p><p></p><p></p><p><i><span>S</span></i><i><span>a</span></i><i>i<span>n</span>t <span>Lauren</span>t<span> i</span>s <span>c</span><span>o</span><span>mm</span>i<span>tt</span><span>e</span>d <span>t</span>o <span>bu</span><span>i</span>l<span>d</span>i<span>n</span>g a <span>d</span><span>i</span><span>v</span><span>er</span><span>s</span>e <span>w</span><span>ork</span><span>f</span><span>or</span><span>c</span><span>e</span>. <span>W</span>e <span>be</span>li<span>e</span><span>v</span>e <span>d</span><span>i</span><span>v</span><span>er</span><span>s</span><span>i</span><span>t</span>y in <span>a</span><span>l</span>l i<span>t</span>s <span>f</span><span>or</span><span>m</span>s – <span>gender</span>, <span>age</span>, <span>na</span><span>t</span>i<span>ona</span>li<span>t</span><span>y</span>, <span>c</span><span>u</span><span>l</span><span>t</span><span>ure</span>, <span>re</span>li<span>g</span>i<span>ou</span>s <span>be</span>li<span>e</span><span>f</span>s <span>and </span><span>s</span><span>e</span><span>x</span><span>ua</span>l<span> or</span>i<span>en</span><span>t</span><span>a</span><span>t</span>i<span>o</span>n – <span>enr</span>i<span>c</span><span>h</span><span>e</span>s <span>t</span><span>h</span>e <span>w</span><span>or</span><span>k</span><span>p</span>l<span>a</span><span>c</span><span>e</span>. <span>I</span>t <span>open</span>s <span>u</span>p <span>oppor</span><span>t</span><span>un</span>i<span>ti</span><span>e</span>s <span>f</span><span>o</span>r <span>peop</span>le <span>t</span>o <span>e</span><span>x</span><span>pres</span>s <span>t</span><span>he</span>ir <span>t</span><span>a</span>l<span>en</span><span>t</span>, <span>b</span><span>o</span><span>t</span>h i<span>nd</span><span>i</span><span>v</span>i<span>dua</span>l<span>l</span>y <span>an</span>d <span>c</span><span>o</span>ll<span>e</span><span>ct</span><span>i</span><span>v</span><span>e</span><span>l</span>y <span>an</span>d <span>i</span>t <span>he</span>l<span>p</span>s <span>f</span><span>os</span><span>t</span><span>e</span>r <span>ou</span>r <span>ab</span>il<span>i</span><span>t</span>y <span>t</span>o <span>adap</span>t <span>t</span>o a <span>c</span><span>hang</span>i<span>n</span>g <span>w</span><span>or</span>l<span>d</span>. <span>A</span>s <span>a</span>n <span>E</span><span>qua</span>l O<span>ppor</span><span>t</span><span>u</span><span>n</span>i<span>t</span>y <span>E</span><span>m</span><span>p</span>l<span>o</span><span>y</span><span>e</span>r, <span>w</span>e <span>w</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span>e <span>an</span>d <span>c</span><span>ons</span><span>i</span><span>de</span>r <span>app</span>li<span>c</span><span>at</span>i<span>on</span>s <span>f</span><span>ro</span>m <span>a</span>ll <span>qua</span>li<span>f</span>i<span>e</span>d <span>cand</span>i<span>da</span><span>t</span><span>e</span><span>s</span>, <span>regard</span>l<span>e</span><span>s</span>s <span>o</span>f <span>t</span><span>he</span>ir <span>bac</span><span>k</span><span>ground.</span></i></p><p></p><p></p>",
+                  "summary": "ABOUT SAINT LAURENT\n\nFounded in 1961, Yves Saint Laurent was the first couture house to introduce the concept of luxury prêt-à-porter in a 1966 collection called ‘Rive Gauche’, synonymous with youth and freedom. This shift represented a first critical step in the modernization of fashion and revolutionized the socio- cultural landscape.\nIn 1999, the luxury goods division of the Kering Group acquired Yves Saint Laurent and, under the creative direction of Anthony Vaccarello since April\n2016, continues to position the house at the summit of the luxury universe.\nToday, Saint Laurent collections include women’s and men’s ready-to-wear, shoes, handbags, small leather goods, jewelry, scarves, ties and eyewear.",
+                  "workerSubType": "Regular",
+                  "jobFamily": "Sales",
+                  "jobFamilyId": "Sales_/_Omni-Channel",
+                  "jobTimeType": "Full time",
+                  "locationCity": "Manhasset",
+                  "locationCountry": "United States of America",
+                  "continent": "northern_america",
+                  "url": "https://careers.kering.com/careers/R164563",
+                  "path": "saint-laurent-senior-client-advisor-toronto-outlet"
+                },
+                {
+                  "jobId": "9b42c1495d22100206a1f7811c470001",
+                  "houseName": "Saint Laurent",
+                  "houseImage": {
+                    "id": "553766",
+                    "src": "https://assets-keringcom.keringapps.com/SAINT_LAURENT_SUMMER_26_Kering_Job_Offer_320x320_808d35782f.jpg",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "550181",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_blanc_320_320_7c701386f6.png",
+                    "alt": ""
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "553767",
+                      "src": "https://assets-keringcom.keringapps.com/SAINT_LAURENT_SUMMER_26_Kering_Job_Description_Desktop_6f36eb2555.jpg",
+                      "width": 3520,
+                      "height": 1128,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "553768",
+                      "src": "https://assets-keringcom.keringapps.com/SAINT_LAURENT_SUMMER_26_Kering_Job_Description_Mobile_2eb3d193cf.jpg",
+                      "width": 1030,
+                      "height": 600,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "550180",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_blanc_1760_544_abcfdeae31.png",
+                    "width": 3520,
+                    "height": 1088,
+                    "alt": ""
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T20:51:44.030Z",
+                  "jobPosting": "SAINT LAURENT Client Advisor American Dream",
+                  "pathIndex": 1,
+                  "description": "<p><b>We <span>a</span>re <span>c</span>urr<span>e</span><span>n</span>t<span>l</span>y <span>seek</span>ing a Client Advisor <span>to join our </span><span>d</span><span>y</span>n<span>am</span>ic<span> boutique </span>t<span>e</span><span>a</span>m. </b></p><p></p><p></p><p><b>ROLE</b></p><p></p><p><span>The Client Advisor contributes actively to the store sales and key indicators achievement. They provide a unique, memorable, sophisticated, and everlasting experience to all external and internal clients. They also support the management team and colleagues, while consistently upholding our Maison values, image and standards. </span></p><p></p><p><b>MISSION</b></p><p></p><p></p><ul><li>Provide outstanding client and after-sale service to all visitors and clients</li><li>Show passion in connecting and reconnecting with clients, putting them at the center, identifying their needs and anticipating their future requests</li><li>Cultivate a robust client portfolio to secure a proactive and growing business</li><li>Drive performance to exceed individual sales and KPI goals by having a business mindset and an entrepreneurial approach</li><li>Know how to create personalized, versatile, and timeless silhouettes for the client and demonstrating your passion for the fashion culture</li><li>Show a transparent and genuine attitude with the client and create a unique connection with them</li><li>Communicate in a professional and sincere way, with clients and colleagues</li><li>Effectively use all the available tools to optimize business opportunities</li><li>Proactively support and collaborate with the front and back-of-house teams, their achievements and ultimately the overall team spirit</li><li>Upholds and adheres to all company policies and operational procedures</li></ul><p></p><p><b><span>PROFILE</span></b></p><ul><li>Preferred experience in providing high-quality service in a client facing role, i.e. in fashion &amp; accessory retail, in customer service or in luxury hospitality</li><li>Have passion for the fashion culture, like to create personalized looks</li><li>Have a business mindset and an entrepreneurial spirit</li><li>Strong team spirit to achieve common goals</li><li>At ease with using tools and applications, adapts quickly with new technology</li><li>Motivated to work in a fast-paced environment, able to multitask, prioritize; is open minded and driven by creativity</li><li>Proactive, passionate &amp; with a problem-solving attitude</li><li>Excellent written, oral &amp; listening skills, in English and local language, additional languages preferred</li><li>Embrace change and see it as an opportunity to grow and develop</li></ul><p></p><p></p><p><i><span>A reasonable estimate of the base compensation range for this position is </span><span>$18/hr. - $19/hr. </span><span>plus commission eligibility and a comprehensive benefits package including: medical, dental, vision, short and long-term disability, various paid time off programs, employee discount/perks and a retirement plan with employer contributions</span></i></p><p></p><p></p><p></p><p><i><span>S</span></i><i><span>a</span></i><i>i<span>n</span>t <span>Lauren</span>t<span> i</span>s <span>c</span><span>o</span><span>mm</span>i<span>tt</span><span>e</span>d <span>t</span>o <span>bu</span><span>i</span>l<span>d</span>i<span>n</span>g a <span>d</span><span>i</span><span>v</span><span>er</span><span>s</span>e <span>w</span><span>ork</span><span>f</span><span>or</span><span>c</span><span>e</span>. <span>W</span>e <span>be</span>li<span>e</span><span>v</span>e <span>d</span><span>i</span><span>v</span><span>er</span><span>s</span><span>i</span><span>t</span>y in <span>a</span><span>l</span>l i<span>t</span>s <span>f</span><span>or</span><span>m</span>s – <span>gender</span>, <span>age</span>, <span>na</span><span>t</span>i<span>ona</span>li<span>t</span><span>y</span>, <span>c</span><span>u</span><span>l</span><span>t</span><span>ure</span>, <span>re</span>li<span>g</span>i<span>ou</span>s <span>be</span>li<span>e</span><span>f</span>s <span>and </span><span>s</span><span>e</span><span>x</span><span>ua</span>l<span> or</span>i<span>en</span><span>t</span><span>a</span><span>t</span>i<span>o</span>n – <span>enr</span>i<span>c</span><span>h</span><span>e</span>s <span>t</span><span>h</span>e <span>w</span><span>or</span><span>k</span><span>p</span>l<span>a</span><span>c</span><span>e</span>. <span>I</span>t <span>open</span>s <span>u</span>p <span>oppor</span><span>t</span><span>un</span>i<span>ti</span><span>e</span>s <span>f</span><span>o</span>r <span>peop</span>le <span>t</span>o <span>e</span><span>x</span><span>pres</span>s <span>t</span><span>he</span>ir <span>t</span><span>a</span>l<span>en</span><span>t</span>, <span>b</span><span>o</span><span>t</span>h i<span>nd</span><span>i</span><span>v</span>i<span>dua</span>l<span>l</span>y <span>an</span>d <span>c</span><span>o</span>ll<span>e</span><span>ct</span><span>i</span><span>v</span><span>e</span><span>l</span>y <span>an</span>d <span>i</span>t <span>he</span>l<span>p</span>s <span>f</span><span>os</span><span>t</span><span>e</span>r <span>ou</span>r <span>ab</span>il<span>i</span><span>t</span>y <span>t</span>o <span>adap</span>t <span>t</span>o a <span>c</span><span>hang</span>i<span>n</span>g <span>w</span><span>or</span>l<span>d</span>. <span>A</span>s <span>a</span>n <span>E</span><span>qua</span>l O<span>ppor</span><span>t</span><span>u</span><span>n</span>i<span>t</span>y <span>E</span><span>m</span><span>p</span>l<span>o</span><span>y</span><span>e</span>r, <span>w</span>e <span>w</span><span>e</span><span>l</span><span>c</span><span>o</span><span>m</span>e <span>an</span>d <span>c</span><span>ons</span><span>i</span><span>de</span>r <span>app</span>li<span>c</span><span>at</span>i<span>on</span>s <span>f</span><span>ro</span>m <span>a</span>ll <span>qua</span>li<span>f</span>i<span>e</span>d <span>cand</span>i<span>da</span><span>t</span><span>e</span><span>s</span>, <span>regard</span>l<span>e</span><span>s</span>s <span>o</span>f <span>t</span><span>he</span>ir <span>bac</span><span>k</span><span>ground.</span></i></p>",
+                  "summary": "ABOUT SAINT LAURENT\n\nFounded in 1961, Yves Saint Laurent was the first couture house to introduce the concept of luxury prêt-à-porter in a 1966 collection called ‘Rive Gauche’, synonymous with youth and freedom. This shift represented a first critical step in the modernization of fashion and revolutionized the socio- cultural landscape.\nIn 1999, the luxury goods division of the Kering Group acquired Yves Saint Laurent and, under the creative direction of Anthony Vaccarello since April\n2016, continues to position the house at the summit of the luxury universe.\nToday, Saint Laurent collections include women’s and men’s ready-to-wear, shoes, handbags, small leather goods, jewelry, scarves, ties and eyewear.",
+                  "workerSubType": "Regular",
+                  "jobFamily": "Sales",
+                  "jobFamilyId": "Sales_/_Omni-Channel",
+                  "jobTimeType": "Full time",
+                  "locationCity": "East Rutherford",
+                  "locationCountry": "United States of America",
+                  "continent": "northern_america",
+                  "url": "https://careers.kering.com/careers/R163555",
+                  "path": "saint-laurent-client-advisor-american-dream-1"
+                },
+                {
+                  "jobId": "9b42c1495d22100200eb997e9caa0000",
+                  "houseName": "Gucci",
+                  "houseImage": {
+                    "id": "554061",
+                    "src": "https://assets-keringcom.keringapps.com/GUCCI_PRIMAVERA_JOBOFFER_c387a19761.png",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "531608",
+                    "src": "https://assets-keringcom.keringapps.com/gucci_logo_transparent_320x320_b344a52611.png",
+                    "alt": "gucci_logo_transparent_320x320.png"
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "554062",
+                      "src": "https://assets-keringcom.keringapps.com/GUCCI_PRIMAVERA_JOBDESCRIPTION_DESKTOP_eb23a66f81.png",
+                      "width": 1760,
+                      "height": 564,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "554063",
+                      "src": "https://assets-keringcom.keringapps.com/GUCCI_PRIMAVERA_JOBDESCRIPTION_MOBILE_d021910580.png",
+                      "width": 515,
+                      "height": 300,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "531612",
+                    "src": "https://assets-keringcom.keringapps.com/gucci_logo_transparent_1760x564_v2_bd40f319a6.png",
+                    "width": 1760,
+                    "height": 564,
+                    "alt": "gucci-logo-transparent-1760x564-v2.png"
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T19:07:03.199Z",
+                  "jobPosting": "GUCCI | Client Advisor - Woodbury Commons",
+                  "description": "<div><p><b><span>Role Mission</span></b><span> </span></p></div><div><div><p><span><span>As the Client Advisor,<span> </span></span><span>you<span> </span></span><span>are the<span> </span></span><span>Gucci brand ambassador<span> </span></span><span>responsible for achieving<span> </span></span><span>sales</span><span><span> </span></span><span>objectives</span><span><span> </span>by deepening<span> </span></span><span>client</span><span><span> </span>connections to<span> </span></span><span>Gucci<span> </span></span><span>and providing them with the</span><span><span> </span></span><span>best-in-class service</span><span>,</span><span><span> </span></span><span>elevated and<span> </span></span><span>uniq</span><span>ue experience</span><span>, and<span> </span></span><span>strong client<span> </span></span><span>relationships</span><span>. </span></span><span> </span></p></div><div><p><span> </span></p></div><div><p><b><span>Key Accountabilities</span></b><span> </span></p></div><div><p><b><span>Client Journey</span></b><span><span> </span></span><span> </span></p></div><div><ul><li><p><span><span>Proactively engage and<span> </span></span><span>establish</span><span><span> </span></span><span>strong relationships with clients, making the client feel valued</span><span><span> </span>and at ease</span><span><span> </span>from the first point of contact by offering best</span><span>-</span><span>in</span><span>-</span><span>class service be it<span> </span></span><span>in-store</span><span><span> </span>or remotely. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Deliver a personalized, client-centric experience, fostering strong and lasting relationships to drive repeat business and enhance brand loyalty.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Build rapport with clients by discovering their needs</span><span><span> </span>and aspirations</span><span>,</span><span><span> </span>creating</span><span><span> </span></span><span>connections</span><span><span> </span>and<span> </span></span><span>bonds</span><span>,<span> </span></span><span>and<span> </span></span><span>demonstrating</span><span><span> </span>generosity and desire to exceed their expectations</span><span>. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Develop client base by recruiting new clients and developing existing ones. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Leverage in-store technology to ensure every client’s experience<span> </span></span><span>is s</span><span>mooth, pleasant, and<span> </span></span><span>relevant.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Collect meaningful client information throughout the client journey to understand their preferences to customize the service provided to them. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Create and add value</span><span><span> </span>to the client’s experience by providing them with useful insights on local lifestyle trends (Theater, arts, travel,<span> </span></span><span>etc</span><span>…</span><span>)</span><span>.</span></span><span> </span></p></li></ul></div><div><p><span><span> </span></span><span> </span></p></div><div><p><b><span>Sales Excellence</span></b><span> </span></p></div><div><ul><li><p><span><span>Drive individual and collective sales results and maxim</span><span>ize</span><span><span> </span>selling opportunities<span> </span></span><span>in-store</span><span><span> </span>and remotely. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Provide exceptional<span> </span></span><span>client</span><span><span> </span>experience, focusing on hospitality and elevation through selling skills, luxury gestures</span><span>,</span><span><span> </span>and product rituals.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Use effective selling techniques in a natural, warm, and elevated manner</span><span><span> </span>to<span> </span></span><span>drive sales<span> </span></span><span>and<span> </span></span><span>a<span> </span></span><span>client</span><span>-centric</span><span><span> </span>attitude</span><span>.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Select the right products matched to client needs and benefits and effectively<span> </span></span><span>use</span><span><span> </span></span><span>cross and</span><span><span> </span>upselling techniques. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Proactively promote virtual appointments and distance sales by seeking to recruit clients to create selling opportunities.</span><span> </span></span><span> </span></p></li></ul></div></div><div><div><ul><li><p><span><span>Maintain a “</span><span>One-</span><span>Gucci</span><span>-</span><span>Client” perspective<span> </span></span><span>regardless of purchase location,<span> </span></span><span>on<span> </span></span><span>exchange,</span><span><span> </span>returns,<span> </span></span><span>repairs,<span> </span></span><span>and other<span> </span></span><span>such transactions</span><span><span> </span>that are critical to a positive<span> </span></span><span>client</span><span><span> </span>experience. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Guide and inspire the client to make the best possible decision to buy the right product. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Foster open and constructive communication with team members</span><span>, being</span><span><span> </span>always collaborative and proposing effective solutions</span><span>.</span></span><span> </span></p></li></ul></div><div><p><span> </span></p></div><div><p><b><span>Brand &amp; Product </span></b><span> </span></p></div><div><ul><li><p><span><span>Using knowledge of Gucci and our products,<span> </span></span><span>engage</span><span><span> </span>with the<span> </span></span><span>clients</span><span><span> </span>using storytelling</span><span>, expert product knowledge,<span> </span></span><span>and<span> </span></span><span>honest styling advice to<span> </span></span><span>assist</span><span><span> </span>them in making informed purchasing decisions.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Proactively attend<span> </span></span><span>trainings</span><span><span> </span>to gain insights on product knowledge</span><span><span> </span>and selling techniques. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Ensure</span><span><span> </span>to be up-to-date knowing fashion trends and competitors (products, campaigns, fashion trends, services,<span> </span></span><span>etc</span><span>) and clients’ segmentation<span> </span></span><span>to</span><span><span> </span></span><span>come up with</span><span><span> </span>the best<span> </span></span><span>possible solutions</span><span><span> </span>for our clients. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Combines styling knowledge with the ability to offer products to best serve the client. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Embody<span> </span></span><span>Gucci&#39;s philosophy, values, and lifestyle<span> </span></span><span>with an enthusiastic attitude.</span></span><span> </span></p></li></ul></div><div><p><span> </span></p></div><div><p><b><span>Operational</span></b><span><span><span> </span></span></span><b><span>Excellence</span></b><span> </span></p></div><div><ul><li><p><span><span>Actively<span> </span></span><span>participate</span><span><span> </span></span><span>in</span><span><span> </span>all store operations such as stock maintenance, stock inventories, etc</span><span>.</span><span> </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Adhere to all policies and procedures with a focus on loss prevention and operational excellence.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Accurately process all POS transactions and ensure<span> </span></span><span>accurate</span><span><span> </span>capture of<span> </span></span><span>client</span><span><span> </span></span><span>information.</span><span> </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Contribute to upholding the visual display of all products<span> </span></span><span>following</span><span><span> </span>Gucci visual standards.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Follow Company<span> </span></span><span>grooming at all times</span><span><span> </span>and according<span> </span></span><span>to</span><span><span> </span>Gucci standards and policies.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Ensure<span> </span></span><span>optimal</span><span><span> </span></span><span>levels of products on the sales floor in line with corporate policies and<span> </span></span><span>procedures.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Manage general store administration</span><span><span> </span>and functionality. </span></span><span> </span></p></li></ul></div><div><p><span> </span></p></div></div><div><div><p><b><span>Requirements</span></b><span> </span></p></div><div><ul><li><p><span><span>2</span><span>&#43; years of luxury fashion sales experience</span><span><span> </span>and excellent<span> </span></span><span>track record</span><span>,</span><span><span> </span>preferably in a similar role or customer service setting.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Proven ability to drive and exceed individual and store results and build lasting relationships with customers and colleagues.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>High degree of ethics, professionalism, integrity, and ability to inspire trust and collaboration amongst colleagues. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Flexibility to<span> </span></span><span>work</span><span><span> </span>a retail schedule which will include evenings, weekends, and holidays.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Deep</span><span><span> </span>knowledge<span> </span></span><span>about and</span><span><span> </span>passion for</span><span><span> </span>fashion and luxury</span><span>.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Excellent commercial awareness and<span> </span></span><span>client</span><span><span> </span>attitude</span><span>.</span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>High flexibility and ability to adapt to different<span> </span></span><span>client</span><span>s</span><span><span> </span>and complex situations. </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Strong communication</span><span><span> </span>skills</span><span>.</span><span> </span></span><span> </span></p></li></ul></div><div><ul><li><p><span><span>Ability to work in a<span> </span></span><span>fast-moving</span><span><span> </span>and dynamic<span> </span></span><span>environment</span><span>.</span></span><span> </span></p></li></ul></div><div><p></p><p><span><span>We are passionate makers</span><span><span> </span>and bold</span><span><span> </span>thought leaders. If you feel like us, grab this chance and be part of our community! &#34;Gucci is committed to building a diverse workforce. We believe diversity in all its forms – gender, age, disability, race, ethnicity, nationality, culture, religious </span><span>beliefs</span><span> and sexual orientation – enriches the workplace. It </span><span>opens up</span><span> opportunities for people to express their talent, both individually and collectively, and it helps foster our ability to adapt to a changing world. As an Equal Opportunity Employer, we welcome and consider applications from all qualified candidates, regardless of their background.</span></span><span> </span></p></div><div><p><span> </span></p></div><div><p><span><span>Our Gucci community is committed to providing a culture of inclusivity and accessibility in all aspects of the employee life cycle – starting with the candidate experience.  If you are interested in applying for employment with us and require reasonable accommodation to </span><span>assist</span><span> with any part of the application and/or interview process, please contact us by email at </span></span><a href=\"mailto:name.nom&#64;kering.com\" target=\"_blank\"><b><span>accessibility.americas&#64;gucci.com</span></b></a><span><span>.     </span></span><span> </span></p></div><div><p><span><span>When contacting us, please provide your contact information, the role you have applied to, and the nature of your accessibility </span><span>need</span><span>. Please only send inquiries concerning requests for reasonable<span> </span></span><span>accommodations</span><span>. </span></span><span> </span></p><p></p><div><p><span><span>For individuals assigned and/or hired to work in New York, GUCCI includes a reasonable estimate of the salary or hourly rate range for this role. This<span> </span></span><span>takes into account</span><span><span> </span>the wide range of factors that are considered in making compensation<span> </span></span><span>decisions;</span><span><span> </span>including but not limited to business or organizational needs, skill sets, experience and training, licensure, and certifications. In addition, where a candidate falls within the disclosed<span> </span></span><span>range</span><span><span> </span>estimate may be dependent on the applicable geographic differential associated with the location in which the position may be filled</span><span>.  </span></span><span> </span></p></div><div><p><span> </span></p></div><div><p><span><span>A reasonable estimate of the current base salary range is $17.00 - 18.00</span></span><span><span><span> </span>USD</span><span>.  </span></span><span> </span></p></div></div></div>",
+                  "summary": "Founded in Florence, Italy, in 1921, Gucci is one of the world’s leading luxury brands. Under the leadership of President and CEO Francesca Bellettini and the artistic direction of Demna, the House continues to redefine luxury and fashion while celebrating creativity, Italian craftsmanship, and innovation.  \n\nGucci is part of the global luxury group Kering, which manages renowned Houses in fashion, leather goods, jewelry, and eyewear.  satisfaction.",
+                  "workerSubType": "Regular",
+                  "jobFamily": "Sales",
+                  "jobFamilyId": "Sales_/_Omni-Channel",
+                  "jobTimeType": "Full time",
+                  "locationCity": "CENTRAL VALLEY",
+                  "locationCountry": "United States of America",
+                  "continent": "northern_america",
+                  "url": "https://careers.kering.com/careers/R165565",
+                  "path": "gucci-or-client-advisor-woodbury-commons"
+                },
+                {
+                  "jobId": "9b42c1495d221001fb0d964c82e00001",
+                  "houseName": "Bottega Veneta",
+                  "houseImage": {
+                    "id": "553840",
+                    "src": "https://assets-keringcom.keringapps.com/Kering_job_offer_asset_7ed632ebc7.jpg",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "531628",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_Bottega_Veneta_320x320px_d41c634ecb.png",
+                    "alt": "Logo_Bottega-Veneta_320x320px.png"
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "553841",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_desktop_5fe05efc10.jpg",
+                      "width": 3520,
+                      "height": 1128,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "553842",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_mobile_0739eec612.jpg",
+                      "width": 1030,
+                      "height": 600,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "531632",
+                    "src": "https://assets-keringcom.keringapps.com/Bottega_Veneta_Logo_Transparent_Job_Desc_936cc50b34.png",
+                    "width": 1760,
+                    "height": 564,
+                    "alt": "Bottega_Veneta_Logo_Transparent_Job_Desc.png"
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T17:19:32.122Z",
+                  "jobPosting": "BOTTEGA VENETA WW Retail Controller",
+                  "description": "<p><b><i>How you will contribute?</i></b></p><p></p><p></p><p>The WW Retail Controller will be part of WW Retail Controlling Team, overseeing all day-to-day operations and contributing to key cross‑functional projects.</p><p>He/she:</p><ul><li><span>Will be responsible for the preparation of periodical management reporting</span></li><li><span>Will be responsible for the preparation of periodical Kering reporting</span></li><li><span>Will contribute actively to the monthly, quarterly, and year</span><span>‑</span><span>end financial closing processes</span></li><li><span>Will participate in the annual budget and periodic forecast process</span></li><li><span>Will support the maintenance and enhancement of business intelligence tools</span></li><li><span>Will collaborate closely with Regional Finance teams and corporate departments</span></li><li><span>Will conduct detailed analyses of revenues, costs, investments and profitability by region and channel, ensuring consistency between actual and applied planning logic</span></li></ul><p></p><p><b><i><span>Who you are?</span></i></b></p><p></p><ul><li><span>At least 3-4 years of experience in controlling, preferably in retail, fashion, or luxury</span></li><li><span>Degree in Economics or Management Engineering</span></li><li><span>Fluent in English</span></li><li><span>Naturally accurate and deadline-oriented</span></li><li><span>Advanced user of MS Office pack, especially MS Excel and Power Point</span></li><li><span>Collaborative skills and ability to work well within a team</span></li><li><span>Analytical skills </span></li><li><span>Proactive and problem-solving attitude</span></li></ul><p></p><p><b><i>Why work with us?</i></b></p><p>This is a fabulous opportunity to join the Kering adventure and to actively contribute to the development of the business by becoming part of a global Luxury Group that offers endless possibilities to learn and grow. Talent development is a managerial principle at Kering and we are committed to fostering internal mobility. Our common vision promotes leadership skills and helps every employee to reach their full potential in a stimulating and fulfilling workplace environment.</p><p><i>Kering is committed to building a diverse workforce. We believe diversity in all its forms – gender, age, nationality, culture, religious beliefs and sexual orientation – enriches the workplace. It opens up opportunities for people to express their talent, both individually and collectively and it helps foster our ability to adapt to a changing world. As an Equal Opportunity Employer we welcome and consider applications from all qualified candidates, regardless of their background.  </i></p><p></p>",
+                  "summary": "About us\n\nInspiring individuality with innovative craftmanship since 1966, creativity lies at the heart of Bottega Veneta. Born in Vicenza, the house is rooted in Italian culture yet maintains a truly global outlook. An inclusive brand with exclusive products, Bottega Veneta is as much of a feeling as it is an aesthetic.",
+                  "workerSubType": "Regular",
+                  "jobFamily": "Finance",
+                  "jobFamilyId": "Finance",
+                  "jobTimeType": "Full time",
+                  "locationCity": "Milano",
+                  "locationCountry": "Italy",
+                  "continent": "europe",
+                  "url": "https://careers.kering.com/careers/R164019",
+                  "path": "bottega-veneta-ww-retail-controller"
+                },
+                {
+                  "jobId": "da5c0a811abf1001f5b6d10112e10000",
+                  "houseName": "Bottega Veneta",
+                  "houseImage": {
+                    "id": "553840",
+                    "src": "https://assets-keringcom.keringapps.com/Kering_job_offer_asset_7ed632ebc7.jpg",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "531628",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_Bottega_Veneta_320x320px_d41c634ecb.png",
+                    "alt": "Logo_Bottega-Veneta_320x320px.png"
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "553841",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_desktop_5fe05efc10.jpg",
+                      "width": 3520,
+                      "height": 1128,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "553842",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_mobile_0739eec612.jpg",
+                      "width": 1030,
+                      "height": 600,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "531632",
+                    "src": "https://assets-keringcom.keringapps.com/Bottega_Veneta_Logo_Transparent_Job_Desc_936cc50b34.png",
+                    "width": 1760,
+                    "height": 564,
+                    "alt": "Bottega_Veneta_Logo_Transparent_Job_Desc.png"
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T15:41:56.745Z",
+                  "jobPosting": "BOTTEGA VENETA PR Intern (Curricular Internship)",
+                  "description": "<p><b>We are currently seeking a PR Intern</b> <b>as part of our dynamic team in Milan.</b></p><p></p><p><b><i>How you will contribute?</i></b></p><ul><li><span>Support and coordination of daily requests &amp; back office for all PR and Comms activities </span></li><li><span>Accountable for HQ Sample Set, ensuring status is updated through Fashion GPS and managing internal requests, including archiving</span></li><li><span>Responsible for supporting GLOBAL PR offices with samples requests for various activities (editorials, VIP fittings and dressing, events, press days)</span></li><li><span>Daily update of the global pr editorial requests book and related tracking number for the shipments of the samples </span></li><li><span>Support Head of PR during fashion shows for sending invitations, seating and hospitality of the guests</span></li><li><span>Talents gifting, seeding and dressing activities: sourcing of products, organization, legal forms, control and shipping</span></li><li><span>Assisting in the preparation of presentations and materials for WW Communication meetings and requests</span></li></ul><p></p><p><b><i>Who you are?</i></b></p><ul><li><span>Successful or ongoing studies in Communication, Marketing, Media or related</span></li><li><span>Eligible for 6 months curricular internship</span></li><li><span>Previous experience in fashion product industry is a plus</span></li><li><span>Knowledge of Fashion GPS</span></li></ul><ul><li><span>Confident use of Microsoft Office pack and Internet Browsers</span></li><li><span>Excellent written and oral communication skills.</span></li><li><span>Fluent in English - both written and spoken – Italian is a plus</span></li><li><span>Organizational skills and ability to handle multiple tasks and meet deadlines in a fast-paced environment</span></li><li><span>Teamwork and good relational skills</span></li><li><span>Good time management skills</span></li></ul><p></p><p><b><i>Why work with us?</i></b></p><p>This is a fabulous opportunity to join the Kering adventure and to actively contribute to the development of the business by becoming part of a global Luxury Group that offers endless possibilities to learn and grow. Talent development is a managerial principle at Kering and we are committed to fostering internal mobility. Our common vision promotes leadership skills and helps every employee to reach their full potential in a stimulating and fulfilling workplace environment.</p><p><i>Kering is committed to building a diverse workforce. We believe diversity in all its forms – gender, age, nationality, culture, religious beliefs and sexual orientation – enriches the workplace. It opens up opportunities for people to express their talent, both individually and collectively and it helps foster our ability to adapt to a changing world. As an Equal Opportunity Employer we welcome and consider applications from all qualified candidates, regardless of their background.  </i></p><p></p>",
+                  "summary": "About us \n \nInspiring individuality with innovative craft since 1966, creativity lies at the heart of Bottega Veneta. \nBorn in Vicenza, the house is rooted in Italian culture yet maintains a global outlook. \nAn inclusive brand with exclusive products, Bottega Veneta is as much a feeling as it is an aesthetic.",
+                  "workerSubType": "Student (Fixed Term) (Trainee)",
+                  "jobFamily": "Communication & Marketing",
+                  "jobFamilyId": "Communication_&_Marketing",
+                  "jobTimeType": "Full time",
+                  "locationCity": "Milano",
+                  "locationCountry": "Italy",
+                  "continent": "europe",
+                  "url": "https://careers.kering.com/careers/R165562",
+                  "path": "bottega-veneta-pr-intern-curricular-internship"
+                },
+                {
+                  "jobId": "9b42c1495d221001f55e567935ec0001",
+                  "houseName": "Bottega Veneta",
+                  "houseImage": {
+                    "id": "553840",
+                    "src": "https://assets-keringcom.keringapps.com/Kering_job_offer_asset_7ed632ebc7.jpg",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "531628",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_Bottega_Veneta_320x320px_d41c634ecb.png",
+                    "alt": "Logo_Bottega-Veneta_320x320px.png"
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "553841",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_desktop_5fe05efc10.jpg",
+                      "width": 3520,
+                      "height": 1128,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "553842",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_mobile_0739eec612.jpg",
+                      "width": 1030,
+                      "height": 600,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "531632",
+                    "src": "https://assets-keringcom.keringapps.com/Bottega_Veneta_Logo_Transparent_Job_Desc_936cc50b34.png",
+                    "width": 1760,
+                    "height": 564,
+                    "alt": "Bottega_Veneta_Logo_Transparent_Job_Desc.png"
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T15:35:21.842Z",
+                  "jobPosting": "BOTTEGA VENETA Project & Construction Intern (Curricular Internship)",
+                  "description": "<p><b>We are currently seeking a Project &amp; Construction Intern as part of our dynamic team in Milan.</b></p><p></p><p><b><i>How you will contribute?</i></b></p><ul><li><span>Gather requirements through meetings and site visits with internal teams (space, headcount, ways of working, technical needs and furniture) </span></li><li><span>Analyze existing spaces and technical/regulatory constraints </span></li><li><span>Support the development of layouts and production of architectural drawings and design solutions </span></li><li><span>Coordinate with internal stakeholders (HR, Finance, Facility, HSE) and external consultants to ensure alignment and compliance </span></li><li><span>Support the definition of project timelines and cost estimates (works, furniture, services) </span></li><li><span>Provide operational support: coordinate suppliers, conduct site inspections, plan activities and monitor project progress </span></li><li><span>Manage logistics for internal moves and setup activities, including communication to impacted users </span></li><li><span>Support administrative and documentation tasks (purchase orders, reporting, meetings, document management) and post-completion follow-up</span></li></ul><p></p><p><b><i><span>Who you are?</span></i></b></p><ul><li><span>University degree in Engineering, Architectural or equivalent.</span></li><li>Eligible for 6 months curricular internship</li><li><span>The ability to work as part of a team with flexibility, a positive attitude and under pressure.</span></li><li><span>Have a positive &amp; proactive attitude </span></li><li><span>Fluent in Italian and English.</span></li><li><span>Ability to work in team.</span></li><li><span>Flexible and adaptable.</span></li><li><span>Microsoft Office, CAD, Adobe Photoshop knowledge</span></li></ul><p></p><p><b><i>Why work with us?</i></b></p><p>This is a fabulous opportunity to join the Kering adventure and to actively contribute to the development of the business by becoming part of a global Luxury Group that offers endless possibilities to learn and grow. Talent development is a managerial principle at Kering and we are committed to fostering internal mobility. Our common vision promotes leadership skills and helps every employee to reach their full potential in a stimulating and fulfilling workplace environment.</p><p><i>Kering is committed to building a diverse workforce. We believe diversity in all its forms – gender, age, nationality, culture, religious beliefs and sexual orientation – enriches the workplace. It opens up opportunities for people to express their talent, both individually and collectively and it helps foster our ability to adapt to a changing world. As an Equal Opportunity Employer we welcome and consider applications from all qualified candidates, regardless of their background.  </i></p><p></p><p></p><p></p>",
+                  "summary": "About us\n\nInspiring individuality with innovative craft since 1966, creativity lies at the heart of Bottega Veneta.\nBorn in Vicenza, the house is rooted in Italian culture yet maintains a global outlook.\nAn inclusive brand with exclusive products, Bottega Veneta is as much a feeling as it is an aesthetic.",
+                  "workerSubType": "Student (Fixed Term) (Trainee)",
+                  "jobFamily": "Architectural Design & Store Planning",
+                  "jobFamilyId": "Corporate_&_Store_Planning",
+                  "jobTimeType": "Full time",
+                  "locationCity": "Milano",
+                  "locationCountry": "Italy",
+                  "continent": "europe",
+                  "url": "https://careers.kering.com/careers/R165559",
+                  "path": "bottega-veneta-project-construction-intern-curricular-internship"
+                },
+                {
+                  "jobId": "9b42c1495d221001f4ce1f34de560001",
+                  "houseName": "Bottega Veneta",
+                  "houseImage": {
+                    "id": "553840",
+                    "src": "https://assets-keringcom.keringapps.com/Kering_job_offer_asset_7ed632ebc7.jpg",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "531628",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_Bottega_Veneta_320x320px_d41c634ecb.png",
+                    "alt": "Logo_Bottega-Veneta_320x320px.png"
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "553841",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_desktop_5fe05efc10.jpg",
+                      "width": 3520,
+                      "height": 1128,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "553842",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_mobile_0739eec612.jpg",
+                      "width": 1030,
+                      "height": 600,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "531632",
+                    "src": "https://assets-keringcom.keringapps.com/Bottega_Veneta_Logo_Transparent_Job_Desc_936cc50b34.png",
+                    "width": 1760,
+                    "height": 564,
+                    "alt": "Bottega_Veneta_Logo_Transparent_Job_Desc.png"
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T15:25:02.466Z",
+                  "jobPosting": "BOTTEGA VENETA Seasonal Client Advisor (FCO Airport)",
+                  "description": "<p><b>We are currently seeking a Seasonal Client Advisor</b> <b>as part of our dynamic team in Fiumicino Airport Store.</b></p><p></p><p><b><i>How will you contribute:</i></b></p><p></p><p>SALES PERFORMANCE</p><ul><li>Finalizes sales targets achievements in line with Company strategy</li><li>Efficiently manages time to accomplish the tasks assigned</li><li>Represents Bottega Veneta brand image</li></ul><p></p><p>CLIENT EXPERIENCE</p><ul><li>Creates an engaging and emotional client experience offering the best-in-class service, in line with Bottega Veneta Client Journey</li><li>Collects and updates client information to ensure an efficient use of CRM</li><li>Embraces the clienteling culture of building strong and long-term relationship with clients</li></ul><p></p><p>STYLING</p><ul><li>Understands luxury, the collections and fashion trends</li><li>Works on silhouettes, brings alternative items to get clients to discover more about the collection</li><li>With the creative vision in mind, confidently advices clients as to how they can style the pieces</li></ul><p></p><p>STORE OPERATIONS</p><ul><li>Keeps the stock tidy, knows and monitors stock deliveries and availabilities, communicates in a timely manner out-of-stock merchandise and any other useful information</li><li>Knows and applies company policies, procedures and guidelines</li></ul><p></p><p><b><i>Who you are:</i></b></p><ul><li>Previous Sales experience preferably in Fashion &amp; Luxury contexts</li><li>Excellent client service attitude and high flexibility to adapt to several types of Clients</li><li>Excellent communication and emphatic skills                  </li><li>Good team player</li><li>Multitasking, flexible</li><li>Capacity to work in a fast moving and dynamic environment and able to build a strong and diversified client portfolio</li><li>Fluency in English and Italian is mandatory</li></ul><p></p><p><b><i>Why work with us?</i></b></p><p></p><p>This is a fabulous opportunity to join the Kering adventure and to actively contribute to the development of the business by becoming part of a global Luxury Group that offers endless possibilities to learn and grow. Talent development is a managerial principle at Kering and we are committed to fostering internal mobility. Our common vision promotes leadership skills and helps every employee to reach their full potential in a stimulating and fulfilling workplace environment.</p><p><i>Kering is committed to building a diverse workforce. We believe diversity in all its forms – gender, age, nationality, culture, religious beliefs and sexual orientation – enriches the workplace. It opens up opportunities for people to express their talent, both individually and collectively and it helps foster our ability to adapt to a changing world. As an Equal Opportunity Employer we welcome and consider applications from all qualified candidates, regardless of their background.  </i></p><p></p>",
+                  "summary": "Inspiring individuality with innovative craftmanship since 1966, creativity lies at the heart of Bottega Veneta. Born in Vicenza, the house is rooted in Italian culture yet maintains a truly global outlook. An inclusive brand with exclusive products, Bottega Veneta is as much of a feeling as it is an aesthetic.",
+                  "workerSubType": "Fixed Term (Fixed Term)",
+                  "jobFamily": "Sales",
+                  "jobFamilyId": "Sales_/_Omni-Channel",
+                  "jobTimeType": "Full time",
+                  "locationCity": "Roma",
+                  "locationCountry": "Italy",
+                  "continent": "europe",
+                  "url": "https://careers.kering.com/careers/R161947",
+                  "path": "bottega-veneta-seasonal-client-advisor-fco-airport"
+                },
+                {
+                  "jobId": "9b42c1495d221001efcaa253e3150001",
+                  "houseName": "Bottega Veneta",
+                  "houseImage": {
+                    "id": "553840",
+                    "src": "https://assets-keringcom.keringapps.com/Kering_job_offer_asset_7ed632ebc7.jpg",
+                    "alt": ""
+                  },
+                  "houseImageOpacity": false,
+                  "houseCalcImage": {
+                    "id": "531628",
+                    "src": "https://assets-keringcom.keringapps.com/Logo_Bottega_Veneta_320x320px_d41c634ecb.png",
+                    "alt": "Logo_Bottega-Veneta_320x320px.png"
+                  },
+                  "houseDescriptionImage": {
+                    "mediaDesktop": {
+                      "id": "553841",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_desktop_5fe05efc10.jpg",
+                      "width": 3520,
+                      "height": 1128,
+                      "alt": ""
+                    },
+                    "mediaMobile": {
+                      "id": "553842",
+                      "src": "https://assets-keringcom.keringapps.com/Kering_job_description_asset_mobile_0739eec612.jpg",
+                      "width": 1030,
+                      "height": 600,
+                      "alt": ""
+                    }
+                  },
+                  "houseDescriptionCalcImage": {
+                    "id": "531632",
+                    "src": "https://assets-keringcom.keringapps.com/Bottega_Veneta_Logo_Transparent_Job_Desc_936cc50b34.png",
+                    "width": 1760,
+                    "height": 564,
+                    "alt": "Bottega_Veneta_Logo_Transparent_Job_Desc.png"
+                  },
+                  "houseCalcDescriptionImageOpacity": false,
+                  "publishedAt": "2026-05-15T13:53:09.912Z",
+                  "jobPosting": "BOTTEGA VENETA - Client Advisor - Harrods",
+                  "pathIndex": 4,
+                  "description": "<p><b>We are currently seeking a Client Advisor for our dynamic team in Harrods. The Client Advisor is entrusted with the mission to advise clients on collections and shares their passion for the brand in order to build strong relationships with them and to create joyful, personalized, and memorable experiences.</b></p><p><b>Who you are:</b></p><p></p><ul><li><p>Proactive and flexible you give useful ideas for everyday activities</p></li><li><p>You efficiently manage time to accomplish the tasks assigned.</p></li><li><p>You are goal oriented, improves KPIs and effectively close sales</p></li><li><p>You understand luxury, the collections and fashion trends.</p></li><li><p>You have an informal, genuine and conversational approach.</p></li><li><p>Can create an engaging and emotional client experience offering the best-in-class service, in line with Bottega Veneta Client Journey</p></li><li><p>You embrace the clienteling culture of building strong and long-term relationship with clients</p></li><li><p>You are able to style the collection with a tailored approach to client&#39;s needs</p></li><li><p>You are able to utilize various sales channels including new technologies</p></li><li><p>You have a positive approach to team work and provide support to colleagues.</p></li><li><p>You know and apply company policies, procedures and guidelines</p></li></ul><p></p><p><i><b>Why work with us?</b></i></p><p></p><p>This is a fabulous opportunity to join the Kering adventure and to actively contribute to the development of the business by becoming part of a global Luxury Group that offers endless possibilities to learn and grow. Talent development is a managerial principle at Kering and we are committed to fostering internal mobility. Our common vision promotes leadership skills and helps every employee to reach their full potential in a stimulating and fulfilling workplace environment.</p><p><i>Kering is committed to building a diverse workforce. We believe diversity in all its forms – gender, age, nationality, culture, religious beliefs and sexual orientation – enriches the workplace. It opens up opportunities for people to express their talent, both individually and collectively and it helps foster our ability to adapt to a changing world. As an Equal Opportunity Employer we welcome and consider applications from all qualified candidates, regardless of their background.  </i></p>",
+                  "summary": "Bottega Veneta – inspiring individuality with innovative craftmanship since 1966. Creativity lies at the heart of all that we do. Born in Vicenza the house is rooted in Italian culture yet maintains a truly global outlook. An inclusive brand with exclusive products Bottega Veneta is as much of a feeling as it is an aesthetic.",
+                  "workerSubType": "Regular",
+                  "jobFamily": "Sales",
+                  "jobFamilyId": "Sales_/_Omni-Channel",
+                  "jobTimeType": "Full time",
+                  "locationCity": "London",
+                  "locationCountry": "United Kingdom",
+                  "continent": "europe",
+                  "url": "https://careers.kering.com/careers/R165546",
+                  "path": "bottega-veneta-client-advisor-harrods-4"
+                }
+              ],
+              "filters": [
+                {
+                  "fieldId": "jobFamilyId",
+                  "fieldLabel": "jobFamily",
+                  "values": [
+                    {
+                      "id": "Corporate_&_Store_Planning",
+                      "label": "Architectural Design & Store Planning"
+                    },
+                    {
+                      "id": "Communication_&_Marketing",
+                      "label": "Communication & Marketing"
+                    },
+                    {
+                      "id": "Design_/_Creative",
+                      "label": "Creative Design"
+                    },
+                    {
+                      "id": "Finance",
+                      "label": "Finance"
+                    },
+                    {
+                      "id": "General_Management",
+                      "label": "General Management"
+                    },
+                    {
+                      "id": "Facilities_&_General_Services",
+                      "label": "General Services & Support"
+                    },
+                    {
+                      "id": "Human_Resources",
+                      "label": "Human Resources"
+                    },
+                    {
+                      "id": "Industrial_Operations",
+                      "label": "Industrial Operations"
+                    },
+                    {
+                      "id": "Legal_/_Compliance",
+                      "label": "Legal & Compliance"
+                    },
+                    {
+                      "id": "Merchandising",
+                      "label": "Merchandising"
+                    },
+                    {
+                      "id": "Sales_/_Omni-Channel",
+                      "label": "Sales"
+                    },
+                    {
+                      "id": "Sustainability_&_Business_Strategy",
+                      "label": "Strategy"
+                    },
+                    {
+                      "id": "Supply_Chain",
+                      "label": "Supply Chain"
+                    },
+                    {
+                      "id": "JOB_FAMILY-6-123",
+                      "label": "Sustainability"
+                    },
+                    {
+                      "id": "Information_&_Digital_Technologies",
+                      "label": "Tech & Digital"
+                    }
+                  ]
+                }
+              ],
+              "totalJobNumber": 1216,
+              "region": null,
+              "house": null,
+              "totalPages": 102,
+              "houseList": [
+                {
+                  "originalId": "Balenciaga",
+                  "id": "Balenciaga",
+                  "label": "Balenciaga"
+                },
+                {
+                  "originalId": "Bottega Veneta",
+                  "id": "Bottega_Veneta",
+                  "label": "Bottega Veneta"
+                },
+                {
+                  "originalId": "Boucheron",
+                  "id": "Boucheron",
+                  "label": "Boucheron"
+                },
+                {
+                  "originalId": "Brioni",
+                  "id": "Brioni",
+                  "label": "Brioni"
+                },
+                {
+                  "originalId": "DoDo",
+                  "id": "DoDo",
+                  "label": "DoDo"
+                },
+                {
+                  "originalId": "Ginori 1735",
+                  "id": "Ginori_1735",
+                  "label": "Ginori 1735"
+                },
+                {
+                  "originalId": "Gucci",
+                  "id": "Gucci",
+                  "label": "Gucci"
+                },
+                {
+                  "originalId": "Kering",
+                  "id": "Kering",
+                  "label": "Kering"
+                },
+                {
+                  "originalId": "Kering Eyewear",
+                  "id": "Kering_Eyewear",
+                  "label": "Kering Eyewear"
+                },
+                {
+                  "originalId": "McQueen",
+                  "id": "McQueen",
+                  "label": "McQueen"
+                },
+                {
+                  "originalId": "Pomellato",
+                  "id": "Pomellato",
+                  "label": "Pomellato"
+                },
+                {
+                  "originalId": "Qeelin",
+                  "id": "Qeelin",
+                  "label": "Qeelin"
+                },
+                {
+                  "originalId": "Saint Laurent",
+                  "id": "Saint_Laurent",
+                  "label": "Saint Laurent"
+                }
+              ]
+            }
+          },
+          {
+            "key": "ComponentSharedCapitalMarketDays13766",
+            "type": "text-cta-on-image",
+            "props": {
+              "header": "",
+              "title": "Can’t find a role that fits right now ?",
+              "description": "<p style=\"text-align:center;\">Send us your CV today. Our team is always on the lookout for extraordinary talent for open positions.</p>",
+              "backgroundImgURL": {
+                "mediaDesktop": {
+                  "id": "550162",
+                  "src": "https://assets-keringcom.keringapps.com/1760x567_kering_visu_escaliers_901a6763a9_4f6457e0f6_1_80822ab749_fbe068e9e7.jpg",
+                  "width": 1760,
+                  "height": 567,
+                  "alt": ""
+                },
+                "mediaMobile": {
+                  "src": "/images/fallback.jpg",
+                  "width": 313,
+                  "height": 313
+                }
+              },
+              "link": {
+                "text": "Submit your CV",
+                "to": "https://careers.kering.com/careers/join?domain=kering.com"
+              },
+              "size": "large",
+              "hasBackdrop": true,
+              "hasZoomOnHover": true,
+              "openInNewTab": true
+            }
+          },
+          {
+            "key": "ComponentJobsCreateJobAlert1071",
+            "type": "create-job-alert",
+            "props": {
+              "brandsList": [
+                "Balenciaga",
+                "Bottega Veneta",
+                "Boucheron",
+                "Brioni",
+                "DoDo",
+                "Ginori 1735",
+                "Gucci",
+                "Kering",
+                "Kering Eyewear",
+                "McQueen",
+                "Pomellato",
+                "Qeelin",
+                "Saint Laurent"
+              ],
+              "filters": [
+                {
+                  "fieldId": "jobFamilyId",
+                  "fieldLabel": "jobFamily",
+                  "values": [
+                    {
+                      "id": "Corporate_&_Store_Planning",
+                      "label": "Architectural Design & Store Planning"
+                    },
+                    {
+                      "id": "Communication_&_Marketing",
+                      "label": "Communication & Marketing"
+                    },
+                    {
+                      "id": "Design_/_Creative",
+                      "label": "Creative Design"
+                    },
+                    {
+                      "id": "Finance",
+                      "label": "Finance"
+                    },
+                    {
+                      "id": "General_Management",
+                      "label": "General Management"
+                    },
+                    {
+                      "id": "Facilities_&_General_Services",
+                      "label": "General Services & Support"
+                    },
+                    {
+                      "id": "Human_Resources",
+                      "label": "Human Resources"
+                    },
+                    {
+                      "id": "Industrial_Operations",
+                      "label": "Industrial Operations"
+                    },
+                    {
+                      "id": "Legal_/_Compliance",
+                      "label": "Legal & Compliance"
+                    },
+                    {
+                      "id": "Merchandising",
+                      "label": "Merchandising"
+                    },
+                    {
+                      "id": "Sales_/_Omni-Channel",
+                      "label": "Sales"
+                    },
+                    {
+                      "id": "Sustainability_&_Business_Strategy",
+                      "label": "Strategy"
+                    },
+                    {
+                      "id": "Supply_Chain",
+                      "label": "Supply Chain"
+                    },
+                    {
+                      "id": "JOB_FAMILY-6-123",
+                      "label": "Sustainability"
+                    },
+                    {
+                      "id": "Information_&_Digital_Technologies",
+                      "label": "Tech & Digital"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "key": "ComponentSharedTitle3440",
+            "type": "title",
+            "props": {
+              "title": "Discover Kering Highlights ",
+              "paragraph": "<p style=\"text-align:center;\">Kering Highlights is the <a href=\"https://www.kering.com/en/group/kering-highlights/\" target=\"_blank\" rel=\"noopener noreferrer\">Group’s online magazine</a>, showcasing its commitment to culture and heritage, craft and innovation, sustainability, and women celebration.&nbsp;</p>"
+            }
+          },
+          {
+            "key": "ComponentSharedHighlightsNewsletterSubscription17",
+            "type": "highlights-newsletter-sub-form",
+            "props": {
+              "image": {
+                "src": "/images/highLightsSubFormFallBack.jpg",
+                "width": 326,
+                "height": 471,
+                "alt": "default"
+              }
+            }
+          },
+          {
+            "key": "ComponentSharedTitle3274",
+            "type": "title",
+            "props": {
+              "title": "Find a job opportunity by region",
+              "paragraph": "Kering is an international Luxury group offering job opportunities all around the world. Look for a job opportunity by region and come and flourish in a Group that knows no bounds!"
+            }
+          },
+          {
+            "key": "ComponentSharedJobOffersMap81",
+            "type": "job-offers-map",
+            "props": {
+              "jobsInAfrica": 27,
+              "jobsInAsia": 311,
+              "jobsInEurope": 621,
+              "jobsInOceania": 21,
+              "jobsInNorthAmerica": 205,
+              "jobsInSouthAmerica": 31
+            }
+          }
+        ]
+      },
+      "isPreview": false,
+      "isDraftUrl": false
+    },
+    "__N_SSP": true
+  },
+  "page": "/[...path]",
+  "query": {
+    "path": [
+      "talent",
+      "job-offers"
+    ]
+  },
+  "buildId": "2C0QbwvIZjLPxAWoBA8k1",
+  "isFallback": false,
+  "isExperimentalCompile": false,
+  "dynamicIds": [
+    16824,
+    51415,
+    23185,
+    41422,
+    71471,
+    51161
+  ],
+  "gssp": true,
+  "locale": "en",
+  "locales": [
+    "default",
+    "en",
+    "fr",
+    "it",
+    "cn",
+    "jp"
+  ],
+  "defaultLocale": "default",
+  "scriptLoader": []
+}

@@ -58,6 +58,12 @@ COMPANY_NAMES = {
     "creditagricole.assurances": "Crédit Agricole Assurances",
     "orano": "Orano",
     "soprasteria": "Sopra Steria",
+    "airbus": "Airbus",
+    "kering": "Kering",
+    "stellantis": "Stellantis",
+    "criteo": "Criteo",
+    "natixis": "Natixis",
+    "axa": "AXA",
 }
 
 
