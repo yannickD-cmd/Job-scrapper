@@ -261,6 +261,7 @@ def _coerce_identifier(payload: dict) -> str | None:
 def _enrich(session: requests.Session, job: Job) -> bool:
     response = session.get(job.apply_url, timeout=REQUEST_TIMEOUT)
     response.raise_for_status()
+    response.encoding = "utf-8"
 
     payload = _parse_detail_payload(response.text)
     if not payload:
@@ -290,6 +291,7 @@ def scrape() -> list[dict]:
         url = LISTING_URL.format(page=page)
         response = session.get(url, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
+        response.encoding = "utf-8"  # server omits charset → requests defaults to latin-1
 
         page_jobs, total_pages = _parse_listing_page(response.text)
         for j in page_jobs:
