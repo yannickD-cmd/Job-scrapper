@@ -243,14 +243,12 @@
         return;
       }
       if (j.conclusion === 'success') {
-        setStatus('emerald', 'Done. Reloading dashboard…');
-        if (j.log_tail) { runLog.textContent = j.log_tail; runLog.classList.remove('hidden'); }
-        setTimeout(() => window.location.reload(), 1500);
+        setStatus('emerald', 'Done. Click Refresh to load new offers.');
       } else {
         setStatus('rose', `Finished: ${j.conclusion}`);
-        if (j.log_tail) { runLog.textContent = j.log_tail; runLog.classList.remove('hidden'); }
-        if (freshBtn) freshBtn.disabled = false;
       }
+      if (j.log_tail) { runLog.textContent = j.log_tail; runLog.classList.remove('hidden'); }
+      if (freshBtn) freshBtn.disabled = false;
     } catch (e) {
       setStatus('rose', 'Lost connection to status endpoint.');
       if (freshBtn) freshBtn.disabled = false;
