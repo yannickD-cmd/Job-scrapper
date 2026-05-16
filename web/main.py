@@ -7,6 +7,7 @@ supabasePW, SUPABASE_POOLER_HOST) as the scrapers.
 Routes:
   GET  /                                dashboard page with filters
   GET  /api/jobs/{id}/description       JSON payload for the description modal
+  POST /api/jobs/{id}/to-apply          toggle the "to apply" flag from the modal
   POST /api/run/{company}               dispatch scrape-one.yml on GitHub Actions
   GET  /api/run/{run_id}/status         poll run status + log tail when finished
 """
@@ -98,12 +99,15 @@ def dashboard(
     location: list[str] = Query(default=[]),
     q: str | None = None,
     show_closed: bool = False,
+    to_apply: bool = False,
 ):
     where: list[str] = []
     params: list = []
 
     if not show_closed:
         where.append("still_open = TRUE")
+    if to_apply:
+        where.append("to_apply = TRUE")
     if company:
         where.append("company = %s")
         params.append(company)
@@ -119,7 +123,7 @@ def dashboard(
 
     jobs_sql = f"""
         SELECT id, company, title, location, category, posted_date,
-               first_seen_at, still_open, apply_url,
+               first_seen_at, still_open, apply_url, to_apply,
                (first_seen_at >= NOW() - INTERVAL '7 days') AS is_new
         FROM jobs
         {where_sql}
@@ -151,7 +155,8 @@ def dashboard(
               COUNT(DISTINCT company) FILTER (WHERE still_open),
               COUNT(*) FILTER (
                 WHERE still_open AND first_seen_at >= NOW() - INTERVAL '7 days'
-              )
+              ),
+              COUNT(*) FILTER (WHERE to_apply)
             FROM jobs
         """)[0]
 
@@ -166,7 +171,8 @@ def dashboard(
             "first_seen_at": r[6],
             "still_open": r[7],
             "apply_url": r[8],
-            "is_new": r[9],
+            "to_apply": r[9],
+            "is_new": r[10],
         }
         for r in rows
     ]
@@ -179,12 +185,14 @@ def dashboard(
             "total_open": stats_row[0],
             "companies": stats_row[1],
             "new_this_week": stats_row[2],
+            "to_apply": stats_row[3],
         },
         "selected_company": company or "",
         "selected_company_key": KEY_BY_DISPLAY.get(company or ""),
         "selected_locations": location,
         "q": q or "",
         "show_closed": show_closed,
+        "to_apply_filter": to_apply,
         "result_count": len(jobs),
     })
 
@@ -194,7 +202,7 @@ def job_description(job_id: int):
     with db.get_connection() as conn, conn.cursor() as cur:
         cur.execute(
             "SELECT title, company, location, category, posted_date, "
-            "       description, apply_url, still_open "
+            "       description, apply_url, still_open, to_apply "
             "FROM jobs WHERE id = %s",
             (job_id,),
         )
@@ -210,7 +218,23 @@ def job_description(job_id: int):
         "description": row[5] or "",
         "apply_url": row[6],
         "still_open": row[7],
+        "to_apply": row[8],
     })
+
+
+@app.post("/api/jobs/{job_id}/to-apply")
+def toggle_to_apply(job_id: int):
+    with db.get_connection() as conn, conn.cursor() as cur:
+        cur.execute(
+            "UPDATE jobs SET to_apply = NOT to_apply "
+            "WHERE id = %s RETURNING to_apply",
+            (job_id,),
+        )
+        row = cur.fetchone()
+        conn.commit()
+    if not row:
+        raise HTTPException(status_code=404, detail="Job not found")
+    return JSONResponse({"to_apply": row[0]})
 
 
 def _gh_session() -> tuple[requests.Session, str]:

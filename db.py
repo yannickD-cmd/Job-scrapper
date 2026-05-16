@@ -63,6 +63,7 @@ CREATE TABLE IF NOT EXISTS jobs (
     still_open      BOOLEAN NOT NULL DEFAULT TRUE,
     apply_url       TEXT NOT NULL,
     raw_payload     JSONB,
+    to_apply        BOOLEAN NOT NULL DEFAULT FALSE,
     UNIQUE (company, native_job_id)
 );
 

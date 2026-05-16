@@ -40,12 +40,20 @@
         <div class="text-zinc-500 uppercase tracking-wider text-xs">New this week</div>
         <div class="text-2xl font-semibold text-emerald-400">{{ stats.new_this_week }}</div>
       </div>
+      <a href="/?to_apply=1"
+         class="border rounded-lg px-3 py-2 text-sm flex items-center gap-2
+                {% if to_apply_filter %}border-amber-400 text-amber-300 bg-amber-400/10{% else %}border-zinc-700 text-zinc-300 hover:border-amber-500 hover:text-amber-300{% endif %}">
+        <span>★</span>
+        <span>To apply</span>
+        <span class="text-xs px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">{{ stats.to_apply }}</span>
+      </a>
     </div>
   </div>
 </header>
 
 <section class="max-w-6xl mx-auto px-6 pb-6">
   <form method="get" action="/" class="grid gap-3 sm:grid-cols-[1fr_1fr_2fr_auto_auto] items-center bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4">
+    {% if to_apply_filter %}<input type="hidden" name="to_apply" value="1">{% endif %}
     <select name="company" onchange="this.form.submit()"
             class="min-w-0 w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
       <option value="">All companies</option>
@@ -174,7 +182,12 @@
     <div id="modal-body" class="modal-body px-6 py-5 overflow-y-auto text-sm text-zinc-300 leading-relaxed flex-1">
       Loading…
     </div>
-    <div class="px-6 py-4 border-t border-zinc-800 flex justify-end">
+    <div class="px-6 py-4 border-t border-zinc-800 flex justify-between items-center gap-3">
+      <button id="modal-to-apply" type="button" data-on="false"
+              class="border border-zinc-700 text-zinc-300 px-4 py-2 rounded-lg text-sm hover:border-amber-500 hover:text-amber-300 flex items-center gap-2">
+        <span id="modal-to-apply-icon">☆</span>
+        <span id="modal-to-apply-label">Save for later</span>
+      </button>
       <a id="modal-apply" href="#" target="_blank" rel="noopener"
          class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-200">
         Apply →
@@ -200,6 +213,34 @@
   const modalMeta  = document.getElementById('modal-meta');
   const modalBody  = document.getElementById('modal-body');
   const modalApply = document.getElementById('modal-apply');
+  const modalToApply      = document.getElementById('modal-to-apply');
+  const modalToApplyIcon  = document.getElementById('modal-to-apply-icon');
+  const modalToApplyLabel = document.getElementById('modal-to-apply-label');
+  let modalJobId = null;
+
+  function renderToApply(on) {
+    modalToApply.dataset.on = on ? 'true' : 'false';
+    modalToApplyIcon.textContent = on ? '★' : '☆';
+    modalToApplyLabel.textContent = on ? 'Saved' : 'Save for later';
+    modalToApply.className = on
+      ? 'border border-amber-500 text-amber-300 bg-amber-500/10 px-4 py-2 rounded-lg text-sm hover:bg-amber-500/20 flex items-center gap-2'
+      : 'border border-zinc-700 text-zinc-300 px-4 py-2 rounded-lg text-sm hover:border-amber-500 hover:text-amber-300 flex items-center gap-2';
+  }
+
+  modalToApply.addEventListener('click', async () => {
+    if (!modalJobId) return;
+    modalToApply.disabled = true;
+    try {
+      const r = await fetch(`/api/jobs/${modalJobId}/to-apply`, { method: 'POST' });
+      if (!r.ok) throw new Error('toggle failed');
+      const j = await r.json();
+      renderToApply(j.to_apply);
+    } catch (e) {
+      modalToApplyLabel.textContent = 'Save failed';
+    } finally {
+      modalToApply.disabled = false;
+    }
+  });
 
   function openModal() { modal.classList.remove('hidden'); }
   function closeModal() { modal.classList.add('hidden'); }
@@ -285,10 +326,12 @@
   document.querySelectorAll('.job-row').forEach(row => {
     row.addEventListener('click', async () => {
       const id = row.dataset.jobId;
+      modalJobId = id;
       modalTitle.textContent = 'Loading…';
       modalMeta.textContent = '';
       modalBody.textContent = 'Loading…';
       modalApply.href = '#';
+      renderToApply(false);
       openModal();
       try {
         const r = await fetch(`/api/jobs/${id}/description`);
@@ -302,6 +345,7 @@
         modalBody.innerHTML = j.description
           || '<span class="text-zinc-500">No description captured for this job.</span>';
         modalApply.href = j.apply_url;
+        renderToApply(j.to_apply);
       } catch (e) {
         modalBody.textContent = 'Failed to load description.';
       }
