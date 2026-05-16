@@ -14,7 +14,7 @@ import re
 import sys
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 
@@ -53,7 +53,7 @@ def _extract_cities(raw_locations: list[str]) -> list[str]:
 def dashboard(
     request: Request,
     company: str | None = None,
-    location: str | None = None,
+    location: list[str] = Query(default=[]),
     q: str | None = None,
     show_closed: bool = False,
 ):
@@ -66,8 +66,8 @@ def dashboard(
         where.append("company = %s")
         params.append(company)
     if location:
-        where.append("location ILIKE %s")
-        params.append(f"%{location}%")
+        where.append("location ILIKE ANY(%s)")
+        params.append([f"%{loc}%" for loc in location])
     if q:
         where.append("(title ILIKE %s OR COALESCE(description, '') ILIKE %s)")
         like = f"%{q}%"
@@ -133,7 +133,7 @@ def dashboard(
             "new_this_week": stats_row[2],
         },
         "selected_company": company or "",
-        "selected_location": location or "",
+        "selected_locations": location,
         "q": q or "",
         "show_closed": show_closed,
         "result_count": len(jobs),

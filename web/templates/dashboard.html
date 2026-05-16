@@ -53,12 +53,30 @@
       {% endfor %}
     </select>
 
-    <select name="location" class="min-w-0 w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
-      <option value="">All locations</option>
-      {% for l in locations %}
-        <option value="{{ l }}" {% if l == selected_location %}selected{% endif %}>{{ l }}</option>
-      {% endfor %}
-    </select>
+    <div class="relative min-w-0 w-full">
+      <button type="button" id="loc-btn"
+              class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm text-left flex items-center justify-between gap-2 hover:border-zinc-600 focus:outline-none focus:border-zinc-600">
+        <span class="truncate">
+          {% if selected_locations %}
+            {{ selected_locations|length }} location{{ 's' if selected_locations|length > 1 else '' }} selected
+          {% else %}
+            All locations
+          {% endif %}
+        </span>
+        <span class="text-zinc-500 shrink-0">▾</span>
+      </button>
+      <div id="loc-dropdown"
+           class="hidden absolute z-20 mt-1 left-0 right-0 bg-zinc-900 border border-zinc-800 rounded-lg max-h-72 overflow-y-auto p-1 shadow-xl">
+        {% for l in locations %}
+          <label class="flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-zinc-800 rounded cursor-pointer">
+            <input type="checkbox" name="location" value="{{ l }}"
+                   class="rounded border-zinc-700 bg-zinc-950"
+                   {% if l in selected_locations %}checked{% endif %}>
+            <span>{{ l }}</span>
+          </label>
+        {% endfor %}
+      </div>
+    </div>
 
     <input type="text" name="q" value="{{ q }}" placeholder="Search title or description…"
            class="min-w-0 w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
@@ -88,30 +106,27 @@
     {% for job in jobs %}
       <button type="button"
               data-job-id="{{ job.id }}"
-              class="job-row w-full text-left grid grid-cols-[auto_1fr_auto] gap-4 items-center px-5 py-4 hover:bg-zinc-900/60 transition {% if not job.still_open %}opacity-50{% endif %}">
-        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-semibold text-zinc-300">
-          {{ job.company[:1] }}
-        </div>
+              class="job-row w-full text-left block px-5 py-4 hover:bg-zinc-900/60 transition {% if not job.still_open %}opacity-50{% endif %}">
         <div class="min-w-0">
-          <div class="flex items-center gap-2">
-            <span class="font-medium truncate">{{ job.title }}</span>
+          <div class="flex items-start gap-2 flex-wrap">
+            <span class="font-medium break-words">{{ job.title }}</span>
             {% if job.is_new and job.still_open %}
-              <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">NEW</span>
+              <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mt-0.5 shrink-0">NEW</span>
             {% endif %}
             {% if not job.still_open %}
-              <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-zinc-700 text-zinc-300">CLOSED</span>
+              <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-zinc-700 text-zinc-300 mt-0.5 shrink-0">CLOSED</span>
             {% endif %}
           </div>
-          <div class="text-sm text-zinc-400 truncate">
+          <div class="text-sm text-zinc-400 mt-1 break-words">
             {{ job.company }}{% if job.location %} · {{ job.location }}{% endif %}{% if job.category %} · {{ job.category }}{% endif %}
           </div>
-        </div>
-        <div class="text-xs text-zinc-500 text-right whitespace-nowrap">
-          {% if job.posted_date %}
-            {{ job.posted_date.strftime('%Y-%m-%d') }}
-          {% else %}
-            seen {{ job.first_seen_at.strftime('%Y-%m-%d') }}
-          {% endif %}
+          <div class="text-xs text-zinc-500 mt-1">
+            {% if job.posted_date %}
+              Posted {{ job.posted_date.strftime('%Y-%m-%d') }}
+            {% else %}
+              Seen {{ job.first_seen_at.strftime('%Y-%m-%d') }}
+            {% endif %}
+          </div>
         </div>
       </button>
     {% else %}
@@ -143,6 +158,16 @@
 </div>
 
 <script>
+  // Location multi-select dropdown — toggle on button, close on outside click.
+  const locBtn = document.getElementById('loc-btn');
+  const locDropdown = document.getElementById('loc-dropdown');
+  locBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    locDropdown.classList.toggle('hidden');
+  });
+  locDropdown.addEventListener('click', (e) => e.stopPropagation());
+  document.addEventListener('click', () => locDropdown.classList.add('hidden'));
+
   const modal = document.getElementById('modal');
   const modalTitle = document.getElementById('modal-title');
   const modalMeta  = document.getElementById('modal-meta');
@@ -155,6 +180,17 @@
   document.getElementById('modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  const locBtn = document.getElementById('loc-btn');
+  const locDropdown = document.getElementById('loc-dropdown');
+  if (locBtn && locDropdown) {
+    locBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      locDropdown.classList.toggle('hidden');
+    });
+    locDropdown.addEventListener('click', (e) => e.stopPropagation());
+    document.addEventListener('click', () => locDropdown.classList.add('hidden'));
+  }
 
   document.querySelectorAll('.job-row').forEach(row => {
     row.addEventListener('click', async () => {
