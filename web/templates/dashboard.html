@@ -161,12 +161,13 @@
   // Location multi-select dropdown — toggle on button, close on outside click.
   const locBtn = document.getElementById('loc-btn');
   const locDropdown = document.getElementById('loc-dropdown');
-  locBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+  locBtn.addEventListener('click', () => {
     locDropdown.classList.toggle('hidden');
   });
-  locDropdown.addEventListener('click', (e) => e.stopPropagation());
-  document.addEventListener('click', () => locDropdown.classList.add('hidden'));
+  document.addEventListener('click', (e) => {
+    if (locBtn.contains(e.target) || locDropdown.contains(e.target)) return;
+    locDropdown.classList.add('hidden');
+  });
 
   const modal = document.getElementById('modal');
   const modalTitle = document.getElementById('modal-title');
@@ -180,17 +181,6 @@
   document.getElementById('modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-
-  const locBtn = document.getElementById('loc-btn');
-  const locDropdown = document.getElementById('loc-dropdown');
-  if (locBtn && locDropdown) {
-    locBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      locDropdown.classList.toggle('hidden');
-    });
-    locDropdown.addEventListener('click', (e) => e.stopPropagation());
-    document.addEventListener('click', () => locDropdown.classList.add('hidden'));
-  }
 
   document.querySelectorAll('.job-row').forEach(row => {
     row.addEventListener('click', async () => {
