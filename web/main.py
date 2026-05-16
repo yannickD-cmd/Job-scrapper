@@ -29,6 +29,7 @@ from fastapi.templating import Jinja2Templates
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import db  # noqa: E402
 from run import COMPANY_NAMES  # noqa: E402
+from web.filters import is_idf  # noqa: E402
 
 app = FastAPI(title="Jobs dashboard", docs_url=None, redoc_url=None)
 templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
@@ -128,37 +129,38 @@ def dashboard(
         FROM jobs
         {where_sql}
         ORDER BY posted_date DESC NULLS LAST, first_seen_at DESC
-        LIMIT 1000
+        LIMIT 2000
     """
 
     with db.get_connection() as conn, conn.cursor() as cur:
         rows = _all(cur, jobs_sql, tuple(params))
-        companies = [r[0] for r in _all(
-            cur,
-            "SELECT DISTINCT company FROM jobs WHERE still_open = TRUE ORDER BY company",
-        )]
-        loc_sql = (
-            "SELECT DISTINCT location FROM jobs "
-            "WHERE location IS NOT NULL AND location <> ''"
-        )
-        loc_params: list = []
-        if not show_closed:
-            loc_sql += " AND still_open = TRUE"
-        if company:
-            loc_sql += " AND company = %s"
-            loc_params.append(company)
-        raw_locations = [r[0] for r in _all(cur, loc_sql, tuple(loc_params))]
-        locations = _extract_cities(raw_locations)
-        stats_row = _all(cur, """
-            SELECT
-              COUNT(*) FILTER (WHERE still_open),
-              COUNT(DISTINCT company) FILTER (WHERE still_open),
-              COUNT(*) FILTER (
-                WHERE still_open AND first_seen_at >= NOW() - INTERVAL '7 days'
-              ),
-              COUNT(*) FILTER (WHERE to_apply)
+        # Projection over the whole table for stats + dropdowns. The IDF
+        # filter is applied to both result sets identically so totals,
+        # counts, and option lists stay consistent with the visible rows.
+        universe_rows = _all(cur, """
+            SELECT company, location, still_open, to_apply,
+                   (first_seen_at >= NOW() - INTERVAL '7 days') AS is_recent
             FROM jobs
-        """)[0]
+        """)
+
+    # Dashboard-side filter: petite couronne. Raw DB keeps every row.
+    rows = [r for r in rows if is_idf(r[3])]
+    universe = [r for r in universe_rows if is_idf(r[1])]
+    open_universe = [r for r in universe if r[2]]
+
+    companies = sorted({r[0] for r in open_universe})
+
+    loc_source = universe if show_closed else open_universe
+    if company:
+        loc_source = [r for r in loc_source if r[0] == company]
+    locations = _extract_cities([r[1] for r in loc_source])
+
+    stats = {
+        "total_open": len(open_universe),
+        "companies": len(companies),
+        "new_this_week": sum(1 for r in open_universe if r[4]),
+        "to_apply": sum(1 for r in universe if r[3]),
+    }
 
     jobs = [
         {
@@ -174,19 +176,14 @@ def dashboard(
             "to_apply": r[9],
             "is_new": r[10],
         }
-        for r in rows
+        for r in rows[:1000]
     ]
 
     return templates.TemplateResponse(request, "dashboard.html", {
         "jobs": jobs,
         "companies": companies,
         "locations": locations,
-        "stats": {
-            "total_open": stats_row[0],
-            "companies": stats_row[1],
-            "new_this_week": stats_row[2],
-            "to_apply": stats_row[3],
-        },
+        "stats": stats,
         "selected_company": company or "",
         "selected_company_key": KEY_BY_DISPLAY.get(company or ""),
         "selected_locations": location,
