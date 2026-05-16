@@ -39,6 +39,34 @@ WORKFLOW_FILE = "scrape-one.yml"
 # the scraper key ("sanofi"). Reverse-map at startup.
 KEY_BY_DISPLAY = {v: k for k, v in COMPANY_NAMES.items()}
 
+# Strip ISO8601 timestamps that GitHub prefixes to every raw log line.
+_TS_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z ?")
+# Drop GitHub Actions log directives like ##[group]/##[endgroup]/##[debug].
+_GROUP_RE = re.compile(r"^##\[[a-z]+\].*$")
+
+
+def _clean_run_log(raw: str) -> str:
+    """Cut the Actions noise so the panel shows only what run.py printed.
+
+    Mobile-friendly: from `>>> Scraping <Company>...` (run.py's first log
+    line) to end-of-file, no timestamps, no setup steps, no pip output.
+    Falls back to the raw tail if the marker is missing (rare — scraper
+    crashed before importing).
+    """
+    cleaned: list[str] = []
+    for line in raw.splitlines():
+        line = _TS_RE.sub("", line)
+        if _GROUP_RE.match(line):
+            continue
+        cleaned.append(line)
+
+    for i, line in enumerate(cleaned):
+        if line.startswith(">>> Scraping"):
+            cleaned = cleaned[i:]
+            break
+
+    return "\n".join(cleaned[-120:])
+
 
 def _all(cur, sql: str, params: tuple = ()) -> list[tuple]:
     cur.execute(sql, params)
@@ -295,8 +323,7 @@ def run_status(run_id: int):
                 allow_redirects=True,
             )
             if log_resp.status_code == 200:
-                lines = log_resp.text.splitlines()
-                payload["log_tail"] = "\n".join(lines[-60:])
+                payload["log_tail"] = _clean_run_log(log_resp.text)
 
     return JSONResponse(payload)
 
