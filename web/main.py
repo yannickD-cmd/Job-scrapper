@@ -104,8 +104,7 @@ def dashboard(
         for r in rows
     ]
 
-    return templates.TemplateResponse("dashboard.html", {
-        "request": request,
+    return templates.TemplateResponse(request, "dashboard.html", {
         "jobs": jobs,
         "companies": companies,
         "locations": locations,
