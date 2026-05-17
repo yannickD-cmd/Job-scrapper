@@ -64,6 +64,11 @@ COMPANY_NAMES = {
     "criteo": "Criteo",
     "natixis": "Natixis",
     "axa": "AXA",
+    "safran": "Safran",
+    "schneider": "Schneider Electric",
+    "publicis": "Publicis Groupe",
+    "artefact": "Artefact",
+    "lvmh": "LVMH",
 }
 
 

@@ -60,6 +60,11 @@ jobs:
           - criteo
           - natixis
           - axa
+          - safran
+          - schneider
+          - publicis
+          - artefact
+          - lvmh
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
