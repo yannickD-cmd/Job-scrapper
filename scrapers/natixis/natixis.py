@@ -19,13 +19,16 @@ Two-pass scrape:
    carries `content.top.criteria` (country, city, contract, sector, job) plus
    a JSON-LD JobPosting block under `content.microdatas`. We filter on
    criteria.country == "France", criteria.contract == "CDI",
-   criteria.sector ∈ SECTORS_IN_SCOPE.
+   and (criteria.sector ∈ SECTORS_KEEP_WHOLE OR
+        sector == "Risques Controles et Engagements" AND
+        criteria.job ∈ RISK_SUBFAMILIES_IN_SCOPE).
 
 The same backend serves multiple BPCE brands (Banque Populaire, Caisse
 d'Épargne, …) at their own subdomains. Each tenant exposes its own /app/
 WP install, so this scraper is specific to recrutement.natixis.com.
 
-To change scope, edit SECTORS_IN_SCOPE / CONTRACTS_IN_SCOPE / COUNTRIES_IN_SCOPE.
+To change scope, edit SECTORS_KEEP_WHOLE / RISK_SUBFAMILIES_IN_SCOPE /
+CONTRACTS_IN_SCOPE / COUNTRIES_IN_SCOPE.
 """
 from __future__ import annotations
 
@@ -40,22 +43,32 @@ HOST = "https://recrutement.natixis.com"
 ROUTES_URL = f"{HOST}/app/wp-json/bpce/v1/routes?lang=fr"
 POST_URL = f"{HOST}/app/wp-json/bpce/v1/posts/"
 
-# Job-family axis — Natixis uses `criteria.sector` for the high-level family.
-# Mapping back to user scope:
-#   Informatique                      → Software / IT (Data & AI sit here too —
-#                                       Data Scientist IA F/H confirmed in
-#                                       material/sample probes).
-#   Risques Controles et Engagements  → Risk / Compliance.
-#   Finance & Stratégie               → Quant / Finance-engineering / Finance.
-#   Finance de marché                 → Market finance / asset management
-#                                       (portfolio managers, etc.).
+# Job-family filter — Natixis exposes a coarse `criteria.sector` (≈10
+# top-level families) and a finer `criteria.job` sub-family per posting.
+# There is NO server-side facet for either (the API only filters on
+# contract/country/brand/place/city — see material/home.json), so the
+# family filter runs client-side after the detail fetch.
+#
+# `Informatique` is uniformly tech/IT (Devs, BAs, Squad Leads, Data
+# Scientist, IT Quant, …) — keep the whole sector.
+# `Risques Controles et Engagements` is mixed: half are quant/tech, half
+# are compliance officers and risk-program PMs. Restrict to the
+# quant/analyst/IT-security sub-families only.
+# All other sectors are dropped (HR, Sales, Operations, Marketing,
+# portfolio managers in Finance de marché, strategy officers in Finance &
+# Stratégie, etc. — they are not Tech / Quant / Risk-tech).
+#
 # (Strings reproduced exactly as the API emits them, typos included —
 # "Controles" has no accent server-side.)
-SECTORS_IN_SCOPE: set[str] = {
+SECTORS_KEEP_WHOLE: set[str] = {
     "Informatique",
-    "Risques Controles et Engagements",
-    "Finance & Stratégie",
-    "Finance de marché",
+}
+SECTOR_RISK = "Risques Controles et Engagements"
+RISK_SUBFAMILIES_IN_SCOPE: set[str] = {
+    "Ingénieur quantitatif risques",
+    "Expert risques IT et sécurité",
+    "Analyste risques de marché",
+    "Analyste risques de crédit",
 }
 
 # Contract axis — keep CDI only (per current scope). Other observed values:
@@ -180,14 +193,20 @@ def _is_in_scope(job: Job, payload: dict) -> tuple[bool, str]:
     country = (criteria.get("country") or "").strip()
     contract = (criteria.get("contract") or "").strip()
     sector = (criteria.get("sector") or "").strip()
+    sub_family = (criteria.get("job") or "").strip()
 
     if country not in COUNTRIES_IN_SCOPE:
         return False, f"country={country!r}"
     if contract not in CONTRACTS_IN_SCOPE:
         return False, f"contract={contract!r}"
-    if sector not in SECTORS_IN_SCOPE:
-        return False, f"sector={sector!r}"
-    return True, ""
+
+    if sector in SECTORS_KEEP_WHOLE:
+        return True, ""
+    if sector == SECTOR_RISK:
+        if sub_family in RISK_SUBFAMILIES_IN_SCOPE:
+            return True, ""
+        return False, f"{sector}:{sub_family!r}"
+    return False, f"sector={sector!r}"
 
 
 def scrape() -> list[dict]:
@@ -260,7 +279,9 @@ def scrape() -> list[dict]:
     elapsed = time.time() - started
     print(flush=True)
     print(f"Filters {sorted(COUNTRIES_IN_SCOPE)} × {sorted(CONTRACTS_IN_SCOPE)} "
-          f"× {sorted(SECTORS_IN_SCOPE)}:", flush=True)
+          f"× sectors={sorted(SECTORS_KEEP_WHOLE)} "
+          f"+ {SECTOR_RISK}::{sorted(RISK_SUBFAMILIES_IN_SCOPE)}:",
+          flush=True)
     print(f"  kept    : {len(kept)}", flush=True)
     print(f"  dropped : {sum(rejected.values())}", flush=True)
     print(f"  failed  : {failed}", flush=True)
