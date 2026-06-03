@@ -1,4 +1,4 @@
-"""Société Générale job scraper — France, CDI, IT + Innovation/Digital.
+"""Société Générale job scraper — France, CDI + Alternance, IT + Innovation/Digital.
 
 Single-pass scrape. SG's careers site is Drupal-fronted, but the listing
 is rendered entirely client-side from a backend search service they call
@@ -67,11 +67,12 @@ FIELD_POSTED_AT = "sourcedatetime2"  # original posting date (older of the two)
 # Filter IDs taken from drupalSettings.quantum.quantum_filters on the
 # /rechercher page. The frontend uses these exact values.
 COUNTRY_IDS = ["FRA"]
-CONTRACT_IDS = ["STANDARD"]  # CDI
+CONTRACT_IDS = ["STANDARD", "APPRENTICESHIP"]  # CDI, Alternance
 JOB_FAMILY_IDS = ["BJ725", "JN482"]  # IT, Innovation/Digital
 
 SCOPE_COUNTRY = "France"
-SCOPE_EMPLOYMENT_TYPE = "CDI"
+# employment_type is no longer single-valued (CDI + Alternance), so it is
+# read per row from FIELD_CONTRACT (sourcestr8), which carries the FR label.
 
 HEADERS = {
     "User-Agent": (
@@ -106,7 +107,7 @@ class Job:
     location: str
     category: str
     apply_url: str
-    employment_type: str        # always SCOPE_EMPLOYMENT_TYPE here
+    employment_type: str | None = None  # FR contract label from sourcestr8 (CDI / Alternance)
     description: str | None = None
     posted_date: str | None = None  # YYYY-MM-DD
     identifier: str | None = None   # full ID incl. locale, e.g. "25000GY7-fr"
@@ -203,7 +204,7 @@ def _doc_to_job(doc: dict) -> Job | None:
         location=(doc.get(FIELD_LOCATION_LABEL) or "").strip(),
         category=(doc.get(FIELD_JOB_FAMILY) or "").strip(),
         apply_url=apply_url,
-        employment_type=SCOPE_EMPLOYMENT_TYPE,
+        employment_type=(doc.get(FIELD_CONTRACT) or "").strip() or None,
         description=doc.get(FIELD_DESCRIPTION),
         posted_date=_parse_posted_date(doc),
         identifier=(doc.get(FIELD_FULL_ID) or "").strip() or None,

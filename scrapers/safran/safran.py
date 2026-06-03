@@ -30,9 +30,13 @@ Two-pass scrape (Sanofi template):
 WAF note: safran-group.com TLS-fingerprints clients — plain `requests`
 gets a flat 403 regardless of UA/headers, while `curl` passes. We use
 `curl_cffi` with a Chrome impersonation profile (same workaround BNP,
-L'Oréal, and CGI use). If CI ever starts failing with 403, the next
-step is to exclude `safran` from .github/workflows/scrape.yml the same
-way BNP is — Akamai-class WAFs sometimes also IP-block GitHub Actions.
+L'Oréal, and CGI use). That clears the WAF from a residential IP, but
+NOT from GitHub Actions: Safran's WAF also IP-blocks GHA datacenter
+ranges, rejecting the first listing request with a 403 (the CI job died
+in ~15s). It's IP reputation, not the TLS handshake, so no impersonate
+profile fixes it. `safran` is therefore EXCLUDED from
+.github/workflows/scrape.yml the same way BNP is — run it locally:
+    python run.py safran
 
 To change scope, edit COUNTRY_FACETS / CONTRACT_FACETS / JOB_FIELD_FACETS.
 """

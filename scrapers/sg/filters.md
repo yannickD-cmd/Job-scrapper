@@ -3,7 +3,7 @@
 | Axis | Kept value | Applied where |
 |---|---|---|
 | Country | **France** (`FRA`) | server (Quantum `sourcecsv1`) |
-| Contract type | **CDI** (`STANDARD`) | server (Quantum `sourcestr8`) |
+| Contract type | **CDI** (`STANDARD`) + **Alternance** (`APPRENTICESHIP`) | server (Quantum `sourcestr8`) |
 | Job family | **IT** (`BJ725`) + **Innovation / Digital / Projet / Organisation** (`JN482`) | server (Quantum `sourcestr10`) |
 
 All three filters are applied server-side in the Quantum search request — every row returned is already in scope, no client-side filter pass.

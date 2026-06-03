@@ -69,6 +69,7 @@ COMPANY_NAMES = {
     "publicis": "Publicis Groupe",
     "artefact": "Artefact",
     "lvmh": "LVMH",
+    "stripe": "Stripe",
 }
 
 

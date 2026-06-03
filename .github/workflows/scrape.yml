@@ -21,6 +21,14 @@ jobs:
         # BNP is excluded: group.bnpparibas sits behind Akamai Bot Manager
         # which blocks GitHub Actions IP ranges (datacenter ASN reputation).
         # Run BNP locally — see scrapers/bnp/bnp.py.
+        #
+        # Safran is excluded for the same reason: www.safran-group.com's WAF
+        # IP-blocks GitHub Actions datacenter ranges. curl_cffi clears it from a
+        # residential IP (and from CI for L'Oréal/CGI), but Safran rejects the
+        # very first listing request from GHA with a 403 (job fails in ~15s,
+        # before one listing pass completes). Not a TLS-fingerprint issue — it's
+        # IP reputation, so no impersonate profile fixes it. Run Safran locally:
+        #   python run.py safran      # see scrapers/safran/safran.py
         company:
           - sanofi
           - loreal
@@ -60,11 +68,11 @@ jobs:
           - criteo
           - natixis
           - axa
-          - safran
           - schneider
           - publicis
           - artefact
           - lvmh
+          - stripe
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
