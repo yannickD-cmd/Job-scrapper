@@ -70,6 +70,10 @@ COMPANY_NAMES = {
     "artefact": "Artefact",
     "lvmh": "LVMH",
     "stripe": "Stripe",
+    "deloitte": "Deloitte France",
+    "wavestone": "Wavestone",
+    "airliquide": "Air Liquide",
+    "vinci": "VINCI",
 }
 
 

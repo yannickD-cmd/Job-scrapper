@@ -1,0 +1,1 @@
+from .wavestone import scrape

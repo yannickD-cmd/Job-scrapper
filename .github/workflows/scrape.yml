@@ -73,6 +73,10 @@ jobs:
           - artefact
           - lvmh
           - stripe
+          - deloitte
+          - wavestone
+          - airliquide
+          - vinci
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
