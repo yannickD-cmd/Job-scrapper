@@ -1,0 +1,37 @@
+{
+  "jobPostingInfo": {
+    "id": "7b640f945a7e1001a4ea6364097c0000",
+    "title": "Machine Learning Engineer",
+    "jobDescription": "<div><p><b>About the job</b></p><p>We, Pernod Ricard - a world leading company in the Wine &amp; Spirits industry -, are looking for an AI/Machine Learning Engineers, based at “The Island”, our global headquarters in central Paris.</p><p>In this role, you’ll have the chance to roll up your sleeves to make the date science solutions operational.</p><p></p><p><b>Your key missions:</b></p><p></p><p>Report directly to the manager of team Machine Learning Engineers and Research Scientists, you will join our cross-functional team of machine learning engineers, research scientists, data scientists and data engineers to contribute to the group AI projects:</p><p></p><p>· You will contribute to the MLOps process implementation to maintain ML models in production.</p><p>· You will collaborate with the team to deploy or improve scalable and efficient ML pipelines using best MLOps practices.</p><p>· You will collaborate with the team on production-quality service development with Unit &amp; Integration testing, CI/CD &amp; devOps for these services.</p><p>· You will identify new opportunities to improve go-to-production, MLOps processes.</p><p>· You will apply software development practices and standards to enhance and ensure the code quality of our applications.</p><p>· You will maintain an active role in every part of the software development life cycle.</p><p></p><p>If you recognize yourself in the description below, don’t wait to apply!</p><p></p><p><b>Your profile:</b></p><p></p><p>· You have a master diploma (or equivalent) in Computer Science, Computer Engineering, or quantitative science fields, a PhD is a plus.</p><p>· You have more than 2 years implementation experience with high-level languages, such as Python, Java, C/C&#43;&#43;.</p><p>· You have knowledge and experience with cloud and deployment technologies. Knowing Microsoft Azure is a plus.</p><p>· You have rich knowledge in GenAI – LLM and Agent.</p><p>· You have experience in building or improving CI/CD pipelines.</p><p>· You have knowledge and experience with container tools such as Docker.</p><p>· You are familiar with MLOps practices (Azure ML Studio, Mlfow)</p><p>· You have knowledge and experience in designing and building APIs with Python</p><p>· You have experiences in data science and applying machine learning algorithms and libraries (Pandas, Scikit-learn, Pytorch ...)</p><p>· You are fluent in English, speaking French is a plus.</p><p></p><p><b>Your soft skills:</b></p><p></p><p>· You have very good oral and written communication skills</p><p>· You have an analytic reasoning and problem-solving skills.</p><p>· You are service-oriented, flexible and a team player.</p><p>· You have a real attention to detail and a technical intuition.</p><p>· You are driven by passion and willingness to learn and explorer.</p><p></p><p><b>If you don’t fill 100% of the criteria below don’t panic, we expect you to learn with us in this position.</b></p><p></p><p>Wait, there’s more…</p><p>We offer you an outstanding and collaborative workplace that embodies our sharing &amp; conviviality culture, the possibility to work from home (2 days a week), a very complete health insurance, an attractive compensation including profit-sharing, train daily, employee events…</p><p></p><p>Pernod Ricard values diversity and solidarity within its organization and in its relations with stakeholders. Our recruitment methods focus on skills, and we welcome all types of talents.</p></div><h3></h3><p></p><p style=\"text-align:inherit\"></p><p style=\"text-align:inherit\"></p><p style=\"text-align:left\"><b><u>Job Posting End Date:</u></b></p><p style=\"text-align:inherit\"></p><p style=\"text-align:inherit\"></p><p style=\"text-align:left\"><u><b>Target Hire Date</b></u><b>:</b></p>2026-09-01<p></p><p></p><p style=\"text-align:left\"><u><b>Target End Date</b></u>:</p>",
+    "location": "Paris",
+    "postedOn": "Posted Yesterday",
+    "startDate": "2026-06-11",
+    "timeType": "Full time",
+    "jobReqId": "JR-053956",
+    "jobPostingId": "Machine-Learning-Engineer_JR-053956",
+    "jobPostingSiteId": "pernod-ricard",
+    "country": {
+      "descriptor": "France",
+      "id": "54c5b6971ffb4bf0b116fe7651ec789a"
+    },
+    "canApply": true,
+    "posted": true,
+    "includeResumeParsing": true,
+    "jobRequisitionLocation": {
+      "descriptor": "FR - Paris - The Island",
+      "country": {
+        "descriptor": "France",
+        "id": "54c5b6971ffb4bf0b116fe7651ec789a",
+        "alpha2Code": "FR"
+      }
+    },
+    "externalUrl": "https://pernodricard.wd3.myworkdayjobs.com/pernod-ricard/job/Paris/Machine-Learning-Engineer_JR-053956",
+    "questionnaireId": "167172ad38871000f88d13b21fba0000"
+  },
+  "hiringOrganization": {
+    "name": "Pernod Ricard SA",
+    "url": ""
+  },
+  "similarJobs": [],
+  "userAuthenticated": false
+}
