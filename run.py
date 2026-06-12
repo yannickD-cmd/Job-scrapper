@@ -74,6 +74,7 @@ COMPANY_NAMES = {
     "wavestone": "Wavestone",
     "airliquide": "Air Liquide",
     "vinci": "VINCI",
+    "qonto": "Qonto",
 }
 
 
