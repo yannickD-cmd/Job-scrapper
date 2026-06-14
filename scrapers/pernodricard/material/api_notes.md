@@ -3,17 +3,24 @@
 Single global board: `pernodricard.wd3.myworkdayjobs.com/pernod-ricard`
 
 ## Endpoints
-- Seed cookies: `GET  /wday/cxs/pernodricard/pernod-ricard`
-- Listing:      `POST /wday/cxs/pernodricard/pernod-ricard/jobs`
-- Detail:       `GET  /wday/cxs/pernodricard/pernod-ricard<externalPath>`
+- Listing: `POST /wday/cxs/pernodricard/pernod-ricard/jobs`
+- Detail:  `GET  /wday/cxs/pernodricard/pernod-ricard<externalPath>`
 
-## Session-cookie quirk (the gotcha)
-An **empty**-facet POST works cookie-free, but ANY `appliedFacets` payload
-returns an empty-body HTTP 400 (`{"errorCode":"HTTP_400",...}`) unless the
-caller already holds the CXS session cookies. Fix: `GET` the CXS root once to
-seed `PLAY_SESSION` / `wd-browser-id` / `__cf_bm`, then reuse the Session.
-Even then, a burst of faceted POSTs within ~2s re-trips the 400 (Cloudflare
-rate limit, ~30-60s recovery) — pace requests and back off on 400.
+## The faceted-POST 400 (the gotcha) — what actually matters
+Faceted (filtered) POSTs return an empty-body HTTP 400
+(`{"errorCode":"HTTP_400","locale":"en-US,en;q=0.9",...}`) for two real reasons,
+plus one red herring I chased:
+1. **Missing locale header.** Filtered POSTs need `X-Calypso-Selected-Locale:
+   en-US` + an `/en-US/...` Referer. Without them the server 400s valid bodies.
+   (Same as Rothschild.)
+2. **Token bucket.** The faceted POST is metered by a slow-refilling, ESCALATING
+   bucket — a burst earns 400s for tens of minutes (the detail GET is NOT
+   metered). Probe sparingly; back off on 400.
+- RED HERRING: it looks like faceted POSTs "need a seeded session cookie" — they
+  do NOT. Run **cookie-free** (`cookies.clear()` before each request). On a
+  flagged fingerprint (datacenter IPs / GitHub Actions) a seeded `__cf_bm`
+  cookie makes every faceted POST 400 forever — a seeded version failed 100% in
+  CI. Cookie-free requests are scored fresh and succeed.
 
 ## Facet ids
 jobFamilyGroup (Job Category):
@@ -40,17 +47,16 @@ client-side. Detail confirms via `country.descriptor` == "France" (France id
 - posted_date    <- startDate        (already ISO YYYY-MM-DD)
 - identifier     <- id               (internal hash)
 - employment_type = "CDI"            (guaranteed by the Regular facet)
-- category       = "Tech / IT"       (coarse — see below)
+- category       = family name from the per-family loop ("Tech" / "Information Technology")
 
-## One combined faceted POST (token-bucket avoidance)
-The faceted POST endpoint is metered by a slow-refilling, ESCALATING token
-bucket: after a burst it 400s for tens of minutes (the empty-facet POST and
-detail GET stay 200 throughout). To make at most ONE faceted POST per run we
-query both families together: `jobFamilyGroup: [Tech, IT]` + Regular. The two
-families are disjoint (34 + 4 == 38 combined), so the union can't double-count;
-the only cost is we can't tell Tech from IT per row, hence the coarse
-`category = "Tech / IT"`. Listing rows don't carry the family at all, and the
-detail endpoint has NO family field either — faceting is the only source.
+## One family per POST (not combined)
+We query each family on its own: `jobFamilyGroup: [<one id>]` + Regular.
+Confirmed reliable (Tech+Regular → 28, etc.). The COMBINED two-family payload
+`jobFamilyGroup: [Tech, IT]` + Regular was never once observed to return 200
+(always 400, regardless of cookies/headers), so it's avoided. Two POSTs per run
+(one per family), well spaced. Looping also lets us tag each row with its
+family — listing rows don't carry the family, and the detail endpoint has NO
+family field either, so faceting is the only source.
 
 ## Scope locked with user (2026-06-12)
 France · Tech + Information Technology families · CDI (Regular) only ·

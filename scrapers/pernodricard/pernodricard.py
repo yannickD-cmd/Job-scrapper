@@ -4,7 +4,6 @@ Pernod Ricard's single global board is hosted on Workday at
 pernodricard.wd3.myworkdayjobs.com/pernod-ricard. Workday exposes the usual
 public JSON CXS API:
 
-  GET  /wday/cxs/pernodricard/pernod-ricard            (seeds session cookies)
   POST /wday/cxs/pernodricard/pernod-ricard/jobs       (listing, faceted)
   GET  /wday/cxs/pernodricard/pernod-ricard<externalPath>   (detail)
 
@@ -16,25 +15,25 @@ Scope (locked with the user):
   - Job type    : CDI only          (workerSubType = "Regular")
   - Title filter: none — keep every in-family role
 
-Workday quirks worth knowing (this tenant):
-  - Faceted POSTs return an empty-body HTTP 400 (JSON `errorCode: HTTP_400`)
-    UNLESS the caller first does a GET on the CXS root to seed the
-    PLAY_SESSION / wd-browser-id / __cf_bm cookies. An *empty*-facet POST works
-    cookie-free, but any `appliedFacets` payload needs the session. So we seed
-    a Session once up front and reuse its cookies on every request.
-  - The *faceted* POST endpoint is metered by a slow-refilling token bucket
-    (the empty-facet POST and the detail GET are NOT — they stay 200 even while
-    faceted POSTs 400). Once the bucket is drained by a burst, a single faceted
-    POST sips the last token, then everything 400s again until it refills (tens
-    of minutes after heavy abuse, escalating with repeat offence). To stay well
-    clear of it we make exactly ONE faceted POST per run: both job families are
-    queried together in a single `jobFamilyGroup: [Tech, IT]` payload. On a 400
-    we re-seed the session and back off — same shape as Rothschild.
-  - The listing rows don't carry the job family. The two in-scope families are
-    disjoint (Tech ~34 + IT ~4 == 38 combined, no overlap), so the combined
-    query can't mis-count; we just can't tell Tech from IT per row, hence the
-    coarse `category = "Tech / IT"` for every returned role (both are Pernod
-    Ricard's tech families — the distinction is low-value, IT is ~4 globally).
+Workday quirks worth knowing (this tenant) — the Rothschild lessons all apply:
+  - We run COOKIE-FREE: `session.cookies.clear()` before every request. Workday
+    fronts CXS with Cloudflare, which tags the first response with __cf_bm /
+    wd-browser-id / PLAY_SESSION cookies. On a flagged fingerprint (datacenter
+    ASNs like GitHub Actions) those cookies make every follow-up faceted POST
+    keep 400-ing; bare cookie-free requests are scored fresh and succeed. (An
+    earlier seeded-session version 400'd 100% in CI for exactly this reason.)
+  - Faceted (filtered) POSTs also need `X-Calypso-Selected-Locale: en-US` plus
+    an `/en-US/...` Referer; without them the server 400s otherwise-valid
+    bodies. The detail GET doesn't need them.
+  - The faceted POST is additionally metered by a slow-refilling, escalating
+    token bucket (the detail GET is not). A burst earns empty-body 400s for
+    tens of minutes — so probe it sparingly. We make one faceted POST per
+    family (two total), well spaced, and back off on a 400.
+  - We query each family on its OWN (a single jobFamilyGroup id + Regular).
+    Combining both families AND workerSubType in one payload
+    (`jobFamilyGroup: [Tech, IT]` + Regular) was never observed to return 200,
+    whereas every single-family query is reliable — so we loop. Looping also
+    lets us tag each row with its family name → that becomes `category`.
   - native_job_id: the detail's `jobReqId` is the clean public id ("JR-053956").
     The listing's bulletFields also carry it (last "JR-" element); we dedup on
     that before fetching details, then trust the detail's jobReqId.
@@ -57,19 +56,16 @@ from bs4 import BeautifulSoup
 TENANT = "pernodricard"
 SITE = "pernod-ricard"
 HOST = f"https://{TENANT}.wd3.myworkdayjobs.com"
-SESSION_URL = f"{HOST}/wday/cxs/{TENANT}/{SITE}"
 LIST_URL = f"{HOST}/wday/cxs/{TENANT}/{SITE}/jobs"
 DETAIL_URL_TEMPLATE = f"{HOST}/wday/cxs/{TENANT}/{SITE}{{external_path}}"
 
-# jobFamilyGroup facet ids in scope — both of Pernod Ricard's tech families.
-# Queried TOGETHER in one faceted POST (see the token-bucket note above); the
-# two are disjoint so the union can't double-count. We can't tell which family
-# a given row came from, so every in-scope role gets the coarse CATEGORY label.
-FAMILY_IDS: list[str] = [
-    "5c4276c36b5a1001e317a08d36940000",  # Tech (~34 global)
-    "371688745b57014fe9c19df9ef17a12f",  # Information Technology (~4 global)
-]
-CATEGORY = "Tech / IT"
+# jobFamilyGroup facet id → category label. Looped one at a time (a single id
+# per faceted POST) — that's the only form that reliably returns 200 here, and
+# it lets us tag each row with its family. Both families are tiny.
+FAMILIES: dict[str, str] = {
+    "5c4276c36b5a1001e317a08d36940000": "Tech",                    # ~34 global
+    "371688745b57014fe9c19df9ef17a12f": "Information Technology",  # ~4 global
+}
 
 # workerSubType facet — "Regular" == permanent (CDI). The Regular facet is the
 # only employment type in scope, so every returned row is a CDI by construction.
@@ -89,13 +85,14 @@ HEADERS = {
     "Content-Type": "application/json",
     "Origin": HOST,
     "Referer": f"{HOST}/en-US/{SITE}",
+    # Required for faceted (filtered) POSTs — without it Workday 400s valid bodies.
+    "X-Calypso-Selected-Locale": "en-US",
 }
 
 PAGE_SIZE = 50
-MAX_PAGES = 10  # defensive cap (the combined Tech+IT result is tiny)
+MAX_PAGES = 10  # per family — defensive cap (families are tiny)
 REQUEST_TIMEOUT = 30
-# Workday/Cloudflare here is rate-sensitive: a burst of faceted POSTs drains a
-# token bucket and returns empty-body 400s. Go slow; back off long when blocked.
+# The faceted POST is rate-sensitive (token bucket); go slow and back off long.
 REQUEST_DELAY_SECONDS = 1.5      # between detail GETs (not bucket-metered)
 FACET_DELAY_SECONDS = 5.0        # between the (few) faceted listing POSTs
 RETRY_BACKOFF_SECONDS = 45.0
@@ -143,12 +140,9 @@ def _row_is_france(row: dict) -> bool:
     )
 
 
-def _seed_session() -> requests.Session:
-    """A faceted POST 400s unless the caller already holds the CXS session
-    cookies. A GET on the CXS root sets them; reuse the same Session after."""
+def _new_session() -> requests.Session:
     session = requests.Session()
     session.headers.update(HEADERS)
-    session.get(SESSION_URL, timeout=REQUEST_TIMEOUT)
     return session
 
 
@@ -156,10 +150,10 @@ def _is_error_payload(data: object) -> bool:
     return isinstance(data, dict) and "errorCode" in data
 
 
-def _post_listing(session: requests.Session, offset: int) -> dict:
+def _post_listing(session: requests.Session, family_id: str, offset: int) -> dict:
     body = {
         "appliedFacets": {
-            "jobFamilyGroup": FAMILY_IDS,            # Tech + IT, one query
+            "jobFamilyGroup": [family_id],            # one family per query
             "workerSubType": [WORKERSUBTYPE_REGULAR],
         },
         "limit": PAGE_SIZE,
@@ -168,6 +162,10 @@ def _post_listing(session: requests.Session, offset: int) -> dict:
     }
     last_err: str | None = None
     for attempt in range(1, MAX_RETRIES + 1):
+        # Cookie-free: drop any Cloudflare/Workday cookie before each attempt.
+        # A cookie tied to a flagged fingerprint keeps 400-ing; bare requests
+        # are scored fresh. (See module docstring.)
+        session.cookies.clear()
         response = session.post(LIST_URL, json=body, timeout=REQUEST_TIMEOUT)
         if response.status_code == 200:
             data = response.json()
@@ -176,19 +174,17 @@ def _post_listing(session: requests.Session, offset: int) -> dict:
             last_err = f"error payload {data.get('errorCode')}"
         else:
             last_err = f"HTTP {response.status_code}: {response.text[:120]}"
-        # Empty-body 400 == rate limit. Re-seed the session (fresh cookies) and
-        # wait out the recovery window before retrying.
+        # Empty-body 400 == rate limit; back off before the next cookie-free try.
         if attempt < MAX_RETRIES:
             time.sleep(RETRY_BACKOFF_SECONDS)
-            session.cookies.clear()
-            session.get(SESSION_URL, timeout=REQUEST_TIMEOUT)
-    raise requests.HTTPError(f"listing failed: {last_err}")
+    raise requests.HTTPError(f"listing failed for family {family_id}: {last_err}")
 
 
 def _get_detail(session: requests.Session, external_path: str) -> dict:
     url = DETAIL_URL_TEMPLATE.format(external_path=external_path)
     last_err: str | None = None
     for attempt in range(1, MAX_RETRIES + 1):
+        session.cookies.clear()
         response = session.get(url, timeout=REQUEST_TIMEOUT)
         if response.status_code == 200:
             data = response.json()
@@ -204,17 +200,19 @@ def _get_detail(session: requests.Session, external_path: str) -> dict:
             last_err = f"HTTP {response.status_code}: {response.text[:120]}"
         if attempt < MAX_RETRIES:
             time.sleep(RETRY_BACKOFF_SECONDS)
-            session.cookies.clear()
-            session.get(SESSION_URL, timeout=REQUEST_TIMEOUT)
     raise requests.HTTPError(f"detail failed for {external_path}: {last_err}")
 
 
-def _collect_listing(session: requests.Session) -> list[dict]:
-    """Fetch the full France-filtered Tech+IT/CDI listing in one combined query
-    (paginating only if it ever exceeds PAGE_SIZE, which it won't today)."""
+def _collect_family_rows(
+    session: requests.Session,
+    family_id: str,
+    family_name: str,
+) -> list[dict]:
+    """Fetch the full France-filtered CDI listing for one family, tagging each
+    surviving row with its family name (the listing doesn't echo the family)."""
     offset = 0
     page = 0
-    payload = _post_listing(session, offset)
+    payload = _post_listing(session, family_id, offset)
     total = int(payload.get("total") or 0)
     raw: list[dict] = list(payload.get("jobPostings") or [])
 
@@ -222,18 +220,20 @@ def _collect_listing(session: requests.Session) -> list[dict]:
         page += 1
         offset += PAGE_SIZE
         time.sleep(FACET_DELAY_SECONDS)  # paging is another faceted POST
-        payload = _post_listing(session, offset)
+        payload = _post_listing(session, family_id, offset)
         new = payload.get("jobPostings") or []
         if not new:
             break
         raw.extend(new)
 
     france = [r for r in raw if _row_is_france(r)]
-    print(f"  {len(raw)}/{total} Tech+IT CDI rows, {len(france)} in France", flush=True)
+    for r in france:
+        r["_family_name"] = family_name
+    print(f"  {family_name}: {len(raw)}/{total} CDI rows, {len(france)} in France", flush=True)
     return france
 
 
-def _row_to_job(listing_row: dict, detail: dict) -> Job:
+def _row_to_job(listing_row: dict, detail: dict, family_name: str) -> Job:
     info = detail.get("jobPostingInfo") or {}
 
     apply_url = (info.get("externalUrl") or "").strip()
@@ -267,7 +267,7 @@ def _row_to_job(listing_row: dict, detail: dict) -> Job:
         native_job_id=native_job_id,
         title=title,
         location=location,
-        category=CATEGORY,
+        category=family_name,
         apply_url=apply_url,
         employment_type="CDI",
         description=_clean_description(info.get("jobDescription")),
@@ -278,23 +278,30 @@ def _row_to_job(listing_row: dict, detail: dict) -> Job:
 
 
 def scrape() -> list[dict]:
-    session = _seed_session()
+    session = _new_session()
 
     started = time.time()
-    print("Listing phase (combined Tech+IT, France-filtered)...", flush=True)
+    print("Listing phase (per-family, France-filtered)...", flush=True)
 
-    # One faceted POST. Deliberately NOT wrapped in try/except: if it fails after
-    # retries we must NOT return a partial/empty-by-error list — a non-empty
-    # partial would make db.persist_run_results close every row not in it, and an
-    # error-empty would only be saved by the empty-return guard. Letting the
-    # HTTPError propagate makes run.py log a failed run and close nothing; the
-    # next scheduled run (4×/day) recovers.
-    rows = _collect_listing(session)
     by_jr: dict[str, dict] = {}
-    for r in rows:
-        jr = _native_job_id_from_listing(r)
-        if jr:
-            by_jr.setdefault(jr, r)  # dedup defensively (the union has no dups)
+    for i, (family_id, family_name) in enumerate(FAMILIES.items()):
+        if i:
+            # Space the faceted POSTs out — this endpoint is token-bucket metered.
+            time.sleep(FACET_DELAY_SECONDS)
+        # Deliberately NOT caught: with only two families, swallowing a
+        # rate-limited family and returning the other's (non-empty) rows would
+        # make db.persist_run_results treat the missing family's entire catalog
+        # as closed (still_open=FALSE) — the empty-return guard only fires on a
+        # *fully* empty result. A partial listing is worse than none, so we let
+        # the HTTPError propagate: run.py logs a failed run and closes nothing,
+        # and the next scheduled run (4×/day) recovers.
+        rows = _collect_family_rows(session, family_id, family_name)
+        for r in rows:
+            jr = _native_job_id_from_listing(r)
+            if jr:
+                # Keep first-seen (Tech wins over IT if a role ever appeared in
+                # both; in practice the two families are disjoint).
+                by_jr.setdefault(jr, r)
 
     print(f"  -> {len(by_jr)} unique France Tech/IT CDI roles", flush=True)
 
@@ -318,7 +325,7 @@ def scrape() -> list[dict]:
             # don't return a partial list (it would false-close the dropped
             # rows). Abort so run.py logs a failed run and closes nothing.
             raise
-        jobs.append(_row_to_job(row, detail))
+        jobs.append(_row_to_job(row, detail, row.get("_family_name") or ""))
         time.sleep(REQUEST_DELAY_SECONDS)
 
     elapsed = time.time() - started
