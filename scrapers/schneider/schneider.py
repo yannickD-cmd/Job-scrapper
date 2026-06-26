@@ -16,9 +16,15 @@ title, description (already plaintext), category, tags1 (employment-type
 facet), full_location, req_id, apply_url, create_date, posted_date — so
 this is single-phase: no detail-page enrichment.
 
-Per project convention (noise filters live in the dashboard, not the DB),
-we keep every France row regardless of category or employment type and
-let the dashboard predicate decide what to show.
+Scope (role-type filter): Schneider's `country=France` feed returns the
+*entire* French board — ~410 roles spanning electricians, fitters, warehouse,
+HR, finance, sales and quality. iCIMS has no usable "tech only" facet and the
+`category` field is unreliable (relevant roles are scattered across many
+categories that are themselves mostly non-tech), so we filter on the TITLE via
+the shared `is_tech_role` predicate (scrapers/_relevance.py). Only data / AI /
+software / cyber / cloud / IT roles are kept; the rest are dropped at the
+source so they never reach the DB. The same predicate backs the one-off junk
+purge, so scrape output and DB content can't drift.
 
 `posted_date` from Schneider comes formatted as "May 11, 2026". We parse
 that to ISO YYYY-MM-DD; if parsing ever fails we fall back to `create_date`
@@ -32,6 +38,8 @@ from dataclasses import asdict, dataclass
 from datetime import datetime
 
 import requests
+
+from scrapers._relevance import is_tech_role
 
 LISTING_URL = "https://careers.se.com/jobs"
 API_URL = "https://careers.se.com/api/jobs"
@@ -150,8 +158,10 @@ def scrape() -> list[dict]:
     _warm_session(session)
 
     print("Listing phase...", flush=True)
-    kept: dict[str, Job] = {}  # dedup by req_id
+    kept: dict[str, Job] = {}  # dedup by req_id; in-scope tech roles only
     expected_total: int | None = None
+    seen_total = 0          # every France row fetched (in scope or not)
+    dropped_offscope = 0    # non-tech rows dropped by is_tech_role
     page = 1
 
     while page <= MAX_PAGES:
@@ -161,6 +171,7 @@ def scrape() -> list[dict]:
             print(f"  totalCount = {expected_total}", flush=True)
 
         page_docs = [j.get("data") or {} for j in payload.get("jobs") or []]
+        seen_total += len(page_docs)
         before = len(kept)
         for doc in page_docs:
             try:
@@ -171,18 +182,26 @@ def scrape() -> list[dict]:
                     flush=True,
                 )
                 continue
+            # Role-type filter: drop everything that isn't a tech/data/AI role
+            # at the source (see module docstring + scrapers/_relevance.py).
+            if not is_tech_role(job.title, job.category):
+                dropped_offscope += 1
+                continue
             kept.setdefault(job.native_job_id, job)
         added = len(kept) - before
 
         print(
-            f"  page {page}: +{added} unique ({len(page_docs)} rows on page, "
-            f"{len(kept)} kept so far)",
+            f"  page {page}: +{added} in-scope ({len(page_docs)} rows on page, "
+            f"{len(kept)} kept / {seen_total} seen)",
             flush=True,
         )
 
         if not page_docs:
             break
-        if expected_total is not None and len(kept) >= expected_total:
+        # Stop once we've fetched every advertised France row. We page by rows
+        # *seen*, not rows *kept* — the filter removes ~90% so kept never
+        # reaches totalCount.
+        if expected_total is not None and seen_total >= expected_total:
             break
 
         page += 1
@@ -190,14 +209,15 @@ def scrape() -> list[dict]:
     else:
         print(
             f"  MAX_PAGES={MAX_PAGES} hit before completing — "
-            f"got {len(kept)} of {expected_total}",
+            f"seen {seen_total} of {expected_total}",
             flush=True,
         )
 
     elapsed = time.time() - started
     print(
-        f"\n  -> {len(kept)} jobs in {elapsed:.1f}s "
-        f"(expected {expected_total})\n",
+        f"\n  -> {len(kept)} in-scope jobs in {elapsed:.1f}s "
+        f"({dropped_offscope} off-scope dropped, {seen_total} seen, "
+        f"expected {expected_total})\n",
         flush=True,
     )
     return [asdict(j) for j in kept.values()]

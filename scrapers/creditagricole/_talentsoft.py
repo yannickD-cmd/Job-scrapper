@@ -1,14 +1,27 @@
 """Shared Talentsoft scraper for Crédit Agricole subsidiaries.
 
 Five CA subsidiaries (Amundi, LCL, CACIB, CACEIS, Indosuez) run their careers
-sites on Talentsoft, a classic ASP.NET WebForms ATS. The listing page is the
-same per-tenant: server-rendered HTML with `<li class="ts-offer-list-item">`
-cards. Pagination is `?page=N`; LCID picks the locale (1036=fr, 2057=en).
+sites on Talentsoft, a classic ASP.NET WebForms ATS. Pagination is `?page=N`;
+LCID picks the locale (1036=fr, 2057=en).
 
 Two URL conventions coexist in the wild:
   - /offre-de-emploi/liste-offres.aspx     (Amundi, LCL, CACEIS)
   - /Pages/Offre/listeoffre.aspx           (CACIB, Indosuez)
 Detail pages are absolute paths returned by the card's anchor href.
+
+Two listing-card themes also coexist and we parse both:
+  - legacy `<li class="ts-offer-list-item">`  (Amundi, LCL, CACEIS, Indosuez)
+  - newer  `<div class="ts-offer-card">`      (CACIB)
+
+Country scoping is the subtle part. The listing card only shows a bare city or
+département ("Paris", "94 - Val-De-Marne") with no country token, so we CANNOT
+decide France from it. The authoritative signal is the detail page's
+`#fldlocation_location_geographicalareacollection` hierarchy, which spells out
+"Europe, France, Ile-de-France, 75 - Paris" for French roles and the foreign
+country otherwise ("Europe, Germany", "Europa, Italia, ..."). We gate on that.
+(A previous version gated on the bare card location, so once the old sidebar
+selector drifted to None every French role was silently dropped — that is the
+bug this module now avoids.)
 
 This module factors out the crawl/filter/enrich loop so each subsidiary file
 only specifies its tenant URL and keeps the COMPANY_NAMES key. Kept separate
@@ -113,7 +126,58 @@ def _ua_headers(cfg: TenantConfig) -> dict:
     }
 
 
-def _parse_card(li, base: str) -> dict | None:
+def _parse_card(item, base: str) -> dict | None:
+    """Dispatch on theme: legacy ts-offer-list-item vs newer ts-offer-card."""
+    if item.select_one("a.ts-offer-card__title-link"):
+        return _parse_card_fs(item, base)
+    return _parse_card_legacy(item, base)
+
+
+def _parse_card_fs(card, base: str) -> dict | None:
+    """Newer Talentsoft theme (CACIB): <div class="ts-offer-card">.
+
+    The card carries less metadata than the legacy one: title link whose
+    `title` attribute is the reference (e.g. "2026-109444"), and a content
+    <ul> of [contract, country, city]. No publish date on the card.
+    """
+    title_link = card.select_one("a.ts-offer-card__title-link")
+    if not title_link:
+        return None
+    href = title_link.get("href", "")
+    m = OFFER_ID_RE.search(href)
+    if not m:
+        return None
+    offer_id = m.group(1)
+
+    title_clean = title_link.get_text(strip=True)
+    reference = (title_link.get("title") or "").strip() or None
+    if not reference:
+        fav = card.select_one("[data-reference]")
+        if fav:
+            reference = (fav.get("data-reference") or "").strip() or None
+
+    # Content list is [contract, country, city] (country/city optional). The
+    # country word is a useful fallback for the scope gate when the detail
+    # page can't be fetched.
+    items = [el.get_text(strip=True) for el in card.select("ul.ts-offer-card-content__list > li")]
+    items = [s for s in items if s]
+    contract = items[0] if items else ""
+    location_card = ", ".join(items[1:]) if len(items) > 1 else ""
+
+    detail_url = href if href.startswith("http") else base + href
+    return {
+        "native_job_id": offer_id,
+        "title": title_clean,
+        "category_card": None,
+        "reference": reference,
+        "employment_type": contract,
+        "location_card": location_card,
+        "posted_date": None,
+        "detail_url": detail_url,
+    }
+
+
+def _parse_card_legacy(li, base: str) -> dict | None:
     title_link = li.select_one("a.ts-offer-list-item__title-link")
     if not title_link:
         return None
@@ -173,29 +237,26 @@ def _fetch_listing_page(session: requests.Session, cfg: TenantConfig, page: int)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
     cards = []
-    for li in soup.select("li.ts-offer-list-item"):
-        card = _parse_card(li, cfg.base)
+    # `.ts-offer-card` matches only the newer container <div> (its children use
+    # distinct `ts-offer-card__*` tokens), so the two selectors don't overlap.
+    for item in soup.select("li.ts-offer-list-item, .ts-offer-card"):
+        card = _parse_card(item, cfg.base)
         if card:
             cards.append(card)
     return cards
 
 
-def _extract_sidebar_localisation(soup: BeautifulSoup) -> str | None:
-    body = soup.select_one("#contenu-ficheoffre") or soup
-    # The detail page has TWO 'Localisation' labels — the left-rail search form
-    # and the offer's right-column sidebar. Scope to the offer body when we
-    # can, otherwise try the whole document.
-    for label in body.find_all(string=lambda s: isinstance(s, str) and s.strip().lower() == "localisation"):
-        parent = label.parent
-        if not parent:
-            continue
-        # Skip when the next field is the global search dropdown (the form's
-        # placeholder text is "Veuillez sélectionner…").
-        sibling = parent.find_next_sibling("div") or parent.find_next("div")
-        if sibling:
-            txt = sibling.get_text(" ", strip=True)
-            if txt and not txt.lower().startswith("veuillez"):
-                return txt
+def _extract_geo(soup: BeautifulSoup) -> str | None:
+    """The detail page's authoritative location hierarchy.
+
+    `<p id="fldlocation_location_geographicalareacollection">` holds e.g.
+    "Europe, France, Ile-de-France, 75 - Paris" (French) or "Europe, Germany"
+    (foreign). This is the only place that names the country, so it drives the
+    scope gate. Returns None if the field is absent.
+    """
+    el = soup.select_one("#fldlocation_location_geographicalareacollection")
+    if el:
+        return el.get_text(" ", strip=True) or None
     return None
 
 
@@ -217,14 +278,28 @@ def _fetch_detail(session: requests.Session, url: str) -> tuple[str | None, str 
     response = session.get(url, timeout=REQUEST_TIMEOUT)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
-    localisation = _extract_sidebar_localisation(soup)
+    geo = _extract_geo(soup)
     description = _extract_description(soup)
-    return description, localisation
+    return description, geo
 
 
 def _in_scope_preliminary(card: dict, cfg: TenantConfig) -> bool:
     text = " ".join(filter(None, [card.get("title"), card.get("category_card")]))
     return bool(cfg.keywords_re.search(text))
+
+
+def _passes_country(geo: str | None, card_loc: str | None, country: str) -> bool:
+    """Decide France-scope. The detail-page geo hierarchy is authoritative; it
+    names the country explicitly. Fall back to the card location only when geo
+    is missing — the newer card theme carries the country word there too. With
+    no location info at all, keep the row (the dashboard applies the region cut).
+    """
+    c = country.lower()
+    if geo:
+        return c in geo.lower()
+    if card_loc:
+        return c in card_loc.lower()
+    return True
 
 
 def scrape(cfg: TenantConfig) -> list[dict]:
@@ -272,26 +347,28 @@ def scrape(cfg: TenantConfig) -> list[dict]:
     for i, card in enumerate(candidates, 1):
         time.sleep(REQUEST_DELAY_SECONDS)
         try:
-            description, localisation = _fetch_detail(session, card["detail_url"])
+            description, geo = _fetch_detail(session, card["detail_url"])
         except Exception as exc:
             print(
                 f"  [{i}/{len(candidates)}] {card['native_job_id']} detail FAILED: "
                 f"{type(exc).__name__}: {exc}",
                 flush=True,
             )
-            description, localisation = None, None
+            description, geo = None, None
             failed += 1
 
-        location = localisation or card.get("location_card") or ""
-        if location and cfg.scope_country.lower() not in location.lower():
+        if not _passes_country(geo, card.get("location_card"), cfg.scope_country):
             dropped_country += 1
             print(
                 f"  [{i}/{len(candidates)}] {card['native_job_id']} "
-                f"{card['title']!r} -> DROP (location={location!r})",
+                f"{card['title']!r} -> DROP (geo={geo!r}, card={card.get('location_card')!r})",
                 flush=True,
             )
             continue
 
+        # Card location is cleaner for display/IDF detection than the verbose
+        # geo hierarchy; fall back to geo when the card had none.
+        location = card.get("location_card") or geo or ""
         job = Job(
             native_job_id=card["native_job_id"],
             title=card["title"],
