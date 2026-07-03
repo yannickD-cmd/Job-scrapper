@@ -79,6 +79,7 @@ jobs:
           - vinci
           - qonto
           - pernodricard
+          - revolut
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

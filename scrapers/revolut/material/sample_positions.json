@@ -1,0 +1,141 @@
+{
+ "total_positions": 585,
+ "source": "https://www.revolut.com/_next/data/{buildId}/en-GB/careers.json -> pageProps.positions",
+ "sample": [
+  {
+   "id": "ba99036f-306a-4d82-98bc-8ff73853d41c",
+   "text": "Graphic Designer (Growth)",
+   "locations": [
+    {
+     "name": "Japan - Remote",
+     "type": "remote",
+     "country": "Japan"
+    },
+    {
+     "name": "Tokyo",
+     "type": "office",
+     "country": "Japan"
+    }
+   ],
+   "description": "",
+   "team": "Marketing & Comms",
+   "video": null,
+   "is_featured": false
+  },
+  {
+   "id": "e0346dfa-3006-43ce-8be0-e43b04630127",
+   "text": "Business Marketing Manager (Growth)",
+   "locations": [
+    {
+     "name": "London",
+     "type": "office",
+     "country": "United Kingdom"
+    },
+    {
+     "name": "UK - Remote",
+     "type": "remote",
+     "country": "United Kingdom"
+    }
+   ],
+   "description": "",
+   "team": "Marketing & Comms",
+   "video": null,
+   "is_featured": false
+  },
+  {
+   "id": "8a01946a-8a9a-4675-aa7f-0f79875ca8a8",
+   "text": "Marketing Manager (Dutch Market)",
+   "locations": [
+    {
+     "name": "Bangalore",
+     "type": "office",
+     "country": "India"
+    },
+    {
+     "name": "Barcelona",
+     "type": "office",
+     "country": "Spain"
+    },
+    {
+     "name": "Chennai",
+     "type": "remote",
+     "country": "India"
+    },
+    {
+     "name": "Dubai",
+     "type": "office",
+     "country": "United Arab Emirates"
+    },
+    {
+     "name": "Gurgaon",
+     "type": "remote",
+     "country": "India"
+    },
+    {
+     "name": "India - Remote",
+     "type": "remote",
+     "country": "India"
+    },
+    {
+     "name": "Indore",
+     "type": "remote",
+     "country": "India"
+    },
+    {
+     "name": "Krakow",
+     "type": "office",
+     "country": "Poland"
+    },
+    {
+     "name": "Lisbon",
+     "type": "office",
+     "country": "Portugal"
+    },
+    {
+     "name": "Madrid",
+     "type": "office",
+     "country": "Spain"
+    },
+    {
+     "name": "Mumbai",
+     "type": "office",
+     "country": "India"
+    },
+    {
+     "name": "Poland - Remote",
+     "type": "remote",
+     "country": "Poland"
+    },
+    {
+     "name": "Porto - Remote",
+     "type": "remote",
+     "country": "Portugal"
+    },
+    {
+     "name": "Portugal - Remote",
+     "type": "remote",
+     "country": "Portugal"
+    },
+    {
+     "name": "Silesia",
+     "type": "remote",
+     "country": "Poland"
+    },
+    {
+     "name": "Spain - Remote",
+     "type": "remote",
+     "country": "Spain"
+    },
+    {
+     "name": "UAE - Remote",
+     "type": "remote",
+     "country": "United Arab Emirates"
+    }
+   ],
+   "description": "",
+   "team": "Marketing & Comms",
+   "video": null,
+   "is_featured": false
+  }
+ ]
+}

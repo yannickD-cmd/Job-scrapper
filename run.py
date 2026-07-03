@@ -76,6 +76,7 @@ COMPANY_NAMES = {
     "vinci": "VINCI",
     "qonto": "Qonto",
     "pernodricard": "Pernod Ricard",
+    "revolut": "Revolut",
 }
 
 

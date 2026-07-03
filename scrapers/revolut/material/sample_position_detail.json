@@ -1,0 +1,83 @@
+{
+ "source": "https://www.revolut.com/_next/data/{buildId}/en-GB/careers/position/{id}.json -> pageProps.position",
+ "sample": {
+  "id": "8d4b9dfa-d4b4-46a1-8e7e-f9a6d526271d",
+  "text": "Software Engineer (Android)",
+  "locations": [
+   {
+    "name": "Cyprus - Remote",
+    "type": "remote",
+    "country": "Cyprus"
+   },
+   {
+    "name": "Dubai",
+    "type": "office",
+    "country": "United Arab Emirates"
+   },
+   {
+    "name": "Ireland - Remote",
+    "type": "remote",
+    "country": "Ireland"
+   },
+   {
+    "name": "Krakow",
+    "type": "office",
+    "country": "Poland"
+   },
+   {
+    "name": "Lithuania - Remote",
+    "type": "remote",
+    "country": "Lithuania"
+   },
+   {
+    "name": "Madrid",
+    "type": "office",
+    "country": "Spain"
+   },
+   {
+    "name": "Poland - Remote",
+    "type": "remote",
+    "country": "Poland"
+   },
+   {
+    "name": "Porto - Remote",
+    "type": "remote",
+    "country": "Portugal"
+   },
+   {
+    "name": "Portugal - Remote",
+    "type": "remote",
+    "country": "Portugal"
+   },
+   {
+    "name": "Romania - Remote",
+    "type": "remote",
+    "country": "Romania"
+   },
+   {
+    "name": "Serbia - Remote",
+    "type": "remote",
+    "country": "Serbia"
+   },
+   {
+    "name": "Spain - Remote",
+    "type": "remote",
+    "country": "Spain"
+   },
+   {
+    "name": "UAE - Remote",
+    "type": "remote",
+    "country": "United Arab Emirates"
+   },
+   {
+    "name": "Vilnius",
+    "type": "office",
+    "country": "Lithuania"
+   }
+  ],
+  "description": "<h3>About Revolut</h3><p><p dir=\"ltr\"><span>People deserve more from their money. More visibility, more control, and more freedom. Since 2015, Revolut has been on a mission to deliver just that. Our powerhouse of products — including spending, saving, investing, exchanging, travelling, and more — help our 75+ million customers get more from their money every day.</span></p><p dir=\"ltr\"><span>As we continue our lightning-fast growth,‌ 2 things are essential to our success: our people and our culture. In recognition of our outstanding employee experience, we've been certified as a Great Place to Work™. So far, we have 13,000+ people working around the world, from our offices and remotely, to help us achieve our mission. And we're looking for more brilliant people. People who love building great products, redefining success, and turning the complexity of a chaotic world into the simplicity of a beautiful solution.</span></p></p><h3>About the role</h3><p><p>Our Technology team builds the systems and experiences that keep Revolut moving. From the infrastructure behind our innovative app to the features used by millions of people around the world, they bring sharp thinking, speed, and a focus on meaningful impact to everything they do.</p><p>We’re looking for Android Developers interested in every step, stage, and release of a feature who can collaborate effectively with team members across the business.</p><p>Up to break barriers and shape what's next in finance? Let's get in touc...[truncated]",
+  "team": "Engineering",
+  "video": null,
+  "is_featured": false
+ }
+}
