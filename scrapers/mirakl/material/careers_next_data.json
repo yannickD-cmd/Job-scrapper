@@ -1,0 +1,2496 @@
+{
+ "props": {
+  "pageProps": {
+   "banner": {
+    "__typename": "BannerContent",
+    "sys": {
+     "__typename": "Sys",
+     "publishedAt": "2026-06-29T20:11:19.343Z"
+    },
+    "text": "Align your data, teams and strategy for AI-powered commerce.",
+    "linkText": "Download the playbook",
+    "link": {
+     "__typename": "LinkSlug",
+     "slug": "https://www.mirakl.com/resources/the-agentic-readiness-playbook-align-your-data-teams-and-strategy-for-ai-powered-commerce"
+    },
+    "visible": true
+   },
+   "topBar": [
+    {
+     "__typename": "TopBarMenu",
+     "triggerLabel": "Retailers",
+     "title": "Retailers",
+     "titleLink": "/retailers",
+     "menuPosition": "full-width",
+     "allowedLocales": [
+      "en-US",
+      "fr-FR",
+      "ja-JP"
+     ],
+     "itemsCollection": {
+      "__typename": "TopBarMenuItemsCollection",
+      "items": [
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Platform",
+        "subtitle": "The leading marketplace and dropship platform",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/mirakl-marketplace-platform"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/4fKZ68Sw9H47jxI5SgQjq5/8a40efb4f77ba37bcf5fb46cecddf80b/menu-icons-mirakl-platform.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Agentic Activation",
+        "subtitle": "Make products discoverable and purchasable on LLMs",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/agentic-activation"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/3PPPPHgWhl16ICVBi00J3A/20de0f256791676b46f545fed732d192/https___images.ctfassets.net_g4kjd861vrk6_3iJDx6O8NfoTTq0ekUeIKw_d468db4bdaf7c874a93a6e43fb637b31_icon-mirakl-nexus-agentic-.png",
+         "description": "",
+         "width": 100,
+         "height": 100,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Ads",
+        "subtitle": "A retail media solution optimized for eCommerce and marketplaces",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/mirakl-ads"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/nhRoAkm9AzcNTSlPOv9yn/4f6692a8ce00304abf33b2fdf70f4012/menu-icons-mirakl-ads.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Catalog Platform",
+        "subtitle": "Streamlined supplier catalog onboarding",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/mirakl-catalog-manager"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/3snEON4WpSACot74lTP3S6/5ac8e014be023ca7262961bf8340960b/menu-icons-mirakl-catalogue.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Payout",
+        "subtitle": "The global pay-out solution for marketplaces",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/mirakl-payout"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/b3siYJIt84N7uV3KJ7jSj/a1c65024d3e2f3bf2b170f0d055ffa1f/menu-icons-mirakl-payout.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       }
+      ]
+     },
+     "secondaryItemsCollection": {
+      "__typename": "TopBarMenuSecondaryItemsCollection",
+      "items": [
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Assortment expansion",
+        "subtitle": "Expand product selection instantly without inventory investment or risk",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "retailers/expand-product-assortment"
+         }
+        },
+        "image": null,
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Optimize operations for dropship",
+        "subtitle": "Streamline dropship workflows to reduce costs and improve efficiency",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "retailers/optimize-dropship-operations"
+         }
+        },
+        "image": null,
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Optimize operations for marketplace",
+        "subtitle": "Automate marketplace management to scale operations & boost profitability",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "retailers/optimize-marketplace-operations"
+         }
+        },
+        "image": null,
+        "tag": null
+       }
+      ]
+     }
+    },
+    {
+     "__typename": "TopBarMenu",
+     "triggerLabel": "Distributors",
+     "title": "Distributors",
+     "titleLink": "/b2b-distributors",
+     "menuPosition": "full-width",
+     "allowedLocales": [
+      "en-US",
+      "fr-FR",
+      "ja-JP"
+     ],
+     "itemsCollection": {
+      "__typename": "TopBarMenuItemsCollection",
+      "items": [
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "B2B Commerce",
+        "subtitle": "Unified commerce solutions for manufacturers and distributors",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "b2b-commerce"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/4fKZ68Sw9H47jxI5SgQjq5/8a40efb4f77ba37bcf5fb46cecddf80b/menu-icons-mirakl-platform.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Agentic Activation",
+        "subtitle": "Make products discoverable and purchasable on LLMs",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/agentic-activation"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/3PPPPHgWhl16ICVBi00J3A/20de0f256791676b46f545fed732d192/https___images.ctfassets.net_g4kjd861vrk6_3iJDx6O8NfoTTq0ekUeIKw_d468db4bdaf7c874a93a6e43fb637b31_icon-mirakl-nexus-agentic-.png",
+         "description": "",
+         "width": 100,
+         "height": 100,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Catalog Platform",
+        "subtitle": "Streamlined supplier catalog onboarding",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/mirakl-catalog-manager"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/3snEON4WpSACot74lTP3S6/5ac8e014be023ca7262961bf8340960b/menu-icons-mirakl-catalogue.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Payout",
+        "subtitle": "The global payout solution for distributors",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/mirakl-payout"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/b3siYJIt84N7uV3KJ7jSj/a1c65024d3e2f3bf2b170f0d055ffa1f/menu-icons-mirakl-payout.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       }
+      ]
+     },
+     "secondaryItemsCollection": {
+      "__typename": "TopBarMenuSecondaryItemsCollection",
+      "items": [
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Product data ingestion",
+        "subtitle": "Automate supplier catalog integration with AI-powered data transformation",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "distributors/product-data-ingestion"
+         }
+        },
+        "image": null,
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Unified inventory",
+        "subtitle": "Centralize inventory visibility across all locations and sales channels",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "b2b/unified-inventory"
+         }
+        },
+        "image": null,
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Assortment expansion",
+        "subtitle": "Grow product offerings by connecting with new suppliers and manufacturers",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "distributors/assortment-expansion"
+         }
+        },
+        "image": null,
+        "tag": null
+       }
+      ]
+     }
+    },
+    {
+     "__typename": "TopBarMenu",
+     "triggerLabel": "Manufacturers",
+     "title": "Manufacturers",
+     "titleLink": "/b2b-manufacturers",
+     "menuPosition": "full-width",
+     "allowedLocales": [
+      "en-US",
+      "fr-FR",
+      "ja-JP"
+     ],
+     "itemsCollection": {
+      "__typename": "TopBarMenuItemsCollection",
+      "items": [
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "B2B Commerce",
+        "subtitle": "Unified commerce solutions for manufacturers and distributors",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "b2b-commerce"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/4fKZ68Sw9H47jxI5SgQjq5/8a40efb4f77ba37bcf5fb46cecddf80b/menu-icons-mirakl-platform.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Agentic Activation",
+        "subtitle": "Make products discoverable and purchasable on LLMs",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/agentic-activation"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/3PPPPHgWhl16ICVBi00J3A/20de0f256791676b46f545fed732d192/https___images.ctfassets.net_g4kjd861vrk6_3iJDx6O8NfoTTq0ekUeIKw_d468db4bdaf7c874a93a6e43fb637b31_icon-mirakl-nexus-agentic-.png",
+         "description": "",
+         "width": 100,
+         "height": 100,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Catalog Platform",
+        "subtitle": "Streamlined supplier catalog onboarding",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/mirakl-catalog-manager"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/3snEON4WpSACot74lTP3S6/5ac8e014be023ca7262961bf8340960b/menu-icons-mirakl-catalogue.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Payout",
+        "subtitle": "The global pay-out solution for manufacturers",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/mirakl-payout"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/b3siYJIt84N7uV3KJ7jSj/a1c65024d3e2f3bf2b170f0d055ffa1f/menu-icons-mirakl-payout.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       }
+      ]
+     },
+     "secondaryItemsCollection": {
+      "__typename": "TopBarMenuSecondaryItemsCollection",
+      "items": [
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Unified inventory",
+        "subtitle": "Centralize inventory visibility across all locations and sales channels",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "b2b/unified-inventory"
+         }
+        },
+        "image": null,
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "After-sales digitization",
+        "subtitle": "Transform after-sales service with digital parts ordering and support",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "manufacturers/aftermarket-digitization"
+         }
+        },
+        "image": null,
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Distributor-fulfilled commerce",
+        "subtitle": "Enable distributors to sell your products online with unified commerce",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "manufacturers/distributor-fulfilled-commerce"
+         }
+        },
+        "image": null,
+        "tag": null
+       }
+      ]
+     }
+    },
+    {
+     "__typename": "TopBarMenu",
+     "triggerLabel": "Brands & Sellers",
+     "title": "Brands & Sellers",
+     "titleLink": null,
+     "menuPosition": null,
+     "allowedLocales": [
+      "en-US",
+      "fr-FR",
+      "ja-JP"
+     ],
+     "itemsCollection": {
+      "__typename": "TopBarMenuItemsCollection",
+      "items": [
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Connect",
+        "subtitle": "A powerful network of marketplace sellers and partners",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/mirakl-for-sellers"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/2yZQJdpg0DP7qppZR1XkrI/df8b950c1fc164d689ec4cb8c0cf376e/menu-icons-mirakl-connect.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Agentic Activation",
+        "subtitle": "Make products discoverable and purchasable on LLMs",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/agentic-activation"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/3PPPPHgWhl16ICVBi00J3A/20de0f256791676b46f545fed732d192/https___images.ctfassets.net_g4kjd861vrk6_3iJDx6O8NfoTTq0ekUeIKw_d468db4bdaf7c874a93a6e43fb637b31_icon-mirakl-nexus-agentic-.png",
+         "description": "",
+         "width": 100,
+         "height": 100,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Mirakl Connect Pricing",
+        "subtitle": "Get started with Mirakl Connect",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "products/mirakl-for-sellers/pricing"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/6NhrRpbFJBG4qfFj47gpae/2d1420405f9a42d89b573ec115841326/menu-icons-mirakl-connect-pricing.jpg",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/jpeg"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Sponsored Ads by Adspert",
+        "subtitle": "Boost profits and save time with automatic PPC ad optimization.",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkExternalLink",
+         "url": "https://go.adspert.net/mirakl?via=mirakl&utm_source=mirakl.com&utm_content=adspert-Navigation+bar"
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/4K3GRWbPhU2YVehVSCgYms/83afbd7bd6abbb7d79b54b22d86f5bd9/menu-icons-mirakl-Adspet.png",
+         "description": "Adspert Menu Logo",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       }
+      ]
+     },
+     "secondaryItemsCollection": {
+      "__typename": "TopBarMenuSecondaryItemsCollection",
+      "items": []
+     }
+    },
+    {
+     "__typename": "TopBarLink",
+     "title": "Mirakl Nexus",
+     "subtitle": "The new neutral intelligence backbone of agent-led commerce",
+     "isHighlighted": false,
+     "allowedLocales": [
+      "en-US",
+      "fr-FR",
+      "ja-JP"
+     ],
+     "image": {
+      "__typename": "Asset",
+      "url": "https://images.ctfassets.net/g4kjd861vrk6/3iJDx6O8NfoTTq0ekUeIKw/d468db4bdaf7c874a93a6e43fb637b31/icon-mirakl-nexus-agentic-commerce-brain.png",
+      "description": "",
+      "width": 100,
+      "height": 100,
+      "contentType": "image/png"
+     },
+     "link": {
+      "__typename": "FieldLink",
+      "label": "Mirakl Nexus",
+      "link": {
+       "__typename": "LinkPageLink",
+       "page": {
+        "__typename": "Page",
+        "slug": "nexus"
+       }
+      }
+     }
+    },
+    {
+     "__typename": "TopBarMenu",
+     "triggerLabel": "Why Mirakl?",
+     "title": "Why Mirakl?",
+     "titleLink": null,
+     "menuPosition": "full-width",
+     "allowedLocales": [
+      "en-US",
+      "fr-FR",
+      "ja-JP"
+     ],
+     "itemsCollection": {
+      "__typename": "TopBarMenuItemsCollection",
+      "items": [
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "About us",
+        "subtitle": "Learn why the world\u2019s top brands choose Mirakl",
+        "allowedLocales": null,
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "why-mirakl/about-us"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/pX1nMsK8NZXWR78IB59SL/7fea77b1c886935ffc1d73dbf6d2829e/menu-icons-mirakl-platform.png",
+         "description": null,
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Technology & Security",
+        "subtitle": "Learn about Mirakl\u2019s intuitive, scalable, flexible and secure technology",
+        "allowedLocales": null,
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "why-mirakl/technology"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/3bRbZd4e4jkAHkJsP4poYC/868f839e5e9b6eb20e8a4f57226648db/menu-icons-mirakl-technology.png",
+         "description": null,
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Careers",
+        "subtitle": "Scale your career with Mirakl",
+        "allowedLocales": null,
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "careers"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/6kxefNDEJfKfdEjO5SZagN/de1ee49cbccbafba38ce33ea3c841ba1/menu-icons-mirakl-careers.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Expertise",
+        "subtitle": "Learn how Mirakl partners with businesses to drive success",
+        "allowedLocales": null,
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "why-mirakl/expertise"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/4Wx9J7cFtvvVr2sBHZ6clu/6a228d9508df0ebeee4cf994697c2a84/menu-icons-mirakl-expertise.png",
+         "description": null,
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Retail Customers",
+        "subtitle": "Meet the retailers accelerating eCommerce growth with Mirakl",
+        "allowedLocales": null,
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "customers/b2c-marketplace-customers"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/6YlaeiCWDRCiZY8RUQtH8U/cb1d670b44806e60974933ec1ab5c152/menu-icons-mirakl-retail-customers.png",
+         "description": null,
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Partners",
+        "subtitle": "Curated partners for your online marketplace",
+        "allowedLocales": null,
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "ecosystem/partners"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/4gGigBrVWgVIOMR5qihreY/029cd4800d89382b02cd3daf9f83bba9/menu-icons-mirakl-partners.png",
+         "description": null,
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "B2B Customers",
+        "subtitle": "Meet the companies establishing B2B eCommerce with Mirakl",
+        "allowedLocales": null,
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "customers/b2b-marketplace-customers"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/7r7DZB8ZSpEnIWfAMeP0Bb/147ef342fc3c222b3a006fc3a787ed20/menu-icons-mirakl-b2b-customers.png",
+         "description": null,
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       }
+      ]
+     },
+     "secondaryItemsCollection": {
+      "__typename": "TopBarMenuSecondaryItemsCollection",
+      "items": []
+     }
+    },
+    {
+     "__typename": "TopBarMenu",
+     "triggerLabel": "Resources",
+     "title": "Resources",
+     "titleLink": null,
+     "menuPosition": "center",
+     "allowedLocales": [
+      "en-US",
+      "fr-FR",
+      "ja-JP"
+     ],
+     "itemsCollection": {
+      "__typename": "TopBarMenuItemsCollection",
+      "items": [
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "News & blog",
+        "subtitle": "Read the latest content on marketplaces, eCommerce and Mirakl",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkPageLink",
+         "page": {
+          "__typename": "Page",
+          "slug": "news-and-blog"
+         }
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/4J4qf2mcMImwrGYJBGJc67/81aba485204b58dba0a35366d2ce0516/menu-icons-mirakl-news.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       },
+       {
+        "__typename": "TopBarMenuItem",
+        "title": "Research",
+        "subtitle": "Read the latest data and insights about the commerce market",
+        "allowedLocales": [
+         "en-US",
+         "fr-FR",
+         "ja-JP"
+        ],
+        "link": {
+         "__typename": "LinkExternalLink",
+         "url": "https://www.mirakl.com/resources"
+        },
+        "image": {
+         "__typename": "Asset",
+         "url": "https://images.ctfassets.net/g4kjd861vrk6/28t2f4FFofccUXxBeC8yTT/381959c397e224490f116499b9ea9a17/menu-icons-mirakl-research.png",
+         "description": "",
+         "width": 80,
+         "height": 80,
+         "contentType": "image/png"
+        },
+        "tag": null
+       }
+      ]
+     },
+     "secondaryItemsCollection": {
+      "__typename": "TopBarMenuSecondaryItemsCollection",
+      "items": []
+     }
+    },
+    {
+     "__typename": "TopBarLink",
+     "title": null,
+     "subtitle": null,
+     "isHighlighted": true,
+     "allowedLocales": null,
+     "image": null,
+     "link": {
+      "__typename": "FieldLink",
+      "label": "Let's Talk",
+      "link": {
+       "__typename": "LinkPageLink",
+       "page": {
+        "__typename": "Page",
+        "slug": "lets-talk"
+       }
+      }
+     }
+    }
+   ],
+   "topMenu": null,
+   "heroVideo": null,
+   "homePageHero": null,
+   "homePageSingleHero": null,
+   "footer": {
+    "__typename": "NewFooter",
+    "brand": {
+     "__typename": "FooterBrand",
+     "description": "Empowering B2B and B2C organizations to launch and grow an enterprise marketplace at scale.",
+     "logo": {
+      "__typename": "Asset",
+      "url": "https://images.ctfassets.net/g4kjd861vrk6/50EK20MW7PziGWJEqCghiu/66517b508028234919f6a867ff98998f/logo-mirakl.png",
+      "description": null,
+      "width": 1000,
+      "height": 214,
+      "contentType": "image/png"
+     },
+     "socialsCollection": {
+      "__typename": "FooterBrandSocialsCollection",
+      "items": []
+     }
+    },
+    "quickAccessCollection": {
+     "__typename": "NewFooterQuickAccessCollection",
+     "items": [
+      {
+       "__typename": "FooterQuickAccessGroup",
+       "title": "Products",
+       "linksCollection": {
+        "__typename": "FooterQuickAccessGroupLinksCollection",
+        "items": [
+         {
+          "__typename": "FieldLink",
+          "label": "Mirakl Platform",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "U2kbvVhABer0JPPSTuaW7"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "products/mirakl-marketplace-platform"
+           }
+          }
+         },
+         {
+          "__typename": "FieldLink",
+          "label": "Mirakl Catalog Platform",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "IDeGnQKvXCiyNJkLLfhdk"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "products/mirakl-catalog-manager"
+           }
+          }
+         },
+         {
+          "__typename": "FieldLink",
+          "label": "Mirakl Ads",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "WIlMFrxNKyZCfiX7wxTdA"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "products/mirakl-ads"
+           }
+          }
+         },
+         {
+          "__typename": "FieldLink",
+          "label": "Explore Mirakl Connect",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "3yrJ3qm8UM2ZGlWDCai7P2"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "products/mirakl-for-sellers"
+           }
+          }
+         },
+         {
+          "__typename": "FieldLink",
+          "label": "Mirakl Payout",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "5lERomSC5D3Idwj3Ijsr3H"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "products/mirakl-payout"
+           }
+          }
+         }
+        ]
+       }
+      },
+      {
+       "__typename": "FooterQuickAccessGroup",
+       "title": "Customers",
+       "linksCollection": {
+        "__typename": "FooterQuickAccessGroupLinksCollection",
+        "items": [
+         {
+          "__typename": "FieldLink",
+          "label": "Retail Customers",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "7R2r02y4h4Zj1qgvXdnvr"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "customers/b2c-marketplace-customers"
+           }
+          }
+         },
+         {
+          "__typename": "FieldLink",
+          "label": "B2B Customers",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "2bJf7N2YtJpnlADFuLm0xw"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "customers/b2b-marketplace-customers"
+           }
+          }
+         }
+        ]
+       }
+      },
+      {
+       "__typename": "FooterQuickAccessGroup",
+       "title": "Ecosystem",
+       "linksCollection": {
+        "__typename": "FooterQuickAccessGroupLinksCollection",
+        "items": [
+         {
+          "__typename": "FieldLink",
+          "label": "Partners",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "byGKnQft1bDOzXe0ghIG3"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "ecosystem/partners"
+           }
+          }
+         },
+         {
+          "__typename": "FieldLink",
+          "label": "Sellers",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "6shaOFQYivAoUdZxLyIc3Y"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "ecosystem/sellers"
+           }
+          }
+         }
+        ]
+       }
+      },
+      {
+       "__typename": "FooterQuickAccessGroup",
+       "title": "Why Mirakl?",
+       "linksCollection": {
+        "__typename": "FooterQuickAccessGroupLinksCollection",
+        "items": [
+         {
+          "__typename": "FieldLink",
+          "label": "About Us",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "1NFrgJVpyLiO3fn4ycgLnu"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "why-mirakl/about-us"
+           }
+          }
+         },
+         {
+          "__typename": "FieldLink",
+          "label": "Technology & Security",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "43tMTxnHv7yl3vIixQ7mvp"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "why-mirakl/technology"
+           }
+          }
+         },
+         {
+          "__typename": "FieldLink",
+          "label": "Expertise",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "5nrFB076CX9UGy3zYSDCBb"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "why-mirakl/expertise"
+           }
+          }
+         },
+         {
+          "__typename": "FieldLink",
+          "label": "Careers",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "7E9daZPFckqC6Akn2EZyYX"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "careers"
+           }
+          }
+         }
+        ]
+       }
+      },
+      {
+       "__typename": "FooterQuickAccessGroup",
+       "title": "Resources",
+       "linksCollection": {
+        "__typename": "FooterQuickAccessGroupLinksCollection",
+        "items": [
+         {
+          "__typename": "FieldLink",
+          "label": "News",
+          "link": {
+           "__typename": "LinkPageLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "1Fz8yKA71kFNXoxAx0V2cB"
+           },
+           "page": {
+            "__typename": "Page",
+            "slug": "news-and-blog"
+           }
+          }
+         },
+         {
+          "__typename": "FieldLink",
+          "label": "Research",
+          "link": {
+           "__typename": "LinkExternalLink",
+           "sys": {
+            "__typename": "Sys",
+            "id": "73prNkOLugDYh9xTYv1PF2"
+           },
+           "url": "https://www.mirakl.com/resources"
+          }
+         }
+        ]
+       }
+      }
+     ]
+    },
+    "legals": {
+     "__typename": "FooterLegals",
+     "copyright": "Copyright \u00a9 {{currentYear}} \u2013 Mirakl SAS. All Rights Reserved",
+     "linksCollection": {
+      "__typename": "FooterLegalsLinksCollection",
+      "items": [
+       {
+        "__typename": "FieldLink",
+        "label": "Privacy Policy",
+        "link": {
+         "__typename": "LinkPageLink",
+         "sys": {
+          "__typename": "Sys",
+          "id": "7Ccz1kMFxIRZ9pcbUwayQe"
+         },
+         "page": {
+          "__typename": "Page",
+          "slug": "privacy-policy"
+         }
+        }
+       },
+       {
+        "__typename": "FieldLink",
+        "label": "General Conditions of Use",
+        "link": {
+         "__typename": "LinkPageLink",
+         "sys": {
+          "__typename": "Sys",
+          "id": "1jOMdIrRtQmOU2L9REuZ4C"
+         },
+         "page": {
+          "__typename": "Page",
+          "slug": "terms-of-service"
+         }
+        }
+       },
+       {
+        "__typename": "FieldLink",
+        "label": "Cookie Policy",
+        "link": {
+         "__typename": "LinkPageLink",
+         "sys": {
+          "__typename": "Sys",
+          "id": "4fdrORKJ2YhPGdyr9aLpLC"
+         },
+         "page": {
+          "__typename": "Page",
+          "slug": "cookie-policy"
+         }
+        }
+       },
+       {
+        "__typename": "FieldLink",
+        "label": "Cookie Preferences",
+        "link": {
+         "__typename": "LinkSlug",
+         "sys": {
+          "__typename": "Sys",
+          "id": "5rYhTBHz4qcERSiADykjNl"
+         },
+         "slug": "javascript:Didomi.preferences.show()"
+        }
+       },
+       {
+        "__typename": "FieldLink",
+        "label": "Legal Mentions",
+        "link": {
+         "__typename": "LinkPageLink",
+         "sys": {
+          "__typename": "Sys",
+          "id": "4r6DHiyjsyzmBE1ug7hCVy"
+         },
+         "page": {
+          "__typename": "Page",
+          "slug": "legal-mentions"
+         }
+        }
+       }
+      ]
+     }
+    }
+   },
+   "pageData": {
+    "__typename": "Page",
+    "meta": {
+     "__typename": "Meta",
+     "title": "Careers  |  Mirakl",
+     "description": "Scale your career with Mirakl. Join us in leading the digital transformation of businesses worldwide with the most innovative eCommerce solutions. Explore all jobs.",
+     "image": {
+      "__typename": "Asset",
+      "url": "https://images.ctfassets.net/g4kjd861vrk6/6Lg8wOUEYkdJOnaZ4wUvKB/d2c748ba791557f085191c166465c528/mirakl-og-image.png",
+      "width": 1200,
+      "height": 630
+     }
+    },
+    "sectionsCollection": {
+     "items": [
+      {
+       "__typename": "SectionTitleImage",
+       "tag": "Careers",
+       "lang": null,
+       "titleImage": null,
+       "title": "Scale {{your career}} with Mirakl. Join us in leading the digital transformation of eCommerce.",
+       "titleLevel": "h1",
+       "paragraph": {
+        "__typename": "SectionTitleImageParagraph",
+        "json": {
+         "data": {},
+         "content": [
+          {
+           "data": {},
+           "content": [
+            {
+             "data": {},
+             "marks": [],
+             "value": "Mirakl is the enterprise marketplace SaaS platform leading the digital transformation of eCommerce. If you are passionate about growth and new technology, come join us on our entrepreneurial adventure.",
+             "nodeType": "text"
+            }
+           ],
+           "nodeType": "paragraph"
+          }
+         ],
+         "nodeType": "document"
+        },
+        "links": {
+         "__typename": "SectionTitleImageParagraphLinks",
+         "entries": {
+          "__typename": "SectionTitleImageParagraphEntries",
+          "hyperlink": []
+         }
+        }
+       },
+       "button": {
+        "__typename": "FieldLink",
+        "label": "Explore all jobs",
+        "link": {
+         "__typename": "LinkSlug",
+         "sys": {
+          "__typename": "Sys",
+          "id": "2OlfrsOZTyA06LBH7A7rsf"
+         },
+         "slug": "#all-jobs"
+        }
+       },
+       "secondButton": null,
+       "image": {
+        "__typename": "Asset",
+        "url": "https://images.ctfassets.net/g4kjd861vrk6/2zEZfdDWKvI6RewkSo5yKz/c59db6f377408e36aa6c57a4e15bdb96/Picture__1_.jpg",
+        "description": "",
+        "width": 1200,
+        "height": 800,
+        "contentType": "image/jpeg"
+       },
+       "imagePosition": false
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "lg",
+       "lang": null
+      },
+      {
+       "__typename": "SectionHeroImage",
+       "image": {
+        "__typename": "Asset",
+        "url": "https://images.ctfassets.net/g4kjd861vrk6/5n7x4DUJc96bjYwtjywFab/89c51cc8b5871140360f211f5bc46d1b/1500X300__2024__2_.png",
+        "description": "",
+        "width": 2251,
+        "height": 450,
+        "contentType": "image/png"
+       },
+       "resizeOnMobile": null
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "md",
+       "lang": null
+      },
+      {
+       "__typename": "SectionTitleImage",
+       "tag": null,
+       "lang": {
+        "lang": [
+         "ja-JP"
+        ]
+       },
+       "titleImage": null,
+       "title": "Japan-only career text",
+       "titleLevel": "h3",
+       "paragraph": {
+        "__typename": "SectionTitleImageParagraph",
+        "json": {
+         "data": {},
+         "content": [
+          {
+           "data": {},
+           "content": [
+            {
+             "data": {},
+             "marks": [],
+             "value": "Japan-only text",
+             "nodeType": "text"
+            }
+           ],
+           "nodeType": "paragraph"
+          }
+         ],
+         "nodeType": "document"
+        },
+        "links": {
+         "__typename": "SectionTitleImageParagraphLinks",
+         "entries": {
+          "__typename": "SectionTitleImageParagraphEntries",
+          "hyperlink": []
+         }
+        }
+       },
+       "button": null,
+       "secondButton": null,
+       "image": {
+        "__typename": "Asset",
+        "url": "https://images.ctfassets.net/g4kjd861vrk6/3gcneG8k8DcPg95s8BPGaZ/f3f121dc5fab6b2467f315c471017ef3/kyohei-sato-2.png",
+        "description": null,
+        "width": 1000,
+        "height": 1000,
+        "contentType": "image/png"
+       },
+       "imagePosition": true
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "xl",
+       "lang": {
+        "lang": [
+         "ja-JP"
+        ]
+       }
+      },
+      {
+       "__typename": "SectionTitleParagraph",
+       "title": "Our lived values",
+       "lang": null,
+       "paragraph": {
+        "__typename": "SectionTitleParagraphParagraph",
+        "json": {
+         "data": {},
+         "content": [
+          {
+           "data": {},
+           "content": [
+            {
+             "data": {},
+             "marks": [],
+             "value": "We are looking for collaborators with diverse perspectives and experiences to power us forward.",
+             "nodeType": "text"
+            }
+           ],
+           "nodeType": "paragraph"
+          }
+         ],
+         "nodeType": "document"
+        },
+        "links": {
+         "__typename": "SectionTitleParagraphParagraphLinks",
+         "entries": {
+          "__typename": "SectionTitleParagraphParagraphEntries",
+          "hyperlink": []
+         }
+        }
+       }
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "md",
+       "lang": null
+      },
+      {
+       "__typename": "SectionBulletPointsImage",
+       "bulletPointsCollection": {
+        "__typename": "SectionBulletPointsImageBulletPointsCollection",
+        "items": [
+         {
+          "__typename": "FieldBulletPoint",
+          "title": "Work Hard Together",
+          "description": {
+           "__typename": "FieldBulletPointDescription",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Always be ready to lend a hand, seek constructive feedback, and embrace differences.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             },
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "\n",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldBulletPointDescriptionLinks",
+            "entries": {
+             "__typename": "FieldBulletPointDescriptionEntries",
+             "hyperlink": []
+            }
+           }
+          }
+         },
+         {
+          "__typename": "FieldBulletPoint",
+          "title": "Get Things Done",
+          "description": {
+           "__typename": "FieldBulletPointDescription",
+           "json": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+             {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+               {
+                "nodeType": "text",
+                "value": "Stay agile, find creative solutions, and move forward step by step while keeping the big picture in mind.",
+                "marks": [],
+                "data": {}
+               },
+               {
+                "nodeType": "text",
+                "value": "\n",
+                "marks": [],
+                "data": {}
+               }
+              ]
+             }
+            ]
+           },
+           "links": {
+            "__typename": "FieldBulletPointDescriptionLinks",
+            "entries": {
+             "__typename": "FieldBulletPointDescriptionEntries",
+             "hyperlink": []
+            }
+           }
+          }
+         },
+         {
+          "__typename": "FieldBulletPoint",
+          "title": "Satisfy & Empower Clients",
+          "description": {
+           "__typename": "FieldBulletPointDescription",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Put yourself in your clients\u2019 shoes, understand the challenges of their business, and become a trusted partner.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldBulletPointDescriptionLinks",
+            "entries": {
+             "__typename": "FieldBulletPointDescriptionEntries",
+             "hyperlink": []
+            }
+           }
+          }
+         },
+         {
+          "__typename": "FieldBulletPoint",
+          "title": "Succeed Through Expertise",
+          "description": {
+           "__typename": "FieldBulletPointDescription",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Develop your knowledge every day, share your expertise, and pass on your passion.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldBulletPointDescriptionLinks",
+            "entries": {
+             "__typename": "FieldBulletPointDescriptionEntries",
+             "hyperlink": []
+            }
+           }
+          }
+         },
+         {
+          "__typename": "FieldBulletPoint",
+          "title": "Go Above & Beyond ",
+          "description": {
+           "__typename": "FieldBulletPointDescription",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Innovate to remain the best, always strive to do better, and prioritize quality.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldBulletPointDescriptionLinks",
+            "entries": {
+             "__typename": "FieldBulletPointDescriptionEntries",
+             "hyperlink": []
+            }
+           }
+          }
+         }
+        ]
+       },
+       "image": {
+        "__typename": "Asset",
+        "url": "https://images.ctfassets.net/g4kjd861vrk6/6AqmjFWmpBrijeKiyvyReM/806c088595fa208e213fa5552e2587f2/Picture__2_.jpg",
+        "description": "",
+        "width": 800,
+        "height": 800,
+        "contentType": "image/jpeg"
+       },
+       "imagePosition": true
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "xl",
+       "lang": null
+      },
+      {
+       "__typename": "SectionTitleParagraph",
+       "title": "A world of growth opportunities",
+       "lang": null,
+       "paragraph": null
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "md",
+       "lang": null
+      },
+      {
+       "__typename": "SectionFiguresList",
+       "listCollection": {
+        "__typename": "SectionFiguresListListCollection",
+        "items": [
+         {
+          "__typename": "FieldFigure",
+          "title": "9 offices",
+          "paragraph": null
+         },
+         {
+          "__typename": "FieldFigure",
+          "title": "16 countries",
+          "paragraph": null
+         },
+         {
+          "__typename": "FieldFigure",
+          "title": "+750 employees",
+          "paragraph": null
+         }
+        ]
+       }
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "xl",
+       "lang": null
+      },
+      {
+       "__typename": "SectionQuote",
+       "lang": null,
+       "companyLogo": null,
+       "quote": "I feel fortunate to be surrounded by talented data scientists and data engineers. Together, we explore state-of-the-art models and technologies to offer the best-in-class solutions. It is a stimulating environment where I get to work on a variety of use cases and on the most challenging AI projects one can find!",
+       "avatar": {
+        "__typename": "Asset",
+        "url": "https://images.ctfassets.net/g4kjd861vrk6/4psRckbeYo2A5maE2TBH5S/810cc0ddcc40723b8f86a00e1b4333a9/avatar-remi-takase.png",
+        "description": "",
+        "width": 64,
+        "height": 64,
+        "contentType": "image/png"
+       },
+       "author": "Remi Takase",
+       "authorJob": "Artificial Intelligence Data Science Manager"
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "xl",
+       "lang": null
+      },
+      {
+       "__typename": "SectionTitleParagraph",
+       "title": "Perks & Benefits",
+       "lang": null,
+       "paragraph": {
+        "__typename": "SectionTitleParagraphParagraph",
+        "json": {
+         "data": {},
+         "content": [
+          {
+           "data": {},
+           "content": [
+            {
+             "data": {},
+             "marks": [],
+             "value": "Inclusive culture, exclusive perks",
+             "nodeType": "text"
+            }
+           ],
+           "nodeType": "paragraph"
+          }
+         ],
+         "nodeType": "document"
+        },
+        "links": {
+         "__typename": "SectionTitleParagraphParagraphLinks",
+         "entries": {
+          "__typename": "SectionTitleParagraphParagraphEntries",
+          "hyperlink": []
+         }
+        }
+       }
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "md",
+       "lang": null
+      },
+      {
+       "__typename": "SectionMediaParagraphsList",
+       "lang": null,
+       "itemsCollection": {
+        "__typename": "SectionMediaParagraphsListItemsCollection",
+        "items": [
+         {
+          "__typename": "FieldMediaParagraph",
+          "image": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/6NHXByztpGhh0FUKpT0av1/010bd442040d3f32e4c43e5ae7cdac76/icon-headset.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          },
+          "title": "Tech welcome pack",
+          "paragraph": {
+           "__typename": "FieldMediaParagraphParagraph",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Innovate with the latest Macbook Pro or Linux PC, dual screens, and a Mirakl technical orientation.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldMediaParagraphParagraphLinks",
+            "entries": {
+             "__typename": "FieldMediaParagraphParagraphEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "link": null
+         },
+         {
+          "__typename": "FieldMediaParagraph",
+          "image": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/2R6rksHyqXsiVh2I8P4pAT/86236799dfeebd1f446ab86b35c2df0b/icon-nutrition.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          },
+          "title": "Healthy snacks and aperitifs",
+          "paragraph": {
+           "__typename": "FieldMediaParagraphParagraph",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Enjoy breakfast every morning, along with fresh fruits, juice, and hot beverages, as well as monthly Aperos.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldMediaParagraphParagraphLinks",
+            "entries": {
+             "__typename": "FieldMediaParagraphParagraphEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "link": null
+         },
+         {
+          "__typename": "FieldMediaParagraph",
+          "image": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/4kvr5LBGdmSfbhyKBVWquZ/97436419fa4ada0d6577ec01ee45e691/icon-yoga.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          },
+          "title": "Team activities",
+          "paragraph": {
+           "__typename": "FieldMediaParagraphParagraph",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Get together for yoga, lunchtime board games, summer BBQs, golf, football, and foosball.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldMediaParagraphParagraphLinks",
+            "entries": {
+             "__typename": "FieldMediaParagraphParagraphEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "link": null
+         }
+        ]
+       }
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "sm",
+       "lang": null
+      },
+      {
+       "__typename": "SectionMediaParagraphsList",
+       "lang": null,
+       "itemsCollection": {
+        "__typename": "SectionMediaParagraphsListItemsCollection",
+        "items": [
+         {
+          "__typename": "FieldMediaParagraph",
+          "image": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/5G6o9nIq1xkrstpiFrMRju/e3ccbdc5728b8089504a2f36d0f11992/icon-modern-office.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          },
+          "title": "Modern workspaces",
+          "paragraph": {
+           "__typename": "FieldMediaParagraphParagraph",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Collaborate in new offices with comfy meeting rooms, a relaxation floor, a furnished terrace & bike parking.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldMediaParagraphParagraphLinks",
+            "entries": {
+             "__typename": "FieldMediaParagraphParagraphEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "link": null
+         },
+         {
+          "__typename": "FieldMediaParagraph",
+          "image": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/6SsfYV2hl6hE2W7jJaVdqy/de1afccd41785d91ca53d2058be26956/icon-home.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          },
+          "title": "Remote work",
+          "paragraph": {
+           "__typename": "FieldMediaParagraphParagraph",
+           "json": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+             {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+               {
+                "nodeType": "text",
+                "value": "Benefit from one remote work day per week, with a fixed in-office team day (Team Day)",
+                "marks": [],
+                "data": {}
+               }
+              ]
+             }
+            ]
+           },
+           "links": {
+            "__typename": "FieldMediaParagraphParagraphLinks",
+            "entries": {
+             "__typename": "FieldMediaParagraphParagraphEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "link": null
+         },
+         {
+          "__typename": "FieldMediaParagraph",
+          "image": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/1xzMMffJznZXPy4NWxWpFX/14aea5f72a0ca74e0c8bc88120106bee/icon-conference.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          },
+          "title": "Tech conferences and events",
+          "paragraph": {
+           "__typename": "FieldMediaParagraphParagraph",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Develop your technical expertise at conferences and training events.\n",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldMediaParagraphParagraphLinks",
+            "entries": {
+             "__typename": "FieldMediaParagraphParagraphEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "link": null
+         }
+        ]
+       }
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "xl",
+       "lang": null
+      },
+      {
+       "__typename": "SectionQuote",
+       "lang": null,
+       "companyLogo": null,
+       "quote": "It is stimulating to be in a role where you are constantly learning and always encouraged to give your best. Even after a year, I am still learning new things all the time, which keeps the work interesting and continuously creates opportunities for growth. I am grateful to be part of such a great company, where everyone shares the same goal and supports one another.",
+       "avatar": {
+        "__typename": "Asset",
+        "url": "https://images.ctfassets.net/g4kjd861vrk6/75XoSznrrbWgfCd5WpkBTs/dd588d5694f9cc42bd135df6ccb3199e/Carli_Donovan.png",
+        "description": "",
+        "width": 1200,
+        "height": 1200,
+        "contentType": "image/png"
+       },
+       "author": "Carli Donovan",
+       "authorJob": "Business Development Representative"
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "lg",
+       "lang": null
+      },
+      {
+       "__typename": "SectionTitleParagraph",
+       "title": "Here\u2019s what you can expect when you apply.",
+       "lang": null,
+       "paragraph": null
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "md",
+       "lang": null
+      },
+      {
+       "__typename": "SectionTimeline",
+       "itemsCollection": {
+        "__typename": "SectionTimelineItemsCollection",
+        "items": [
+         {
+          "__typename": "FieldTimeline",
+          "title": "Application",
+          "description": {
+           "__typename": "FieldTimelineDescription",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Explore jobs and submit your application online. Our team will review your resume.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldTimelineDescriptionLinks",
+            "entries": {
+             "__typename": "FieldTimelineDescriptionEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "icon": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/5hHF2HKfqfTSXhrGm4GO9m/2fcb5ad630bf7ed1a997411657dcbf61/icon-send.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          }
+         },
+         {
+          "__typename": "FieldTimeline",
+          "title": "Phone screen",
+          "description": {
+           "__typename": "FieldTimelineDescription",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "If you are selected, you will be invited to a first interview with a recruiter.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldTimelineDescriptionLinks",
+            "entries": {
+             "__typename": "FieldTimelineDescriptionEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "icon": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/3XUrXqI1HPkcZFlUTdnxek/dd5c43a9ca9e40d474e7503a22d41a3e/icon-video.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          }
+         },
+         {
+          "__typename": "FieldTimeline",
+          "title": "Interviews",
+          "description": {
+           "__typename": "FieldTimelineDescription",
+           "json": {
+            "data": {},
+            "content": [
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "If successful, you will then meet the hiring manager and a few future colleagues (on-site or via Zoom). Your expertise and fit with our core values will be assessed.",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             },
+             {
+              "data": {},
+              "content": [
+               {
+                "data": {},
+                "marks": [],
+                "value": "Interviews will follow the STAR method and assess your skills as well as your alignment with the company\u2019s values.",
+                "nodeType": "text"
+               },
+               {
+                "data": {},
+                "marks": [],
+                "value": "\n",
+                "nodeType": "text"
+               }
+              ],
+              "nodeType": "paragraph"
+             }
+            ],
+            "nodeType": "document"
+           },
+           "links": {
+            "__typename": "FieldTimelineDescriptionLinks",
+            "entries": {
+             "__typename": "FieldTimelineDescriptionEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "icon": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/7uCNbIe8ULUn9gLz2PLnSz/8d2e91a60ccff1820b186d20cd33218e/icon-interview.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          }
+         },
+         {
+          "__typename": "FieldTimeline",
+          "title": "Evaluation",
+          "description": {
+           "__typename": "FieldTimelineDescription",
+           "json": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+             {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+               {
+                "nodeType": "text",
+                "value": "Your interviewers will debrief internally to discuss all elements of your background. Then you will receive a final decision within two weeks.",
+                "marks": [],
+                "data": {}
+               },
+               {
+                "nodeType": "text",
+                "value": "\n",
+                "marks": [],
+                "data": {}
+               }
+              ]
+             }
+            ]
+           },
+           "links": {
+            "__typename": "FieldTimelineDescriptionLinks",
+            "entries": {
+             "__typename": "FieldTimelineDescriptionEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "icon": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/1MK1cbi6nFFlNS6xMbE7Wl/b6592a27535aef711587871d31893bdf/icon-check.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          }
+         },
+         {
+          "__typename": "FieldTimeline",
+          "title": "Welcome!",
+          "description": {
+           "__typename": "FieldTimelineDescription",
+           "json": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+             {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+               {
+                "nodeType": "text",
+                "value": "Once you accept our offer, we will keep in touch to ease the onboarding process.",
+                "marks": [],
+                "data": {}
+               },
+               {
+                "nodeType": "text",
+                "value": "\n",
+                "marks": [],
+                "data": {}
+               }
+              ]
+             }
+            ]
+           },
+           "links": {
+            "__typename": "FieldTimelineDescriptionLinks",
+            "entries": {
+             "__typename": "FieldTimelineDescriptionEntries",
+             "hyperlink": []
+            }
+           }
+          },
+          "icon": {
+           "__typename": "Asset",
+           "url": "https://images.ctfassets.net/g4kjd861vrk6/2tIZxpYi7x0jzuvb8Jrelt/0987c75eb8639e958931d07068f88ccc/icon-service.svg",
+           "description": "",
+           "width": 24,
+           "height": 24,
+           "contentType": "image/svg+xml"
+          }
+         }
+        ]
+       }
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "xl",
+       "lang": null
+      },
+      {
+       "__typename": "SectionQuote",
+       "lang": null,
+       "companyLogo": null,
+       "quote": "I started at Mirakl as a Talent Acquisition intern, then continued on a fixed-term contract before joining the Mirakl Connect team as an Account Executive for the German market through an internal mobility opportunity. Almost two years later, what strikes me the most is the company\u2019s dynamic: the product is constantly evolving, and internal opportunities allow you to reinvent yourself and keep learning.",
+       "avatar": {
+        "__typename": "Asset",
+        "url": "https://images.ctfassets.net/g4kjd861vrk6/6j6IrE5CVzBJwJGCqc9bVa/9da28b16e70da62ebefe853f7e44d746/Sasha_Raab.png",
+        "description": "",
+        "width": 1200,
+        "height": 1200,
+        "contentType": "image/png"
+       },
+       "author": "Sasha Raab",
+       "authorJob": "Associate Account Executive"
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "lg",
+       "lang": null
+      },
+      {
+       "__typename": "SectionTitleParagraph",
+       "title": "Explore All Jobs",
+       "lang": null,
+       "paragraph": null
+      },
+      {
+       "__typename": "SectionAllJobs",
+       "loadMoreLabel": "Load more",
+       "filterLocationLabel": "Location:",
+       "filterLocationAllLabel": "All",
+       "filterDepartmentLabel": "Department:",
+       "filterDepartmentAllLabel": "All",
+       "filterNoResultsLabel": "No results",
+       "searchPlaceholder": "Search",
+       "labsJobs": null
+      },
+      {
+       "__typename": "SectionSpacer",
+       "space": "lg",
+       "lang": null
+      }
+     ]
+    }
+   },
+   "actualSlug": "careers",
+   "availableLocales": [
+    "en-US",
+    "fr-FR",
+    "ja-JP"
+   ]
+  },
+  "__N_SSG": true
+ },
+ "page": "/[[...slug]]",
+ "query": {
+  "slug": [
+   "careers"
+  ]
+ },
+ "buildId": "8TPmsMvgMbQ3HBL4jiTKC",
+ "isFallback": false,
+ "isExperimentalCompile": false,
+ "gsp": true,
+ "locale": "en-US",
+ "locales": [
+  "en-US",
+  "fr-FR",
+  "ja-JP",
+  "de-DE",
+  "es-ES",
+  "it-IT",
+  "pt-BR"
+ ],
+ "defaultLocale": "en-US",
+ "scriptLoader": []
+}
