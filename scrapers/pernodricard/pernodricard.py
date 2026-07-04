@@ -45,6 +45,7 @@ Workday quirks worth knowing (this tenant) — the Rothschild lessons all apply:
 from __future__ import annotations
 
 import html
+import random
 import re
 import sys
 import time
@@ -95,8 +96,21 @@ REQUEST_TIMEOUT = 30
 # The faceted POST is rate-sensitive (token bucket); go slow and back off long.
 REQUEST_DELAY_SECONDS = 1.5      # between detail GETs (not bucket-metered)
 FACET_DELAY_SECONDS = 5.0        # between the (few) faceted listing POSTs
-RETRY_BACKOFF_SECONDS = 45.0
-MAX_RETRIES = 3
+
+# The faceted listing POST is metered by an ESCALATING token bucket: empty-message
+# HTTP 400s (errorCode HTTP_400, message="") that clear on their own after a
+# cooldown; a real burst earns a multi-HOUR ban. The request itself is valid —
+# every facet id is current and Tech+Regular returns 200 when the bucket has
+# tokens. Key insight: retrying HARDER feeds the escalation, so we do NOT add
+# request pressure vs the old code (it made 3 attempts). Same 3 attempts, but
+# spaced far longer so they straddle a shallow transient dip instead of hammering
+# a ~90s window. If still 400 after this, the bucket is deeply penalised (likely
+# a multi-hour ban) — no in-run retry can fix that, so fail fast: run.py closes
+# nothing and the next scheduled run (4×/day) recovers after the cooldown.
+LISTING_RETRY_BACKOFFS = (90.0, 300.0)  # 2 retries after the 1st try (3 attempts)
+# Detail GETs are NOT bucket-metered — a short, few-shot retry is plenty.
+DETAIL_RETRY_BACKOFF_SECONDS = 30.0
+DETAIL_MAX_RETRIES = 3
 
 JR_RE = re.compile(r"\bJR[-\d]+\b")
 
@@ -161,7 +175,7 @@ def _post_listing(session: requests.Session, family_id: str, offset: int) -> dic
         "searchText": "",
     }
     last_err: str | None = None
-    for attempt in range(1, MAX_RETRIES + 1):
+    for attempt in range(1 + len(LISTING_RETRY_BACKOFFS)):
         # Cookie-free: drop any Cloudflare/Workday cookie before each attempt.
         # A cookie tied to a flagged fingerprint keeps 400-ing; bare requests
         # are scored fresh. (See module docstring.)
@@ -173,17 +187,25 @@ def _post_listing(session: requests.Session, family_id: str, offset: int) -> dic
                 return data
             last_err = f"error payload {data.get('errorCode')}"
         else:
-            last_err = f"HTTP {response.status_code}: {response.text[:120]}"
-        # Empty-body 400 == rate limit; back off before the next cookie-free try.
-        if attempt < MAX_RETRIES:
-            time.sleep(RETRY_BACKOFF_SECONDS)
+            last_err = f"HTTP {response.status_code}: {response.text[:200]}"
+        # Empty-message 400 == token-bucket rate limit. Back off with an
+        # escalating, jittered delay long enough to outlast the penalty before
+        # the next cookie-free retry.
+        if attempt < len(LISTING_RETRY_BACKOFFS):
+            base = LISTING_RETRY_BACKOFFS[attempt]
+            print(
+                f"    listing {family_id} attempt {attempt + 1} failed "
+                f"({last_err}); backing off ~{base:.0f}s",
+                flush=True,
+            )
+            time.sleep(base + random.uniform(0.0, base * 0.25))
     raise requests.HTTPError(f"listing failed for family {family_id}: {last_err}")
 
 
 def _get_detail(session: requests.Session, external_path: str) -> dict:
     url = DETAIL_URL_TEMPLATE.format(external_path=external_path)
     last_err: str | None = None
-    for attempt in range(1, MAX_RETRIES + 1):
+    for attempt in range(1, DETAIL_MAX_RETRIES + 1):
         session.cookies.clear()
         response = session.get(url, timeout=REQUEST_TIMEOUT)
         if response.status_code == 200:
@@ -197,9 +219,9 @@ def _get_detail(session: requests.Session, external_path: str) -> dict:
             # the caller can drop it (closing it is correct; it's genuinely gone).
             raise requests.HTTPError(f"detail 404 for {external_path}", response=response)
         else:
-            last_err = f"HTTP {response.status_code}: {response.text[:120]}"
-        if attempt < MAX_RETRIES:
-            time.sleep(RETRY_BACKOFF_SECONDS)
+            last_err = f"HTTP {response.status_code}: {response.text[:200]}"
+        if attempt < DETAIL_MAX_RETRIES:
+            time.sleep(DETAIL_RETRY_BACKOFF_SECONDS)
     raise requests.HTTPError(f"detail failed for {external_path}: {last_err}")
 
 
