@@ -17,7 +17,7 @@ import os
 import re
 import sys
 import time
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
@@ -40,6 +40,13 @@ WORKFLOW_FILE = "scrape-one.yml"
 # Dashboard rows store the display name ("Sanofi") but the workflow expects
 # the scraper key ("sanofi"). Reverse-map at startup.
 KEY_BY_DISPLAY = {v: k for k, v in COMPANY_NAMES.items()}
+
+# Dashboard-side "old posting" rule (raw DB keeps every row): a still-open
+# posting first published more than ~6 months ago is an evergreen/pipeline
+# requisition — real and applyable, just not fresh. Those rows get an
+# "OPEN N MO" badge, and the hide_old checkbox removes them from the list.
+# Rows with NULL posted_date are never hidden (unknown age is not old age).
+OLD_AFTER_DAYS = 183
 
 # Strip ISO8601 timestamps that GitHub prefixes to every raw log line.
 _TS_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z ?")
@@ -101,7 +108,10 @@ def dashboard(
     q: str | None = None,
     show_closed: bool = False,
     to_apply: bool = False,
+    hide_old: bool = False,
 ):
+    old_cutoff = date.today() - timedelta(days=OLD_AFTER_DAYS)
+
     where: list[str] = []
     params: list = []
 
@@ -109,6 +119,9 @@ def dashboard(
         where.append("still_open = TRUE")
     if to_apply:
         where.append("to_apply = TRUE")
+    if hide_old:
+        where.append("(posted_date IS NULL OR posted_date >= %s)")
+        params.append(old_cutoff)
     if company:
         where.append("company = %s")
         params.append(company)
@@ -162,8 +175,10 @@ def dashboard(
         "to_apply": sum(1 for r in universe if r[3]),
     }
 
-    jobs = [
-        {
+    jobs = []
+    for r in rows[:1000]:
+        posted = r[5].date() if isinstance(r[5], datetime) else r[5]
+        jobs.append({
             "id": r[0],
             "company": r[1],
             "title": r[2],
@@ -175,9 +190,9 @@ def dashboard(
             "apply_url": r[8],
             "to_apply": r[9],
             "is_new": r[10],
-        }
-        for r in rows[:1000]
-    ]
+            "is_old": bool(posted and posted < old_cutoff),
+            "age_months": (date.today() - posted).days // 30 if posted else None,
+        })
 
     return templates.TemplateResponse(request, "dashboard.html", {
         "jobs": jobs,
@@ -190,6 +205,7 @@ def dashboard(
         "q": q or "",
         "show_closed": show_closed,
         "to_apply_filter": to_apply,
+        "hide_old": hide_old,
         "result_count": len(jobs),
     })
 

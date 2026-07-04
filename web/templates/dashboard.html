@@ -98,6 +98,12 @@
       Show closed
     </label>
 
+    <label class="flex items-center gap-2 text-sm text-zinc-400 cursor-pointer select-none">
+      <input type="checkbox" name="hide_old" value="true" {% if hide_old %}checked{% endif %}
+             class="rounded border-zinc-700 bg-zinc-950">
+      Hide old (&gt;6&nbsp;mo)
+    </label>
+
     <div class="flex flex-wrap items-center gap-2">
       <button type="submit" class="flex-1 sm:flex-none bg-white text-zinc-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-200">
         Filter
@@ -150,6 +156,10 @@
             {% if job.is_new and job.still_open %}
               <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mt-0.5 shrink-0">NEW</span>
             {% endif %}
+            {% if job.is_old and job.still_open %}
+              <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30 mt-0.5 shrink-0"
+                    title="Evergreen posting: published {{ job.age_months }} months ago and still open — the company hires continuously through it.">OPEN {{ job.age_months }} MO</span>
+            {% endif %}
             {% if not job.still_open %}
               <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-zinc-700 text-zinc-300 mt-0.5 shrink-0">CLOSED</span>
             {% endif %}
@@ -164,6 +174,12 @@
               Seen {{ job.first_seen_at.strftime('%Y-%m-%d') }}
             {% endif %}
           </div>
+          {% if job.is_old and job.still_open %}
+            <div class="text-xs text-amber-400/80 mt-1 flex items-start gap-1.5">
+              <span aria-hidden="true">↻</span>
+              <span>Open {{ job.age_months }}&nbsp;months and still live. Long-running postings are usually evergreen&nbsp;/&nbsp;pipeline roles the company recruits through continuously — the date is the original posting, not a freshness signal.</span>
+            </div>
+          {% endif %}
         </div>
       </button>
     {% else %}
