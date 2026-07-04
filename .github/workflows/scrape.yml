@@ -81,6 +81,9 @@ jobs:
           - pernodricard
           - revolut
           - mirakl
+          - datadog
+          - bouyguestelecom
+          - mckinsey
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

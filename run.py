@@ -78,6 +78,9 @@ COMPANY_NAMES = {
     "pernodricard": "Pernod Ricard",
     "revolut": "Revolut",
     "mirakl": "Mirakl",
+    "datadog": "Datadog",
+    "bouyguestelecom": "Bouygues Telecom",
+    "mckinsey": "McKinsey & Company",
 }
 
 
