@@ -48,6 +48,8 @@ from dataclasses import asdict, dataclass
 import requests
 from bs4 import BeautifulSoup
 
+from scrapers._relevance import is_tech_role
+
 TENANT = "ag"
 SITE = "Airbus"
 HOST = f"https://{TENANT}.wd3.myworkdayjobs.com"
@@ -260,6 +262,22 @@ def scrape() -> list[dict]:
         by_jr.setdefault(jr, r)
 
     print(f"  -> {len(by_jr)} unique France/Regular jobs across families", flush=True)
+
+    # Role-type filter (shared predicate — see scrapers/_relevance.py). The
+    # "Digital" family in particular carries PLM/3DEXPERIENCE/SAP functional and
+    # physical-product engineering (flight-controls computers, avionics, embedded
+    # DO-178, VDI/digital-workplace) alongside real data/software roles. Drop the
+    # off-scope ones on the listing title BEFORE the detail fetch. `category` is
+    # the jobFamily, which is too coarse to filter on, so we go by title.
+    before_filter = len(by_jr)
+    by_jr = {
+        jr: r for jr, r in by_jr.items()
+        if is_tech_role(r.get("title") or "", r.get("_family_name"))
+    }
+    print(
+        f"  role filter: dropped {before_filter - len(by_jr)} off-scope "
+        f"(non data/software) → {len(by_jr)} in scope", flush=True,
+    )
 
     print("\nDetail phase...", flush=True)
     jobs: list[Job] = []

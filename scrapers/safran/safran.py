@@ -52,6 +52,8 @@ from urllib.parse import urlencode
 from bs4 import BeautifulSoup
 from curl_cffi import requests as cffi_requests
 
+from scrapers._relevance import is_tech_role
+
 HOST = "https://www.safran-group.com"
 LISTING_PATH = "/jobs"
 
@@ -285,6 +287,25 @@ def scrape() -> list[dict]:
     listing_elapsed = time.time() - started
     print(
         f"  → {len(all_listings)} unique jobs in {listing_elapsed:.1f}s\n",
+        flush=True,
+    )
+
+    # Role-type filter (shared predicate — see scrapers/_relevance.py). Safran's
+    # job-field facets (esp. "Architecture and systems engineering" and
+    # "Mathematics and algorithms") are dominated by physical-product / aerospace
+    # engineering (systems, mechanical, optronics, signal-processing, sûreté de
+    # fonctionnement, IVVQ, config-management, navigabilité) — out of scope for a
+    # data + software board. Drop those here, BEFORE enrichment, so we don't
+    # spend a detail fetch on a row we're going to discard.
+    before_filter = len(all_listings)
+    all_listings = {
+        jid: j for jid, j in all_listings.items()
+        if is_tech_role(j.title, j.category)
+    }
+    dropped_offscope = before_filter - len(all_listings)
+    print(
+        f"  role filter: dropped {dropped_offscope} off-scope "
+        f"(non data/software) → {len(all_listings)} in scope\n",
         flush=True,
     )
 

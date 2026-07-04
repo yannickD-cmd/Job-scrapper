@@ -43,6 +43,8 @@ from dataclasses import asdict, dataclass
 import requests
 from bs4 import BeautifulSoup
 
+from scrapers._relevance import is_tech_role
+
 HOST = "https://careers.thalesgroup.com"
 SITEMAP_TEMPLATE = f"{HOST}/global/en/sitemap{{n}}.xml"
 NUM_SITEMAPS = 8  # observed 2026-05 — sitemap.xml lists 8 child sitemaps
@@ -211,9 +213,18 @@ def _parse_detail(html: str, url: str) -> Job | None:
     if category not in SCOPE_CATEGORIES:
         return None
 
+    title = job.get("title") or ""
+    # Role-type filter (shared predicate — see scrapers/_relevance.py). Thales's
+    # in-scope categories ("Engineering and Technical specialities", "Software")
+    # still carry a lot of physical-product / aerospace-defense engineering
+    # (systems, safety/sûreté de fonctionnement, IVVQ, gestion de configuration,
+    # signal-processing, optronics, radar/sonar). Those are out of scope for a
+    # data + software board — drop them on the title.
+    if not is_tech_role(title, category):
+        return None
+
     city = job.get("city") or ""
     req_id = job.get("reqId") or ""
-    title = job.get("title") or ""
     posted = job.get("postedDate") or job.get("datePosted")
 
     return Job(

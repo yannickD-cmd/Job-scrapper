@@ -87,6 +87,30 @@ _ALLOW_PATTERNS: tuple[str, ...] = (
     r"\bux\b", r"\bui\b", r"ux/ui", r"\bdesigner\b",
     # ---- Generic IT ----
     r"informatique", r"\bit\b",
+    # ---- Data platforms / BI / ETL (added when Safran/Thales/CGI feeds surfaced
+    #      real data roles named only after the tool: "Consultant Dataiku",
+    #      "Tech Lead Databricks", "Consultant Snowflake/ETL", "Décisionnel"). ----
+    r"snowflake", r"databricks", r"dataiku", r"informatica", r"talend",
+    r"\bssis\b", r"\bssas\b", r"\betl\b", r"\belt\b", r"\bkafka\b", r"\bspark\b",
+    r"hadoop", r"\bhdfs\b", r"bigquery", r"power ?bi", r"\bpowerbi\b",
+    r"\btableau\b", r"\bqlik", r"microstrategy", r"decisionn?el",
+    r"data ?lake", r"data ?warehouse", r"lakehouse", r"\bdbt\b",
+    r"maintenance predictive", r"predictive maintenance",
+    r"biostatist", r"statisticien", r"statistician",
+    r"web analyst", r"digital analyst",
+    # ---- SRE / platform / infra-as-code / observability (spelled-out forms the
+    #      bare-acronym patterns above miss: "Site Reliability Engineer",
+    #      "Ingénieur CloudOps", "Expert OpenShift", "Splunk Operations"). ----
+    r"site reliability", r"cloud ?ops", r"fin ?ops", r"git ?ops",
+    r"platform engineer", r"openshift", r"terraform", r"ansible",
+    r"observabilit", r"splunk", r"dynatrace", r"elasticsearch", r"opensearch",
+    r"grafana", r"prometheus",
+    r"\bhpc\b", r"calcul intensif", r"calculs intensifs",
+    # ---- Security, hands-on (recover roles the compound "security ..." pattern
+    #      misses: forensic/CERT/SOC analysts, Blue/Red Team, Common Criteria). ----
+    r"forensi", r"\bcert\b", r"\bcsirt\b", r"\bsiem\b", r"\bedr\b", r"\bdfir\b",
+    r"blue team", r"red team", r"purple team", r"security officer",
+    r"criteres communs", r"common criteria",
 )
 _ALLOW = re.compile("|".join(_ALLOW_PATTERNS))
 
@@ -101,6 +125,32 @@ _HARD_EXCLUDE_PATTERNS: tuple[str, ...] = (
     r"developpement commercial",
     r"technico.?commercial",       # technical SALES, despite cyber/IA domain words
     r"\bpricing\b", r"monetisation",  # pricing/monetization = commercial, not tech
+    # ---- Physical-product / aerospace-defense engineering ---------------------
+    # Safran, Thales and Airbus file hardware / systems / mechanical / signal /
+    # optronics / safety / V&V / configuration-management roles under the same
+    # ATS families as their software & data roles. These are out of scope for a
+    # data + software board but collide with a tech keyword above (architecte,
+    # logiciel, embarque, ia, developpement, calculateur...), so ALLOW alone
+    # keeps them. Drop them here. Terms are aerospace/defense-specific and do not
+    # appear in the data/software titles at the other tracked companies (verified
+    # against the full open-jobs set). See project_defense_physeng_junk memory.
+    #   physical / defense / mechanical domain nouns:
+    r"turbomachine", r"turborea?cteur", r"optroniqu", r"avioniqu",
+    r"\bmissiles?\b", r"artillerie", r"torpille", r"\bsonar\b", r"\bradar\b",
+    r"\bviseurs?\b", r"munition", r"armement", r"aeroport",  # aéroporté(e)
+    r"\bcalculateurs?\b", r"\bguidage\b", r"pile a combustible",
+    r"propulsi", r"mecaniqu", r"mecatroniqu", r"hydrauliqu", r"aerodynamiqu",
+    r"bancs? d.?essai",
+    r"energie dirigee", r"navigation aeronautique", r"\binertielles?\b",
+    #   methodology: V&V / config mgmt / safety / airworthiness (physical systems):
+    r"surete de fonctionnement", r"\bivvqm?\b", r"\bivv\b",
+    r"verification.{0,6}validation", r"traitement (?:du|de) signal",
+    r"navigabilite", r"airworthiness", r"\bsafety\b",
+    r"gestion(?:naire)? de configuration", r"configuration management",
+    r"gestion(?:naire)? de modifications?",
+    # NB: no bare "architecte systeme" / "ingenieur systeme" exclude — it would
+    # also drop cybersecurity/infra architects. Bare "Système" roles with no
+    # physical-domain qualifier are left in (few, and genuinely ambiguous).
 )
 _HARD_EXCLUDE = re.compile("|".join(_HARD_EXCLUDE_PATTERNS))
 
