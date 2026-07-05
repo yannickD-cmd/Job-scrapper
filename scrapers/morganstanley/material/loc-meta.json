@@ -1,0 +1,50 @@
+[
+	{
+        "name": "Americas",
+        "text": "Americas",
+        "url": "https://morganstanley.eightfold.ai/careers?source=mscom",
+        "open": "external"
+    },
+	{
+        "name": "EMEA",
+        "text": "EMEA",
+        "url": "https://morganstanley.eightfold.ai/careers?source=mscom",
+        "open": "external"
+    },
+  {
+        "name": "Hong Kong SAR",
+        "text": "Hong Kong SAR",
+        "url": "https://morganstanley.eightfold.ai/careers?source=mscom",
+        "open": "external"
+    },
+ 	{
+        "name": "India",
+        "text": "India",
+        "url": "https://morganstanley.eightfold.ai/careers?source=mscom",
+        "open": "external"
+    },
+	{
+        "name": "Japan",
+        "text": "Japan",
+        "url": "https://morganstanley.eightfold.ai/careers?source=mscom",
+        "open": "external"
+    },
+	{
+        "name": "Mainland China",
+        "text": "Mainland China",
+        "url": "https://careers.morganstanley.com.cn",
+        "open": "external"
+    },
+    {
+        "name": "Republic of Korea",
+        "text": "Republic of Korea",
+        "url": "https://ms.wd5.myworkdayjobs.com/en-US/External?Location_Country=7a5a2aadf9d34086a2bfbfd408bc28da",
+        "open": "external"
+    },
+    {
+        "name": "All Others",
+        "text": "All Others",
+        "url": "https://morganstanley.eightfold.ai/careers?source=mscom",
+        "open": "external"
+    }
+]

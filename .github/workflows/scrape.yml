@@ -29,6 +29,16 @@ jobs:
         # before one listing pass completes). Not a TLS-fingerprint issue — it's
         # IP reputation, so no impersonate profile fixes it. Run Safran locally:
         #   python run.py safran      # see scrapers/safran/safran.py
+        #
+        # Pernod Ricard is excluded for a related reason: its Workday CXS faceted
+        # POST is metered by an escalating token bucket that's far more aggressive
+        # on datacenter ASNs (GitHub Actions IP ranges, shared with every other
+        # Workday scraper). It periodically 400s ALL retries — and retrying harder
+        # only feeds the escalation. The faceted POST is unavoidable (listing rows
+        # carry no job-family/employment-type, so there's no client-side filter),
+        # so no in-CI backoff fixes it. A residential IP tolerates the low-pressure
+        # 2-POST run. Run Pernod Ricard locally:
+        #   python run.py pernodricard    # see scrapers/pernodricard/pernodricard.py
         company:
           - sanofi
           - loreal
@@ -78,12 +88,24 @@ jobs:
           - airliquide
           - vinci
           - qonto
-          - pernodricard
           - revolut
           - mirakl
           - datadog
           - bouyguestelecom
           - mckinsey
+          - siapartners
+          - sap
+          - n26
+          - salesforce
+          - alan
+          - ubisoft
+          - danone
+          - renault
+          - richemont
+          - veolia
+          - morganstanley
+          - accor
+          - hermes
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

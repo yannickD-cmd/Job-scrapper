@@ -7,6 +7,14 @@ public JSON CXS API:
   POST /wday/cxs/pernodricard/pernod-ricard/jobs       (listing, faceted)
   GET  /wday/cxs/pernodricard/pernod-ricard<externalPath>   (detail)
 
+CI-EXCLUDED (run locally, like BNP/Safran). The faceted POST is metered by an
+escalating token bucket that is far more aggressive on datacenter ASNs (GitHub
+Actions IP ranges, shared with every other Workday scraper); it periodically
+400s all retries, and retrying harder only feeds the escalation. There is no
+client-side escape (listing rows carry no family/employment-type — see below),
+so no in-CI backoff fixes it. A residential IP tolerates the low-pressure 2-POST
+run, so this is driven by run_local_scrapers.ps1 and removed from scrape.yml.
+
 Scope (locked with the user):
   - Country     : France only      (no country facet exists — filtered
                                      client-side off the listing bulletFields,

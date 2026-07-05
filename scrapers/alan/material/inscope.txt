@@ -1,0 +1,91 @@
+Engineering+Data count: 21
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - Data Retention & Privacy
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - Core Billing Platform
+    loc  : Anywhere in France, Belgium, Spain
+
+[Data] emp=FullTime
+    title: Data Full Stack
+    loc  : Paris, France; Marseille, France; Bordeaux, France; Biarritz, France; Brussels, Belgium
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - Global Architecture
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer - Frontend T-shaped  (x/f/m) - Growth Product
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Platform Engineer (x/f/m) - Tech Foundations
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - Insurance Offer
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Founding engineer- Mo team (AI Health Companion)
+    loc  : Paris, France
+
+[Engineering] emp=FullTime
+    title: Software Engineer Alan Precision (x/f/m)
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer Team Lead (x/f/m) - Growth Product
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer - Work Environment (x/f/m)
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - Ops AI Platform
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - Global Billing Platform
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - Spain
+    loc  : Anywhere in Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - Product Platform
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - Claims Management
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - AI Developer Tools
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Fullstack Software Engineer (x/f/m) - Payroll & Benefits Platform for HR
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Engineering Manager hands on (x/f/m) - Growth Product
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=FullTime
+    title: Software Engineer (Security) - Tech Foundations
+    loc  : Anywhere in France, Belgium, Spain
+
+[Engineering] emp=Intern
+    title: Software Engineer Internship (6 months)
+    loc  : Paris
+
+--- France gate ( "France" in location ) ---
+kept: 19 / 21
+DROPPED by France gate:
+   Anywhere in Spain | Fullstack Software Engineer (x/f/m) - Spain
+   Paris | Software Engineer Internship (6 months)

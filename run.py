@@ -81,6 +81,19 @@ COMPANY_NAMES = {
     "datadog": "Datadog",
     "bouyguestelecom": "Bouygues Telecom",
     "mckinsey": "McKinsey & Company",
+    "siapartners": "Sia Partners",
+    "sap": "SAP",
+    "n26": "N26",
+    "salesforce": "Salesforce",
+    "alan": "Alan",
+    "ubisoft": "Ubisoft",
+    "danone": "Danone",
+    "renault": "Renault Group",
+    "richemont": "Richemont",
+    "veolia": "Veolia",
+    "morganstanley": "Morgan Stanley",
+    "accor": "Accor",
+    "hermes": "Hermès",
 }
 
 

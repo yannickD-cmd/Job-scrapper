@@ -1,0 +1,15 @@
+HTTP/1.1 200 200
+date: Sat, 04 Jul 2026 11:12:37 GMT
+server: Apache
+strict-transport-security: max-age=31536000; includeSubDomains
+set-cookie: JSESSIONID=w1~25E9FE073AE1D7F41EFE6489D4AF1185; Path=/; Secure; HttpOnly
+referrer-policy: strict-origin-when-cross-origin
+content-security-policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' *.contextualnavigation.api.community.sap.com *.perfdrive.com *.sap.com *.px-cloud.net data: https: https://localhost http://localhost *.sap.com rmk-map-12.jobs2web.com rmkcdn.successfactors.com performancemanager5.successfactors.eu *.sapsf.eu *.sapsf.com *.successfactors.com *.successfactors.eu *.sapsf.cn *.qualtrics.com d3537c9nadzkz1.cloudfront.net *.linkedin.com *.googleapis.com *.gstatic.com *.googletagmanager.com *.google-analytics.com *.googlesyndication.com *.tagmanager.google.com *.youtube.com *.youtu.be *.youtube-nocookie.com *.vimeo.com vimeo.com *.vimeocdn.com *.wistia.net *.pinterest.com *.xing-share.com *.xing.com *.facil-iti.com *.moatads.com *.ytimg.com *.twitter.com *.facebook.com *.facebook.net *.doubleclick.net *.adobedtm.com *.adobe.com sdk.openui5.org; frame-ancestors 'self' https://career5.successfactors.eu
+cache-control: no-cache, no-store, must-revalidate, no-transform
+pragma: no-cache
+expires: Thu, 01 Jan 1970 00:00:00 GMT
+x-frame-options: SAMEORIGIN
+content-type: text/html;charset=UTF-8
+x-content-type-options: nosniff
+transfer-encoding: chunked
+
