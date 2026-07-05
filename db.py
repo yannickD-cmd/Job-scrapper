@@ -97,10 +97,14 @@ INSERT INTO jobs (
 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, NOW(), TRUE)
 ON CONFLICT (company, native_job_id) DO UPDATE SET
     title         = EXCLUDED.title,
-    description   = EXCLUDED.description,
+    -- COALESCE the enrichment-only fields: a scraper that keeps a row despite a
+    -- transient detail-page failure sends description/posted_date = NULL, and we
+    -- must not let that wipe a previously-populated value. NULL falls back to the
+    -- stored value; a real new value still overwrites.
+    description   = COALESCE(EXCLUDED.description, jobs.description),
     location      = EXCLUDED.location,
     category      = EXCLUDED.category,
-    posted_date   = EXCLUDED.posted_date,
+    posted_date   = COALESCE(EXCLUDED.posted_date, jobs.posted_date),
     apply_url     = EXCLUDED.apply_url,
     raw_payload   = EXCLUDED.raw_payload,
     last_seen_at  = NOW(),
