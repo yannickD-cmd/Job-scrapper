@@ -106,6 +106,7 @@ jobs:
           - morganstanley
           - accor
           - hermes
+          - amazon
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

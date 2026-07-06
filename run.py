@@ -94,6 +94,7 @@ COMPANY_NAMES = {
     "morganstanley": "Morgan Stanley",
     "accor": "Accor",
     "hermes": "Hermès",
+    "amazon": "Amazon / AWS",
 }
 
 
