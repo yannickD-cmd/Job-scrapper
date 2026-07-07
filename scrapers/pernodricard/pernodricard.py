@@ -106,16 +106,18 @@ REQUEST_DELAY_SECONDS = 1.5      # between detail GETs (not bucket-metered)
 FACET_DELAY_SECONDS = 5.0        # between the (few) faceted listing POSTs
 
 # The faceted listing POST is metered by an ESCALATING token bucket: empty-message
-# HTTP 400s (errorCode HTTP_400, message="") that clear on their own after a
-# cooldown; a real burst earns a multi-HOUR ban. The request itself is valid —
-# every facet id is current and Tech+Regular returns 200 when the bucket has
-# tokens. Key insight: retrying HARDER feeds the escalation, so we do NOT add
-# request pressure vs the old code (it made 3 attempts). Same 3 attempts, but
-# spaced far longer so they straddle a shallow transient dip instead of hammering
-# a ~90s window. If still 400 after this, the bucket is deeply penalised (likely
-# a multi-hour ban) — no in-run retry can fix that, so fail fast: run.py closes
-# nothing and the next scheduled run (4×/day) recovers after the cooldown.
-LISTING_RETRY_BACKOFFS = (90.0, 300.0)  # 2 retries after the 1st try (3 attempts)
+# HTTP 400s (errorCode HTTP_400, message="") that clear only after a long cooldown;
+# a burst earns a multi-HOUR ban (observed 2026-07: multi-DAY under sustained
+# pressure). The request itself is valid — every facet id is current and
+# Tech+Regular returns 200 when the bucket has tokens. Proof it's the bucket and
+# NOT the request/cookies: on 2026-07-06 a cookie-free POST returned 200, then the
+# very same cookie-free POST 400'd minutes later once a handful of test POSTs
+# drained the bucket. Hard lesson: in-run RETRIES only deepen the ban and turn a
+# bad day into a multi-day one. So we FAIL FAST — one POST per family, no retries.
+# This scraper is driven ONCE/DAY (throttle-on-attempt) by run_local_scrapers.ps1;
+# on a 400 we abort, run.py closes nothing, and the next day's run recovers on a
+# refilled bucket. Do NOT reintroduce retries here.
+LISTING_RETRY_BACKOFFS: tuple[float, ...] = ()  # fail-fast: 1 POST per family, no retries
 # Detail GETs are NOT bucket-metered — a short, few-shot retry is plenty.
 DETAIL_RETRY_BACKOFF_SECONDS = 30.0
 DETAIL_MAX_RETRIES = 3
