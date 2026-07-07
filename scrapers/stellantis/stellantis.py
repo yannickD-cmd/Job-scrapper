@@ -23,42 +23,54 @@ Job-shape fields used:
   seo_url      apply URL (-> TalentSoft jobs.groupe-psa.com)
   description  HTML; stripped for description field, full dict in raw_payload
 
-Filter strategy (the one that survived empirical testing):
+Filter strategy — TITLE-based, because the CATEGORY fields are unusable:
 
-Stellantis is an auto-OEM. Of 101 FR CDI roles in the inventory, ~97%
-are mechanical / embedded / manufacturing engineering. We want pure
-Data/AI/Analytics roles only, of which Stellantis has typically 3-5.
+Stellantis is an auto-OEM: of the ~100 FR CDI roles in the inventory, the
+large majority are mechanical / manufacturing / embedded / sales engineering.
+We keep Data & AI PLUS all Software/IT engineering, and drop the rest.
 
-Three signals were tried and rejected:
-  - primary_category="ICT, Digital and Data" : misses Data Engineer
-    (Supply Chain bucket), Agentic AI (Supply Chain bucket). Yields 3.
-  - google_categories CONTAINS "COMPUTER_AND_IT" : Google's classifier
-    over-tags automotive engineering because descriptions mention
-    CAD/sim/ECUs/AUTOSAR. Yields 28 with ~85% noise.
-  - Broad title regex (software|developer|architect|analyst|...) :
-    catches "Senior Buyer Software", "Supplier Cost Analyst", etc.
+Reverse-engineering the feed (see scrapers/stellantis/material/reeng_fr_all.json)
+showed the ATS category fields cannot gate scope:
+  - `department` is the literal string "EE" on EVERY FR row — no signal.
+  - `primary_category` labels "DATA ENGINEER" merely "Software", and
+    `parent_category` files it under "Software Electric & Electronics"
+    (a hardware-sounding bucket). Genuine Data/AI roles are scattered across
+    Software E&E, Engineering, Supply Chain, Finance and Quality — no single
+    category holds them, and each of those buckets is full of non-tech roles.
+  - google_categories over-tags automotive engineering as COMPUTER_AND_IT
+    because JDs mention CAD / simulation / ECUs / AUTOSAR.
 
-What works: STRICT title regex on Data/AI/ML/Analytics/BI terms only.
-No `software`, no `developer`, no `architect`, no `analyst` alone.
-Yields 3 genuine roles (Data Engineer, Agentic AI, BI Operations Lead)
-with effectively zero false positives at the time of writing.
+So we filter on the TITLE, using the shared `is_tech_role` allow-list
+(data / AI / ML / BI / software / cloud / devops / IT / architecture …) —
+the same predicate Schneider / Safran / Thales / ServiceNow use for
+unusable-category boards. On top of it we apply a small Stellantis-local
+HARD-EXCLUDE for the auto-OEM titles that collide with a tech keyword but are
+out of scope: CAD / vehicle-architecture ("Concepteur CAO", "EE architecture"),
+electrical-distribution hardware, procurement ("Buyer"), instructional-content
+("Training Developer") and graphic/motion design. This keeps genuine software
+roles the old strict Data-only regex missed (Software Development Engineer,
+Java dev, Platform Operations Engineer, software toolchain dev) without the
+noise. Yields ~13 clean FR CDI roles at time of writing.
 
 Stellantis FR tags employment as French job_type values: CDI / Apprentissage /
-Stage. No Stellantis-tagged CDD in FR inventory, so CDI alone covers
-"regular salaried position".
+Stage. Scope is CDI only (permanent salaried), so job_type="CDI".
 
-To change scope, edit COUNTRY / JOB_TYPES_IN_SCOPE / TITLE_DATA_RE.
+To change scope, edit COUNTRY / JOB_TYPES_IN_SCOPE / _STELLANTIS_EXCLUDE_RE,
+or swap the `is_tech_role` gate in `_in_scope`.
 """
 from __future__ import annotations
 
 import re
 import sys
 import time
+import unicodedata
 from dataclasses import asdict, dataclass
 from typing import Any
 
 import requests
 from bs4 import BeautifulSoup
+
+from scrapers._relevance import is_tech_role
 
 API_URL = "https://jobsapi-google.m-cloud.io/api/job/search"
 COMPANY_NAME = "companies/16115603-6c1b-4c45-b544-238a4e6c51b3"
@@ -66,23 +78,37 @@ COMPANY_NAME = "companies/16115603-6c1b-4c45-b544-238a4e6c51b3"
 COUNTRY = "FR"
 JOB_TYPES_IN_SCOPE: set[str] = {"CDI"}
 
-# Strict Data/AI/ML/Analytics keyword regex. Intentionally narrow: NO bare
-# "software" / "developer" / "architect" / "analyst" / "digital", because at
-# Stellantis those terms attach to procurement, marketing, and automotive
-# engineering roles rather than data/AI work.
-TITLE_DATA_RE = re.compile(
-    r"(?i)\b("
-    r"AI|IA|ML|BI|"
-    r"data|"
-    r"machine\s+learning|deep\s+learning|"
-    r"analytics|"
-    r"agentic|"
-    r"MLOps|LLM|"
-    r"big\s+data|"
-    r"business\s+intelligence|"
-    r"power\s*bi"
-    r")\b"
+# Scope = Data/AI + all Software/IT, gated on the TITLE via the shared
+# `is_tech_role` allow-list (category fields are unusable here — see module
+# docstring). On top of it, a Stellantis-local HARD-EXCLUDE for auto-OEM titles
+# that match a tech keyword (architecte / software / developer / designer /
+# plateforme) but are out of scope: CAD & vehicle-architecture, electrical
+# distribution hardware, procurement buyers, instructional-content developers,
+# and graphic/motion designers. Matched on the deburred (accent-stripped) title.
+_STELLANTIS_EXCLUDE_RE = re.compile(
+    r"concepteur cao"
+    r"|architecture plateforme vehicule"
+    r"|distribution electrique"
+    r"|vehicle configuration|ee architecture"
+    r"|\bbuyer\b|acheteur"
+    r"|training developer|master training"
+    r"|motion designer|graphiste"
 )
+
+
+def _deburr(s: str) -> str:
+    """Lowercase + strip diacritics so accented titles match the ASCII exclude
+    patterns ('Véhicule' -> 'vehicule', 'électrique' -> 'electrique')."""
+    nfkd = unicodedata.normalize("NFKD", s or "")
+    return "".join(c for c in nfkd if not unicodedata.combining(c)).lower()
+
+
+def _in_scope(title: str | None) -> bool:
+    """Keep in-scope tech/data/AI/software titles, drop auto-OEM collisions."""
+    if not is_tech_role(title):
+        return False
+    return not _STELLANTIS_EXCLUDE_RE.search(_deburr(title or ""))
+
 
 PAGE_SIZE = 100
 MAX_PAGES = 20  # 2000 jobs ceiling — well above any country bucket
@@ -230,13 +256,13 @@ def scrape() -> list[dict]:
             break
 
     kept = {
-        nid: j for nid, j in all_jobs.items() if TITLE_DATA_RE.search(j.title)
+        nid: j for nid, j in all_jobs.items() if _in_scope(j.title)
     }
     dropped = len(all_jobs) - len(kept)
 
     elapsed = time.time() - started
     print(
-        f"\n  title regex kept {len(kept)}/{len(all_jobs)} "
+        f"\n  title filter kept {len(kept)}/{len(all_jobs)} "
         f"(dropped {dropped}) in {elapsed:.1f}s\n",
         flush=True,
     )

@@ -2,10 +2,11 @@
 narrow what the dashboard renders. Edit here to widen/narrow scope without
 touching scrapers or schema.
 
-`is_idf(location)` — petite couronne only (Paris 75 + Hauts-de-Seine 92 +
-Seine-Saint-Denis 93 + Val-de-Marne 94). Multi-location strings pass if ANY
-listed location is petite couronne. Bare "Île-de-France" with no city is
-kept (user override during scope discussion).
+`is_idf(location)` — petite couronne (Paris 75 + Hauts-de-Seine 92 +
+Seine-Saint-Denis 93 + Val-de-Marne 94), plus Poissy (78 Yvelines, grande
+couronne) kept by explicit user override because it is Stellantis's main FR
+site. Multi-location strings pass if ANY listed location qualifies. Bare
+"Île-de-France" with no city is kept (user override during scope discussion).
 
 Commune list is the official INSEE one for each department:
 - 92 Hauts-de-Seine: 36 communes
@@ -48,6 +49,12 @@ _IDF_TOKENS: tuple[str, ...] = (
     # ---- 75 Paris ----
     "paris",
     "la defense", "paris la defense",
+
+    # ---- 78 Yvelines (grande couronne, kept by explicit user override) ----
+    # Poissy is Stellantis's main FR site; its whole IDF footprint is here.
+    # Added so the Stellantis roles surface on the dashboard. Word boundary
+    # keeps 'poissy' from matching (and being matched by) 'issy'.
+    "poissy",
 
     # ---- 92 Hauts-de-Seine (36 communes) ----
     "hauts de seine",
