@@ -94,7 +94,12 @@ COMPANY_NAMES = {
     "morganstanley": "Morgan Stanley",
     "accor": "Accor",
     "hermes": "Hermès",
+    "servicenow": "ServiceNow",
     "amazon": "Amazon / AWS",
+    "snowflake": "Snowflake",
+    "cisco": "Cisco",
+    "disney": "Disney",
+    "ipsen": "Ipsen",
 }
 
 

@@ -1,0 +1,1 @@
+from .ipsen import scrape

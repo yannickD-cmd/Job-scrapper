@@ -106,7 +106,12 @@ jobs:
           - morganstanley
           - accor
           - hermes
+          - servicenow
           - amazon
+          - snowflake
+          - cisco
+          - disney
+          - ipsen
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
