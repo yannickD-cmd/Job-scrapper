@@ -94,10 +94,49 @@ XHR_HEADERS = {
 }
 
 REQUEST_DELAY_SECONDS = 1.5
-REQUEST_TIMEOUT = 30
+REQUEST_TIMEOUT = 45  # SG's Imperva/Varnish origin can take ~30s on a cold hit
 PAGE_SIZE = 50  # SG cap not documented; 50 returns fine, keeps page count low
+MAX_PAGES = 40  # defensive cap: 40 * 50 = 2000 roles, far above SG's filtered scope
+
+# careers.societegenerale.com sits behind Imperva → Varnish → origin. When the
+# origin is briefly slow/unavailable the edge either holds the connection past
+# the read timeout (ReadTimeout) or answers "503 Backend fetch failed" — both
+# are transient and clear on a retry. Retry those; a real block fails every
+# attempt and still aborts the run (an empty scrape would false-close DB rows).
+MAX_RETRIES = 4
+RETRY_BACKOFF_SECONDS = 5.0  # multiplied by attempt number (5s, 10s, 15s)
+RETRYABLE_STATUS = {429, 500, 502, 503, 504}
 
 CSRF_RE = re.compile(r'"csrfToken":"([0-9a-f]{64})"')
+
+
+def _request(session: requests.Session, method: str, url: str, **kwargs) -> requests.Response:
+    """Issue a request, retrying transient timeouts / 5xx with linear backoff.
+
+    Returns the first non-retryable response (2xx, or a hard 4xx the callers'
+    raise_for_status still surfaces). Raises the last error once retries are
+    exhausted so a genuine outage aborts rather than silently returning empty.
+    """
+    kwargs.setdefault("timeout", REQUEST_TIMEOUT)
+    last_exc: Exception | None = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            response = session.request(method, url, **kwargs)
+        except (requests.Timeout, requests.ConnectionError, requests.exceptions.ChunkedEncodingError) as exc:
+            last_exc = exc
+            print(f"  [retry {attempt}/{MAX_RETRIES}] {type(exc).__name__} on {url}", flush=True)
+        else:
+            if response.status_code not in RETRYABLE_STATUS:
+                return response
+            last_exc = requests.HTTPError(
+                f"{response.status_code} on attempt {attempt}: {response.text[:120]}",
+                response=response,
+            )
+            print(f"  [retry {attempt}/{MAX_RETRIES}] HTTP {response.status_code} on {url}", flush=True)
+        if attempt < MAX_RETRIES:
+            time.sleep(RETRY_BACKOFF_SECONDS * attempt)
+    assert last_exc is not None
+    raise last_exc
 
 
 @dataclass
@@ -119,7 +158,7 @@ def _grab_csrf(session: requests.Session) -> str:
 
     Also seeds the Drupal + Imperva session cookies the later POSTs need.
     """
-    response = session.get(LISTING_PAGE, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+    response = _request(session, "GET", LISTING_PAGE, headers=HEADERS)
     response.raise_for_status()
     match = CSRF_RE.search(response.text)
     if not match:
@@ -129,7 +168,7 @@ def _grab_csrf(session: requests.Session) -> str:
 
 def _get_bearer(session: requests.Session, csrf: str) -> str:
     headers = {**HEADERS, **XHR_HEADERS, "X-CSRF-Token": csrf}
-    response = session.post(TOKEN_URL, headers=headers, timeout=REQUEST_TIMEOUT)
+    response = _request(session, "POST", TOKEN_URL, headers=headers)
     response.raise_for_status()
     payload = response.json()
     token = payload.get("token")
@@ -164,11 +203,12 @@ def _search_page(session: requests.Session, bearer: str, skip_from: int) -> dict
         "Authorization-API": "Bearer " + bearer,
         "X-Proxy-URL": QUANTUM_SEARCH_URL,
     }
-    response = session.post(
+    response = _request(
+        session,
+        "POST",
         PROXY_URL,
         headers=headers,
         data=json.dumps(_build_query(skip_from)),
-        timeout=REQUEST_TIMEOUT,
     )
     response.raise_for_status()
     return response.json()
@@ -243,7 +283,7 @@ def scrape() -> list[dict]:
     skip_from = 0
     total = None
 
-    while True:
+    for page in range(MAX_PAGES):
         payload = _search_page(session, bearer, skip_from)
         if total is None:
             total = payload.get("TotalCount", 0)
@@ -276,6 +316,12 @@ def scrape() -> list[dict]:
 
         skip_from += PAGE_SIZE
         time.sleep(REQUEST_DELAY_SECONDS)
+    else:
+        print(
+            f"  WARNING: hit MAX_PAGES={MAX_PAGES} cap before reaching "
+            f"TotalCount={total}; results may be truncated.",
+            flush=True,
+        )
 
     elapsed = time.time() - started
     print(f"  → {len(all_jobs)} jobs in {elapsed:.1f}s\n", flush=True)
