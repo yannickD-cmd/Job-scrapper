@@ -67,6 +67,7 @@ _ALLOW_PATTERNS: tuple[str, ...] = (
     r"\bcloud\b", r"infrastructure", r"virtualisation", r"kubernetes", r"docker",
     r"\biaas\b", r"\bpaas\b", r"\bsaas\b", r"\bplatform\b", r"plateforme",
     r"administration systeme", r"administrateur systeme", r"systeme et stockage",
+    r"\blinux\b", r"\bunix\b", r"\bwindows server\b",  # OS/infra: high-signal, no non-tech collision
     # ---- Cyber (compound only — not bare French "securite") ----
     r"cyber", r"cybersecurit", r"cybersecurity",
     r"security (?:engineer|architect|analyst|operation|specialist)",
@@ -125,6 +126,11 @@ _HARD_EXCLUDE_PATTERNS: tuple[str, ...] = (
     r"developpement commercial",
     r"technico.?commercial",       # technical SALES, despite cyber/IA domain words
     r"\bpricing\b", r"monetisation",  # pricing/monetization = commercial, not tech
+    # ---- Legal / privacy counsel (not tech ICs) --------------------------------
+    # A "Juriste … Protection des Données Personnelles" / DPO-flavoured lawyer
+    # matches ALLOW via "données"/"data"/"RGPD"; a jurist/attorney is never an
+    # in-scope engineering role. First surfaced on Air France (HOP! juriste).
+    r"\bjuriste\b", r"\bavocat\b", r"\bavocate\b", r"\bparalegal\b",
     # ---- Physical-product / aerospace-defense engineering ---------------------
     # Safran, Thales and Airbus file hardware / systems / mechanical / signal /
     # optronics / safety / V&V / configuration-management roles under the same

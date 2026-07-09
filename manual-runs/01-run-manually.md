@@ -45,7 +45,7 @@ Force it to ignore the 4-hour throttle:
 .\run_local_scrapers.ps1              # all three (throttled to once / 4h)
 .\run_local_scrapers.ps1 -Force       # ignore the throttle, run now
 .\run_local_scrapers.ps1 -Companies bnp        # just one
-.\run_local_scrapers.ps1 -Companies bnp,safran # a couple
+.\run_local_scrapers.ps1 -Companies bnp,safran.group # a couple
 ```
 
 ---
@@ -81,7 +81,7 @@ Replace `sanofi` with any company key. Multi-board companies use a dot, e.g.
 You can run several at once:
 
 ```powershell
-.venv\Scripts\python.exe run.py bnp safran pernodricard
+.venv\Scripts\python.exe run.py bnp safran.group pernodricard
 ```
 
 ---

@@ -4,7 +4,7 @@
     Runs the scrapers that GitHub Actions CANNOT run — their WAFs / rate-limiters
     punish datacenter ranges but clear from a residential IP. Today that's three:
         bnp          -> BNP Paribas    (Akamai Bot Manager)
-        safran       -> Safran         (WAF IP-reputation block)
+        safran.group -> Safran         (WAF IP-reputation block)
         pernodricard -> Pernod Ricard  (Workday faceted-POST token bucket,
                                         escalating + far worse on datacenter ASNs)
     (Everything else runs 4x/day in .github/workflows/scrape.yml. If you ever
@@ -35,7 +35,7 @@ param(
     #      (they were re-running on every trigger too).
     # Run it deliberately once the scraper is fixed:
     #   .\run_local_scrapers.ps1 -Companies pernodricard
-    [string[]] $Companies = @('bnp', 'safran'),
+    [string[]] $Companies = @('bnp', 'safran.group'),
     # Skip if a run already SUCCEEDED within this many hours (0 = always run).
     # Stops repeated logons in one day from re-hammering the WAFs needlessly.
     [double]   $MinHoursBetweenRuns = 4,

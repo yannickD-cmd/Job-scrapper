@@ -64,7 +64,8 @@ COMPANY_NAMES = {
     "criteo": "Criteo",
     "natixis": "Natixis",
     "axa": "AXA",
-    "safran": "Safran",
+    "safran.group": "Safran",
+    "safran.ai": "Safran.AI",
     "schneider": "Schneider Electric",
     "publicis": "Publicis Groupe",
     "artefact": "Artefact",
@@ -100,6 +101,8 @@ COMPANY_NAMES = {
     "cisco": "Cisco",
     "disney": "Disney",
     "ipsen": "Ipsen",
+    "airfrance": "Air France",
+    "bcg": "BCG",
 }
 
 

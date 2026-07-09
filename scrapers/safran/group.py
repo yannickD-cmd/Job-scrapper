@@ -34,9 +34,9 @@ L'Oréal, and CGI use). That clears the WAF from a residential IP, but
 NOT from GitHub Actions: Safran's WAF also IP-blocks GHA datacenter
 ranges, rejecting the first listing request with a 403 (the CI job died
 in ~15s). It's IP reputation, not the TLS handshake, so no impersonate
-profile fixes it. `safran` is therefore EXCLUDED from
+profile fixes it. `safran.group` is therefore EXCLUDED from
 .github/workflows/scrape.yml the same way BNP is — run it locally:
-    python run.py safran
+    python run.py safran.group
 
 To change scope, edit COUNTRY_FACETS / CONTRACT_FACETS / JOB_FIELD_FACETS.
 """

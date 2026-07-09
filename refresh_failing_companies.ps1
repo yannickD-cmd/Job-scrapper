@@ -127,7 +127,7 @@ if ($Run -and $failed.Count -gt 0) {
     # pernodricard in particular feeds its token-bucket ban. This also guards
     # against a STALE CI run — one that executed before a company was pulled
     # from the matrix — still listing them as "failed".
-    $localOnly = @('bnp', 'safran', 'pernodricard')
+    $localOnly = @('bnp', 'safran.group', 'pernodricard')
     $toRun = @($failed | Where-Object { $_ -notin $localOnly })
 
     if ($toRun.Count -eq 0) {
