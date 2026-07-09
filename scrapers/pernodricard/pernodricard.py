@@ -1,66 +1,79 @@
-"""Pernod Ricard job scraper — France, Tech & IT families, CDI only.
+"""Pernod Ricard job scraper — France, tech/data/AI roles (all employment types).
 
 Pernod Ricard's single global board is hosted on Workday at
 pernodricard.wd3.myworkdayjobs.com/pernod-ricard. Workday exposes the usual
 public JSON CXS API:
 
-  POST /wday/cxs/pernodricard/pernod-ricard/jobs       (listing, faceted)
+  POST /wday/cxs/pernodricard/pernod-ricard/jobs       (listing)
   GET  /wday/cxs/pernodricard/pernod-ricard<externalPath>   (detail)
 
-CI-EXCLUDED (run locally, like BNP/Safran). The faceted POST is metered by an
-escalating token bucket that is far more aggressive on datacenter ASNs (GitHub
-Actions IP ranges, shared with every other Workday scraper); it periodically
-400s all retries, and retrying harder only feeds the escalation. There is no
-client-side escape (listing rows carry no family/employment-type — see below),
-so no in-CI backoff fixes it. A residential IP tolerates the low-pressure 2-POST
-run, so this is driven by run_local_scrapers.ps1 and removed from scrape.yml.
+WHY THIS SCRAPER IS *UNFACETED* (the whole story — read before "optimising"):
+  The obvious approach is the site's own filtered query (the UI URL carries
+  `jobFamilyGroup=<Tech>&jobFamilyGroup=<IT>&locationCountry=<France>`), which
+  returns ~30 clean rows. That filtered query is a FACETED POST (non-empty
+  `appliedFacets`), and *that endpoint is metered by a tiny, escalating token
+  bucket* (~3 tokens, slow refill, far more hostile to programmatic/datacenter
+  callers). It 400s with an empty-message `HTTP_400` for hours once drained, and
+  in-run retries only deepen the ban — it failed in CI and locally for days.
+  Diagnosis proved the request itself is fine; it is purely the throttle.
 
-Scope (locked with the user):
-  - Country     : France only      (no country facet exists — filtered
-                                     client-side off the listing bulletFields,
-                                     which carry the country name)
-  - Job families: "Tech" + "Information Technology"   (jobFamilyGroup facet)
-  - Job type    : CDI only          (workerSubType = "Regular")
-  - Title filter: none — keep every in-family role
+  The UNFACETED POST (`appliedFacets: {}`) is on a SEPARATE, far looser budget:
+  it returns 200 with the full catalog even moments after a faceted 400. So we
+  crawl the whole board unfaceted and filter CLIENT-SIDE. Heavier over the wire
+  (~17 pages of 20), but it never touches the endpoint that fails. This is the
+  ban-proof rewrite; do NOT reintroduce `appliedFacets` filters.
 
-Workday quirks worth knowing (this tenant) — the Rothschild lessons all apply:
-  - We run COOKIE-FREE: `session.cookies.clear()` before every request. Workday
-    fronts CXS with Cloudflare, which tags the first response with __cf_bm /
-    wd-browser-id / PLAY_SESSION cookies. On a flagged fingerprint (datacenter
-    ASNs like GitHub Actions) those cookies make every follow-up faceted POST
-    keep 400-ing; bare cookie-free requests are scored fresh and succeed. (An
-    earlier seeded-session version 400'd 100% in CI for exactly this reason.)
-  - Faceted (filtered) POSTs also need `X-Calypso-Selected-Locale: en-US` plus
-    an `/en-US/...` Referer; without them the server 400s otherwise-valid
-    bodies. The detail GET doesn't need them.
-  - The faceted POST is additionally metered by a slow-refilling, escalating
-    token bucket (the detail GET is not). A burst earns empty-body 400s for
-    tens of minutes — so probe it sparingly. We make one faceted POST per
-    family (two total), well spaced, and back off on a 400.
-  - We query each family on its OWN (a single jobFamilyGroup id + Regular).
-    Combining both families AND workerSubType in one payload
-    (`jobFamilyGroup: [Tech, IT]` + Regular) was never observed to return 200,
-    whereas every single-family query is reliable — so we loop. Looping also
-    lets us tag each row with its family name → that becomes `category`.
-  - native_job_id: the detail's `jobReqId` is the clean public id ("JR-053956").
-    The listing's bulletFields also carry it (last "JR-" element); we dedup on
-    that before fetching details, then trust the detail's jobReqId.
-  - Country is reliable on the detail (`country.descriptor` == "France"); the
-    France country id is the Workday-global 54c5b6971ffb4bf0b116fe7651ec789a.
-  - `startDate` is already ISO YYYY-MM-DD and matches the "Posted N Days Ago"
-    surfaced by the listing — used directly as posted_date.
+  Honest-request note: the unfaceted endpoint needs NO browser disguise — a bare
+  request (default UA, no Referer/Origin/locale header) returns 200. We therefore
+  send only a polite, project-identifying User-Agent + JSON headers. No cookie
+  tricks, no stealth TLS, no proxy. (`cookies.clear()` is kept purely because a
+  stale Cloudflare cookie can score a fresh fingerprint worse — not to hide.)
+
+Scope (client-side, off the listing + a detail confirm for country):
+  - Country     : France. A row is France if its listing `bulletFields` carry
+                  the name "France" (or a French city as fallback). Rows with NO
+                  country in the listing (a handful of internships/talent pools)
+                  are confirmed via the detail's `country.descriptor` before we
+                  keep them — that recovers real FR roles ("Alternance IT Support")
+                  without letting through country-less non-FR ones ("… Austria").
+  - Relevance   : `scrapers._relevance.is_tech_role(title)` — the shared
+                  data/AI/software/cyber/cloud title predicate. Replaces the lost
+                  jobFamilyGroup facet (family is absent from listing rows AND the
+                  detail, so title is the only lever). Yields ~13, matching the
+                  old faceted "Tech + Information Technology · France" output.
+  - Employment  : ALL types kept (CDI/CDD/alternance/stage/VIE). Off-facet there
+                  is no reliable contract signal (the detail only carries
+                  `timeType: "Full time"`), and the goal is coverage over
+                  precision — so we keep everything and label best-effort from the
+                  title. See feedback_include_data_adjacent_ai_roles.
+
+Robustness contract (goal: jobs flowing, no false-closes):
+  - The LISTING crawl is the integrity anchor. If any page fails after a couple
+    of gentle retries, we ABORT (raise) — a *partial* listing would make
+    db.persist_run_results retire every France/tech row it didn't see this run
+    (the empty-guard only fires on a fully-empty return). See
+    feedback_partial_scrape_false_close.
+  - The DETAIL fetch is pure ENRICHMENT (description, ISO posted_date, clean
+    location). The detail GET is NOT throttled. For a row already confirmed
+    France off the listing, a detail failure does NOT drop or abort — we emit the
+    job from listing fields alone. Only the country-*unknown* candidates depend on
+    the detail; if theirs fails we skip just that one (we can't confirm France).
+  - jobReqId ("JR-053956") is the clean native id; the listing's bulletFields
+    also carry it, so we always have a native_job_id even without the detail.
 """
 from __future__ import annotations
 
 import html
-import random
 import re
 import sys
 import time
+import unicodedata
 from dataclasses import asdict, dataclass
 
 import requests
 from bs4 import BeautifulSoup
+
+from scrapers._relevance import is_tech_role
 
 TENANT = "pernodricard"
 SITE = "pernod-ricard"
@@ -68,58 +81,42 @@ HOST = f"https://{TENANT}.wd3.myworkdayjobs.com"
 LIST_URL = f"{HOST}/wday/cxs/{TENANT}/{SITE}/jobs"
 DETAIL_URL_TEMPLATE = f"{HOST}/wday/cxs/{TENANT}/{SITE}{{external_path}}"
 
-# jobFamilyGroup facet id → category label. Looped one at a time (a single id
-# per faceted POST) — that's the only form that reliably returns 200 here, and
-# it lets us tag each row with its family. Both families are tiny.
-FAMILIES: dict[str, str] = {
-    "5c4276c36b5a1001e317a08d36940000": "Tech",                    # ~34 global
-    "371688745b57014fe9c19df9ef17a12f": "Information Technology",  # ~4 global
-}
-
-# workerSubType facet — "Regular" == permanent (CDI). The Regular facet is the
-# only employment type in scope, so every returned row is a CDI by construction.
-WORKERSUBTYPE_REGULAR = "371688745b5701d8d14db11fa6174024"
-
-# Country lives in the listing's bulletFields as a plain name, never as a facet.
-FRANCE_COUNTRY_NAME = "France"
-
+# Honest, minimal headers. A bare request (proven) 200s on the unfaceted endpoint,
+# so we add nothing that mimics a browser — just a UA that names the project.
 HEADERS = {
     "User-Agent": (
-        "Mozilla/5.0 (X11; Linux x86_64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/131.0.0.0 Safari/537.36"
+        "Mozilla/5.0 (compatible; personal-job-tracker/0.1; "
+        "contact yannickarieldossa@gmail.com)"
     ),
     "Accept": "application/json",
-    "Accept-Language": "en-US,en;q=0.9",
     "Content-Type": "application/json",
-    "Origin": HOST,
-    "Referer": f"{HOST}/en-US/{SITE}",
-    # Required for faceted (filtered) POSTs — without it Workday 400s valid bodies.
-    "X-Calypso-Selected-Locale": "en-US",
 }
 
-PAGE_SIZE = 50
-MAX_PAGES = 10  # per family — defensive cap (families are tiny)
-REQUEST_TIMEOUT = 30
-# The faceted POST is rate-sensitive (token bucket); go slow and back off long.
-REQUEST_DELAY_SECONDS = 1.5      # between detail GETs (not bucket-metered)
-FACET_DELAY_SECONDS = 5.0        # between the (few) faceted listing POSTs
+FRANCE_COUNTRY_NAME = "France"
 
-# The faceted listing POST is metered by an ESCALATING token bucket: empty-message
-# HTTP 400s (errorCode HTTP_400, message="") that clear only after a long cooldown;
-# a burst earns a multi-HOUR ban (observed 2026-07: multi-DAY under sustained
-# pressure). The request itself is valid — every facet id is current and
-# Tech+Regular returns 200 when the bucket has tokens. Proof it's the bucket and
-# NOT the request/cookies: on 2026-07-06 a cookie-free POST returned 200, then the
-# very same cookie-free POST 400'd minutes later once a handful of test POSTs
-# drained the bucket. Hard lesson: in-run RETRIES only deepen the ban and turn a
-# bad day into a multi-day one. So we FAIL FAST — one POST per family, no retries.
-# This scraper is driven ONCE/DAY (throttle-on-attempt) by run_local_scrapers.ps1;
-# on a 400 we abort, run.py closes nothing, and the next day's run recovers on a
-# refilled bucket. Do NOT reintroduce retries here.
-LISTING_RETRY_BACKOFFS: tuple[float, ...] = ()  # fail-fast: 1 POST per family, no retries
-# Detail GETs are NOT bucket-metered — a short, few-shot retry is plenty.
-DETAIL_RETRY_BACKOFF_SECONDS = 30.0
+# Bare city listings (no "France" bulletField, e.g. some internships) — match a
+# French city in locationsText as a fallback. Same technique as Alan's scraper.
+FRENCH_CITY_TOKENS = {
+    "paris", "lyon", "bordeaux", "marseille", "nantes", "lille", "toulouse",
+    "nice", "strasbourg", "montpellier", "rennes", "grenoble", "nancy",
+    "cognac", "reims", "epernay", "valence", "caen", "thuir", "perpignan",
+    "la londe", "lormont", "rouillac", "bouzy", "chalon-sur-saone",
+}
+# Word-boundary matcher so a token never matches inside a longer foreign name
+# (e.g. "nice" must not match "Venice", "paris" not inside another word).
+_FRENCH_CITY_RE = re.compile(
+    r"\b(?:" + "|".join(re.escape(c) for c in sorted(FRENCH_CITY_TOKENS)) + r")\b")
+
+PAGE_SIZE = 20                   # Workday hard-caps `limit` at 20 (limit>20 -> 400)
+MAX_PAGES = 30                   # defensive: ~17 pages for the current catalog
+REQUEST_TIMEOUT = 30
+LISTING_PAGE_DELAY_SECONDS = 3.0   # between unfaceted listing pages (be polite)
+DETAIL_DELAY_SECONDS = 1.5         # between detail GETs (not throttled)
+
+# The unfaceted endpoint is on a loose budget, so a couple of gentle retries on a
+# transient blip are safe here (unlike the faceted endpoint we deliberately avoid).
+LISTING_RETRY_BACKOFFS: tuple[float, ...] = (20.0, 40.0)
+DETAIL_RETRY_BACKOFF_SECONDS = 20.0
 DETAIL_MAX_RETRIES = 3
 
 JR_RE = re.compile(r"\bJR[-\d]+\b")
@@ -129,14 +126,20 @@ JR_RE = re.compile(r"\bJR[-\d]+\b")
 class Job:
     native_job_id: str          # jobReqId, e.g. "JR-053956"
     title: str
-    location: str               # detail's location (clean city)
-    category: str | None        # job family ("Tech" / "Information Technology")
-    apply_url: str              # detail's externalUrl
-    employment_type: str        # always "CDI" (Regular facet)
+    location: str
+    category: str | None        # coarse family derived from the title
+    apply_url: str
+    employment_type: str        # best-effort from title (CDI/CDD/Alternance/Stage/VIE)
     description: str | None = None
-    posted_date: str | None = None   # YYYY-MM-DD from detail's startDate
+    posted_date: str | None = None   # YYYY-MM-DD from detail's startDate (else None)
     identifier: str | None = None    # detail's jobPostingInfo.id (internal hash)
     raw_payload: dict | None = None
+
+
+def _deburr(s: str | None) -> str:
+    """Lowercase + strip diacritics so accent/no-accent spellings match one pattern."""
+    nfkd = unicodedata.normalize("NFKD", s or "")
+    return "".join(c for c in nfkd if not unicodedata.combining(c)).lower()
 
 
 def _clean_description(content: str | None) -> str | None:
@@ -151,17 +154,63 @@ def _native_job_id_from_listing(row: dict) -> str | None:
     for field in reversed(row.get("bulletFields") or []):
         if isinstance(field, str) and JR_RE.fullmatch(field.strip()):
             return field.strip()
-    # Fallback: tail of externalPath, e.g. "..._JR-053956" or "..._JR-034242-1".
     path = row.get("externalPath") or ""
     m = re.search(r"_(JR-\d+)", path)
     return m.group(1) if m else None
 
 
-def _row_is_france(row: dict) -> bool:
-    return any(
-        isinstance(f, str) and f.strip() == FRANCE_COUNTRY_NAME
-        for f in (row.get("bulletFields") or [])
-    )
+def _listing_country_name(row: dict) -> str | None:
+    """First bulletField that isn't the JR id — the plain country name, or None.
+
+    bulletFields is ["France", "JR-…"] on most rows and ["JR-…"] (no country) on a
+    few talent-pool/internship rows.
+    """
+    for field in row.get("bulletFields") or []:
+        if isinstance(field, str) and field.strip() and not JR_RE.fullmatch(field.strip()):
+            return field.strip()
+    return None
+
+
+def _row_france_state(row: dict) -> str:
+    """"FR" | "OTHER" | "UNKNOWN" from the listing alone."""
+    country = _listing_country_name(row)
+    if country == FRANCE_COUNTRY_NAME:
+        return "FR"
+    if country:
+        # Explicit non-France country — never override it on a city name (a city
+        # substring like "nice"⊂"Venice" would wrongly flag an Italian row).
+        return "OTHER"
+    # No country in the listing: a French-city token (word-boundary) flags
+    # likely-France. Country-less rows are still detail-confirmed downstream.
+    if _FRENCH_CITY_RE.search(_deburr(row.get("locationsText"))):
+        return "FR"
+    return "UNKNOWN"
+
+
+def _category_from_title(title: str) -> str:
+    t = _deburr(title)
+    if re.search(r"\bdata\b|donnee|\bai\b|\bia\b|\bml\b|machine learning|analyt|"
+                 r"scientist|intelligence artif", t):
+        return "Data & AI"
+    if re.search(r"cyber|security|securite|\bsoc\b", t):
+        return "Cybersecurity"
+    if re.search(r"software|logiciel|develop|architect|\bsap\b|cloud|infra|"
+                 r"platform|devops|salesforce", t):
+        return "Software & IT"
+    return "Tech"
+
+
+def _employment_type_from_title(title: str) -> str:
+    t = _deburr(title)
+    if re.search(r"\bstage\b|stagiaire|internship|\bintern\b", t):
+        return "Stage"
+    if re.search(r"alternance|apprentice|apprentissage", t):
+        return "Alternance"
+    if re.search(r"\bvie\b|\bv\.i\.e\b", t):
+        return "VIE"
+    if re.search(r"\bcdd\b|fixed.?term|temporary", t):
+        return "CDD"
+    return "CDI"
 
 
 def _new_session() -> requests.Session:
@@ -174,21 +223,11 @@ def _is_error_payload(data: object) -> bool:
     return isinstance(data, dict) and "errorCode" in data
 
 
-def _post_listing(session: requests.Session, family_id: str, offset: int) -> dict:
-    body = {
-        "appliedFacets": {
-            "jobFamilyGroup": [family_id],            # one family per query
-            "workerSubType": [WORKERSUBTYPE_REGULAR],
-        },
-        "limit": PAGE_SIZE,
-        "offset": offset,
-        "searchText": "",
-    }
+def _post_listing(session: requests.Session, offset: int) -> dict:
+    """One unfaceted listing page, with gentle retries (loose budget)."""
+    body = {"appliedFacets": {}, "limit": PAGE_SIZE, "offset": offset, "searchText": ""}
     last_err: str | None = None
     for attempt in range(1 + len(LISTING_RETRY_BACKOFFS)):
-        # Cookie-free: drop any Cloudflare/Workday cookie before each attempt.
-        # A cookie tied to a flagged fingerprint keeps 400-ing; bare requests
-        # are scored fresh. (See module docstring.)
         session.cookies.clear()
         response = session.post(LIST_URL, json=body, timeout=REQUEST_TIMEOUT)
         if response.status_code == 200:
@@ -198,18 +237,52 @@ def _post_listing(session: requests.Session, family_id: str, offset: int) -> dic
             last_err = f"error payload {data.get('errorCode')}"
         else:
             last_err = f"HTTP {response.status_code}: {response.text[:200]}"
-        # Empty-message 400 == token-bucket rate limit. Back off with an
-        # escalating, jittered delay long enough to outlast the penalty before
-        # the next cookie-free retry.
         if attempt < len(LISTING_RETRY_BACKOFFS):
-            base = LISTING_RETRY_BACKOFFS[attempt]
-            print(
-                f"    listing {family_id} attempt {attempt + 1} failed "
-                f"({last_err}); backing off ~{base:.0f}s",
-                flush=True,
-            )
-            time.sleep(base + random.uniform(0.0, base * 0.25))
-    raise requests.HTTPError(f"listing failed for family {family_id}: {last_err}")
+            backoff = LISTING_RETRY_BACKOFFS[attempt]
+            print(f"    listing offset {offset} attempt {attempt + 1} failed "
+                  f"({last_err}); retrying in {backoff:.0f}s", flush=True)
+            time.sleep(backoff)
+    raise requests.HTTPError(f"unfaceted listing failed at offset {offset}: {last_err}")
+
+
+def _crawl_listing(session: requests.Session) -> list[dict]:
+    """Full unfaceted catalog. Aborts (raises) on any page failure — a partial
+    crawl would false-close the rows we didn't see."""
+    rows: list[dict] = []
+    total: int | None = None
+    total_seen = False
+    reached_end = False
+    offset = 0
+    for _page in range(MAX_PAGES):
+        payload = _post_listing(session, offset)
+        if not total_seen:
+            raw_total = payload.get("total")   # Workday sends `total` on page 1 only
+            total = int(raw_total) if isinstance(raw_total, (int, float)) else None
+            total_seen = True
+        batch = payload.get("jobPostings") or []
+        rows.extend(batch)
+        if not batch:
+            reached_end = True                 # server has no more rows to give
+            break
+        if total is not None and len(rows) >= total:
+            reached_end = True
+            break
+        offset += len(batch)
+        time.sleep(LISTING_PAGE_DELAY_SECONDS)
+    print(f"  crawled {len(rows)}/{total if total is not None else '?'} rows unfaceted", flush=True)
+    # Fail CLOSED on any doubt about completeness: a partial return would
+    # false-close every row we didn't see (the empty-return guard only covers []).
+    # NB: a falsy `total` must NOT double as "done" — that collapsed both the
+    # loop terminator and this guard at once (review finding). We only trust
+    # completeness via an explicit `total` OR a natural empty-page end.
+    if total is not None and len(rows) < total:
+        raise requests.HTTPError(
+            f"incomplete unfaceted crawl ({len(rows)}/{total}) — aborting to avoid false-close")
+    if total is None and not reached_end:
+        raise requests.HTTPError(
+            "unfaceted listing gave no `total` and never reached a natural end "
+            f"(stopped at {len(rows)} rows / MAX_PAGES) — refusing a partial that would false-close")
+    return rows
 
 
 def _get_detail(session: requests.Session, external_path: str) -> dict:
@@ -224,9 +297,6 @@ def _get_detail(session: requests.Session, external_path: str) -> dict:
                 return data
             last_err = f"error payload {data.get('errorCode')}"
         elif response.status_code == 404:
-            # Terminal, not transient: the job was removed between the listing
-            # snapshot and this fetch. Don't waste retries — surface the 404 so
-            # the caller can drop it (closing it is correct; it's genuinely gone).
             raise requests.HTTPError(f"detail 404 for {external_path}", response=response)
         else:
             last_err = f"HTTP {response.status_code}: {response.text[:200]}"
@@ -235,133 +305,122 @@ def _get_detail(session: requests.Session, external_path: str) -> dict:
     raise requests.HTTPError(f"detail failed for {external_path}: {last_err}")
 
 
-def _collect_family_rows(
-    session: requests.Session,
-    family_id: str,
-    family_name: str,
-) -> list[dict]:
-    """Fetch the full France-filtered CDI listing for one family, tagging each
-    surviving row with its family name (the listing doesn't echo the family)."""
-    offset = 0
-    page = 0
-    payload = _post_listing(session, family_id, offset)
-    total = int(payload.get("total") or 0)
-    raw: list[dict] = list(payload.get("jobPostings") or [])
-
-    while len(raw) < total and page < MAX_PAGES:
-        page += 1
-        offset += PAGE_SIZE
-        time.sleep(FACET_DELAY_SECONDS)  # paging is another faceted POST
-        payload = _post_listing(session, family_id, offset)
-        new = payload.get("jobPostings") or []
-        if not new:
-            break
-        raw.extend(new)
-
-    france = [r for r in raw if _row_is_france(r)]
-    for r in france:
-        r["_family_name"] = family_name
-    print(f"  {family_name}: {len(raw)}/{total} CDI rows, {len(france)} in France", flush=True)
-    return france
-
-
-def _row_to_job(listing_row: dict, detail: dict, family_name: str) -> Job:
-    info = detail.get("jobPostingInfo") or {}
-
-    apply_url = (info.get("externalUrl") or "").strip()
-    if not apply_url:
-        ext = listing_row.get("externalPath") or ""
-        apply_url = f"{HOST}/{SITE}{ext}" if ext else ""
-    if not apply_url:
-        raise RuntimeError(f"Pernod Ricard detail missing externalUrl: {info!r}")
-
-    native_job_id = (
-        (info.get("jobReqId") or "").strip()
-        or _native_job_id_from_listing(listing_row)
-        or ""
-    )
+def _job_from_listing(row: dict) -> Job | None:
+    """Build a Job from listing fields alone (all MUST fields guaranteed)."""
+    native_job_id = _native_job_id_from_listing(row)
     if not native_job_id:
-        raise RuntimeError(f"Pernod Ricard row missing JR id: {listing_row!r}")
-
-    location = (
-        (info.get("location") or "").strip()
-        or (info.get("jobRequisitionLocation") or {}).get("descriptor")
-        or listing_row.get("locationsText")
-        or ""
-    ).strip()
-
-    posted = info.get("startDate")
-    posted_date = posted[:10] if isinstance(posted, str) and len(posted) >= 10 else None
-
-    title = (info.get("title") or listing_row.get("title") or "").strip()
-
+        return None
+    ext = row.get("externalPath") or ""
+    apply_url = f"{HOST}/{SITE}{ext}" if ext else ""
+    if not apply_url:
+        return None
+    title = (row.get("title") or "").strip()
     return Job(
         native_job_id=native_job_id,
         title=title,
-        location=location,
-        category=family_name,
+        location=(row.get("locationsText") or "").strip(),
+        category=_category_from_title(title),
         apply_url=apply_url,
-        employment_type="CDI",
-        description=_clean_description(info.get("jobDescription")),
-        posted_date=posted_date,
-        identifier=info.get("id"),
-        raw_payload={"listing": listing_row, "detail": info},
+        employment_type=_employment_type_from_title(title),
+        raw_payload={"listing": row},
     )
+
+
+def _detail_country_is_france(detail: dict) -> bool:
+    info = detail.get("jobPostingInfo") or {}
+    for path in (info.get("country") or {}, (info.get("jobRequisitionLocation") or {}).get("country") or {}):
+        if isinstance(path, dict) and (path.get("descriptor") or "").strip() == FRANCE_COUNTRY_NAME:
+            return True
+    return False
+
+
+def _enrich_from_detail(job: Job, detail: dict) -> None:
+    """Overlay the richer detail fields onto a listing-built Job (best effort)."""
+    info = detail.get("jobPostingInfo") or {}
+    if info.get("jobReqId"):
+        job.native_job_id = info["jobReqId"].strip()
+    if info.get("externalUrl"):
+        job.apply_url = info["externalUrl"].strip()
+    if info.get("title"):
+        job.title = info["title"].strip()
+        job.category = _category_from_title(job.title)
+        job.employment_type = _employment_type_from_title(job.title)
+    location = (
+        (info.get("location") or "").strip()
+        or (info.get("jobRequisitionLocation") or {}).get("descriptor")
+        or job.location
+    )
+    job.location = (location or "").strip()
+    posted = info.get("startDate")
+    if isinstance(posted, str) and len(posted) >= 10:
+        job.posted_date = posted[:10]
+    job.description = _clean_description(info.get("jobDescription"))
+    job.identifier = info.get("id")
+    job.raw_payload = {"listing": job.raw_payload.get("listing") if job.raw_payload else None,
+                       "detail": info}
 
 
 def scrape() -> list[dict]:
     session = _new_session()
-
     started = time.time()
-    print("Listing phase (per-family, France-filtered)...", flush=True)
 
-    by_jr: dict[str, dict] = {}
-    for i, (family_id, family_name) in enumerate(FAMILIES.items()):
-        if i:
-            # Space the faceted POSTs out — this endpoint is token-bucket metered.
-            time.sleep(FACET_DELAY_SECONDS)
-        # Deliberately NOT caught: with only two families, swallowing a
-        # rate-limited family and returning the other's (non-empty) rows would
-        # make db.persist_run_results treat the missing family's entire catalog
-        # as closed (still_open=FALSE) — the empty-return guard only fires on a
-        # *fully* empty result. A partial listing is worse than none, so we let
-        # the HTTPError propagate: run.py logs a failed run and closes nothing,
-        # and the next scheduled run (4×/day) recovers.
-        rows = _collect_family_rows(session, family_id, family_name)
-        for r in rows:
-            jr = _native_job_id_from_listing(r)
-            if jr:
-                # Keep first-seen (Tech wins over IT if a role ever appeared in
-                # both; in practice the two families are disjoint).
-                by_jr.setdefault(jr, r)
+    print("Listing phase (unfaceted crawl, France + tech-title client filter)...", flush=True)
+    rows = _crawl_listing(session)
 
-    print(f"  -> {len(by_jr)} unique France Tech/IT CDI roles", flush=True)
-
-    print("\nDetail phase...", flush=True)
-    jobs: list[Job] = []
-    for jr, row in by_jr.items():
-        ext = row.get("externalPath") or ""
-        if not ext:
-            print(f"  skip {jr}: missing externalPath", flush=True)
+    # Candidates: in-scope by title, France-or-unknown by listing. Dedup by JR id.
+    candidates: dict[str, tuple[dict, str]] = {}
+    for row in rows:
+        if not is_tech_role(row.get("title")):
             continue
-        try:
-            detail = _get_detail(session, ext)
-        except requests.HTTPError as exc:
-            status = getattr(exc.response, "status_code", None)
-            if status == 404:
-                # Removed since the listing snapshot — drop it. It will close,
-                # which is correct: it's genuinely gone.
-                print(f"  {jr}: detail 404, dropping (job removed)", flush=True)
+        state = _row_france_state(row)
+        if state == "OTHER":
+            continue
+        jr = _native_job_id_from_listing(row)
+        if jr:
+            candidates.setdefault(jr, (row, state))
+
+    fr = sum(1 for _, s in candidates.values() if s == "FR")
+    unknown = sum(1 for _, s in candidates.values() if s == "UNKNOWN")
+    print(f"  -> {len(candidates)} tech candidates ({fr} France, {unknown} country-unknown)",
+          flush=True)
+
+    print("\nDetail phase (enrichment; country-confirm for the unknowns)...", flush=True)
+    jobs: list[Job] = []
+    for jr, (row, state) in candidates.items():
+        job = _job_from_listing(row)
+        if job is None:
+            print(f"  skip {jr}: unusable listing row", flush=True)
+            continue
+
+        ext = row.get("externalPath") or ""
+        detail: dict | None = None
+        if ext:
+            try:
+                detail = _get_detail(session, ext)
+            except requests.HTTPError as exc:
+                status = getattr(exc.response, "status_code", None)
+                if state == "UNKNOWN":
+                    # Can't confirm France without the detail — skip this one only.
+                    print(f"  {jr}: country-unknown and detail unavailable ({status or exc}); "
+                          f"skipping", flush=True)
+                    continue
+                # Known-France row: enrichment is optional. Keep it from listing data.
+                print(f"  {jr}: detail unavailable ({status or exc}); keeping listing-only",
+                      flush=True)
+                jobs.append(job)
                 continue
-            # Any other detail failure means the result would be incomplete;
-            # don't return a partial list (it would false-close the dropped
-            # rows). Abort so run.py logs a failed run and closes nothing.
-            raise
-        jobs.append(_row_to_job(row, detail, row.get("_family_name") or ""))
-        time.sleep(REQUEST_DELAY_SECONDS)
+            time.sleep(DETAIL_DELAY_SECONDS)
+
+        if state == "UNKNOWN":
+            if not (detail and _detail_country_is_france(detail)):
+                print(f"  {jr}: country-unknown resolved to non-France; dropping", flush=True)
+                continue
+        if detail:
+            _enrich_from_detail(job, detail)
+        jobs.append(job)
 
     elapsed = time.time() - started
-    print(f"  -> {len(jobs)} jobs in {elapsed:.1f}s\n", flush=True)
+    print(f"\n  -> {len(jobs)} France tech/data jobs in {elapsed:.1f}s\n", flush=True)
     return [asdict(j) for j in jobs]
 
 
@@ -378,7 +437,6 @@ if __name__ == "__main__":
 
     elapsed = time.time() - started
     print(f"=== {len(jobs)} jobs final (total runtime {elapsed:.1f}s) ===\n")
-
     for j in jobs:
         desc = j["description"] or ""
         desc = desc[:200] + ("..." if len(desc) > 200 else "")
