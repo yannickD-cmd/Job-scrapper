@@ -112,7 +112,8 @@ When the user asks to commit:
 
 [db.py](db.py) — Supabase Postgres via the Transaction pooler.
 - Dedup key: `UNIQUE (company, native_job_id)`. Reruns are idempotent.
-- A row's `still_open` flips to `FALSE` automatically when its `native_job_id` no longer appears in the latest scrape result.
+- A row's `still_open` flips to `FALSE` automatically when its `native_job_id` no longer appears in the latest scrape result (and `closed_at` is stamped).
+- **Repost tracking:** when a row that was `still_open = FALSE` reappears under the same `native_job_id`, the upsert stamps `reopened_at` / bumps `reopen_count` and `persist_run_results` returns it in `reopened_jobs`. The dashboard shows a distinct **REPOSTED** badge (`reopened_at` within 7 days) and counts it in the NEW-7D stat; reposts do NOT email. This is immune to Orange-style date churn because a continuously-open row never closes, so it never reopens — the discriminator is the `still_open` FALSE→TRUE transition, never `posted_date`. Needs the job to have been absent on ≥1 scrape; a same-cycle republish is invisible. New-id reposts already surface as NEW (fresh insert).
 - An empty `scrape()` return is treated as "scraper failed silently" — no rows are closed (safety guard in `persist_run_results`).
 - `posted_date` must be `YYYY-MM-DD` (or `None`). Sanofi-style unpadded dates need normalisation.
 - `raw_payload` should be a dict — JSONB-queryable later.

@@ -135,10 +135,17 @@ def dashboard(
 
     where_sql = ("WHERE " + " AND ".join(where)) if where else ""
 
+    # A repost is a row we had marked closed that reappeared under the same
+    # native_job_id (reopened_at stamped by the upsert). It won't refresh
+    # first_seen_at, so is_new stays FALSE — is_reopened is the separate signal
+    # that earns the REPOSTED badge. Immune to Orange-style date churn: a
+    # continuously-open row never closes, so reopened_at is never set.
     jobs_sql = f"""
         SELECT id, company, title, location, category, posted_date,
                first_seen_at, still_open, apply_url, to_apply,
-               (first_seen_at >= NOW() - INTERVAL '7 days') AS is_new
+               (first_seen_at >= NOW() - INTERVAL '7 days') AS is_new,
+               (reopened_at IS NOT NULL
+                AND reopened_at >= NOW() - INTERVAL '7 days') AS is_reopened
         FROM jobs
         {where_sql}
         ORDER BY posted_date DESC NULLS LAST, first_seen_at DESC
@@ -150,9 +157,13 @@ def dashboard(
         # Projection over the whole table for stats + dropdowns. The IDF
         # filter is applied to both result sets identically so totals,
         # counts, and option lists stay consistent with the visible rows.
+        # is_recent counts a reopened row as recent too, so the NEW (7D) stat
+        # includes reposts (the badge itself stays distinct).
         universe_rows = _all(cur, """
             SELECT company, location, still_open, to_apply,
-                   (first_seen_at >= NOW() - INTERVAL '7 days') AS is_recent
+                   (first_seen_at >= NOW() - INTERVAL '7 days'
+                    OR (reopened_at IS NOT NULL
+                        AND reopened_at >= NOW() - INTERVAL '7 days')) AS is_recent
             FROM jobs
         """)
 
@@ -190,6 +201,7 @@ def dashboard(
             "apply_url": r[8],
             "to_apply": r[9],
             "is_new": r[10],
+            "is_reopened": r[11],
             "is_old": bool(posted and posted < old_cutoff),
             "age_months": (date.today() - posted).days // 30 if posted else None,
         })

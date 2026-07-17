@@ -129,10 +129,12 @@ def run_one(key: str) -> int:
     summary = db.persist_run_results(company, jobs, duration_ms=duration_ms)
 
     new_jobs = summary["new_jobs"]
+    reopened_jobs = summary.get("reopened_jobs", [])
     print()
     print(f"=== Persisted to Supabase ({company}) ===")
     print(f"  total scraped : {len(jobs)}")
     print(f"  new           : {len(new_jobs)}")
+    print(f"  reopened      : {len(reopened_jobs)}")
     print(f"  updated       : {summary['updated_count']}")
     print(f"  closed        : {summary['closed_count']}")
     print(f"  run_id        : {summary['run_id']}")
@@ -147,6 +149,17 @@ def run_one(key: str) -> int:
 
         print()
         alerts.send_new_jobs_email(company, new_jobs)
+
+    # Reposts (closed -> reopened, same native_job_id) are dashboard-only: they
+    # get a REPOSTED badge but deliberately do NOT email — see the scope call in
+    # the repost-tracking work. Logged here so a CI run still shows them.
+    if reopened_jobs:
+        print()
+        print("Reopened (reposted) jobs:")
+        for j in reopened_jobs:
+            print(f"  - [{j.get('identifier') or j['native_job_id']}] "
+                  f"{j['title']} ({j.get('location') or 'n/a'})")
+            print(f"      {j['apply_url']}")
 
     return 0
 

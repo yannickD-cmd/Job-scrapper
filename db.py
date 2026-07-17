@@ -64,12 +64,32 @@ CREATE TABLE IF NOT EXISTS jobs (
     apply_url       TEXT NOT NULL,
     raw_payload     JSONB,
     to_apply        BOOLEAN NOT NULL DEFAULT FALSE,
+    -- Repost tracking. `first_seen_at` is stamped once and never moves, so a
+    -- company that pulls a listing and re-publishes it under the SAME
+    -- native_job_id would otherwise be invisible (upsert hits the UPDATE
+    -- branch, no NEW badge, no alert). We detect a genuine repost as a
+    -- still_open FALSE->TRUE transition: the row went absent for >=1 scrape
+    -- (marked closed, closed_at stamped) and then reappeared (reopened_at
+    -- stamped, reopen_count bumped). This is immune to Orange-style date churn
+    -- because a continuously-open row is never marked closed, so it never
+    -- transitions — see project_orange_dateposted_bogus / _new_means_first_id.
+    closed_at       TIMESTAMPTZ,
+    reopened_at     TIMESTAMPTZ,
+    reopen_count    INTEGER NOT NULL DEFAULT 0,
     UNIQUE (company, native_job_id)
 );
+
+-- Backfill the repost-tracking columns on databases created before they
+-- existed (init_db is the idempotent migration path; CREATE TABLE IF NOT
+-- EXISTS above is a no-op once the table is there).
+ALTER TABLE jobs ADD COLUMN IF NOT EXISTS closed_at    TIMESTAMPTZ;
+ALTER TABLE jobs ADD COLUMN IF NOT EXISTS reopened_at  TIMESTAMPTZ;
+ALTER TABLE jobs ADD COLUMN IF NOT EXISTS reopen_count INTEGER NOT NULL DEFAULT 0;
 
 CREATE INDEX IF NOT EXISTS idx_jobs_company    ON jobs(company);
 CREATE INDEX IF NOT EXISTS idx_jobs_first_seen ON jobs(first_seen_at);
 CREATE INDEX IF NOT EXISTS idx_jobs_still_open ON jobs(still_open);
+CREATE INDEX IF NOT EXISTS idx_jobs_reopened   ON jobs(reopened_at);
 
 CREATE TABLE IF NOT EXISTS scraper_runs (
     id              BIGSERIAL PRIMARY KEY,
@@ -88,6 +108,15 @@ CREATE INDEX IF NOT EXISTS idx_runs_company_time
 
 # (xmax = 0) is TRUE only when ON CONFLICT performed an INSERT (not an UPDATE).
 # This is how we distinguish brand-new jobs from rows we've already seen.
+#
+# The reopen columns detect a genuine repost: `jobs.still_open` inside DO UPDATE
+# is the row's value BEFORE this upsert, so `jobs.still_open = FALSE` is TRUE
+# only when we're re-finding a row we had marked closed. That's the exact
+# FALSE->TRUE transition an Orange-style date refresh never produces (it stays
+# continuously open). `reopened_at = NOW()` in RETURNING then reads back TRUE
+# only for rows reopened in THIS transaction — NOW() is the transaction start
+# time, constant across the whole persist_run_results loop, so a reopen stamped
+# in a prior run carries an older timestamp and won't match.
 _UPSERT_SQL = """
 INSERT INTO jobs (
     company, native_job_id, title, description,
@@ -108,13 +137,16 @@ ON CONFLICT (company, native_job_id) DO UPDATE SET
     apply_url     = EXCLUDED.apply_url,
     raw_payload   = EXCLUDED.raw_payload,
     last_seen_at  = NOW(),
-    still_open    = TRUE
-RETURNING (xmax = 0) AS inserted
+    still_open    = TRUE,
+    reopened_at   = CASE WHEN jobs.still_open = FALSE THEN NOW() ELSE jobs.reopened_at END,
+    reopen_count  = jobs.reopen_count + CASE WHEN jobs.still_open = FALSE THEN 1 ELSE 0 END
+RETURNING (xmax = 0) AS inserted, (reopened_at = NOW()) AS reopened
 """
 
 _MARK_CLOSED_SQL = """
 UPDATE jobs
-SET still_open = FALSE
+SET still_open = FALSE,
+    closed_at  = NOW()
 WHERE company = %s
   AND still_open = TRUE
   AND native_job_id <> ALL(%s)
@@ -163,15 +195,21 @@ def persist_run_results(
     Returns:
         {
           "new_jobs":      list[dict],  # subset of `jobs` that didn't exist before
-          "updated_count": int,         # len(jobs) - len(new_jobs)
+          "reopened_jobs": list[dict],  # existing rows that were closed and came back
+          "updated_count": int,         # len(jobs) - len(new_jobs) - len(reopened_jobs)
           "closed_count":  int,         # rows flipped from open → closed this run
           "run_id":        int,         # scraper_runs.id
         }
+
+    A reopened job is an existing row whose `still_open` was FALSE and is now
+    re-found (a genuine repost). It is NOT counted in `new_jobs`, so the email
+    alert path is unaffected — reopens surface on the dashboard only.
 
     Safety: if `jobs` is empty, no jobs are marked closed (a single empty scrape
     would otherwise nuke every open row for that company).
     """
     new_jobs: list[dict] = []
+    reopened_jobs: list[dict] = []
     seen_ids: list[str] = [j["native_job_id"] for j in jobs]
 
     with get_connection() as conn, conn.cursor() as cur:
@@ -188,9 +226,11 @@ def persist_run_results(
                 job["apply_url"],
                 Jsonb(raw) if isinstance(raw, dict) else None,
             ))
-            inserted = cur.fetchone()[0]
+            inserted, reopened = cur.fetchone()
             if inserted:
                 new_jobs.append(job)
+            elif reopened:
+                reopened_jobs.append(job)
 
         if seen_ids:
             cur.execute(_MARK_CLOSED_SQL, (company, seen_ids))
@@ -205,7 +245,8 @@ def persist_run_results(
 
     return {
         "new_jobs": new_jobs,
-        "updated_count": len(jobs) - len(new_jobs),
+        "reopened_jobs": reopened_jobs,
+        "updated_count": len(jobs) - len(new_jobs) - len(reopened_jobs),
         "closed_count": closed_count,
         "run_id": run_id,
     }

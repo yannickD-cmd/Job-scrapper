@@ -153,7 +153,10 @@
         <div class="min-w-0">
           <div class="flex items-start gap-2 flex-wrap">
             <span class="font-medium break-words">{{ job.title }}</span>
-            {% if job.is_new and job.still_open %}
+            {% if job.is_reopened and job.still_open %}
+              <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 mt-0.5 shrink-0"
+                    title="Reposted: this listing was closed and came back under the same job id in the last 7 days. Unlike a daily date refresh, it actually went off the board and returned — often a sign the role changed or reopened.">REPOSTED</span>
+            {% elif job.is_new and job.still_open %}
               <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mt-0.5 shrink-0">NEW</span>
             {% endif %}
             {% if job.is_old and job.still_open %}
