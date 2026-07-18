@@ -31,13 +31,26 @@ Response shape:
     aggregations, status, message }
 
 Filtering strategy (mirrors Sanofi):
-- COUNTRY (server-side): jobCountry="France" — 211 jobs at probe time.
+- COUNTRY (server-side): jobCountry="France" — ~160 jobs at probe time.
 - EMPLOYEE_TYPE + SKILL (client-side): the JSON API silently rejects
   ad-hoc jobFilters payloads (returns 0 bytes 200) and we couldn't
   reverse-engineer the exact accepted shape. Cheaper to just pull all
-  211 rows (5 pages × 50) and filter `employeeType` + `skill` locally.
+  France rows (~4 pages × 50) and filter `employeeType` + `skill` locally.
 
-To change scope: edit EMPLOYEE_TYPES_IN_SCOPE / SKILLS_IN_SCOPE.
+Skill gate is TWO-TIER, because Accenture's `skill` taxonomy is coarse and
+miscategorises tech roles into consulting buckets (e.g. R00341772
+"Infrastructure AI Specialist Junior F/H" is filed under
+"Business & Technology Integration", not "AI & Data"):
+  - WHOLESALE_SKILLS  — clean tech buckets kept as-is (no title gate). A gate
+    here would wrongly drop real roles whose titles lack a hard keyword
+    (AppSec, CTEM, "Lead Data Manufacturing").
+  - every OTHER skill — kept only if `is_tech_role(title)` matches. This
+    rescues the tech roles buried in "Business & Technology Integration" /
+    "Consulting" / "Industry Solutions & Services" / "Strategy Services" /
+    "Infrastructure & Capital Projects" while dropping the finance / sales /
+    strategy / marketing majority of those same buckets.
+
+To change scope: edit EMPLOYEE_TYPES_IN_SCOPE / WHOLESALE_SKILLS.
 """
 from __future__ import annotations
 
@@ -50,6 +63,8 @@ from datetime import datetime, timezone
 
 import requests
 
+from scrapers._relevance import is_tech_role
+
 HOST = "https://www.accenture.com"
 SEARCH_PAGE = HOST + "/fr-fr/careers/jobsearch"
 API_URL = HOST + "/api/accenture/jobsearch/result"
@@ -61,12 +76,23 @@ COUNTRY_SITE = "fr-fr"
 
 # Client-side filters applied after collecting all France rows.
 EMPLOYEE_TYPES_IN_SCOPE: set[str] = {"Full-time"}
-SKILLS_IN_SCOPE: set[str] = {
+
+# Tier 1 — clean tech buckets kept WHOLESALE (no title gate). Kept inclusive on
+# purpose: a is_tech_role() gate here would drop real roles whose titles carry no
+# hard keyword (e.g. Security's "Consultant CTEM" / "Sécurité des Applications",
+# AI&Data's manager roles, "Lead Data Manufacturing"). See
+# feedback_prefer_platform_category_over_is_tech_role + feedback_include_data...
+WHOLESALE_SKILLS: set[str] = {
     "Software Engineering",
     "AI & Data",
     "Security",
     "Engineering & Networks",
 }
+# Tier 2 — every OTHER skill bucket is admitted only if the TITLE reads tech
+# (is_tech_role). Accenture files tech roles into coarse consulting buckets, so
+# we can't trust the category alone there; the title gate rescues them and drops
+# the finance/sales/strategy/marketing majority. No explicit list — anything not
+# in WHOLESALE_SKILLS goes through the gate, so renamed/new buckets self-cover.
 # Match if ANY of these cities appears in the per-row jobCityState list.
 # Accenture's France data uses bare city names ("Paris", not "Paris 75001"),
 # so plain string equality is enough.
@@ -277,14 +303,23 @@ def scrape() -> list[dict]:
     # Client-side filter
     in_scope: list[Job] = []
     dropped_by_type: dict[str, int] = {}
-    dropped_by_skill: dict[str, int] = {}
+    dropped_by_skill: dict[str, int] = {}   # non-wholesale skills the title gate rejected
     dropped_by_city = 0
+    kept_wholesale = 0
+    kept_by_gate = 0
     for row in all_rows.values():
         if row.employment_type not in EMPLOYEE_TYPES_IN_SCOPE:
             dropped_by_type[row.employment_type or "(blank)"] = \
                 dropped_by_type.get(row.employment_type or "(blank)", 0) + 1
             continue
-        if row.category not in SKILLS_IN_SCOPE:
+        # Two-tier skill gate: wholesale tech buckets pass as-is; any other
+        # bucket must have a title that reads tech (rescues miscategorised roles
+        # like "Infrastructure AI Specialist" filed under Business & Tech Integration).
+        if row.category in WHOLESALE_SKILLS:
+            wholesale_hit = True
+        elif is_tech_role(row.title):
+            wholesale_hit = False
+        else:
             dropped_by_skill[row.category or "(blank)"] = \
                 dropped_by_skill.get(row.category or "(blank)", 0) + 1
             continue
@@ -295,18 +330,24 @@ def scrape() -> list[dict]:
         if not any(c in CITIES_IN_SCOPE for c in row_cities):
             dropped_by_city += 1
             continue
+        if wholesale_hit:
+            kept_wholesale += 1
+        else:
+            kept_by_gate += 1
         in_scope.append(row)
 
     print("Filter pass:", flush=True)
-    print(f"  employee_types={sorted(EMPLOYEE_TYPES_IN_SCOPE)}", flush=True)
-    print(f"  skills        ={sorted(SKILLS_IN_SCOPE)}", flush=True)
-    print(f"  cities        ={sorted(CITIES_IN_SCOPE)}", flush=True)
-    print(f"  kept             : {len(in_scope)}", flush=True)
-    print(f"  dropped by type  : {sum(dropped_by_type.values())} "
+    print(f"  employee_types  ={sorted(EMPLOYEE_TYPES_IN_SCOPE)}", flush=True)
+    print(f"  wholesale skills={sorted(WHOLESALE_SKILLS)}", flush=True)
+    print(f"  other skills    = kept iff is_tech_role(title)", flush=True)
+    print(f"  cities          ={sorted(CITIES_IN_SCOPE)}", flush=True)
+    print(f"  kept                : {len(in_scope)} "
+          f"(wholesale={kept_wholesale}, title-gated={kept_by_gate})", flush=True)
+    print(f"  dropped by type     : {sum(dropped_by_type.values())} "
           f"({dict(dropped_by_type)})", flush=True)
-    print(f"  dropped by skill : {sum(dropped_by_skill.values())} "
+    print(f"  dropped by skill gate: {sum(dropped_by_skill.values())} "
           f"({dict(dropped_by_skill)})", flush=True)
-    print(f"  dropped by city  : {dropped_by_city}", flush=True)
+    print(f"  dropped by city     : {dropped_by_city}", flush=True)
 
     for j in in_scope:
         print(
