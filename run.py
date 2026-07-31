@@ -108,6 +108,7 @@ COMPANY_NAMES = {
     "contentsquare": "Contentsquare",
     "valeo": "Valeo",
     "huggingface": "Hugging Face",
+    "backmarket": "Back Market",
 }
 
 
