@@ -104,6 +104,7 @@ COMPANY_NAMES = {
     "airfrance": "Air France",
     "bcg": "BCG",
     "mistral": "Mistral AI",
+    "dataiku": "Dataiku",
 }
 
 
