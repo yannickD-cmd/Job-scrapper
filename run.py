@@ -103,6 +103,7 @@ COMPANY_NAMES = {
     "ipsen": "Ipsen",
     "airfrance": "Air France",
     "bcg": "BCG",
+    "mistral": "Mistral AI",
 }
 
 
