@@ -106,6 +106,7 @@ COMPANY_NAMES = {
     "mistral": "Mistral AI",
     "dataiku": "Dataiku",
     "contentsquare": "Contentsquare",
+    "valeo": "Valeo",
 }
 
 
