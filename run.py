@@ -109,6 +109,7 @@ COMPANY_NAMES = {
     "valeo": "Valeo",
     "huggingface": "Hugging Face",
     "backmarket": "Back Market",
+    "blablacar": "BlaBlaCar",
 }
 
 
