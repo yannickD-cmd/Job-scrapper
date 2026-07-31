@@ -127,6 +127,7 @@ jobs:
           - backmarket
           - blablacar
           - ledger
+          - ovhcloud
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

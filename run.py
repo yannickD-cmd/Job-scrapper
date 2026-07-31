@@ -111,6 +111,7 @@ COMPANY_NAMES = {
     "backmarket": "Back Market",
     "blablacar": "BlaBlaCar",
     "ledger": "Ledger",
+    "ovhcloud": "OVHcloud",
 }
 
 
