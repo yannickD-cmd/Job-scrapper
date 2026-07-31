@@ -112,6 +112,7 @@ COMPANY_NAMES = {
     "blablacar": "BlaBlaCar",
     "ledger": "Ledger",
     "ovhcloud": "OVHcloud",
+    "michelin": "Michelin",
 }
 
 

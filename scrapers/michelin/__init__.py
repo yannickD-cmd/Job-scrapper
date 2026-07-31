@@ -1,0 +1,1 @@
+from .michelin import scrape
