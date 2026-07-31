@@ -123,6 +123,7 @@ jobs:
           - dataiku
           - contentsquare
           - valeo
+          - huggingface
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

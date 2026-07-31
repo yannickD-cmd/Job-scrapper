@@ -107,6 +107,7 @@ COMPANY_NAMES = {
     "dataiku": "Dataiku",
     "contentsquare": "Contentsquare",
     "valeo": "Valeo",
+    "huggingface": "Hugging Face",
 }
 
 
