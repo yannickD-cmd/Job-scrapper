@@ -145,7 +145,8 @@ def dashboard(
                first_seen_at, still_open, apply_url, to_apply,
                (first_seen_at >= NOW() - INTERVAL '7 days') AS is_new,
                (reopened_at IS NOT NULL
-                AND reopened_at >= NOW() - INTERVAL '7 days') AS is_reopened
+                AND reopened_at >= NOW() - INTERVAL '7 days') AS is_reopened,
+               reopened_at, closed_at, reopen_count
         FROM jobs
         {where_sql}
         ORDER BY posted_date DESC NULLS LAST, first_seen_at DESC
@@ -189,6 +190,18 @@ def dashboard(
     jobs = []
     for r in rows[:1000]:
         posted = r[5].date() if isinstance(r[5], datetime) else r[5]
+        # Days the row spent off the board between closing and coming back.
+        # A genuine repost sits idle for weeks; a gap of 0-1 day is almost
+        # always a partial scrape that closed the row and a later run that
+        # found it again (scraper_runs.jobs_found dips then recovers, while
+        # the run still logs 'success' because the empty-scrape guard only
+        # catches a *fully* empty return). Surfaced so the badge can be
+        # trusted or discounted at a glance.
+        reopened_at, closed_at = r[12], r[13]
+        repost_gap_days = (
+            (reopened_at.date() - closed_at.date()).days
+            if reopened_at and closed_at else None
+        )
         jobs.append({
             "id": r[0],
             "company": r[1],
@@ -202,6 +215,10 @@ def dashboard(
             "to_apply": r[9],
             "is_new": r[10],
             "is_reopened": r[11],
+            "reopened_at": reopened_at,
+            "closed_at": closed_at,
+            "reopen_count": r[14],
+            "repost_gap_days": repost_gap_days,
             "is_old": bool(posted and posted < old_cutoff),
             "age_months": (date.today() - posted).days // 30 if posted else None,
         })

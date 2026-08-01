@@ -177,6 +177,24 @@
               Seen {{ job.first_seen_at.strftime('%Y-%m-%d') }}
             {% endif %}
           </div>
+          {% if job.is_reopened and job.still_open %}
+            <div class="text-xs mt-1 flex items-start gap-1.5
+                        {% if job.repost_gap_days is not none and job.repost_gap_days <= 1 %}text-amber-400/90{% else %}text-sky-300/90{% endif %}">
+              <span aria-hidden="true">⟳</span>
+              <span>
+                <strong>Reposted {{ job.reopened_at.strftime('%Y-%m-%d') }}</strong>
+                · first seen {{ job.first_seen_at.strftime('%Y-%m-%d') }}
+                {%- if job.closed_at %} · off the board {{ job.closed_at.strftime('%Y-%m-%d') }}
+                  ({{ job.repost_gap_days }}&nbsp;day{{ '' if job.repost_gap_days == 1 else 's' }}){% endif %}
+                {%- if job.reopen_count and job.reopen_count > 1 %} · {{ job.reopen_count }}× reposted{% endif %}
+                {%- if job.repost_gap_days is not none and job.repost_gap_days <= 1 %}
+                  <br>Back within 24&nbsp;h — most likely a partial scrape that closed the row, not a real repost.
+                {%- elif not job.closed_at %}
+                  <br>Closed before close-dates were recorded, so the idle period is unknown.
+                {%- endif %}
+              </span>
+            </div>
+          {% endif %}
           {% if job.is_old and job.still_open %}
             <div class="text-xs text-amber-400/80 mt-1 flex items-start gap-1.5">
               <span aria-hidden="true">↻</span>
