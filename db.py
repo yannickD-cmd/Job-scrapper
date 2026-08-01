@@ -76,20 +76,30 @@ CREATE TABLE IF NOT EXISTS jobs (
     closed_at       TIMESTAMPTZ,
     reopened_at     TIMESTAMPTZ,
     reopen_count    INTEGER NOT NULL DEFAULT 0,
+    -- Re-date tracking. Distinct from a reopen: this is a row that NEVER left
+    -- the board (still_open stayed TRUE) but whose posted_date jumped strictly
+    -- forward — the company re-published it and pushed the date. We stamp
+    -- date_bumped_at each time that happens. The raw fact is recorded for every
+    -- company; the dashboard/run-log suppress it for known SEO date-churners
+    -- (Orange, Deloitte) via SEO_DATE_CHURN_COMPANIES in run.py. Recording it
+    -- raw here keeps the "noise filters live in the dashboard" contract.
+    date_bumped_at  TIMESTAMPTZ,
     UNIQUE (company, native_job_id)
 );
 
 -- Backfill the repost-tracking columns on databases created before they
 -- existed (init_db is the idempotent migration path; CREATE TABLE IF NOT
 -- EXISTS above is a no-op once the table is there).
-ALTER TABLE jobs ADD COLUMN IF NOT EXISTS closed_at    TIMESTAMPTZ;
-ALTER TABLE jobs ADD COLUMN IF NOT EXISTS reopened_at  TIMESTAMPTZ;
-ALTER TABLE jobs ADD COLUMN IF NOT EXISTS reopen_count INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE jobs ADD COLUMN IF NOT EXISTS closed_at      TIMESTAMPTZ;
+ALTER TABLE jobs ADD COLUMN IF NOT EXISTS reopened_at    TIMESTAMPTZ;
+ALTER TABLE jobs ADD COLUMN IF NOT EXISTS reopen_count   INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE jobs ADD COLUMN IF NOT EXISTS date_bumped_at TIMESTAMPTZ;
 
-CREATE INDEX IF NOT EXISTS idx_jobs_company    ON jobs(company);
-CREATE INDEX IF NOT EXISTS idx_jobs_first_seen ON jobs(first_seen_at);
-CREATE INDEX IF NOT EXISTS idx_jobs_still_open ON jobs(still_open);
-CREATE INDEX IF NOT EXISTS idx_jobs_reopened   ON jobs(reopened_at);
+CREATE INDEX IF NOT EXISTS idx_jobs_company     ON jobs(company);
+CREATE INDEX IF NOT EXISTS idx_jobs_first_seen  ON jobs(first_seen_at);
+CREATE INDEX IF NOT EXISTS idx_jobs_still_open  ON jobs(still_open);
+CREATE INDEX IF NOT EXISTS idx_jobs_reopened    ON jobs(reopened_at);
+CREATE INDEX IF NOT EXISTS idx_jobs_date_bumped ON jobs(date_bumped_at);
 
 CREATE TABLE IF NOT EXISTS scraper_runs (
     id              BIGSERIAL PRIMARY KEY,
@@ -117,6 +127,14 @@ CREATE INDEX IF NOT EXISTS idx_runs_company_time
 # only for rows reopened in THIS transaction — NOW() is the transaction start
 # time, constant across the whole persist_run_results loop, so a reopen stamped
 # in a prior run carries an older timestamp and won't match.
+#
+# `date_bumped_at` catches the OTHER "came back" case: a row that never closed
+# but whose posted_date moved strictly forward (a re-publish). Same references-
+# see-the-OLD-row rule applies, so `EXCLUDED.posted_date > jobs.posted_date`
+# compares the incoming date against the stored one. Both-NULL / date-goes-
+# backward / unknown->known are all left alone. `(date_bumped_at = NOW())` in
+# RETURNING reads back TRUE only for rows bumped in THIS transaction. Inserts
+# never match (the DO UPDATE branch doesn't run, so the column stays NULL).
 _UPSERT_SQL = """
 INSERT INTO jobs (
     company, native_job_id, title, description,
