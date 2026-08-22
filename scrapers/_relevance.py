@@ -52,7 +52,30 @@ _ALLOW_PATTERNS: tuple[str, ...] = (
     r"intelligence artificielle", r"artificial intelligence",
     r"machine learning", r"deep learning", r"\bnlp\b", r"\bllms?\b", r"llmaas",
     r"generativ", r"gen ?ai", r"foundation models?", r"modele de fondation",
-    r"applied scientist", r"research scientist", r"\bgpu\b",
+    r"applied scientist", r"research scientist", r"research engineer",
+    r"ingenieur de recherche", r"reinforcement learning",
+    r"computer vision", r"vision par ordinateur", r"\bgpu\b",
+    # ---- Quant / modelling / research (added 2026-08-22) ----------------------
+    # The gate was allow-listing job titles that SAY data/AI and missing the
+    # family whose titles never do: quants, model-risk, actuarial and
+    # econometrics roles whose day job is exactly modelling on data. The trigger
+    # was a JPMorgan "Quant Model Risk Auditor" in Paris — dropped by this gate
+    # while being a straight modelling role. `Research Engineer` (above) was
+    # missing for the same reason: `research scientist` was listed, its engineer
+    # twin was not, so every AI-lab Research Engineer req was being discarded.
+    #
+    # Precision notes: `\bquant\b` does not match "quantite"; `\bmodelisation\b`
+    # does not match "modeliste" (the fashion pattern-maker title on the luxury
+    # boards); optimisation is compound-only because bare "optimisation" is all
+    # over industrial-process and supply-chain postings.
+    r"\bquant\b", r"\bquants\b", r"quantitatif", r"quantitative",
+    r"model risk", r"risque de modele", r"model validation",
+    r"validation de modele", r"\bmodelisation\b", r"\bmodell?ing\b",
+    r"econometr", r"\bactuaire\b", r"actuarial", r"actuariat",
+    r"\bstatistiqu", r"decision scien", r"data mining",
+    r"algorithm", r"algorithmi",
+    r"recherche operationnelle", r"operations research",
+    r"optimi[sz]ation engineer", r"\bscoring\b", r"stochastic",
     # ---- Software / dev ----
     r"software", r"logiciel",
     r"developpeur", r"developpeuse", r"developpement", r"\bdeveloper\b", r"\bdev\b",
