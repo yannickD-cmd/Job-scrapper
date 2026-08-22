@@ -29,7 +29,7 @@ from fastapi.templating import Jinja2Templates
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import db  # noqa: E402
 from run import COMPANY_NAMES  # noqa: E402
-from web.filters import is_idf  # noqa: E402
+from web.filters import DATE_CHURN_COMPANIES  # noqa: E402
 
 app = FastAPI(title="Jobs dashboard", docs_url=None, redoc_url=None)
 templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
@@ -47,6 +47,28 @@ KEY_BY_DISPLAY = {v: k for k, v in COMPANY_NAMES.items()}
 # "OPEN N MO" badge, and the hide_old checkbox removes them from the list.
 # Rows with NULL posted_date are never hidden (unknown age is not old age).
 OLD_AFTER_DAYS = 183
+
+# Hard cap on rows fetched and rendered in one page. There is no geographic
+# filter any more (every scraped location is shown), so this has to clear the
+# whole table comfortably — otherwise a company's tail would silently vanish.
+ROW_CAP = 5000
+
+# The date every age rule and the default sort run on. Normally the upstream
+# posted_date, but for DATE_CHURN_COMPANIES that value is rewritten to "today"
+# on every crawl, so we substitute first_seen_at — the first run that returned
+# this native_job_id. See web/filters.py for why those companies are listed.
+# Computed once in a CTE so WHERE and ORDER BY can both reference it.
+_EFFECTIVE_DATE_CTE = """
+    WITH j AS (
+        SELECT *,
+               CASE WHEN company = ANY(%s)
+                    THEN first_seen_at::date
+                    ELSE posted_date
+               END AS effective_date
+        FROM jobs
+    )
+"""
+_CHURN_PARAM = sorted(DATE_CHURN_COMPANIES)
 
 # Strip ISO8601 timestamps that GitHub prefixes to every raw log line.
 _TS_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z ?")
@@ -120,7 +142,7 @@ def dashboard(
     if to_apply:
         where.append("to_apply = TRUE")
     if hide_old:
-        where.append("(posted_date IS NULL OR posted_date >= %s)")
+        where.append("(effective_date IS NULL OR effective_date >= %s)")
         params.append(old_cutoff)
     if company:
         where.append("company = %s")
@@ -141,23 +163,25 @@ def dashboard(
     # that earns the REPOSTED badge. Immune to Orange-style date churn: a
     # continuously-open row never closes, so reopened_at is never set.
     jobs_sql = f"""
+        {_EFFECTIVE_DATE_CTE}
         SELECT id, company, title, location, category, posted_date,
                first_seen_at, still_open, apply_url, to_apply,
                (first_seen_at >= NOW() - INTERVAL '7 days') AS is_new,
                (reopened_at IS NOT NULL
                 AND reopened_at >= NOW() - INTERVAL '7 days') AS is_reopened,
-               reopened_at, closed_at, reopen_count
-        FROM jobs
+               reopened_at, closed_at, reopen_count, effective_date
+        FROM j
         {where_sql}
-        ORDER BY posted_date DESC NULLS LAST, first_seen_at DESC
-        LIMIT 2000
+        ORDER BY effective_date DESC NULLS LAST, first_seen_at DESC
+        LIMIT {ROW_CAP}
     """
 
     with db.get_connection() as conn, conn.cursor() as cur:
-        rows = _all(cur, jobs_sql, tuple(params))
-        # Projection over the whole table for stats + dropdowns. The IDF
-        # filter is applied to both result sets identically so totals,
-        # counts, and option lists stay consistent with the visible rows.
+        # The CTE placeholder comes first in the SQL text, so its param leads.
+        rows = _all(cur, jobs_sql, tuple([_CHURN_PARAM, *params]))
+        # Projection over the whole table for stats + dropdowns. No filtering
+        # happens on either result set, so totals, counts, and option lists
+        # match the visible rows.
         # is_recent counts a reopened row as recent too, so the NEW (7D) stat
         # includes reposts (the badge itself stays distinct).
         universe_rows = _all(cur, """
@@ -168,9 +192,10 @@ def dashboard(
             FROM jobs
         """)
 
-    # Dashboard-side filter: petite couronne. Raw DB keeps every row.
-    rows = [r for r in rows if is_idf(r[3])]
-    universe = [r for r in universe_rows if is_idf(r[1])]
+    # No geographic filter: every scraped row is shown, whatever its location.
+    # Narrowing is done interactively through the location dropdown, which is
+    # now populated from every city present in the table.
+    universe = universe_rows
     open_universe = [r for r in universe if r[2]]
 
     companies = sorted({r[0] for r in open_universe})
@@ -188,8 +213,12 @@ def dashboard(
     }
 
     jobs = []
-    for r in rows[:1000]:
-        posted = r[5].date() if isinstance(r[5], datetime) else r[5]
+    for r in rows:
+        # Base date for the age badges and the "Posted / First tracked" line.
+        # For a churn board this is first_seen_at and the upstream posted_date
+        # is deliberately not shown — it is today's date on every row.
+        base = r[15].date() if isinstance(r[15], datetime) else r[15]
+        churned = r[1] in DATE_CHURN_COMPANIES
         # Days the row spent off the board between closing and coming back.
         # A genuine repost sits idle for weeks; a gap of 0-1 day is almost
         # always a partial scrape that closed the row and a later run that
@@ -219,8 +248,10 @@ def dashboard(
             "closed_at": closed_at,
             "reopen_count": r[14],
             "repost_gap_days": repost_gap_days,
-            "is_old": bool(posted and posted < old_cutoff),
-            "age_months": (date.today() - posted).days // 30 if posted else None,
+            "base_date": base,
+            "date_churned": churned,
+            "is_old": bool(base and base < old_cutoff),
+            "age_months": (date.today() - base).days // 30 if base else None,
         })
 
     return templates.TemplateResponse(request, "dashboard.html", {
@@ -236,6 +267,7 @@ def dashboard(
         "to_apply_filter": to_apply,
         "hide_old": hide_old,
         "result_count": len(jobs),
+        "row_cap": ROW_CAP,
     })
 
 
@@ -244,19 +276,26 @@ def job_description(job_id: int):
     with db.get_connection() as conn, conn.cursor() as cur:
         cur.execute(
             "SELECT title, company, location, category, posted_date, "
-            "       description, apply_url, still_open, to_apply "
+            "       description, apply_url, still_open, to_apply, "
+            "       first_seen_at::date "
             "FROM jobs WHERE id = %s",
             (job_id,),
         )
         row = cur.fetchone()
     if not row:
         raise HTTPException(status_code=404, detail="Job not found")
+    # Same base-date rule as the list: a churn board's posted_date is today's
+    # crawl date, so the modal shows when we first tracked the listing instead.
+    churned = row[1] in DATE_CHURN_COMPANIES
+    base = row[9] if churned else row[4]
     return JSONResponse({
         "title": row[0],
         "company": row[1],
         "location": row[2],
         "category": row[3],
         "posted_date": row[4].isoformat() if row[4] else None,
+        "base_date": base.isoformat() if base else None,
+        "date_churned": churned,
         "description": row[5] or "",
         "apply_url": row[6],
         "still_open": row[7],

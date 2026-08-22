@@ -125,8 +125,8 @@
 
   <div class="text-zinc-500 text-xs mt-3 ml-1">
     {{ result_count }} result{% if result_count != 1 %}s{% endif %}
-    · <span class="text-zinc-400">Île-de-France only (75 / 92 / 93 / 94)</span>
-    {% if result_count == 1000 %}<span class="text-amber-400"> (capped — refine filters)</span>{% endif %}
+    · <span class="text-zinc-400">all locations</span>
+    {% if result_count == row_cap %}<span class="text-amber-400"> (capped — refine filters)</span>{% endif %}
   </div>
 
   <div id="run-status" class="hidden mt-4 bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4 text-sm">
@@ -161,7 +161,7 @@
             {% endif %}
             {% if job.is_old and job.still_open %}
               <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30 mt-0.5 shrink-0"
-                    title="Evergreen posting: published {{ job.age_months }} months ago and still open — the company hires continuously through it.">OPEN {{ job.age_months }} MO</span>
+                    title="Evergreen posting: {% if job.date_churned %}tracked on this board for {{ job.age_months }} months{% else %}published {{ job.age_months }} months ago{% endif %} and still open — the company hires continuously through it.">OPEN {{ job.age_months }} MO</span>
             {% endif %}
             {% if not job.still_open %}
               <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded bg-zinc-700 text-zinc-300 mt-0.5 shrink-0">CLOSED</span>
@@ -171,7 +171,15 @@
             {{ job.company }}{% if job.location %} · {{ job.location }}{% endif %}{% if job.category %} · {{ job.category }}{% endif %}
           </div>
           <div class="text-xs text-zinc-500 mt-1">
-            {% if job.posted_date %}
+            {% if job.date_churned %}
+              {# This board stamps today's date on every live offer, so the
+                 upstream value is the crawl date, not a publication date.
+                 Show when we first tracked the listing instead. #}
+              <span title="{{ job.company }} rewrites the date on every offer to today on each crawl (SEO freshness refresh), so its posted date carries no information — it read {{ job.posted_date.strftime('%Y-%m-%d') if job.posted_date else 'today' }} for every job on the board. The date shown is the first crawl that returned this listing, which is a lower bound on how long it has been live.">
+                First tracked {{ job.base_date.strftime('%Y-%m-%d') }}
+                <span class="text-zinc-600">· board date refreshed daily, ignored</span>
+              </span>
+            {% elif job.posted_date %}
               Posted {{ job.posted_date.strftime('%Y-%m-%d') }}
             {% else %}
               Seen {{ job.first_seen_at.strftime('%Y-%m-%d') }}
@@ -198,7 +206,7 @@
           {% if job.is_old and job.still_open %}
             <div class="text-xs text-amber-400/80 mt-1 flex items-start gap-1.5">
               <span aria-hidden="true">↻</span>
-              <span>Open {{ job.age_months }}&nbsp;months and still live. Long-running postings are usually evergreen&nbsp;/&nbsp;pipeline roles the company recruits through continuously — the date is the original posting, not a freshness signal.</span>
+              <span>Open {{ job.age_months }}&nbsp;months and still live. Long-running postings are usually evergreen&nbsp;/&nbsp;pipeline roles the company recruits through continuously — the date is {% if job.date_churned %}when we first tracked it{% else %}the original posting{% endif %}, not a freshness signal.</span>
             </div>
           {% endif %}
         </div>
@@ -378,7 +386,12 @@
         if (!r.ok) throw new Error('fetch failed');
         const j = await r.json();
         modalTitle.textContent = j.title;
-        const meta = [j.company, j.location, j.category, j.posted_date]
+        // Churn boards restamp every offer with today's date — show the first
+        // crawl that returned the listing instead, same rule as the list rows.
+        const dateLabel = j.base_date
+          ? (j.date_churned ? `first tracked ${j.base_date}` : j.base_date)
+          : null;
+        const meta = [j.company, j.location, j.category, dateLabel]
           .filter(Boolean).join(' · ');
         modalMeta.textContent = meta + (j.still_open ? '' : ' · CLOSED');
         // Personal dashboard, single user — render scraper HTML directly.
