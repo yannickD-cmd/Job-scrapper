@@ -29,7 +29,13 @@ from fastapi.templating import Jinja2Templates
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import db  # noqa: E402
 from run import COMPANY_NAMES  # noqa: E402
-from web.filters import DATE_CHURN_COMPANIES  # noqa: E402
+from web.filters import (  # noqa: E402
+    DATE_CHURN_COMPANIES,
+    REGION_KEYS,
+    REGION_LABELS,
+    REGIONS,
+    matches_region,
+)
 
 app = FastAPI(title="Jobs dashboard", docs_url=None, redoc_url=None)
 templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
@@ -48,10 +54,49 @@ KEY_BY_DISPLAY = {v: k for k, v in COMPANY_NAMES.items()}
 # Rows with NULL posted_date are never hidden (unknown age is not old age).
 OLD_AFTER_DAYS = 183
 
-# Hard cap on rows fetched and rendered in one page. There is no geographic
-# filter any more (every scraped location is shown), so this has to clear the
-# whole table comfortably — otherwise a company's tail would silently vanish.
-ROW_CAP = 5000
+# Every date column on `jobs`, exposed as a "filter on this date" dropdown so
+# the dashboard can answer the questions that used to need a Supabase query:
+# what did we first see last week, what closed in July, what got reposted.
+#   key -> (dropdown label, SQL expression, tooltip)
+# The SQL expression is interpolated into the query, so it MUST come from this
+# dict and never from the query string — the key is validated against it.
+# Timestamps are cast to ::date so a plain YYYY-MM-DD bound is inclusive on
+# both ends.
+DATE_FIELDS: dict[str, tuple[str, str, str]] = {
+    "effective": (
+        "Date: effective", "effective_date",
+        "The upstream posted_date, except on date-churn boards "
+        "(Deloitte, Orange) where it is first_seen_at. Default sort.",
+    ),
+    "posted_date": (
+        "Date: posted", "posted_date",
+        "Raw posted_date as the company published it. Worthless on churn "
+        "boards, which restamp it to today on every crawl.",
+    ),
+    "first_seen_at": (
+        "Date: first seen", "first_seen_at::date",
+        "First scrape that ever returned this job id — what NEW is based on.",
+    ),
+    "last_seen_at": (
+        "Date: last seen", "last_seen_at::date",
+        "Most recent scrape that still found the job on the board.",
+    ),
+    "closed_at": (
+        "Date: closed", "closed_at::date",
+        "When the job stopped appearing on the board. Only closed rows have "
+        "one — pair with Show closed.",
+    ),
+    "reopened_at": (
+        "Date: reposted", "reopened_at::date",
+        "When a closed job came back under the same id (the REPOSTED badge).",
+    ),
+    "date_bumped_at": (
+        "Date: bumped upstream", "date_bumped_at::date",
+        "When a still-open job's posted_date moved forward upstream. Rarely "
+        "populated so far.",
+    ),
+}
+DEFAULT_DATE_FIELD = "effective"
 
 # The date every age rule and the default sort run on. Normally the upstream
 # posted_date, but for DATE_CHURN_COMPANIES that value is rewritten to "today"
@@ -122,17 +167,42 @@ def _extract_cities(raw_locations: list[str]) -> list[str]:
     return sorted(seen.values(), key=str.lower)
 
 
+def _parse_date(value: str | None) -> date | None:
+    """Query-string date bound. Anything unparseable is treated as absent
+    rather than a 422 — a hand-edited URL should degrade to "no bound", not
+    to an error page.
+    """
+    if not value:
+        return None
+    try:
+        return date.fromisoformat(value.strip())
+    except ValueError:
+        return None
+
+
 @app.get("/", response_class=HTMLResponse)
 def dashboard(
     request: Request,
     company: str | None = None,
     location: list[str] = Query(default=[]),
+    region: str = "",
     q: str | None = None,
     show_closed: bool = False,
     to_apply: bool = False,
     hide_old: bool = False,
+    date_field: str = DEFAULT_DATE_FIELD,
+    date_from: str | None = None,
+    date_to: str | None = None,
 ):
     old_cutoff = date.today() - timedelta(days=OLD_AFTER_DAYS)
+
+    if region not in REGION_KEYS:
+        region = ""
+    # Validated against the dict, never interpolated raw — see DATE_FIELDS.
+    if date_field not in DATE_FIELDS:
+        date_field = DEFAULT_DATE_FIELD
+    date_col = DATE_FIELDS[date_field][1]
+    d_from, d_to = _parse_date(date_from), _parse_date(date_to)
 
     where: list[str] = []
     params: list = []
@@ -154,9 +224,26 @@ def dashboard(
         where.append("(title ILIKE %s OR COALESCE(description, '') ILIKE %s)")
         like = f"%{q}%"
         params += [like, like]
+    # Both bounds inclusive. A NULL in the chosen column fails the comparison
+    # and drops out, which is the intent: filtering on "Closed" is asking for
+    # rows that actually closed.
+    if d_from:
+        where.append(f"{date_col} >= %s")
+        params.append(d_from)
+    if d_to:
+        where.append(f"{date_col} <= %s")
+        params.append(d_to)
 
     where_sql = ("WHERE " + " AND ".join(where)) if where else ""
+    # Sort on whatever date the user is filtering by, so the range they asked
+    # for reads in order; effective_date stays the tiebreaker-free default.
+    order_sql = f"{date_col} DESC NULLS LAST, first_seen_at DESC"
 
+    # No LIMIT: the page renders every matching row. The old 2000/1000 caps
+    # silently truncated a company's tail, which is the opposite of what this
+    # dashboard is for. If the table ever grows past what one page can carry,
+    # add pagination — don't put back a cap that hides rows without saying so.
+    #
     # A repost is a row we had marked closed that reappeared under the same
     # native_job_id (reopened_at stamped by the upsert). It won't refresh
     # first_seen_at, so is_new stays FALSE — is_reopened is the separate signal
@@ -172,16 +259,15 @@ def dashboard(
                reopened_at, closed_at, reopen_count, effective_date
         FROM j
         {where_sql}
-        ORDER BY effective_date DESC NULLS LAST, first_seen_at DESC
-        LIMIT {ROW_CAP}
+        ORDER BY {order_sql}
     """
 
     with db.get_connection() as conn, conn.cursor() as cur:
         # The CTE placeholder comes first in the SQL text, so its param leads.
         rows = _all(cur, jobs_sql, tuple([_CHURN_PARAM, *params]))
-        # Projection over the whole table for stats + dropdowns. No filtering
-        # happens on either result set, so totals, counts, and option lists
-        # match the visible rows.
+        # Projection over the whole table for stats + dropdowns. Only the
+        # region scope is applied to it (identically to the rows below), so
+        # totals, counts, and option lists stay consistent with what's visible.
         # is_recent counts a reopened row as recent too, so the NEW (7D) stat
         # includes reposts (the badge itself stays distinct).
         universe_rows = _all(cur, """
@@ -192,10 +278,15 @@ def dashboard(
             FROM jobs
         """)
 
-    # No geographic filter: every scraped row is shown, whatever its location.
-    # Narrowing is done interactively through the location dropdown, which is
-    # now populated from every city present in the table.
-    universe = universe_rows
+    # Geography is opt-in: region == "" (the default) keeps every row, whatever
+    # its location. Picking Paris / petite couronne / IDF / France narrows both
+    # the rows and the stats universe with the same predicate, so the counters
+    # never disagree with the list. See web/filters.py for the tiers.
+    if region:
+        rows = [r for r in rows if matches_region(r[3], region)]
+        universe = [r for r in universe_rows if matches_region(r[1], region)]
+    else:
+        universe = universe_rows
     open_universe = [r for r in universe if r[2]]
 
     companies = sorted({r[0] for r in open_universe})
@@ -267,7 +358,15 @@ def dashboard(
         "to_apply_filter": to_apply,
         "hide_old": hide_old,
         "result_count": len(jobs),
-        "row_cap": ROW_CAP,
+        "regions": REGIONS,
+        "selected_region": region,
+        "region_label": REGION_LABELS[region],
+        "date_fields": [(k, v[0], v[2]) for k, v in DATE_FIELDS.items()],
+        "selected_date_field": date_field,
+        "date_field_label": DATE_FIELDS[date_field][0].replace("Date: ", ""),
+        "date_from": date_from or "",
+        "date_to": date_to or "",
+        "date_filtered": bool(d_from or d_to),
     })
 
 

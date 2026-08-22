@@ -104,7 +104,50 @@
       Hide old (&gt;6&nbsp;mo)
     </label>
 
-    <div class="flex flex-wrap items-center gap-2">
+    {# ---- second row: geography + date range, both opt-in ---- #}
+    <div class="sm:col-span-full grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_auto_auto] items-center border-t border-zinc-800 pt-3">
+      <select name="region" onchange="this.form.submit()"
+              class="min-w-0 w-full bg-zinc-950 border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600
+                     {% if selected_region %}border-sky-600 text-sky-200{% else %}border-zinc-800{% endif %}">
+        {% for key, label, hint in regions %}
+          <option value="{{ key }}" title="{{ hint }}" {% if key == selected_region %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="date_field"
+              class="min-w-0 w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
+        {% for key, label, hint in date_fields %}
+          <option value="{{ key }}" title="{{ hint }}" {% if key == selected_date_field %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+
+      <div class="flex items-center gap-2 text-sm text-zinc-400">
+        <input type="date" name="date_from" id="date-from" value="{{ date_from }}"
+               class="min-w-0 bg-zinc-950 border rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-zinc-600
+                      {% if date_from %}border-sky-600 text-sky-200{% else %}border-zinc-800 text-zinc-300{% endif %}">
+        <span class="text-zinc-600">→</span>
+        <input type="date" name="date_to" id="date-to" value="{{ date_to }}"
+               class="min-w-0 bg-zinc-950 border rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-zinc-600
+                      {% if date_to %}border-sky-600 text-sky-200{% else %}border-zinc-800 text-zinc-300{% endif %}">
+      </div>
+
+      {# Presets fill the two inputs client-side, then submit. Each one also
+         picks the date column it makes sense on (new/reposted are first-seen
+         and reopened events, not posting dates). #}
+      <div class="flex flex-wrap items-center gap-1.5 text-xs">
+        <button type="button" class="date-preset border border-zinc-700 text-zinc-400 rounded-md px-2 py-1 hover:border-zinc-500 hover:text-white"
+                data-days="1" data-field="first_seen_at">New 24h</button>
+        <button type="button" class="date-preset border border-zinc-700 text-zinc-400 rounded-md px-2 py-1 hover:border-zinc-500 hover:text-white"
+                data-days="7" data-field="first_seen_at">New 7d</button>
+        <button type="button" class="date-preset border border-zinc-700 text-zinc-400 rounded-md px-2 py-1 hover:border-zinc-500 hover:text-white"
+                data-days="30" data-field="first_seen_at">New 30d</button>
+        <button type="button" class="date-preset border border-zinc-700 text-zinc-400 rounded-md px-2 py-1 hover:border-zinc-500 hover:text-white"
+                data-days="30" data-field="reopened_at">Reposted 30d</button>
+        <button type="button" id="date-clear" class="text-zinc-500 rounded-md px-2 py-1 hover:text-white">Clear dates</button>
+      </div>
+    </div>
+
+    <div class="sm:col-span-full flex flex-wrap items-center gap-2">
       <button type="submit" class="flex-1 sm:flex-none bg-white text-zinc-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-200">
         Filter
       </button>
@@ -125,8 +168,12 @@
 
   <div class="text-zinc-500 text-xs mt-3 ml-1">
     {{ result_count }} result{% if result_count != 1 %}s{% endif %}
-    · <span class="text-zinc-400">all locations</span>
-    {% if result_count == row_cap %}<span class="text-amber-400"> (capped — refine filters)</span>{% endif %}
+    · <span class="{% if selected_region %}text-sky-300{% else %}text-zinc-400{% endif %}">{{ region_label }}</span>
+    {% if date_filtered %}
+      · <span class="text-sky-300">{{ date_field_label|lower }}
+        {%- if date_from %} from {{ date_from }}{% endif %}
+        {%- if date_to %} to {{ date_to }}{% endif %}</span>
+    {% endif %}
   </div>
 
   <div id="run-status" class="hidden mt-4 bg-zinc-900/60 border border-zinc-800 rounded-2xl p-4 text-sm">
@@ -254,6 +301,31 @@
   document.addEventListener('click', (e) => {
     if (locBtn.contains(e.target) || locDropdown.contains(e.target)) return;
     locDropdown.classList.add('hidden');
+  });
+
+  // Date presets: fill from/to, switch to the date column the preset is about,
+  // then submit. Local date parts (not toISOString) so "today" is the user's
+  // today, not UTC's.
+  const dateFrom = document.getElementById('date-from');
+  const dateTo = document.getElementById('date-to');
+  const isoDay = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+  document.querySelectorAll('.date-preset').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const from = new Date();
+      from.setDate(from.getDate() - parseInt(btn.dataset.days, 10));
+      dateFrom.value = isoDay(from);
+      dateTo.value = '';
+      const field = btn.form.querySelector('select[name="date_field"]');
+      if (field && btn.dataset.field) field.value = btn.dataset.field;
+      btn.form.submit();
+    });
+  });
+
+  document.getElementById('date-clear').addEventListener('click', (e) => {
+    dateFrom.value = '';
+    dateTo.value = '';
+    e.target.form.submit();
   });
 
   const modal = document.getElementById('modal');
