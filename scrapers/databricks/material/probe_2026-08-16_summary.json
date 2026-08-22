@@ -1,0 +1,412 @@
+{
+  "probed_at": "2026-08-16",
+  "endpoint": "https://boards-api.greenhouse.io/v1/boards/databricks/jobs?content=true",
+  "http_status": 200,
+  "total_open_positions": 809,
+  "engineering_dept": {
+    "id": 4001015002,
+    "name": "Engineering",
+    "parent_id": null,
+    "child_ids": [
+      4076790002,
+      4100265002,
+      4100264002,
+      4049570002,
+      4003101002,
+      4062642002
+    ]
+  },
+  "counts": {
+    "engineering": 76,
+    "france_tagged_any_dept": 19,
+    "engineering_and_france": 0
+  },
+  "engineering_location_histogram": {
+    "San Francisco, California": 15,
+    "Mountain View, California": 12,
+    "Mountain View, California; San Francisco, California": 11,
+    "Bellevue, Washington": 8,
+    "Bengaluru, India": 5,
+    "New York City, New York": 3,
+    "London, United Kingdom": 3,
+    "Virginia": 3,
+    "Amsterdam, Netherlands": 2,
+    "Japan": 2,
+    "Sydney, Australia": 1,
+    "United States": 1,
+    "Vancouver, Canada": 1,
+    "Dallas, Texas; San Francisco, California; Vancouver, Canada": 1,
+    "Seattle, Washington": 1,
+    "Aarhus, Denmark": 1,
+    "Berlin, Germany": 1,
+    "Zürich, Switzerland": 1,
+    "Tokyo, Japan": 1,
+    "Plano, Texas": 1,
+    "Bellevue, Washington; Seattle, Washington": 1,
+    "New York": 1
+  },
+  "france_jobs": [
+    {
+      "id": 8590201002,
+      "title": "Business Development Representative (Italian-speaking)",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4003099002,
+          "name": "Sales Development",
+          "parent_id": 4001021002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8590201002",
+      "updated_at": "2026-08-11T14:54:40-04:00",
+      "first_published": "2026-06-16T06:32:11-04:00",
+      "requisition_id": "SLSQ327R458"
+    },
+    {
+      "id": 8575046002,
+      "title": "Delivery Solutions Architect",
+      "location": "Paris, France",
+      "offices": [
+        "Remote - France"
+      ],
+      "departments": [
+        {
+          "id": 4001270002,
+          "name": "Delivery Solutions Architects",
+          "parent_id": 4069106002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8575046002",
+      "updated_at": "2026-08-11T14:54:40-04:00",
+      "first_published": "2026-06-09T09:14:08-04:00",
+      "requisition_id": "CSQ427R196"
+    },
+    {
+      "id": 8495059002,
+      "title": "EMEA Energy Industry Go-To-Market (GTM) Leader",
+      "location": "EMEA; Germany; London, United Kingdom; Paris, France; Remote - Netherlands",
+      "offices": [
+        "London, United Kingdom"
+      ],
+      "departments": [
+        {
+          "id": 4019773002,
+          "name": "Go To Market ",
+          "parent_id": 4001021002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8495059002",
+      "updated_at": "2026-08-11T14:54:37-04:00",
+      "first_published": "2026-04-28T12:29:30-04:00",
+      "requisition_id": "FEQ427R219"
+    },
+    {
+      "id": 8653573002,
+      "title": "Field Marketing Manager - France, Middle East & Africa",
+      "location": "London, United Kingdom",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4001018002,
+          "name": "Marketing",
+          "parent_id": null
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8653573002",
+      "updated_at": "2026-08-11T14:54:42-04:00",
+      "first_published": "2026-07-28T10:42:46-04:00",
+      "requisition_id": "MKTQ427R36"
+    },
+    {
+      "id": 8638640002,
+      "title": "Field Marketing Manager - France, Middle East & Africa",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4001018002,
+          "name": "Marketing",
+          "parent_id": null
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8638640002",
+      "updated_at": "2026-08-11T14:54:42-04:00",
+      "first_published": "2026-07-27T11:23:23-04:00",
+      "requisition_id": "MKTQ427R36"
+    },
+    {
+      "id": 8501026002,
+      "title": "Head of EMEA Financial Services GTM",
+      "location": "London, United Kingdom",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4076800002,
+          "name": "Exec Sales",
+          "parent_id": 4001021002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8501026002",
+      "updated_at": "2026-08-11T14:54:38-04:00",
+      "first_published": "2026-04-14T10:21:58-04:00",
+      "requisition_id": "SLSQ227R700"
+    },
+    {
+      "id": 8569552002,
+      "title": "Lakebase Sales Associate Director",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4054180002,
+          "name": "HQ Management",
+          "parent_id": 4001021002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8569552002",
+      "updated_at": "2026-08-13T11:12:38-04:00",
+      "first_published": "2026-06-02T05:48:25-04:00",
+      "requisition_id": "SLSQ327R363"
+    },
+    {
+      "id": 8545248002,
+      "title": "Manager, Delivery Solutions Architects",
+      "location": "Madrid; Milan, Italy; Paris, France",
+      "offices": [
+        "Remote - Italy"
+      ],
+      "departments": [
+        {
+          "id": 4001270002,
+          "name": "Delivery Solutions Architects",
+          "parent_id": 4069106002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8545248002",
+      "updated_at": "2026-08-11T14:54:38-04:00",
+      "first_published": "2026-05-13T09:52:44-04:00",
+      "requisition_id": "CSQ327R106"
+    },
+    {
+      "id": 8491126002,
+      "title": "Manager, Field Engineering France",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4105217002,
+          "name": "Field Engineering - Other",
+          "parent_id": 4069106002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8491126002",
+      "updated_at": "2026-08-11T14:54:37-04:00",
+      "first_published": "2026-04-09T14:12:37-04:00",
+      "requisition_id": "FEQ227R207"
+    },
+    {
+      "id": 8517065002,
+      "title": "Manager, Field Engineering France  - Specialist Solutions Architects",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4105217002,
+          "name": "Field Engineering - Other",
+          "parent_id": 4069106002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8517065002",
+      "updated_at": "2026-08-11T14:54:38-04:00",
+      "first_published": "2026-04-24T07:18:16-04:00",
+      "requisition_id": "FEQ327R159"
+    },
+    {
+      "id": 8374717002,
+      "title": "Retail & Consumer Goods EMEA Leader",
+      "location": "Germany; London, United Kingdom; Netherlands; Paris, France",
+      "offices": [
+        "Remote - United Kingdom"
+      ],
+      "departments": [
+        {
+          "id": 4019773002,
+          "name": "Go To Market ",
+          "parent_id": 4001021002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8374717002",
+      "updated_at": "2026-08-11T14:54:35-04:00",
+      "first_published": "2026-01-23T16:11:20-05:00",
+      "requisition_id": "SLSQ127R516"
+    },
+    {
+      "id": 8569618002,
+      "title": "Sales Director, Lakebase Sales Specialist - South EMEA",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4054180002,
+          "name": "HQ Management",
+          "parent_id": 4001021002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8569618002",
+      "updated_at": "2026-08-11T14:54:40-04:00",
+      "first_published": "2026-06-11T04:51:18-04:00",
+      "requisition_id": "SLSQ227R827"
+    },
+    {
+      "id": 8554840002,
+      "title": "Senior Field Technical Program Manager, Professional Services",
+      "location": "Paris, France",
+      "offices": [
+        "Remote - France"
+      ],
+      "departments": [
+        {
+          "id": 4070291002,
+          "name": "Professional Services Operations",
+          "parent_id": 4001269002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8554840002",
+      "updated_at": "2026-08-11T14:54:39-04:00",
+      "first_published": "2026-06-25T04:24:09-04:00",
+      "requisition_id": "CSQ427R33"
+    },
+    {
+      "id": 8556371002,
+      "title": "Senior Forward Deployed Engineer - Full stack",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4070291002,
+          "name": "Professional Services Operations",
+          "parent_id": 4001269002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8556371002",
+      "updated_at": "2026-08-11T14:54:39-04:00",
+      "first_published": "2026-06-04T06:18:09-04:00",
+      "requisition_id": "CSQ427R154"
+    },
+    {
+      "id": 8439078002,
+      "title": "Senior Manager, Forward Deployed Engineering (Full Stack) x 2 New roles",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4070291002,
+          "name": "Professional Services Operations",
+          "parent_id": 4001269002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8439078002",
+      "updated_at": "2026-08-13T12:33:45-04:00",
+      "first_published": "2026-02-26T06:52:11-05:00",
+      "requisition_id": "CSQ327R55"
+    },
+    {
+      "id": 8560496002,
+      "title": "Solutions Architect Digital Natives Mid Market France",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4105217002,
+          "name": "Field Engineering - Other",
+          "parent_id": 4069106002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8560496002",
+      "updated_at": "2026-08-11T14:54:39-04:00",
+      "first_published": "2026-05-29T10:42:26-04:00",
+      "requisition_id": "FEQ327R195"
+    },
+    {
+      "id": 8675572002,
+      "title": "Solutions Architect, EMEA Startups — France",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4105217002,
+          "name": "Field Engineering - Other",
+          "parent_id": 4069106002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8675572002",
+      "updated_at": "2026-08-11T14:54:43-04:00",
+      "first_published": "2026-08-07T11:03:13-04:00",
+      "requisition_id": "FEQ427R352"
+    },
+    {
+      "id": 8535812002,
+      "title": "Sr. Manager, Field Engineering Qatar&Africa",
+      "location": "London, United Kingdom; Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4105217002,
+          "name": "Field Engineering - Other",
+          "parent_id": 4069106002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8535812002",
+      "updated_at": "2026-08-11T14:54:38-04:00",
+      "first_published": "2026-05-06T14:21:38-04:00",
+      "requisition_id": "FEQ327R157"
+    },
+    {
+      "id": 8628029002,
+      "title": "Strategic Core Account Executive",
+      "location": "Paris, France",
+      "offices": [
+        "Paris, France"
+      ],
+      "departments": [
+        {
+          "id": 4003092002,
+          "name": "Enterprise Sales",
+          "parent_id": 4001021002
+        }
+      ],
+      "absolute_url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8628029002",
+      "updated_at": "2026-08-11T14:54:41-04:00",
+      "first_published": "2026-07-31T04:26:06-04:00",
+      "requisition_id": "SLSQ427R336"
+    }
+  ],
+  "note": "Engineering dept id 4001015002 is valid and the dept tree is only 2 levels deep, so the scraper's id/parent_id rule covers the full subtree. Engineering has zero France rows; Paris is a field/GTM + Professional Services site."
+}

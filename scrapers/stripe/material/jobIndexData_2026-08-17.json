@@ -1,0 +1,8941 @@
+{
+ "filters": {
+  "teams": [
+   {
+    "name": "Administrative"
+   },
+   {
+    "name": "Communications"
+   },
+   {
+    "name": "Consumer"
+   },
+   {
+    "name": "Corporate Development"
+   },
+   {
+    "name": "Corporate Security"
+   },
+   {
+    "name": "Corporate Strategy"
+   },
+   {
+    "name": "Data & Data Science"
+   },
+   {
+    "name": "Data Platform"
+   },
+   {
+    "name": "Design"
+   },
+   {
+    "name": "Executive"
+   },
+   {
+    "name": "Finance"
+   },
+   {
+    "parentTeamIndex": 10,
+    "name": "Controllership"
+   },
+   {
+    "parentTeamIndex": 10,
+    "name": "Finance & Strategy"
+   },
+   {
+    "parentTeamIndex": 10,
+    "name": "Internal Audit"
+   },
+   {
+    "parentTeamIndex": 10,
+    "name": "Investor Relations"
+   },
+   {
+    "parentTeamIndex": 10,
+    "name": "Tax"
+   },
+   {
+    "parentTeamIndex": 10,
+    "name": "Treasury"
+   },
+   {
+    "parentTeamIndex": 10,
+    "name": "Workplace"
+   },
+   {
+    "name": "Global Operations"
+   },
+   {
+    "name": "Global Partnerships"
+   },
+   {
+    "name": "Go-to-Market"
+   },
+   {
+    "parentTeamIndex": 20,
+    "name": "Customer Success"
+   },
+   {
+    "parentTeamIndex": 20,
+    "name": "GTM Partnerships"
+   },
+   {
+    "parentTeamIndex": 20,
+    "name": "Global Strategic Pursuits"
+   },
+   {
+    "parentTeamIndex": 20,
+    "name": "Marketing"
+   },
+   {
+    "parentTeamIndex": 20,
+    "name": "Revenue Operations"
+   },
+   {
+    "parentTeamIndex": 20,
+    "name": "Sales"
+   },
+   {
+    "parentTeamIndex": 20,
+    "name": "Scaled Sales"
+   },
+   {
+    "parentTeamIndex": 20,
+    "name": "Solutions Architect"
+   },
+   {
+    "name": "Infrastructure"
+   },
+   {
+    "name": "Infrastructure & Corporate Tech"
+   },
+   {
+    "name": "Legal"
+   },
+   {
+    "name": "Machine Learning"
+   },
+   {
+    "name": "Operations"
+   },
+   {
+    "parentTeamIndex": 33,
+    "name": "Technical Account Management"
+   },
+   {
+    "name": "People"
+   },
+   {
+    "parentTeamIndex": 35,
+    "name": "People Functions"
+   },
+   {
+    "parentTeamIndex": 35,
+    "name": "Recruiting"
+   },
+   {
+    "name": "Products"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Banking as a Service"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Connect"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Crypto"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Intercept"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Link"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Metronome"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Mobile"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Money Movement and Storage"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "New Financial Products"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Payments"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Platform"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Privy"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Professional Services"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Revenue & Financial Automation"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Stripe Tax"
+   },
+   {
+    "parentTeamIndex": 38,
+    "name": "Terminal"
+   },
+   {
+    "name": "Reliability"
+   },
+   {
+    "name": "Risk & Financial Crimes"
+   },
+   {
+    "name": "SaaS"
+   },
+   {
+    "name": "Security"
+   },
+   {
+    "name": "Startups"
+   },
+   {
+    "name": "Tech Programs"
+   },
+   {
+    "name": "University"
+   }
+  ],
+  "locations": [
+   {
+    "name": "Americas",
+    "remote": false,
+    "countryCode": "US"
+   },
+   {
+    "name": "Asia Pacific",
+    "remote": false,
+    "countryCode": "SG"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "Australia",
+    "countryCode": "AU"
+   },
+   {
+    "parentLocationIndex": 2,
+    "name": "Remote in Australia",
+    "remote": true,
+    "countryCode": "AU"
+   },
+   {
+    "parentLocationIndex": 2,
+    "name": "Melbourne",
+    "countryCode": "AU"
+   },
+   {
+    "parentLocationIndex": 2,
+    "name": "Sydney",
+    "countryCode": "AU"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "Hong Kong",
+    "countryCode": "HK"
+   },
+   {
+    "parentLocationIndex": 6,
+    "name": "Remote in Hong Kong",
+    "remote": true,
+    "countryCode": "HK"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "India",
+    "countryCode": "IN"
+   },
+   {
+    "parentLocationIndex": 8,
+    "name": "Remote in India",
+    "remote": true,
+    "countryCode": "IN"
+   },
+   {
+    "parentLocationIndex": 8,
+    "name": "Bengaluru",
+    "countryCode": "IN"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "Indonesia",
+    "countryCode": "ID"
+   },
+   {
+    "parentLocationIndex": 11,
+    "name": "Remote in Indonesia",
+    "remote": true,
+    "countryCode": "ID"
+   },
+   {
+    "parentLocationIndex": 11,
+    "name": "Jakarta",
+    "countryCode": "ID"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "Japan",
+    "countryCode": "JP"
+   },
+   {
+    "parentLocationIndex": 14,
+    "name": "Remote in Japan",
+    "remote": true,
+    "countryCode": "JP"
+   },
+   {
+    "parentLocationIndex": 14,
+    "name": "Tokyo",
+    "countryCode": "JP"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "Malaysia",
+    "countryCode": "MY"
+   },
+   {
+    "parentLocationIndex": 17,
+    "name": "Remote in Malaysia",
+    "remote": true,
+    "countryCode": "MY"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "New Zealand",
+    "countryCode": "NZ"
+   },
+   {
+    "parentLocationIndex": 19,
+    "name": "Remote in New Zealand",
+    "remote": true,
+    "countryCode": "NZ"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "Singapore",
+    "countryCode": "SG"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "South Korea",
+    "countryCode": "KR"
+   },
+   {
+    "parentLocationIndex": 22,
+    "name": "Remote in South Korea",
+    "remote": true,
+    "countryCode": "KR"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "Taiwan",
+    "countryCode": "TW"
+   },
+   {
+    "parentLocationIndex": 24,
+    "name": "Taipei",
+    "countryCode": "TW"
+   },
+   {
+    "parentLocationIndex": 1,
+    "name": "Thailand",
+    "countryCode": "TH"
+   },
+   {
+    "parentLocationIndex": 26,
+    "name": "Remote in Thailand",
+    "remote": true,
+    "countryCode": "TH"
+   },
+   {
+    "parentLocationIndex": 26,
+    "name": "Bangkok",
+    "countryCode": "TH"
+   },
+   {
+    "name": "Europe",
+    "remote": false,
+    "countryCode": "IE"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Austria",
+    "countryCode": "AT"
+   },
+   {
+    "parentLocationIndex": 30,
+    "name": "Remote in Austria",
+    "remote": true,
+    "countryCode": "AT"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Belgium",
+    "countryCode": "BE"
+   },
+   {
+    "parentLocationIndex": 32,
+    "name": "Remote in Belgium",
+    "remote": true,
+    "countryCode": "BE"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Czechia",
+    "countryCode": "CZ"
+   },
+   {
+    "parentLocationIndex": 34,
+    "name": "Remote in Czechia",
+    "remote": true,
+    "countryCode": "CZ"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Estonia",
+    "countryCode": "EE"
+   },
+   {
+    "parentLocationIndex": 36,
+    "name": "Remote in Estonia",
+    "remote": true,
+    "countryCode": "EE"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "France",
+    "countryCode": "FR"
+   },
+   {
+    "parentLocationIndex": 38,
+    "name": "Remote in France",
+    "remote": true,
+    "countryCode": "FR"
+   },
+   {
+    "parentLocationIndex": 38,
+    "name": "Paris",
+    "countryCode": "FR"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Germany",
+    "countryCode": "DE"
+   },
+   {
+    "parentLocationIndex": 41,
+    "name": "Remote in Germany",
+    "remote": true,
+    "countryCode": "DE"
+   },
+   {
+    "parentLocationIndex": 41,
+    "name": "Berlin",
+    "countryCode": "DE"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Great Britain",
+    "countryCode": "GB"
+   },
+   {
+    "parentLocationIndex": 44,
+    "name": "Remote in Great Britain",
+    "remote": true,
+    "countryCode": "GB"
+   },
+   {
+    "parentLocationIndex": 44,
+    "name": "London",
+    "countryCode": "GB"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Ireland",
+    "countryCode": "IE"
+   },
+   {
+    "parentLocationIndex": 47,
+    "name": "Remote in Ireland",
+    "remote": true,
+    "countryCode": "IE"
+   },
+   {
+    "parentLocationIndex": 47,
+    "name": "Dublin HQ",
+    "countryCode": "IE"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Israel",
+    "countryCode": "IL"
+   },
+   {
+    "parentLocationIndex": 50,
+    "name": "Remote in Israel",
+    "remote": true,
+    "countryCode": "IL"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Italy",
+    "countryCode": "IT"
+   },
+   {
+    "parentLocationIndex": 52,
+    "name": "Remote in Italy",
+    "remote": true,
+    "countryCode": "IT"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Luxembourg",
+    "countryCode": "LU"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Netherlands",
+    "countryCode": "NL"
+   },
+   {
+    "parentLocationIndex": 55,
+    "name": "Remote in Netherlands",
+    "remote": true,
+    "countryCode": "NL"
+   },
+   {
+    "parentLocationIndex": 55,
+    "name": "Amsterdam",
+    "countryCode": "NL"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Poland",
+    "countryCode": "PL"
+   },
+   {
+    "parentLocationIndex": 58,
+    "name": "Remote in Poland",
+    "remote": true,
+    "countryCode": "PL"
+   },
+   {
+    "parentLocationIndex": 58,
+    "name": "Warsaw",
+    "countryCode": "PL"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Portugal",
+    "countryCode": "PT"
+   },
+   {
+    "parentLocationIndex": 61,
+    "name": "Remote in Portugal",
+    "remote": true,
+    "countryCode": "PT"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Romania",
+    "countryCode": "RO"
+   },
+   {
+    "parentLocationIndex": 63,
+    "name": "Remote in Romania",
+    "remote": true,
+    "countryCode": "RO"
+   },
+   {
+    "parentLocationIndex": 63,
+    "name": "Bucharest",
+    "countryCode": "RO"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Spain",
+    "countryCode": "ES"
+   },
+   {
+    "parentLocationIndex": 66,
+    "name": "Remote in Spain",
+    "remote": true,
+    "countryCode": "ES"
+   },
+   {
+    "parentLocationIndex": 66,
+    "name": "Barcelona",
+    "countryCode": "ES"
+   },
+   {
+    "parentLocationIndex": 66,
+    "name": "Madrid",
+    "countryCode": "ES"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Sweden",
+    "countryCode": "SE"
+   },
+   {
+    "parentLocationIndex": 70,
+    "name": "Remote in Sweden",
+    "remote": true,
+    "countryCode": "SE"
+   },
+   {
+    "parentLocationIndex": 70,
+    "name": "Stockholm",
+    "countryCode": "SE"
+   },
+   {
+    "parentLocationIndex": 29,
+    "name": "Switzerland",
+    "countryCode": "CH"
+   },
+   {
+    "parentLocationIndex": 73,
+    "name": "Remote in Switzerland",
+    "remote": true,
+    "countryCode": "CH"
+   },
+   {
+    "name": "Latin America",
+    "remote": false,
+    "countryCode": "MX"
+   },
+   {
+    "parentLocationIndex": 75,
+    "name": "Argentina",
+    "countryCode": "AR"
+   },
+   {
+    "parentLocationIndex": 76,
+    "name": "Remote in Argentina",
+    "remote": true,
+    "countryCode": "AR"
+   },
+   {
+    "parentLocationIndex": 75,
+    "name": "Brazil",
+    "countryCode": "BR"
+   },
+   {
+    "parentLocationIndex": 78,
+    "name": "Remote in Brazil",
+    "remote": true,
+    "countryCode": "BR"
+   },
+   {
+    "parentLocationIndex": 78,
+    "name": "São Paulo",
+    "countryCode": "BR"
+   },
+   {
+    "parentLocationIndex": 75,
+    "name": "Chile",
+    "countryCode": "CL"
+   },
+   {
+    "parentLocationIndex": 81,
+    "name": "Remote in Chile",
+    "remote": true,
+    "countryCode": "CL"
+   },
+   {
+    "parentLocationIndex": 75,
+    "name": "Mexico",
+    "countryCode": "MX"
+   },
+   {
+    "parentLocationIndex": 83,
+    "name": "Remote in Mexico",
+    "remote": true,
+    "countryCode": "MX"
+   },
+   {
+    "parentLocationIndex": 83,
+    "name": "Mexico City",
+    "countryCode": "MX"
+   },
+   {
+    "name": "Middle East",
+    "remote": false,
+    "countryCode": "AE"
+   },
+   {
+    "parentLocationIndex": 86,
+    "name": "United Arab Emirates",
+    "countryCode": "AE"
+   },
+   {
+    "parentLocationIndex": 87,
+    "name": "Dubai",
+    "countryCode": "AE"
+   },
+   {
+    "name": "New York Privy HQ",
+    "remote": false,
+    "countryCode": "US"
+   },
+   {
+    "name": "North America",
+    "remote": false,
+    "countryCode": "US"
+   },
+   {
+    "parentLocationIndex": 90,
+    "name": "Canada",
+    "countryCode": "CA"
+   },
+   {
+    "parentLocationIndex": 91,
+    "name": "Remote in Canada",
+    "remote": true,
+    "countryCode": "CA"
+   },
+   {
+    "parentLocationIndex": 91,
+    "name": "Toronto",
+    "countryCode": "CA"
+   },
+   {
+    "parentLocationIndex": 90,
+    "name": "United States",
+    "countryCode": "US"
+   },
+   {
+    "parentLocationIndex": 94,
+    "name": "Remote in United States",
+    "remote": true,
+    "countryCode": "US"
+   },
+   {
+    "parentLocationIndex": 94,
+    "name": "Atlanta",
+    "countryCode": "US"
+   },
+   {
+    "parentLocationIndex": 94,
+    "name": "Chicago",
+    "countryCode": "US"
+   },
+   {
+    "parentLocationIndex": 94,
+    "name": "New York",
+    "countryCode": "US"
+   },
+   {
+    "parentLocationIndex": 94,
+    "name": "San Francisco Bridge HQ",
+    "countryCode": "US"
+   },
+   {
+    "parentLocationIndex": 94,
+    "name": "Seattle",
+    "countryCode": "US"
+   },
+   {
+    "parentLocationIndex": 94,
+    "name": "South San Francisco HQ",
+    "countryCode": "US"
+   },
+   {
+    "parentLocationIndex": 94,
+    "name": "Washington DC",
+    "countryCode": "US"
+   }
+  ],
+  "tags": [
+   {
+    "name": "Bridge"
+   },
+   {
+    "name": "Privy"
+   },
+   {
+    "name": "University"
+   }
+  ],
+  "employmentTypes": [
+   {
+    "name": "Fixed term"
+   },
+   {
+    "name": "Full time"
+   },
+   {
+    "name": "Intern"
+   }
+  ]
+ },
+ "listings": [
+  {
+   "greenhouseId": 7844214,
+   "title": "AEO and GEO Marketing Manager",
+   "slug": "aeo-and-geo-marketing-manager",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8044460,
+   "title": "AI Engineer",
+   "slug": "ai-engineer",
+   "locationIndices": [
+    93,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8064526,
+   "title": "AI Product Manager, Professional Services",
+   "slug": "ai-product-manager-professional-services",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7947074,
+   "title": "AI Specialist, Treasury Finance Operations",
+   "slug": "ai-specialist-treasury-finance-operations",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    16
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7764914,
+   "title": "APAC Executive Marketing",
+   "slug": "apac-executive-marketing",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8113337,
+   "title": "ARG Engineering Manager",
+   "slug": "arg-engineering-manager",
+   "locationIndices": [
+    95,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8078126,
+   "title": "AV Events Manager",
+   "slug": "av-events-manager",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7993151,
+   "title": "Account Executive - Enterprise, Grower",
+   "slug": "account-executive-enterprise-grower",
+   "locationIndices": [
+    97,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7997146,
+   "title": "Account Executive - Enterprise, Growth",
+   "slug": "account-executive-enterprise-growth",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8108891,
+   "title": "Account Executive - SEA, Platforms (Grower)",
+   "slug": "account-executive-sea-platforms-grower",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8040874,
+   "title": "Account Executive - Startups, Hunter ANZ",
+   "slug": "account-executive-startups-hunter-anz",
+   "locationIndices": [
+    4,
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8077887,
+   "title": "Account Executive, Bridge",
+   "slug": "account-executive-bridge",
+   "locationIndices": [
+    98,
+    99
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8023928,
+   "title": "Account Executive, Bridge (Stripe Crypto and Stablecoins)",
+   "slug": "account-executive-bridge-stripe-crypto-and-stablecoins",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    20
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8123027,
+   "title": "Account Executive, Commercial (Grower)",
+   "slug": "account-executive-commercial-grower",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8042978,
+   "title": "Account Executive, Commercial Grower (Japanese Fluency)",
+   "slug": "account-executive-commercial-grower-japanese-fluency",
+   "locationIndices": [
+    16
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7789539,
+   "title": "Account Executive, Commercial Hunter (Japanese Fluency)",
+   "slug": "account-executive-commercial-hunter-japanese-fluency",
+   "locationIndices": [
+    16
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7893199,
+   "title": "Account Executive, Cross Border China",
+   "slug": "account-executive-cross-border-china",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8041076,
+   "title": "Account Executive, Crypto/Stablecoins",
+   "slug": "account-executive-crypto-stablecoins",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8119822,
+   "title": "Account Executive, Enterprise (Canada)",
+   "slug": "account-executive-enterprise-canada",
+   "locationIndices": [
+    92,
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8107136,
+   "title": "Account Executive, Enterprise (Grower)",
+   "slug": "account-executive-enterprise-grower",
+   "locationIndices": [
+    95,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7997555,
+   "title": "Account Executive, Enterprise - Grower",
+   "slug": "account-executive-enterprise-grower",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7994330,
+   "title": "Account Executive, Enterprise - Hunter",
+   "slug": "account-executive-enterprise-hunter",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7825578,
+   "title": "Account Executive, Enterprise Hunter (DACH Market)",
+   "slug": "account-executive-enterprise-hunter-dach-market",
+   "locationIndices": [
+    42,
+    43
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7528816,
+   "title": "Account Executive, Enterprise Hunter (Japanese fluency)",
+   "slug": "account-executive-enterprise-hunter-japanese-fluency",
+   "locationIndices": [
+    16
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7576967,
+   "title": "Account Executive, Enterprise Platforms (Grower)",
+   "slug": "account-executive-enterprise-platforms-grower",
+   "locationIndices": [
+    97,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8077971,
+   "title": "Account Executive, Enterprise Platforms, Hunter",
+   "slug": "account-executive-enterprise-platforms-hunter",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7961609,
+   "title": "Account Executive, Enterprise Platforms, Hunter",
+   "slug": "account-executive-enterprise-platforms-hunter",
+   "locationIndices": [
+    95,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8075473,
+   "title": "Account Executive, Enterprise Platforms, Tier 2 Grower",
+   "slug": "account-executive-enterprise-platforms-tier-2-grower",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8041894,
+   "title": "Account Executive, Enterprise Platforms, Tier 2 Grower",
+   "slug": "account-executive-enterprise-platforms-tier-2-grower",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8114155,
+   "title": "Account Executive, Existing Business",
+   "slug": "account-executive-existing-business",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8119697,
+   "title": "Account Executive, Existing Business (Central Eastern Europe)",
+   "slug": "account-executive-existing-business-central-eastern-europe",
+   "locationIndices": [
+    59,
+    64,
+    65
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8022645,
+   "title": "Account Executive, FX and Multi-Currency",
+   "slug": "account-executive-fx-and-multi-currency",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8048193,
+   "title": "Account Executive, Financial Services, Grower",
+   "slug": "account-executive-financial-services-grower",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8121419,
+   "title": "Account Executive, Funded Startups — Hunter, Italy",
+   "slug": "account-executive-funded-startups-hunter-italy",
+   "locationIndices": [
+    52,
+    53
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8130052,
+   "title": "Account Executive, Hunter (Central Eastern Europe)",
+   "slug": "account-executive-hunter-central-eastern-europe",
+   "locationIndices": [
+    59,
+    64,
+    65
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7863714,
+   "title": "Account Executive, Mid Market (Hunter)",
+   "slug": "account-executive-mid-market-hunter",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7857010,
+   "title": "Account Executive, Platforms Hunter (French fluency)",
+   "slug": "account-executive-platforms-hunter-french-fluency",
+   "locationIndices": [
+    40
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8047510,
+   "title": "Account Executive, Product (Link and Financial Connections)",
+   "slug": "account-executive-product-link-and-financial-connections",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8049828,
+   "title": "Account Executive, Product - Link",
+   "slug": "account-executive-product-link",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7984339,
+   "title": "Account Executive, Product Sales (Billing)",
+   "slug": "account-executive-product-sales-billing",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8114738,
+   "title": "Account Executive, Product Sales (Data)",
+   "slug": "account-executive-product-sales-data",
+   "locationIndices": [
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8114153,
+   "title": "Account Executive, Product Sales (Data)",
+   "slug": "account-executive-product-sales-data",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8040876,
+   "title": "Account Executive, Product Sales (Tax)",
+   "slug": "account-executive-product-sales-tax",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7456716,
+   "title": "Account Executive, Product Sales - Issuing and Treasury",
+   "slug": "account-executive-product-sales-issuing-and-treasury",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8068746,
+   "title": "Account Executive, Product Sales - Money Management  ASEAN",
+   "slug": "account-executive-product-sales-money-management-asean",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8040940,
+   "title": "Account Executive, Product Sales - Optimised Checkout",
+   "slug": "account-executive-product-sales-optimised-checkout",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7393169,
+   "title": "Account Executive, Product Sales, Billing",
+   "slug": "account-executive-product-sales-billing",
+   "locationIndices": [
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8029043,
+   "title": "Account Executive, Product Sales, Billing (Hunter)",
+   "slug": "account-executive-product-sales-billing-hunter",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8068744,
+   "title": "Account Executive, Product Sales-  Money Management ANZ",
+   "slug": "account-executive-product-sales-money-management-anz",
+   "locationIndices": [
+    4,
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8114157,
+   "title": "Account Executive, SMB (Benelux)",
+   "slug": "account-executive-smb-benelux",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7277406,
+   "title": "Account Executive, SMB (Hunter)",
+   "slug": "account-executive-smb-hunter",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8095679,
+   "title": "Account Executive, Scaled (Grower)",
+   "slug": "account-executive-scaled-grower",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7891728,
+   "title": "Account Executive, Startup Platforms",
+   "slug": "account-executive-startup-platforms",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8068565,
+   "title": "Account Executive, Startups (Grower)",
+   "slug": "account-executive-startups-grower",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8024368,
+   "title": "Account Executive, Startups (Grower)",
+   "slug": "account-executive-startups-grower",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8128900,
+   "title": "Account Executive, Startups (Scaled Grower)",
+   "slug": "account-executive-startups-scaled-grower",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7597490,
+   "title": "Account Executive, Startups Hunter (India)",
+   "slug": "account-executive-startups-hunter-india",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8060387,
+   "title": "Account Executive, Strategic Platform Partnerships",
+   "slug": "account-executive-strategic-platform-partnerships",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8110261,
+   "title": "Account Executive, Strategics",
+   "slug": "account-executive-strategics",
+   "locationIndices": [
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8079514,
+   "title": "Account Executive, hunter",
+   "slug": "account-executive-hunter",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8103750,
+   "title": "Accounting AI Solutions Lead",
+   "slug": "accounting-ai-solutions-lead",
+   "locationIndices": [
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7118945,
+   "title": "Accounts Receivable Manager",
+   "slug": "accounts-receivable-manager",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8081673,
+   "title": "Administrative Business Partner",
+   "slug": "administrative-business-partner",
+   "locationIndices": [
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    0
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8081670,
+   "title": "Administrative Business Partner",
+   "slug": "administrative-business-partner",
+   "locationIndices": [
+    95,
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    0
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8050878,
+   "title": "Administrative Business Partner, Office of the CEO",
+   "slug": "administrative-business-partner-office-of-the-ceo",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    0
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7863507,
+   "title": "Administrative Coordinator",
+   "slug": "administrative-coordinator",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    0
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7896404,
+   "title": "Analyst, Product Pricing",
+   "slug": "analyst-product-pricing",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8074125,
+   "title": "Android BSP Engineer",
+   "slug": "android-bsp-engineer",
+   "locationIndices": [
+    25
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    54
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7543559,
+   "title": "Android Engineer, Terminal",
+   "slug": "android-engineer-terminal",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    54
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7557403,
+   "title": "Android Engineer, Terminal OS Platform",
+   "slug": "android-engineer-terminal-os-platform",
+   "locationIndices": [
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    54
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7823683,
+   "title": "Art Director",
+   "slug": "art-director",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8076623,
+   "title": "AutoFile Specialist, Tax",
+   "slug": "autofile-specialist-tax",
+   "locationIndices": [
+    85,
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    53
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7737237,
+   "title": "Backend / API Engineer, Metronome (Billing)",
+   "slug": "backend-api-engineer-metronome-billing",
+   "locationIndices": [
+    92,
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    44
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6686634,
+   "title": "Backend Engineer, Core Technology",
+   "slug": "backend-engineer-core-technology",
+   "locationIndices": [
+    48,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    7
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6042172,
+   "title": "Backend Engineer, Core Technology",
+   "slug": "backend-engineer-core-technology",
+   "locationIndices": [
+    95,
+    97,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7913700,
+   "title": "Backend Engineer, Data",
+   "slug": "backend-engineer-data",
+   "locationIndices": [
+    92,
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    7
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7476555,
+   "title": "Backend Engineer, Developer & End-user Experience Platform",
+   "slug": "backend-engineer-developer-end-user-experience-platform",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7557899,
+   "title": "Backend Engineer, Developer SDKs (Golang)",
+   "slug": "backend-engineer-developer-sdks-golang",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8131144,
+   "title": "Backend Engineer, Link (US)",
+   "slug": "backend-engineer-link-us",
+   "locationIndices": [
+    93,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    43
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7232592,
+   "title": "Backend Engineer, Payments and Risk",
+   "slug": "backend-engineer-payments-and-risk",
+   "locationIndices": [
+    93,
+    100
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7235875,
+   "title": "Backend Engineer, Privy",
+   "slug": "backend-engineer-privy",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [
+    1
+   ],
+   "teamIndices": [
+    50
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 4921361,
+   "title": "Backend Engineer/API, Payments and Risk",
+   "slug": "backend-engineer-api-payments-and-risk",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7369543,
+   "title": "Backend/API Engineer, Money as a Service",
+   "slug": "backend-api-engineer-money-as-a-service",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6176758,
+   "title": "Backend/API Engineer, Money as a Service",
+   "slug": "backend-api-engineer-money-as-a-service",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    46
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7991528,
+   "title": "Brand Producer, Link",
+   "slug": "brand-producer-link",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7957302,
+   "title": "Bridge Operations Associate",
+   "slug": "bridge-operations-associate",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7524334,
+   "title": "Business Development Manager, Agentic Commerce",
+   "slug": "business-development-manager-agentic-commerce",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8079783,
+   "title": "Business Partner Analyst",
+   "slug": "business-partner-analyst",
+   "locationIndices": [
+    97,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7874654,
+   "title": "Business Partner Analyst,  Financial Enablement",
+   "slug": "business-partner-analyst-financial-enablement",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8097051,
+   "title": "Business Value Consultant",
+   "slug": "business-value-consultant",
+   "locationIndices": [
+    95,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8097047,
+   "title": "Business Value Scale Analyst",
+   "slug": "business-value-scale-analyst",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8023529,
+   "title": "Chief Compliance Officer (APAC)",
+   "slug": "chief-compliance-officer-apac",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7982720,
+   "title": "Client Platform Security Engineer",
+   "slug": "client-platform-security-engineer",
+   "locationIndices": [
+    95,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7867389,
+   "title": "Cloud Security Engineer",
+   "slug": "cloud-security-engineer",
+   "locationIndices": [
+    100
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8092304,
+   "title": "Commercial Counsel, EMEA",
+   "slug": "commercial-counsel-emea",
+   "locationIndices": [
+    40
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8059784,
+   "title": "Commercial Solutions Program Manager",
+   "slug": "commercial-solutions-program-manager",
+   "locationIndices": [
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8114272,
+   "title": "Comms, Public Goods",
+   "slug": "comms-public-goods",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    1
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7530580,
+   "title": "Compliance Manager, User Enablement",
+   "slug": "compliance-manager-user-enablement",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7967890,
+   "title": "Consumer Operations Associate",
+   "slug": "consumer-operations-associate",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7947510,
+   "title": "Consumer Product Marketing Lead, Link",
+   "slug": "consumer-product-marketing-lead-link",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7976710,
+   "title": "Contracting Operations Specialist",
+   "slug": "contracting-operations-specialist",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7618067,
+   "title": "Corporate Accounting",
+   "slug": "corporate-accounting",
+   "locationIndices": [
+    100
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7827403,
+   "title": "Corporate Communications",
+   "slug": "corporate-communications",
+   "locationIndices": [
+    95,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    1
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8065818,
+   "title": "Corporate Development M&A Integration Manager",
+   "slug": "corporate-development-m-a-integration-manager",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    3
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8001909,
+   "title": "Creative Director, Event Design",
+   "slug": "creative-director-event-design",
+   "locationIndices": [
+    95,
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7722943,
+   "title": "Credit Operations Collections Analyst",
+   "slug": "credit-operations-collections-analyst",
+   "locationIndices": [
+    93,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7540441,
+   "title": "Credit Risk Analyst Commercial Underwriter, West Coast",
+   "slug": "credit-risk-analyst-commercial-underwriter-west-coast",
+   "locationIndices": [
+    95,
+    97,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7697969,
+   "title": "Credit Risk Analyst, EMEA Underwriting",
+   "slug": "credit-risk-analyst-emea-underwriting",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7612192,
+   "title": "Credit Risk Analyst, North American Underwriter",
+   "slug": "credit-risk-analyst-north-american-underwriter",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8104748,
+   "title": "Credit Risk Operations Associate",
+   "slug": "credit-risk-operations-associate",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7456167,
+   "title": "Credit Risk Operations Associate (CDMX)",
+   "slug": "credit-risk-operations-associate-cdmx",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8052468,
+   "title": "Credit Risk Strategy and Analytics",
+   "slug": "credit-risk-strategy-and-analytics",
+   "locationIndices": [
+    92,
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8044686,
+   "title": "Credit Risk Strategy and Analytics",
+   "slug": "credit-risk-strategy-and-analytics",
+   "locationIndices": [
+    92,
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7774312,
+   "title": "Crypto Product Accounting",
+   "slug": "crypto-product-accounting",
+   "locationIndices": [
+    98,
+    99,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7587353,
+   "title": "Customer Funds Reconciliation Manager, Luxembourg",
+   "slug": "customer-funds-reconciliation-manager-luxembourg",
+   "locationIndices": [
+    54
+   ],
+   "tagIndices": [
+    0
+   ],
+   "teamIndices": [
+    0
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8127942,
+   "title": "Customer Success Manager",
+   "slug": "customer-success-manager",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8009536,
+   "title": "Customer Success Manager",
+   "slug": "customer-success-manager",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7810205,
+   "title": "Customer Success Manager",
+   "slug": "customer-success-manager",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6558993,
+   "title": "Customer Success Manager, Enterprise",
+   "slug": "customer-success-manager-enterprise",
+   "locationIndices": [
+    96,
+    97,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8104481,
+   "title": "Customer Success Manager, Key Accounts",
+   "slug": "customer-success-manager-key-accounts",
+   "locationIndices": [
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8074199,
+   "title": "Customer Success Manager, Metronome",
+   "slug": "customer-success-manager-metronome",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8049910,
+   "title": "Customer Success Manager, Radar",
+   "slug": "customer-success-manager-radar",
+   "locationIndices": [
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8052814,
+   "title": "Customer Success Manager, Revenue Suite",
+   "slug": "customer-success-manager-revenue-suite",
+   "locationIndices": [
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7978488,
+   "title": "Data Analyst",
+   "slug": "data-analyst",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8070572,
+   "title": "Data Analyst, Financial Data Engineering",
+   "slug": "data-analyst-financial-data-engineering",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    6
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8044924,
+   "title": "Data Analyst, Payments",
+   "slug": "data-analyst-payments",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7440963,
+   "title": "Data Science Manager, Finance and Strategy",
+   "slug": "data-science-manager-finance-and-strategy",
+   "locationIndices": [
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    6
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7923653,
+   "title": "Data Science Manager, Risk",
+   "slug": "data-science-manager-risk",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    6
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8080614,
+   "title": "Data Scientist, Core Infrastructure",
+   "slug": "data-scientist-core-infrastructure",
+   "locationIndices": [
+    95,
+    100
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    6
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8113100,
+   "title": "Data Scientist, Fraud",
+   "slug": "data-scientist-fraud",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    6
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8043052,
+   "title": "Data Scientist, Global Growth",
+   "slug": "data-scientist-global-growth",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    6
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8112966,
+   "title": "Data Scientist, Link",
+   "slug": "data-scientist-link",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    6
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8018297,
+   "title": "Data Scientist, Payments",
+   "slug": "data-scientist-payments",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    6
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7998031,
+   "title": "Deal Pricing",
+   "slug": "deal-pricing",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7958150,
+   "title": "Deal Strategist",
+   "slug": "deal-strategist",
+   "locationIndices": [
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8082905,
+   "title": "Deal Strategist (SEA/GCN)",
+   "slug": "deal-strategist-sea-gcn",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7144975,
+   "title": "Design Engineer, Presence",
+   "slug": "design-engineer-presence",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7977745,
+   "title": "Designer, Web Presence & Platform",
+   "slug": "designer-web-presence-platform",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7960873,
+   "title": "EMEA Deal Pricing Strategist",
+   "slug": "emea-deal-pricing-strategist",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7814947,
+   "title": "EMEA Regulatory Counsel",
+   "slug": "emea-regulatory-counsel",
+   "locationIndices": [
+    88
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8041850,
+   "title": "Employee Relations & HR Compliance Specialist",
+   "slug": "employee-relations-hr-compliance-specialist",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    36
+   ],
+   "employmentType": "Fixed term",
+   "employmentTypeIndex": 0
+  },
+  {
+   "greenhouseId": 8102337,
+   "title": "Engagement Manager, Professional Services (SEA/GCN)",
+   "slug": "engagement-manager-professional-services-sea-gcn",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7835108,
+   "title": "Engineering Manager - Core Performance",
+   "slug": "engineering-manager-core-performance",
+   "locationIndices": [
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7841757,
+   "title": "Engineering Manager, APAC & EMEA Cards",
+   "slug": "engineering-manager-apac-emea-cards",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7947546,
+   "title": "Engineering Manager, Forward Deployed (Privy)",
+   "slug": "engineering-manager-forward-deployed-privy",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [
+    1
+   ],
+   "teamIndices": [
+    50
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8128496,
+   "title": "Engineering Manager, Infrastructure",
+   "slug": "engineering-manager-infrastructure",
+   "locationIndices": [
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7737243,
+   "title": "Engineering Manager, Metronome (Billing)",
+   "slug": "engineering-manager-metronome-billing",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    44
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7475396,
+   "title": "Engineering Manager, Operator Tooling",
+   "slug": "engineering-manager-operator-tooling",
+   "locationIndices": [
+    65
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8104767,
+   "title": "Engineering Manager, Payments",
+   "slug": "engineering-manager-payments",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7913545,
+   "title": "Engineering Manager, Product (Privy)",
+   "slug": "engineering-manager-product-privy",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [
+    1
+   ],
+   "teamIndices": [
+    50
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7769005,
+   "title": "Engineering Manager, Terminal",
+   "slug": "engineering-manager-terminal",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    54
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7693271,
+   "title": "Enterprise Account Executive (Hunter FSI)",
+   "slug": "enterprise-account-executive-hunter-fsi",
+   "locationIndices": [
+    4,
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8109607,
+   "title": "Enterprise Account Executive - Hunter",
+   "slug": "enterprise-account-executive-hunter",
+   "locationIndices": [
+    20
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8102346,
+   "title": "Enterprise Account Executive -Grower",
+   "slug": "enterprise-account-executive-grower",
+   "locationIndices": [
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7908925,
+   "title": "Enterprise Account Executive, Iberia",
+   "slug": "enterprise-account-executive-iberia",
+   "locationIndices": [
+    69
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8063657,
+   "title": "Enterprise Account Executive, Privy",
+   "slug": "enterprise-account-executive-privy",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [
+    1
+   ],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8029128,
+   "title": "Enterprise Account Executive, Revenue Suite",
+   "slug": "enterprise-account-executive-revenue-suite",
+   "locationIndices": [
+    4,
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7617049,
+   "title": "Enterprise Paid Digital Marketing Manager",
+   "slug": "enterprise-paid-digital-marketing-manager",
+   "locationIndices": [
+    92,
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7894387,
+   "title": "Enterprise Product Support Manager",
+   "slug": "enterprise-product-support-manager",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7742552,
+   "title": "Enterprise Risk Management (ERM) Program & Automation Lead, MALPB",
+   "slug": "enterprise-risk-management-erm-program-automation-lead-malpb",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8070480,
+   "title": "Entity Controller",
+   "slug": "entity-controller",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8036761,
+   "title": "Executive Compensation Business Partner",
+   "slug": "executive-compensation-business-partner",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    36
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7634113,
+   "title": "Field Marketing Manager, SMB and Mid-Market - EMEA",
+   "slug": "field-marketing-manager-smb-and-mid-market-emea",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7985368,
+   "title": "Finance & Strategy Analyst",
+   "slug": "finance-strategy-analyst",
+   "locationIndices": [
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    12
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7979885,
+   "title": "Finance & Strategy Partner, Central Engineering",
+   "slug": "finance-strategy-partner-central-engineering",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    12
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7463755,
+   "title": "Finance and Strategy Partner",
+   "slug": "finance-and-strategy-partner",
+   "locationIndices": [
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    12
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7597613,
+   "title": "Finance and Strategy Specialist",
+   "slug": "finance-and-strategy-specialist",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    12
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8066264,
+   "title": "Financial Analyst, Business F&S",
+   "slug": "financial-analyst-business-f-s",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    12
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8004223,
+   "title": "Financial Connections TechOps Integration Reliability Engineer",
+   "slug": "financial-connections-techops-integration-reliability-engineer",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    43
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8079918,
+   "title": "Financial Connections TechOps Manager",
+   "slug": "financial-connections-techops-manager",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    43
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8040825,
+   "title": "Firmware Engineer",
+   "slug": "firmware-engineer",
+   "locationIndices": [
+    25
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    54
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8083966,
+   "title": "Food Experience Manager",
+   "slug": "food-experience-manager",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    17
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8055930,
+   "title": "Forward Deployed AI Accelerator, Marketing",
+   "slug": "forward-deployed-ai-accelerator-marketing",
+   "locationIndices": [
+    92,
+    93,
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7747640,
+   "title": "Forward Deployed AI Accelerator, Marketing",
+   "slug": "forward-deployed-ai-accelerator-marketing",
+   "locationIndices": [
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7230452,
+   "title": "Forward Deployed Engineer, Privy",
+   "slug": "forward-deployed-engineer-privy",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [
+    1
+   ],
+   "teamIndices": [
+    50
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8075577,
+   "title": "Forward Deployed Engineer, Professional Services",
+   "slug": "forward-deployed-engineer-professional-services",
+   "locationIndices": [
+    93,
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8075570,
+   "title": "Forward Deployed Engineer, Professional Services",
+   "slug": "forward-deployed-engineer-professional-services",
+   "locationIndices": [
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8055050,
+   "title": "Forward Deployed Engineer, Professional Services",
+   "slug": "forward-deployed-engineer-professional-services",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8076652,
+   "title": "Fraud Operations Associate (Mandarin Speaking)",
+   "slug": "fraud-operations-associate-mandarin-speaking",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8063717,
+   "title": "Fraud Operations Associate SDC",
+   "slug": "fraud-operations-associate-sdc",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7608396,
+   "title": "Fraud Operations Manager",
+   "slug": "fraud-operations-manager",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7994541,
+   "title": "Fraud Operations Manager (Mandarin-speaking)",
+   "slug": "fraud-operations-manager-mandarin-speaking",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8063857,
+   "title": "Fraud Operations Team Lead",
+   "slug": "fraud-operations-team-lead",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7685460,
+   "title": "Fraud Operations Team Lead",
+   "slug": "fraud-operations-team-lead",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7913410,
+   "title": "Fraud Patterns Analyst",
+   "slug": "fraud-patterns-analyst",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8039729,
+   "title": "Fraud Strategy Manager",
+   "slug": "fraud-strategy-manager",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7644950,
+   "title": "Frontend Engineer, Expansion",
+   "slug": "frontend-engineer-expansion",
+   "locationIndices": [
+    92,
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7325252,
+   "title": "Frontend Engineer, Payments & Risk",
+   "slug": "frontend-engineer-payments-risk",
+   "locationIndices": [
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6786324,
+   "title": "Full Stack Engineer, Billing",
+   "slug": "full-stack-engineer-billing",
+   "locationIndices": [
+    92,
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    52
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6567104,
+   "title": "Full Stack Engineer, Developer & End User Experience Platform",
+   "slug": "full-stack-engineer-developer-end-user-experience-platform",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6786568,
+   "title": "Full Stack Engineer, Expansion",
+   "slug": "full-stack-engineer-expansion",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8062305,
+   "title": "Full Stack Engineer, Link",
+   "slug": "full-stack-engineer-link",
+   "locationIndices": [
+    93,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    43
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6606581,
+   "title": "Full Stack Engineer, Money as a Service",
+   "slug": "full-stack-engineer-money-as-a-service",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    40
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7994887,
+   "title": "Full Stack Engineer, Startup Products",
+   "slug": "full-stack-engineer-startup-products",
+   "locationIndices": [
+    95,
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8062708,
+   "title": "Full Stack Engineer, Support Experience",
+   "slug": "full-stack-engineer-support-experience",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8039548,
+   "title": "Full Stack Engineer, Support Experience (Greater China Support)",
+   "slug": "full-stack-engineer-support-experience-greater-china-support",
+   "locationIndices": [
+    92,
+    93,
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7091959,
+   "title": "Fullstack Engineer, Privy",
+   "slug": "fullstack-engineer-privy",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [
+    1
+   ],
+   "teamIndices": [
+    50
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7993610,
+   "title": "GTM Operations Process Architect",
+   "slug": "gtm-operations-process-architect",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7990812,
+   "title": "GTM Product Marketing Manager, Commerce Experiences",
+   "slug": "gtm-product-marketing-manager-commerce-experiences",
+   "locationIndices": [
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7942216,
+   "title": "GTM Recruiter, AMER (Fixed Term)",
+   "slug": "gtm-recruiter-amer-fixed-term",
+   "locationIndices": [
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    37
+   ],
+   "employmentType": "Fixed term",
+   "employmentTypeIndex": 0
+  },
+  {
+   "greenhouseId": 7997545,
+   "title": "Global Filing Specialist, Tax",
+   "slug": "global-filing-specialist-tax",
+   "locationIndices": [
+    92,
+    93,
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    53
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7523947,
+   "title": "Global Head of Specialist Solutions Architecture, Billing",
+   "slug": "global-head-of-specialist-solutions-architecture-billing",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7963508,
+   "title": "Global Head of Specialist Solutions Architecture, Revenue",
+   "slug": "global-head-of-specialist-solutions-architecture-revenue",
+   "locationIndices": [
+    45,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7587922,
+   "title": "Global Indirect Tax Compliance",
+   "slug": "global-indirect-tax-compliance",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    15
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7819587,
+   "title": "Global Partner Marketing Lead, AI",
+   "slug": "global-partner-marketing-lead-ai",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7553098,
+   "title": "Global People Support - Team Lead",
+   "slug": "global-people-support-team-lead",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    36
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7993682,
+   "title": "Global Sales Enablement Systems Administrator",
+   "slug": "global-sales-enablement-systems-administrator",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8078168,
+   "title": "Growth Marketing Manager, Greater China",
+   "slug": "growth-marketing-manager-greater-china",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8128634,
+   "title": "Head of AEO & SEO",
+   "slug": "head-of-aeo-seo",
+   "locationIndices": [
+    92,
+    93,
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7684149,
+   "title": "Head of Communications, APAC",
+   "slug": "head-of-communications-apac",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    1
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8100129,
+   "title": "Head of Enterprise Sales",
+   "slug": "head-of-enterprise-sales",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7915144,
+   "title": "Head of Enterprise Solutions Architecture Platforms",
+   "slug": "head-of-enterprise-solutions-architecture-platforms",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7950828,
+   "title": "Head of Finance Operations",
+   "slug": "head-of-finance-operations",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8007158,
+   "title": "Head of Learning & Quality, Stripe Delivery Center",
+   "slug": "head-of-learning-quality-stripe-delivery-center",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8036235,
+   "title": "Head of Market Intelligence, Product Marketing",
+   "slug": "head-of-market-intelligence-product-marketing",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8065643,
+   "title": "Head of Marketing Operations",
+   "slug": "head-of-marketing-operations",
+   "locationIndices": [
+    92,
+    93,
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8059299,
+   "title": "Head of Marketing, Southeast Asia",
+   "slug": "head-of-marketing-southeast-asia",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8072764,
+   "title": "Head of Sales Development, AMER",
+   "slug": "head-of-sales-development-amer",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8068521,
+   "title": "Head of Self-Serve Paid Media",
+   "slug": "head-of-self-serve-paid-media",
+   "locationIndices": [
+    93,
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8118931,
+   "title": "Head of Startup & Investor Partnership, APAC",
+   "slug": "head-of-startup-investor-partnership-apac",
+   "locationIndices": [
+    5,
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8110416,
+   "title": "Head of Startup Sales (Grower) - AMER",
+   "slug": "head-of-startup-sales-grower-amer",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7337546,
+   "title": "Head of Startups and Velocity Sales Development",
+   "slug": "head-of-startups-and-velocity-sales-development",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8076108,
+   "title": "Head of Strategic Risk Programs, New Markets",
+   "slug": "head-of-strategic-risk-programs-new-markets",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7730667,
+   "title": "Head of User Risk Strategy",
+   "slug": "head-of-user-risk-strategy",
+   "locationIndices": [
+    95,
+    97,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7976163,
+   "title": "Hong Kong Regulatory Compliance & Money Laundering Reporting Officer",
+   "slug": "hong-kong-regulatory-compliance-money-laundering-reporting-officer",
+   "locationIndices": [
+    7,
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7587254,
+   "title": "IT Governance, Risk & Compliance (GRC) Specialist, Luxembourg",
+   "slug": "it-governance-risk-compliance-grc-specialist-luxembourg",
+   "locationIndices": [
+    54
+   ],
+   "tagIndices": [
+    0
+   ],
+   "teamIndices": [
+    0
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8114514,
+   "title": "IT SOX Controls Specialist",
+   "slug": "it-sox-controls-specialist",
+   "locationIndices": [
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8096788,
+   "title": "IT Support Engineer",
+   "slug": "it-support-engineer",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7744344,
+   "title": "Implementation Consultant",
+   "slug": "implementation-consultant",
+   "locationIndices": [
+    16
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7520686,
+   "title": "Implementation Specialist, GTM Accelerate",
+   "slug": "implementation-specialist-gtm-accelerate",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7589400,
+   "title": "Indirect Tax Advisory Consultant",
+   "slug": "indirect-tax-advisory-consultant",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    15
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7462961,
+   "title": "Infrastructure Engineer, Privy",
+   "slug": "infrastructure-engineer-privy",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [
+    1
+   ],
+   "teamIndices": [
+    50
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8067276,
+   "title": "Integrated Campaigns Manager - Stablecoins, Crypto, and Bridge",
+   "slug": "integrated-campaigns-manager-stablecoins-crypto-and-bridge",
+   "locationIndices": [
+    99
+   ],
+   "tagIndices": [
+    0
+   ],
+   "teamIndices": [
+    20
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7819426,
+   "title": "Integration Engineer (Chicago)",
+   "slug": "integration-engineer-chicago",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7896519,
+   "title": "Integration Engineer (Global)",
+   "slug": "integration-engineer-global",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7992740,
+   "title": "Integration Engineer, Professional Services (French fluency)",
+   "slug": "integration-engineer-professional-services-french-fluency",
+   "locationIndices": [
+    40
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8053417,
+   "title": "Integration Engineer, SEA/GCN",
+   "slug": "integration-engineer-sea-gcn",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8054241,
+   "title": "Integration Reliability Engineer, Payments",
+   "slug": "integration-reliability-engineer-payments",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7988429,
+   "title": "Integration Reliability Engineer, Technical Operations",
+   "slug": "integration-reliability-engineer-technical-operations",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7678541,
+   "title": "Internal Audit - Treasury",
+   "slug": "internal-audit-treasury",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    13
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8026689,
+   "title": "Internal Audit Data Analytics Lead",
+   "slug": "internal-audit-data-analytics-lead",
+   "locationIndices": [
+    93,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    13
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7569605,
+   "title": "Internal Audit Lead, Merchant Acquirer Limited Purpose Bank (MALPB)",
+   "slug": "internal-audit-lead-merchant-acquirer-limited-purpose-bank-malpb",
+   "locationIndices": [
+    96,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    13
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7997826,
+   "title": "Internal Audit Lead, Stablecoins & Digital Assets",
+   "slug": "internal-audit-lead-stablecoins-digital-assets",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    13
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8036233,
+   "title": "Internal Auditor - APAC Regulatory & Financial Operations",
+   "slug": "internal-auditor-apac-regulatory-financial-operations",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    13
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7838593,
+   "title": "International Accounting Lead",
+   "slug": "international-accounting-lead",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7931101,
+   "title": "International Tax Reporting Lead",
+   "slug": "international-tax-reporting-lead",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    15
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8048904,
+   "title": "Investigations, Law Enforcement and Engagement Lead",
+   "slug": "investigations-law-enforcement-and-engagement-lead",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8083464,
+   "title": "Investment Lead, Intercept",
+   "slug": "investment-lead-intercept",
+   "locationIndices": [
+    95,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    42
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8022463,
+   "title": "KYB/KYC Operations Associate, Bridge (CDMX)",
+   "slug": "kyb-kyc-operations-associate-bridge-cdmx",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6209187,
+   "title": "Legal Entity Controller",
+   "slug": "legal-entity-controller",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8111799,
+   "title": "Legal Operations Team Lead",
+   "slug": "legal-operations-team-lead",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8082149,
+   "title": "Lifecycle Marketing Manager, Capital",
+   "slug": "lifecycle-marketing-manager-capital",
+   "locationIndices": [
+    92,
+    93,
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8022713,
+   "title": "ML Engineer Manager, AI Conversation Platform",
+   "slug": "ml-engineer-manager-ai-conversation-platform",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7983456,
+   "title": "Machine Learning Engineer, Radar",
+   "slug": "machine-learning-engineer-radar",
+   "locationIndices": [
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8069506,
+   "title": "Machine Learning Engineering Manager - Fraud Detection",
+   "slug": "machine-learning-engineering-manager-fraud-detection",
+   "locationIndices": [
+    92,
+    93,
+    95,
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7703750,
+   "title": "Manager - Legal Entity Controller",
+   "slug": "manager-legal-entity-controller",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8069155,
+   "title": "Manager, Administrative Coordinator Program",
+   "slug": "manager-administrative-coordinator-program",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    0
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8014898,
+   "title": "Manager, Global Sanctions",
+   "slug": "manager-global-sanctions",
+   "locationIndices": [
+    95,
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7896802,
+   "title": "Manager, Global Sanctions",
+   "slug": "manager-global-sanctions",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7456177,
+   "title": "Manager, Product Support Operations",
+   "slug": "manager-product-support-operations",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7896538,
+   "title": "Manager, Sales Development",
+   "slug": "manager-sales-development",
+   "locationIndices": [
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7337544,
+   "title": "Manager, Sales Development",
+   "slug": "manager-sales-development",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8104302,
+   "title": "Manager, Solution Architecture Platforms",
+   "slug": "manager-solution-architecture-platforms",
+   "locationIndices": [
+    95,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8040143,
+   "title": "Manager, TAM (Greater China)",
+   "slug": "manager-tam-greater-china",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    34
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7767222,
+   "title": "Manager, Technical Account Management",
+   "slug": "manager-technical-account-management",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    34
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7664667,
+   "title": "Manager, Technical Account Management",
+   "slug": "manager-technical-account-management",
+   "locationIndices": [
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    34
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8108391,
+   "title": "Marketing Operations Associate (Automation)",
+   "slug": "marketing-operations-associate-automation",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7805386,
+   "title": "Marketing Operations Manager",
+   "slug": "marketing-operations-manager",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8069943,
+   "title": "Marketing Services Program Manager",
+   "slug": "marketing-services-program-manager",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7978915,
+   "title": "Mobile Engineer, Treasury",
+   "slug": "mobile-engineer-treasury",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    46
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8021192,
+   "title": "Monetization Operations Analyst",
+   "slug": "monetization-operations-analyst",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8047129,
+   "title": "Motion Designer, Experiential",
+   "slug": "motion-designer-experiential",
+   "locationIndices": [
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7769564,
+   "title": "Motion Designer, Stripe Identity",
+   "slug": "motion-designer-stripe-identity",
+   "locationIndices": [
+    67,
+    68
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8011682,
+   "title": "Operations Associate - Managed Support (Includes Weekend Rotation)",
+   "slug": "operations-associate-managed-support-includes-weekend-rotation",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7981587,
+   "title": "Operations Associate - Product Support Operations (CDMX)",
+   "slug": "operations-associate-product-support-operations-cdmx",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8014995,
+   "title": "Operations Associate, Financial Crimes (AML Investigations)",
+   "slug": "operations-associate-financial-crimes-aml-investigations",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7202953,
+   "title": "Operations Associate, Financial Crimes EDD/PEP",
+   "slug": "operations-associate-financial-crimes-edd-pep",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7393071,
+   "title": "Operations Associate, GTM Implementation Specialist",
+   "slug": "operations-associate-gtm-implementation-specialist",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7544547,
+   "title": "Operations Associate, New Grad (Mexico)",
+   "slug": "operations-associate-new-grad-mexico",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [
+    2
+   ],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8098394,
+   "title": "Operations Associate, Sanctions",
+   "slug": "operations-associate-sanctions",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8052736,
+   "title": "Operations Associate, TaxJar Support",
+   "slug": "operations-associate-taxjar-support",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7997542,
+   "title": "Operations Insights, Tax",
+   "slug": "operations-insights-tax",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    53
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8053011,
+   "title": "Operations Manager, Stripe Delivery Centre",
+   "slug": "operations-manager-stripe-delivery-centre",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7815794,
+   "title": "Operations Program Manager, Capital Collections",
+   "slug": "operations-program-manager-capital-collections",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8109426,
+   "title": "Operations Program Manager, Tax",
+   "slug": "operations-program-manager-tax",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    53
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8104427,
+   "title": "Partner Development Manager",
+   "slug": "partner-development-manager",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    19
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8096790,
+   "title": "Partner Development Manager",
+   "slug": "partner-development-manager",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    22
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7289456,
+   "title": "Partner Development Manager (Banks)",
+   "slug": "partner-development-manager-banks",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    19
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7697675,
+   "title": "Partner Development Manager, Global Networks",
+   "slug": "partner-development-manager-global-networks",
+   "locationIndices": [
+    93,
+    95,
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    19
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7461966,
+   "title": "Partner Development Manager, Global Strategic Alliances",
+   "slug": "partner-development-manager-global-strategic-alliances",
+   "locationIndices": [
+    95,
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    22
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8090126,
+   "title": "Partner Development Manager, Link - Payments Partnerships",
+   "slug": "partner-development-manager-link-payments-partnerships",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    19
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8094869,
+   "title": "Partner Development Manager, Strategic Partnerships",
+   "slug": "partner-development-manager-strategic-partnerships",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    19
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7973002,
+   "title": "Partner Development Manager, Strategic Payment Partnerships",
+   "slug": "partner-development-manager-strategic-payment-partnerships",
+   "locationIndices": [
+    93,
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    19
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8043055,
+   "title": "Partner Development Manager- SaaS Platforms",
+   "slug": "partner-development-manager-saas-platforms",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    22
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8080773,
+   "title": "Partner Solutions Architect (AUNZ)",
+   "slug": "partner-solutions-architect-aunz",
+   "locationIndices": [
+    4,
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7607761,
+   "title": "Partner Solutions Architect - AWS",
+   "slug": "partner-solutions-architect-aws",
+   "locationIndices": [
+    95,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7927330,
+   "title": "Partner Solutions Architect - Billing",
+   "slug": "partner-solutions-architect-billing",
+   "locationIndices": [
+    95,
+    96
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7927324,
+   "title": "Partner Solutions Architect - LatAm",
+   "slug": "partner-solutions-architect-latam",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8024033,
+   "title": "Partner Solutions Architect, AI Partnerships",
+   "slug": "partner-solutions-architect-ai-partnerships",
+   "locationIndices": [
+    95,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7964568,
+   "title": "Partner Solutions Architect, Technology Partnerships",
+   "slug": "partner-solutions-architect-technology-partnerships",
+   "locationIndices": [
+    95,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7966902,
+   "title": "Partnerships Manager- Alliances & Channels",
+   "slug": "partnerships-manager-alliances-channels",
+   "locationIndices": [
+    42,
+    43
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    22
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7454647,
+   "title": "Payment Advisory Partnerships Lead- EMEA",
+   "slug": "payment-advisory-partnerships-lead-emea",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    22
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7913406,
+   "title": "Payments Fraud Investigator",
+   "slug": "payments-fraud-investigator",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7554002,
+   "title": "Payments Fraud Investigator",
+   "slug": "payments-fraud-investigator",
+   "locationIndices": [
+    45,
+    46,
+    48,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8068669,
+   "title": "Payments Performance Strategist (Greater China)",
+   "slug": "payments-performance-strategist-greater-china",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7562148,
+   "title": "Payments Performance Strategist, Network Cost",
+   "slug": "payments-performance-strategist-network-cost",
+   "locationIndices": [
+    95,
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8069694,
+   "title": "People Analytics Analyst & Business Partner",
+   "slug": "people-analytics-analyst-business-partner",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    36
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8119834,
+   "title": "People Consultant",
+   "slug": "people-consultant",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    36
+   ],
+   "employmentType": "Fixed term",
+   "employmentTypeIndex": 0
+  },
+  {
+   "greenhouseId": 7866374,
+   "title": "People Consultant",
+   "slug": "people-consultant",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    36
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7773621,
+   "title": "People Consultant",
+   "slug": "people-consultant",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    36
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8039954,
+   "title": "People Project Manager",
+   "slug": "people-project-manager",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    36
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7594208,
+   "title": "People Solutions Program Manager",
+   "slug": "people-solutions-program-manager",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    36
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7858811,
+   "title": "Portfolio Pricing Strategist",
+   "slug": "portfolio-pricing-strategist",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8094087,
+   "title": "Privacy Operations Program Manager",
+   "slug": "privacy-operations-program-manager",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8053517,
+   "title": "Privacy Operations Program Manager",
+   "slug": "privacy-operations-program-manager",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8089358,
+   "title": "Product Communications: crypto products",
+   "slug": "product-communications-crypto-products",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    1
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8010302,
+   "title": "Product Compliance and Enablement Advisor",
+   "slug": "product-compliance-and-enablement-advisor",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8003129,
+   "title": "Product Compliance and Enablement Advisor",
+   "slug": "product-compliance-and-enablement-advisor",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8089069,
+   "title": "Product Counsel",
+   "slug": "product-counsel",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8125473,
+   "title": "Product Counsel (Money Movement Legal - APAC)",
+   "slug": "product-counsel-money-movement-legal-apac",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7930151,
+   "title": "Product Counsel, Data Products",
+   "slug": "product-counsel-data-products",
+   "locationIndices": [
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7558757,
+   "title": "Product Counsel, Payments & Terminal",
+   "slug": "product-counsel-payments-terminal",
+   "locationIndices": [
+    93,
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8096726,
+   "title": "Product Design Manager, Global Payments",
+   "slug": "product-design-manager-global-payments",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7980578,
+   "title": "Product Designer - Dashboard",
+   "slug": "product-designer-dashboard",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7568117,
+   "title": "Product Designer, Connect Risk",
+   "slug": "product-designer-connect-risk",
+   "locationIndices": [
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7861422,
+   "title": "Product Designer, Global",
+   "slug": "product-designer-global",
+   "locationIndices": [
+    48,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7954207,
+   "title": "Product Designer, Internal Tools",
+   "slug": "product-designer-internal-tools",
+   "locationIndices": [
+    92,
+    93,
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7954118,
+   "title": "Product Designer, Risk",
+   "slug": "product-designer-risk",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7663023,
+   "title": "Product Designer, Stablecoin",
+   "slug": "product-designer-stablecoin",
+   "locationIndices": [
+    92,
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7925550,
+   "title": "Product Designer, Terminal",
+   "slug": "product-designer-terminal",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8014786,
+   "title": "Product Lead, Data Products",
+   "slug": "product-lead-data-products",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8027435,
+   "title": "Product Lead, EMEA Payments",
+   "slug": "product-lead-emea-payments",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7768979,
+   "title": "Product Lead, EMEA Payments",
+   "slug": "product-lead-emea-payments",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7869917,
+   "title": "Product Lead, Support Experience",
+   "slug": "product-lead-support-experience",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7979422,
+   "title": "Product Manager - Compliance, Bridge",
+   "slug": "product-manager-compliance-bridge",
+   "locationIndices": [
+    95,
+    98,
+    99
+   ],
+   "tagIndices": [
+    0
+   ],
+   "teamIndices": [
+    46
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7721834,
+   "title": "Product Manager, Capital",
+   "slug": "product-manager-capital",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    39
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8064900,
+   "title": "Product Manager, Cash Platform",
+   "slug": "product-manager-cash-platform",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8041655,
+   "title": "Product Manager, E-Invoicing",
+   "slug": "product-manager-e-invoicing",
+   "locationIndices": [
+    49,
+    68
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    52
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7984866,
+   "title": "Product Manager, Ecosystem Risk",
+   "slug": "product-manager-ecosystem-risk",
+   "locationIndices": [
+    93,
+    95,
+    96,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8081418,
+   "title": "Product Manager, Global Expansion (MENA)",
+   "slug": "product-manager-global-expansion-mena",
+   "locationIndices": [
+    88
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8009671,
+   "title": "Product Manager, Global Marketplaces",
+   "slug": "product-manager-global-marketplaces",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7994443,
+   "title": "Product Manager, Global Payouts",
+   "slug": "product-manager-global-payouts",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7809139,
+   "title": "Product Manager, Growth AI Outreach Motion",
+   "slug": "product-manager-growth-ai-outreach-motion",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7392697,
+   "title": "Product Manager, Link - Consumer",
+   "slug": "product-manager-link-consumer",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    43
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7981330,
+   "title": "Product Manager, Link - Local Payment Methods",
+   "slug": "product-manager-link-local-payment-methods",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    43
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7176530,
+   "title": "Product Manager, Payments",
+   "slug": "product-manager-payments",
+   "locationIndices": [
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7625842,
+   "title": "Product Manager, Risk & Compliance",
+   "slug": "product-manager-risk-compliance",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7913698,
+   "title": "Product Manager, Sail Core",
+   "slug": "product-manager-sail-core",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7901987,
+   "title": "Product Manager, Startup Products",
+   "slug": "product-manager-startup-products",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7927089,
+   "title": "Product Manager, Terminal Device Expansion",
+   "slug": "product-manager-terminal-device-expansion",
+   "locationIndices": [
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8090203,
+   "title": "Product Marketing Lead, Billing",
+   "slug": "product-marketing-lead-billing",
+   "locationIndices": [
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6348471,
+   "title": "Product Marketing Manager",
+   "slug": "product-marketing-manager",
+   "locationIndices": [
+    93,
+    95,
+    97,
+    98,
+    99,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8060324,
+   "title": "Product Marketing Manager, Bridge/Stablecoins",
+   "slug": "product-marketing-manager-bridge-stablecoins",
+   "locationIndices": [
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8013981,
+   "title": "Product Marketing Manager, Global Selling",
+   "slug": "product-marketing-manager-global-selling",
+   "locationIndices": [
+    93,
+    95,
+    97,
+    98,
+    99,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8014761,
+   "title": "Product Marketing Manager, Market Intelligence",
+   "slug": "product-marketing-manager-market-intelligence",
+   "locationIndices": [
+    93,
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7832098,
+   "title": "Product Marketing Manager, Portfolio Pricing",
+   "slug": "product-marketing-manager-portfolio-pricing",
+   "locationIndices": [
+    93,
+    95,
+    97,
+    98,
+    99,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7961101,
+   "title": "Product Marketing Manager, Radar",
+   "slug": "product-marketing-manager-radar",
+   "locationIndices": [
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8097731,
+   "title": "Product Marketing Manager, Startup Segment",
+   "slug": "product-marketing-manager-startup-segment",
+   "locationIndices": [
+    93,
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7773461,
+   "title": "Product Marketing, Data Products",
+   "slug": "product-marketing-data-products",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7994063,
+   "title": "Product Sales Enablement Business Partner",
+   "slug": "product-sales-enablement-business-partner",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8081423,
+   "title": "Product Strategy & Operations APAC",
+   "slug": "product-strategy-operations-apac",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7975698,
+   "title": "Product Support Operations Associate, Weekend Shift",
+   "slug": "product-support-operations-associate-weekend-shift",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7678670,
+   "title": "Product Support, Bridge",
+   "slug": "product-support-bridge",
+   "locationIndices": [
+    98,
+    99,
+    100,
+    101
+   ],
+   "tagIndices": [
+    0
+   ],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8081754,
+   "title": "Program Manager, Card Network Office (Card Networks)",
+   "slug": "program-manager-card-network-office-card-networks",
+   "locationIndices": [
+    95,
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7967356,
+   "title": "Program Manager, Commercial Solutions",
+   "slug": "program-manager-commercial-solutions",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8097838,
+   "title": "Program Manager, Customer Success Efficiency and Scale",
+   "slug": "program-manager-customer-success-efficiency-and-scale",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    21
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8042309,
+   "title": "Program Manager, GTM Strategic Programs",
+   "slug": "program-manager-gtm-strategic-programs",
+   "locationIndices": [
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7214197,
+   "title": "Program Manager, Risk Ops Enablement",
+   "slug": "program-manager-risk-ops-enablement",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8078131,
+   "title": "Program Manager, Security GRC",
+   "slug": "program-manager-security-grc",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7559403,
+   "title": "Program Manager, Third Party Risk",
+   "slug": "program-manager-third-party-risk",
+   "locationIndices": [
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8077547,
+   "title": "Project Manager, Total Rewards",
+   "slug": "project-manager-total-rewards",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    36
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8047395,
+   "title": "Project Manager, Treasury Finance",
+   "slug": "project-manager-treasury-finance",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    16
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8035557,
+   "title": "React Native Engineer, Merchant Experience Mobile",
+   "slug": "react-native-engineer-merchant-experience-mobile",
+   "locationIndices": [
+    68
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8059929,
+   "title": "Recruiting Scheduler (Fixed Term Contract)",
+   "slug": "recruiting-scheduler-fixed-term-contract",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    37
+   ],
+   "employmentType": "Fixed term",
+   "employmentTypeIndex": 0
+  },
+  {
+   "greenhouseId": 8125586,
+   "title": "Regional Security Manager, Americas",
+   "slug": "regional-security-manager-americas",
+   "locationIndices": [
+    95,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    4
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7650177,
+   "title": "Regulatory Reporting Program Manager, Stablecoin",
+   "slug": "regulatory-reporting-program-manager-stablecoin",
+   "locationIndices": [
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7594866,
+   "title": "Risk Advisory Strategist, Card Network Compliance",
+   "slug": "risk-advisory-strategist-card-network-compliance",
+   "locationIndices": [
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7230921,
+   "title": "Risk Operations Analyst",
+   "slug": "risk-operations-analyst",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7994384,
+   "title": "Risk Operations Analyst (Mandarin Speaking)",
+   "slug": "risk-operations-analyst-mandarin-speaking",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7964759,
+   "title": "Risk Operations Analyst - SSO",
+   "slug": "risk-operations-analyst-sso",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7974211,
+   "title": "Risk Operations Analyst, Financial Crimes",
+   "slug": "risk-operations-analyst-financial-crimes",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7974209,
+   "title": "Risk Operations Analyst, Financial Crimes",
+   "slug": "risk-operations-analyst-financial-crimes",
+   "locationIndices": [
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 5423044,
+   "title": "Risk Operations Associate",
+   "slug": "risk-operations-associate",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8115908,
+   "title": "Risk Operations Associate, User Policy Operations",
+   "slug": "risk-operations-associate-user-policy-operations",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8069629,
+   "title": "Risk Operations Manager, Verifications",
+   "slug": "risk-operations-manager-verifications",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8078333,
+   "title": "Risk Partnerships Manager, Stablecoin",
+   "slug": "risk-partnerships-manager-stablecoin",
+   "locationIndices": [
+    95,
+    98,
+    101
+   ],
+   "tagIndices": [
+    0
+   ],
+   "teamIndices": [
+    19
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8118891,
+   "title": "Risk Strategist",
+   "slug": "risk-strategist",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7874862,
+   "title": "Risk Strategist - Screening (Financial Crimes)",
+   "slug": "risk-strategist-screening-financial-crimes",
+   "locationIndices": [
+    92,
+    93,
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7697973,
+   "title": "Risk Strategist, Onboarding & Compliance",
+   "slug": "risk-strategist-onboarding-compliance",
+   "locationIndices": [
+    92,
+    93,
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7811937,
+   "title": "Risk Strategist, Platform Risk Strategy",
+   "slug": "risk-strategist-platform-risk-strategy",
+   "locationIndices": [
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8056309,
+   "title": "SDC Manager, GTM Accelerate",
+   "slug": "sdc-manager-gtm-accelerate",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7325566,
+   "title": "SDC Operations Manager, Financial Crimes (AML)",
+   "slug": "sdc-operations-manager-financial-crimes-aml",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7739207,
+   "title": "Sales Compensation Analytics & Systems Specialist",
+   "slug": "sales-compensation-analytics-systems-specialist",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    12
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7862938,
+   "title": "Sales Compensation Design Lead",
+   "slug": "sales-compensation-design-lead",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    12
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7953987,
+   "title": "Sales Development Change Management Specialist",
+   "slug": "sales-development-change-management-specialist",
+   "locationIndices": [
+    49,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6570253,
+   "title": "Sales Development Representative",
+   "slug": "sales-development-representative",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6470774,
+   "title": "Sales Development Representative",
+   "slug": "sales-development-representative",
+   "locationIndices": [
+    5,
+    16,
+    21,
+    28
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8083685,
+   "title": "Sales Development Representative (Hebrew Fluency)",
+   "slug": "sales-development-representative-hebrew-fluency",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8123400,
+   "title": "Sales Development Representative (Mandarin-speaking)",
+   "slug": "sales-development-representative-mandarin-speaking",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8074892,
+   "title": "Sales Development Representative, AUNZ",
+   "slug": "sales-development-representative-aunz",
+   "locationIndices": [
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8048373,
+   "title": "Sales Development Representative, Southeast Asia",
+   "slug": "sales-development-representative-southeast-asia",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8011418,
+   "title": "Sales Excellence Manager, Global Sales Vendors",
+   "slug": "sales-excellence-manager-global-sales-vendors",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7368924,
+   "title": "Sales Manager, Account Executives - Startups (Grower)",
+   "slug": "sales-manager-account-executives-startups-grower",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8042647,
+   "title": "Sales Manager, Enterprise Growth",
+   "slug": "sales-manager-enterprise-growth",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8070701,
+   "title": "Sales Manager, Product - Issuing & Treasury",
+   "slug": "sales-manager-product-issuing-treasury",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8112959,
+   "title": "Sales Manager, SMB (Hunter)",
+   "slug": "sales-manager-smb-hunter",
+   "locationIndices": [
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8106775,
+   "title": "Sales Strategy & Operations Business Partner",
+   "slug": "sales-strategy-operations-business-partner",
+   "locationIndices": [
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8089882,
+   "title": "Sales Strategy & Operations Business Partner",
+   "slug": "sales-strategy-operations-business-partner",
+   "locationIndices": [
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8017084,
+   "title": "Sanctions, Operations Associate(CDMX)",
+   "slug": "sanctions-operations-associate-cdmx",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8060152,
+   "title": "Science Lead, Intercept",
+   "slug": "science-lead-intercept",
+   "locationIndices": [
+    95,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    42
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8070570,
+   "title": "Security Analyst, Bug Bounty",
+   "slug": "security-analyst-bug-bounty",
+   "locationIndices": [
+    92,
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7979393,
+   "title": "Security Analyst, Bug Bounty",
+   "slug": "security-analyst-bug-bounty",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7776179,
+   "title": "Security Engineer, Bridge",
+   "slug": "security-engineer-bridge",
+   "locationIndices": [
+    95,
+    98,
+    99
+   ],
+   "tagIndices": [
+    0
+   ],
+   "teamIndices": [
+    46
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8073092,
+   "title": "Security Engineer, Privy",
+   "slug": "security-engineer-privy",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [
+    1
+   ],
+   "teamIndices": [
+    50
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8007205,
+   "title": "Security Incident Response Manager",
+   "slug": "security-incident-response-manager",
+   "locationIndices": [
+    48,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7966029,
+   "title": "Seller Systems Operations Associate,  (Night Shift)",
+   "slug": "seller-systems-operations-associate-night-shift",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7793636,
+   "title": "Senior Designer, Brand Advertising",
+   "slug": "senior-designer-brand-advertising",
+   "locationIndices": [
+    96,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8128499,
+   "title": "Senior Staff Product Designer, Data & AI",
+   "slug": "senior-staff-product-designer-data-ai",
+   "locationIndices": [
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8031782,
+   "title": "Senior Staff Product Designer, Risk",
+   "slug": "senior-staff-product-designer-risk",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8099206,
+   "title": "Services Consultant - Scaled Professional Services (AUNZ)",
+   "slug": "services-consultant-scaled-professional-services-aunz",
+   "locationIndices": [
+    4,
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8099216,
+   "title": "Services Consultant - Scaled Professional Services (SEA/GCN)",
+   "slug": "services-consultant-scaled-professional-services-sea-gcn",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7373865,
+   "title": "Short-form Video & Social, Community Comms",
+   "slug": "short-form-video-social-community-comms",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    1
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7962437,
+   "title": "Social Media, Customer Support Associate",
+   "slug": "social-media-customer-support-associate",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7867328,
+   "title": "Social Media, Customer Support Associate (Includes Weekend Rotations)",
+   "slug": "social-media-customer-support-associate-includes-weekend-rotations",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7507904,
+   "title": "Software Engineer - Smart Contract, Bridge",
+   "slug": "software-engineer-smart-contract-bridge",
+   "locationIndices": [
+    98,
+    99
+   ],
+   "tagIndices": [
+    0
+   ],
+   "teamIndices": [
+    46
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8069941,
+   "title": "Software Engineer, Authorization Infrastructure",
+   "slug": "software-engineer-authorization-infrastructure",
+   "locationIndices": [
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8130578,
+   "title": "Software Engineer, Backend Engineer- Credit Coverage",
+   "slug": "software-engineer-backend-engineer-credit-coverage",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    18
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7895284,
+   "title": "Software Engineer, Brazil",
+   "slug": "software-engineer-brazil",
+   "locationIndices": [
+    80
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7277110,
+   "title": "Software Engineer, Bridge",
+   "slug": "software-engineer-bridge",
+   "locationIndices": [
+    98,
+    99
+   ],
+   "tagIndices": [
+    0
+   ],
+   "teamIndices": [
+    46
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8078337,
+   "title": "Software Engineer, Connect Tax Reporting",
+   "slug": "software-engineer-connect-tax-reporting",
+   "locationIndices": [
+    65
+   ],
+   "tagIndices": [
+    2
+   ],
+   "teamIndices": [
+    40
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7975725,
+   "title": "Software Engineer, Core Infrastructure",
+   "slug": "software-engineer-core-infrastructure",
+   "locationIndices": [
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8031833,
+   "title": "Software Engineer, Intern",
+   "slug": "software-engineer-intern",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [
+    2
+   ],
+   "teamIndices": [
+    61
+   ],
+   "employmentType": "Intern",
+   "employmentTypeIndex": 2
+  },
+  {
+   "greenhouseId": 7543868,
+   "title": "Software Engineer, Internal Systems",
+   "slug": "software-engineer-internal-systems",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8084476,
+   "title": "Software Engineer, Machine Learning Infrastructure",
+   "slug": "software-engineer-machine-learning-infrastructure",
+   "locationIndices": [
+    92,
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    7
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7529787,
+   "title": "Software Engineer, Payments",
+   "slug": "software-engineer-payments",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 6717520,
+   "title": "Software Engineer, Payments, Risk, & Premium Merchant Experiences",
+   "slug": "software-engineer-payments-risk-premium-merchant-experiences",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8039800,
+   "title": "Software Engineer, Product Security Data Platforms",
+   "slug": "software-engineer-product-security-data-platforms",
+   "locationIndices": [
+    100
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7396679,
+   "title": "Software Engineer, Secrets Infrastructure",
+   "slug": "software-engineer-secrets-infrastructure",
+   "locationIndices": [
+    95,
+    98,
+    100
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8076626,
+   "title": "Software Engineer, Stripe Tax",
+   "slug": "software-engineer-stripe-tax",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    53
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8089353,
+   "title": "Software Engineer, Vulnerability Management",
+   "slug": "software-engineer-vulnerability-management",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    58
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8115022,
+   "title": "Solution Architect Enablement Business Partner",
+   "slug": "solution-architect-enablement-business-partner",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8108889,
+   "title": "Solutions Architect (Greater China)",
+   "slug": "solutions-architect-greater-china",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8042913,
+   "title": "Solutions Architect (SEA, Korea, India)",
+   "slug": "solutions-architect-sea-korea-india",
+   "locationIndices": [
+    10,
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7784353,
+   "title": "Solutions Architect, (Italian fluency)",
+   "slug": "solutions-architect-italian-fluency",
+   "locationIndices": [
+    52
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7601663,
+   "title": "Solutions Architect, Enterprise",
+   "slug": "solutions-architect-enterprise",
+   "locationIndices": [
+    59,
+    60
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8092652,
+   "title": "Solutions Architect, Enterprise (French Speaking)",
+   "slug": "solutions-architect-enterprise-french-speaking",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8066953,
+   "title": "Solutions Architect, Enterprise (German fluency)",
+   "slug": "solutions-architect-enterprise-german-fluency",
+   "locationIndices": [
+    42,
+    43
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7827184,
+   "title": "Solutions Architect, Enterprise (Pre-sales)",
+   "slug": "solutions-architect-enterprise-pre-sales",
+   "locationIndices": [
+    95,
+    97,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7396509,
+   "title": "Solutions Architect, Platforms",
+   "slug": "solutions-architect-platforms",
+   "locationIndices": [
+    97,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7601673,
+   "title": "Solutions Architect, Platforms, UK & Ireland",
+   "slug": "solutions-architect-platforms-uk-ireland",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7863336,
+   "title": "Solutions Architect, SMB (Presales)",
+   "slug": "solutions-architect-smb-presales",
+   "locationIndices": [
+    97,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7442995,
+   "title": "Solutions Architect, Startup & SMB (German fluency)",
+   "slug": "solutions-architect-startup-smb-german-fluency",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7975567,
+   "title": "Solutions Engineer, Privy",
+   "slug": "solutions-engineer-privy",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [
+    1
+   ],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7370967,
+   "title": "Specialist Solution Architect, Money Management",
+   "slug": "specialist-solution-architect-money-management",
+   "locationIndices": [
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8066735,
+   "title": "Specialist Solutions Architect - Money Management (APAC and Greater China)",
+   "slug": "specialist-solutions-architect-money-management-apac-and-greater-china",
+   "locationIndices": [
+    4,
+    5,
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7728618,
+   "title": "Specialist Solutions Architect, Billing",
+   "slug": "specialist-solutions-architect-billing",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7120766,
+   "title": "Specialist Solutions Architect, Crypto & Stablecoins",
+   "slug": "specialist-solutions-architect-crypto-stablecoins",
+   "locationIndices": [
+    97,
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7365914,
+   "title": "Specialist Solutions Architect, Radar (Fraud/Risk)",
+   "slug": "specialist-solutions-architect-radar-fraud-risk",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8090244,
+   "title": "Specialist Solutions Architect, Tax",
+   "slug": "specialist-solutions-architect-tax",
+   "locationIndices": [
+    95,
+    97,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    28
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7921649,
+   "title": "Staff Data Analyst",
+   "slug": "staff-data-analyst",
+   "locationIndices": [
+    93,
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    6
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8044839,
+   "title": "Staff Data Scientist, Security",
+   "slug": "staff-data-scientist-security",
+   "locationIndices": [
+    95,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    6
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8070949,
+   "title": "Staff Engineer, Core Infrastructure",
+   "slug": "staff-engineer-core-infrastructure",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8090473,
+   "title": "Staff Engineer, Revenue & Finance Automation",
+   "slug": "staff-engineer-revenue-finance-automation",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7217778,
+   "title": "Staff Engineer, Seller Systems",
+   "slug": "staff-engineer-seller-systems",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7925073,
+   "title": "Staff Full Stack Engineer - Premium Merchant Experiences",
+   "slug": "staff-full-stack-engineer-premium-merchant-experiences",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8113221,
+   "title": "Staff Fullstack Engineer, User Auth Experience",
+   "slug": "staff-fullstack-engineer-user-auth-experience",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7202630,
+   "title": "Staff Product Designer, Link",
+   "slug": "staff-product-designer-link",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8008405,
+   "title": "Staff Product Designer, Risk",
+   "slug": "staff-product-designer-risk",
+   "locationIndices": [
+    46,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    8
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7655023,
+   "title": "Staff Product Manager, AI",
+   "slug": "staff-product-manager-ai",
+   "locationIndices": [
+    95,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8065034,
+   "title": "Staff Product Manager, Connect",
+   "slug": "staff-product-manager-connect",
+   "locationIndices": [
+    93,
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7913702,
+   "title": "Staff Product Manager, Dashboard",
+   "slug": "staff-product-manager-dashboard",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7812856,
+   "title": "Staff Product Manager, Enterprise",
+   "slug": "staff-product-manager-enterprise",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7570242,
+   "title": "Staff Product Manager, Global Expansion",
+   "slug": "staff-product-manager-global-expansion",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8043083,
+   "title": "Staff Product Manager, Issuing",
+   "slug": "staff-product-manager-issuing",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    39
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7517535,
+   "title": "Staff Product Manager, ML Foundations and GenAI",
+   "slug": "staff-product-manager-ml-foundations-and-genai",
+   "locationIndices": [
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    32
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7819059,
+   "title": "Staff Product Manager, Payments",
+   "slug": "staff-product-manager-payments",
+   "locationIndices": [
+    95,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8040052,
+   "title": "Staff Product Manager, Risk Product Experience",
+   "slug": "staff-product-manager-risk-product-experience",
+   "locationIndices": [
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8122188,
+   "title": "Staff Product Manager, Strategic Apps",
+   "slug": "staff-product-manager-strategic-apps",
+   "locationIndices": [
+    100
+   ],
+   "tagIndices": [],
+   "teamIndices": [],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8124304,
+   "title": "Staff Product Manager, Stripe Tax",
+   "slug": "staff-product-manager-stripe-tax",
+   "locationIndices": [
+    49,
+    68
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    52
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7920219,
+   "title": "Staff Product Manager, Support Experience",
+   "slug": "staff-product-manager-support-experience",
+   "locationIndices": [
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8089815,
+   "title": "Staff Software Engineer - CI Services",
+   "slug": "staff-software-engineer-ci-services",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8055701,
+   "title": "Staff Software Engineer, API Platform",
+   "slug": "staff-software-engineer-api-platform",
+   "locationIndices": [
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8112037,
+   "title": "Staff Software Engineer, Business Data",
+   "slug": "staff-software-engineer-business-data",
+   "locationIndices": [
+    92,
+    93,
+    97,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    7
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8076151,
+   "title": "Staff Software Engineer, Dashboard",
+   "slug": "staff-software-engineer-dashboard",
+   "locationIndices": [
+    92,
+    93,
+    95,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7548037,
+   "title": "Staff Software Engineer, Data Engineering Solutions",
+   "slug": "staff-software-engineer-data-engineering-solutions",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    7
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8112042,
+   "title": "Staff Software Engineer, Data Quality and Governance",
+   "slug": "staff-software-engineer-data-quality-and-governance",
+   "locationIndices": [
+    92,
+    93,
+    97,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    7
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8035723,
+   "title": "Staff Software Engineer, Datalake Platform",
+   "slug": "staff-software-engineer-datalake-platform",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8038771,
+   "title": "Staff Software Engineer, Deployment Platform",
+   "slug": "staff-software-engineer-deployment-platform",
+   "locationIndices": [
+    100
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8120494,
+   "title": "Staff Software Engineer, Financial Crimes",
+   "slug": "staff-software-engineer-financial-crimes",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7369269,
+   "title": "Staff Software Engineer, Issuing",
+   "slug": "staff-software-engineer-issuing",
+   "locationIndices": [
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    40
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8082847,
+   "title": "Staff Software Engineer, Link",
+   "slug": "staff-software-engineer-link",
+   "locationIndices": [
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    43
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7939868,
+   "title": "Staff Software Engineer, Machine Learning Platform",
+   "slug": "staff-software-engineer-machine-learning-platform",
+   "locationIndices": [
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    32
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7712852,
+   "title": "Staff Software Engineer, Machine Learning Platform",
+   "slug": "staff-software-engineer-machine-learning-platform",
+   "locationIndices": [
+    92,
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    32
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7986004,
+   "title": "Staff Software Engineer, Payments Intelligence",
+   "slug": "staff-software-engineer-payments-intelligence",
+   "locationIndices": [
+    100
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8112043,
+   "title": "Staff Software Engineer, Product Risk",
+   "slug": "staff-software-engineer-product-risk",
+   "locationIndices": [
+    92,
+    93,
+    97,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    7
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8090141,
+   "title": "Staff Software Engineer, Service Infrastructure",
+   "slug": "staff-software-engineer-service-infrastructure",
+   "locationIndices": [
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7767063,
+   "title": "Staff Software Engineer, Stream Compute",
+   "slug": "staff-software-engineer-stream-compute",
+   "locationIndices": [
+    100
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7746721,
+   "title": "Staff Software Engineer, Stripe Dashboard",
+   "slug": "staff-software-engineer-stripe-dashboard",
+   "locationIndices": [
+    93,
+    95,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8049941,
+   "title": "Startup and Venture Partnerships Associate",
+   "slug": "startup-and-venture-partnerships-associate",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7577505,
+   "title": "Strategic Finance Partner",
+   "slug": "strategic-finance-partner",
+   "locationIndices": [
+    99
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    12
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7977676,
+   "title": "Strategic Programs Lead, New Markets",
+   "slug": "strategic-programs-lead-new-markets",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8053933,
+   "title": "Strategy & Ops, Enterprise",
+   "slug": "strategy-ops-enterprise",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8060391,
+   "title": "Strategy & Ops, Intercept",
+   "slug": "strategy-ops-intercept",
+   "locationIndices": [
+    95,
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    42
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8007639,
+   "title": "Strategy & Transformation Advisor (Growth & Monetization specialization)",
+   "slug": "strategy-transformation-advisor-growth-monetization-specialization",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    51
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7813411,
+   "title": "Strategy and Analytics Business Partner",
+   "slug": "strategy-and-analytics-business-partner",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8044391,
+   "title": "Strategy and Operations Lead, Deal Pricing",
+   "slug": "strategy-and-operations-lead-deal-pricing",
+   "locationIndices": [
+    95,
+    98,
+    102
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    25
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7905025,
+   "title": "Tax Technology Lead",
+   "slug": "tax-technology-lead",
+   "locationIndices": [
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    15
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8072213,
+   "title": "Tech & Product Strategic Sourcing Specialist",
+   "slug": "tech-product-strategic-sourcing-specialist",
+   "locationIndices": [
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    11
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7718947,
+   "title": "Tech Operations Associate, New Grad (Mexico)",
+   "slug": "tech-operations-associate-new-grad-mexico",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [
+    2
+   ],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8045862,
+   "title": "Tech Ops Team Lead",
+   "slug": "tech-ops-team-lead",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [
+    2
+   ],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8044158,
+   "title": "Technical Account Manager",
+   "slug": "technical-account-manager",
+   "locationIndices": [
+    5
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    34
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8023524,
+   "title": "Technical Account Manager",
+   "slug": "technical-account-manager",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    34
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7955056,
+   "title": "Technical Account Manager - GCN",
+   "slug": "technical-account-manager-gcn",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    34
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7918088,
+   "title": "Technical Account Manager, AI User Segment",
+   "slug": "technical-account-manager-ai-user-segment",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    34
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7589978,
+   "title": "Technical Connectivity Specialist",
+   "slug": "technical-connectivity-specialist",
+   "locationIndices": [
+    93,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8029252,
+   "title": "Technical Operations Engineer, Payments",
+   "slug": "technical-operations-engineer-payments",
+   "locationIndices": [
+    85
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7976987,
+   "title": "Technical Partner Manager",
+   "slug": "technical-partner-manager",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    46
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8054121,
+   "title": "Technical Program Manager",
+   "slug": "technical-program-manager",
+   "locationIndices": [
+    21
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    48
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8050340,
+   "title": "Technical Program Manager, Bridge",
+   "slug": "technical-program-manager-bridge",
+   "locationIndices": [
+    95,
+    98,
+    99
+   ],
+   "tagIndices": [
+    0
+   ],
+   "teamIndices": [
+    46
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7589234,
+   "title": "Technical Program Manager, Core Infrastructure",
+   "slug": "technical-program-manager-core-infrastructure",
+   "locationIndices": [
+    95,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8114397,
+   "title": "Technical Program Manager, Extensibility Platform (CA)",
+   "slug": "technical-program-manager-extensibility-platform-ca",
+   "locationIndices": [
+    92,
+    93
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    49
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8126047,
+   "title": "Technical Program Manager, Infrastructure",
+   "slug": "technical-program-manager-infrastructure",
+   "locationIndices": [
+    95,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    18
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8014533,
+   "title": "Technical Program Manager, Link",
+   "slug": "technical-program-manager-link",
+   "locationIndices": [
+    98,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    43
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8007738,
+   "title": "Technical Program Manager, Manager",
+   "slug": "technical-program-manager-manager",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8042055,
+   "title": "Technical Program Manager, Money-as-a-Service",
+   "slug": "technical-program-manager-money-as-a-service",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    46
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7685855,
+   "title": "Technical Program Manager, Risk",
+   "slug": "technical-program-manager-risk",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7678655,
+   "title": "Technical Program Manager, Risk",
+   "slug": "technical-program-manager-risk",
+   "locationIndices": [
+    10
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7985196,
+   "title": "Technical Program Manager, Service Infrastructure",
+   "slug": "technical-program-manager-service-infrastructure",
+   "locationIndices": [
+    95,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    30
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7377101,
+   "title": "Technical Solutions Engineer",
+   "slug": "technical-solutions-engineer",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8079858,
+   "title": "Technical Solutions Engineering Manager",
+   "slug": "technical-solutions-engineering-manager",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7860377,
+   "title": "Technical Support Engineer, Metronome",
+   "slug": "technical-support-engineer-metronome",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    44
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7733725,
+   "title": "Technical Support Engineer, Metronome",
+   "slug": "technical-support-engineer-metronome",
+   "locationIndices": [
+    95,
+    98,
+    100,
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    44
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8076966,
+   "title": "Thailand Compliance Officer & Money Laundering Reporting Officer",
+   "slug": "thailand-compliance-officer-money-laundering-reporting-officer",
+   "locationIndices": [
+    28
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8079132,
+   "title": "Treasury Finance AI and Quantitative Analytics, Americas",
+   "slug": "treasury-finance-ai-and-quantitative-analytics-americas",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    16
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8070044,
+   "title": "U.S. Federal Government Relations Director",
+   "slug": "u-s-federal-government-relations-director",
+   "locationIndices": [
+    102
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    31
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8096121,
+   "title": "UK Public Sector Lead",
+   "slug": "uk-public-sector-lead",
+   "locationIndices": [
+    46
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    26
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8094669,
+   "title": "University Recruiting Manager",
+   "slug": "university-recruiting-manager",
+   "locationIndices": [
+    21,
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    37
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8045340,
+   "title": "User Escalation Specialist",
+   "slug": "user-escalation-specialist",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    33
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7977981,
+   "title": "User Risk Strategist, Ecosystem Risk Strategy",
+   "slug": "user-risk-strategist-ecosystem-risk-strategy",
+   "locationIndices": [
+    95,
+    96,
+    97
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    56
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8092411,
+   "title": "Workplace Experience Manager",
+   "slug": "workplace-experience-manager",
+   "locationIndices": [
+    98
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    17
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8120185,
+   "title": "Workplace Operations Manager - Dublin",
+   "slug": "workplace-operations-manager-dublin",
+   "locationIndices": [
+    49
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    17
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 8016510,
+   "title": "Workplace Strategy & Operations Manager",
+   "slug": "workplace-strategy-operations-manager",
+   "locationIndices": [
+    101
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    17
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  },
+  {
+   "greenhouseId": 7587814,
+   "title": "Writer, Content Marketing",
+   "slug": "writer-content-marketing",
+   "locationIndices": [
+    95
+   ],
+   "tagIndices": [],
+   "teamIndices": [
+    24
+   ],
+   "employmentType": "Full time",
+   "employmentTypeIndex": 1
+  }
+ ]
+}
