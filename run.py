@@ -63,6 +63,7 @@ COMPANY_NAMES = {
     "stellantis": "Stellantis",
     "criteo": "Criteo",
     "natixis": "Natixis",
+    "bpce": "Groupe BPCE",
     "axa": "AXA",
     "safran.group": "Safran",
     "safran.ai": "Safran.AI",

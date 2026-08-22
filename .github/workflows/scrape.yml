@@ -81,6 +81,7 @@ jobs:
           - stellantis
           - criteo
           - natixis
+          - bpce
           - axa
           - schneider
           - publicis
