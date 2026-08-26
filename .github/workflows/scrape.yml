@@ -50,7 +50,10 @@ jobs:
           - orange
           - deezer
           - adobe
-          - thales
+          # - thales   # dropped from CI 2026-08-24: Thales requires French
+          #            nationality for its clearance-gated roles, so the whole
+          #            board is unactionable. Scraper and scrapers/thales/ are
+          #            kept intact — run `python run.py thales` if that changes.
           - sg
           - databricks
           - decathlon
