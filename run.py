@@ -98,6 +98,7 @@ COMPANY_NAMES = {
     "richemont": "Richemont",
     "veolia": "Veolia",
     "morganstanley": "Morgan Stanley",
+    "jpmorgan": "JPMorganChase",
     "accor": "Accor",
     "hermes": "Hermès",
     "servicenow": "ServiceNow",

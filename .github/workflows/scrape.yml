@@ -116,6 +116,7 @@ jobs:
           - richemont
           - veolia
           - morganstanley
+          - jpmorgan
           - accor
           - hermes
           - servicenow

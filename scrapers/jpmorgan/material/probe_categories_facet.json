@@ -1,0 +1,202 @@
+[
+ {
+  "Id": 300000086152753,
+  "Name": "Software Engineering",
+  "TotalCount": 1054
+ },
+ {
+  "Id": 300000086249838,
+  "Name": "Associate Bankers",
+  "TotalCount": 494
+ },
+ {
+  "Id": 300000086153134,
+  "Name": "Advisors",
+  "TotalCount": 432
+ },
+ {
+  "Id": 300000086251864,
+  "Name": "Product Management",
+  "TotalCount": 342
+ },
+ {
+  "Id": 300000086144235,
+  "Name": "Originations",
+  "TotalCount": 313
+ },
+ {
+  "Id": 300000086250752,
+  "Name": "Relationship Manager",
+  "TotalCount": 227
+ },
+ {
+  "Id": 300000086143853,
+  "Name": "Client Advisory",
+  "TotalCount": 200
+ },
+ {
+  "Id": 300000086251954,
+  "Name": "Relationship Bankers",
+  "TotalCount": 199
+ },
+ {
+  "Id": 300000086153065,
+  "Name": "Analysts",
+  "TotalCount": 193
+ },
+ {
+  "Id": 300000086152508,
+  "Name": "Predictive Science",
+  "TotalCount": 164
+ },
+ {
+  "Id": 300000086153391,
+  "Name": "Associates",
+  "TotalCount": 145
+ },
+ {
+  "Id": 300000086251522,
+  "Name": "Private Client Bankers",
+  "TotalCount": 132
+ },
+ {
+  "Id": 300000086249943,
+  "Name": "Branch Managers",
+  "TotalCount": 123
+ },
+ {
+  "Id": 300049452668353,
+  "Name": "Technical Program Delivery",
+  "TotalCount": 105
+ },
+ {
+  "Id": 300000086249994,
+  "Name": "Controller",
+  "TotalCount": 102
+ },
+ {
+  "Id": 300000086152593,
+  "Name": "Business Management",
+  "TotalCount": 95
+ },
+ {
+  "Id": 300035862339235,
+  "Name": "Product Portfolio & Delivery",
+  "TotalCount": 83
+ },
+ {
+  "Id": 300055701197056,
+  "Name": "Branch Operations Lead",
+  "TotalCount": 80
+ },
+ {
+  "Id": 300000086152757,
+  "Name": "Credit Risk",
+  "TotalCount": 79
+ },
+ {
+  "Id": 300000086153149,
+  "Name": "Marketing Strategy",
+  "TotalCount": 79
+ },
+ {
+  "Id": 300000086250134,
+  "Name": "Analytics Solutions & Delivery",
+  "TotalCount": 79
+ },
+ {
+  "Id": 300000086249821,
+  "Name": "Infrastructure Engineering",
+  "TotalCount": 76
+ },
+ {
+  "Id": 300049451194835,
+  "Name": "User Experience Design",
+  "TotalCount": 74
+ },
+ {
+  "Id": 300000086249991,
+  "Name": "Control Officers",
+  "TotalCount": 68
+ },
+ {
+  "Id": 300000086251949,
+  "Name": "Relationship Sales",
+  "TotalCount": 62
+ },
+ {
+  "Id": 300000086249881,
+  "Name": "Client Service",
+  "TotalCount": 59
+ },
+ {
+  "Id": 300000086144116,
+  "Name": "Seasonal Employee",
+  "TotalCount": 55
+ },
+ {
+  "Id": 300000086144371,
+  "Name": "Architecture",
+  "TotalCount": 55
+ },
+ {
+  "Id": 300000086251877,
+  "Name": "Client Management",
+  "TotalCount": 52
+ },
+ {
+  "Id": 300000086152826,
+  "Name": "Financial Analysis",
+  "TotalCount": 51
+ },
+ {
+  "Id": 300032576452222,
+  "Name": "Client Solutions",
+  "TotalCount": 51
+ },
+ {
+  "Id": 300000086250047,
+  "Name": "Client Sales",
+  "TotalCount": 47
+ },
+ {
+  "Id": 300000086144003,
+  "Name": "Data Management",
+  "TotalCount": 46
+ },
+ {
+  "Id": 300049452668918,
+  "Name": "Technology Support",
+  "TotalCount": 46
+ },
+ {
+  "Id": 300000086251636,
+  "Name": "Strategy",
+  "TotalCount": 45
+ },
+ {
+  "Id": 300000921822354,
+  "Name": "Trading Services",
+  "TotalCount": 45
+ },
+ {
+  "Id": 300000086250727,
+  "Name": "Administrative Assistant",
+  "TotalCount": 44
+ },
+ {
+  "Id": 300000086153256,
+  "Name": "Risk Analytics/Modeling",
+  "TotalCount": 43
+ },
+ {
+  "Id": 300000086249543,
+  "Name": "Product Development",
+  "TotalCount": 43
+ },
+ {
+  "Id": 300001586035594,
+  "Name": "Fund Servicing",
+  "TotalCount": 42
+ }
+]
