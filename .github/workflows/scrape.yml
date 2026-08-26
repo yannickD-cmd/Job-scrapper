@@ -104,6 +104,7 @@ jobs:
           - siapartners
           - sap
           - microsoft
+          - google
           - n26
           - salesforce
           - alan

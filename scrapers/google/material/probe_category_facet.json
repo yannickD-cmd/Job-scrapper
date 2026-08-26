@@ -1,0 +1,52 @@
+{
+  "_comment": "Google careers `?category=` facet vocabulary, enumerated 2026-08-25 by probing. The filter panel renders client-side so no option list exists in the HTML; an invalid value returns 0 matches, which is how this list was discovered. Board total was 3341; these 17 sum to 3334.",
+  "_probe": "GET https://www.google.com/about/careers/applications/jobs/results/?category=<VALUE>  -> parse 'N jobs matched'",
+  "board_total": 3341,
+  "valid": {
+    "SOFTWARE_ENGINEERING": 1025,
+    "PROGRAM_MANAGEMENT": 376,
+    "SALES_OPERATIONS": 299,
+    "HARDWARE_ENGINEERING": 287,
+    "TECHNICAL_SOLUTIONS": 283,
+    "SALES": 203,
+    "DATA_CENTER_OPERATIONS": 202,
+    "PRODUCT_MANAGEMENT": 151,
+    "BUSINESS_STRATEGY": 134,
+    "USER_EXPERIENCE": 72,
+    "MARKETING": 64,
+    "FINANCE": 60,
+    "PARTNERSHIPS": 59,
+    "LEGAL": 42,
+    "NETWORK_ENGINEERING": 39,
+    "ADMINISTRATIVE": 35,
+    "DEVELOPER_RELATIONS": 3
+  },
+  "tested_and_invalid_return_zero": [
+    "TECHNICAL_INFRASTRUCTURE", "TECHNICAL_WRITING", "DATA_CENTER",
+    "IT_AND_DATA_MANAGEMENT", "PEOPLE_OPERATIONS", "DATA_SCIENCE", "RESEARCH",
+    "REAL_ESTATE_AND_WORKPLACE_SERVICES", "MANUFACTURING_AND_SUPPLY_CHAIN",
+    "PRODUCT_AND_CUSTOMER_SUPPORT", "COMMUNICATIONS", "TRUST_AND_SAFETY",
+    "CONSULTING", "CLOUD_SALES", "CUSTOMER_ENGINEERING", "BOGUS_NOT_A_CATEGORY"
+  ],
+  "france_snapshot_2026_08_25": {
+    "total": 14,
+    "by_category": {
+      "TECHNICAL_SOLUTIONS": 4,
+      "LEGAL": 2,
+      "PROGRAM_MANAGEMENT": 2,
+      "SALES_OPERATIONS": 2,
+      "SOFTWARE_ENGINEERING": 2,
+      "DATA_CENTER_OPERATIONS": 1,
+      "_uncategorised": 2
+    },
+    "multi_category_example": {
+      "job": "Founder Advocate, EMEA Startup, Google Cloud",
+      "categories": ["SALES_OPERATIONS", "TECHNICAL_SOLUTIONS"],
+      "why_it_matters": "tech must win over blocked, else alphabetical order decides scope"
+    },
+    "uncategorised_examples": [
+      "Staff Research Scientist, Compiler Optimization (rescued by content gate)",
+      "People Consultant (Fixed Term Contract) (correctly dropped, no content signal)"
+    ]
+  }
+}
