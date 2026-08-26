@@ -105,6 +105,8 @@ jobs:
           - sap
           - microsoft
           - google
+          - iliad.france
+          - iliad.scaleway
           - n26
           - salesforce
           - alan

@@ -87,6 +87,8 @@ COMPANY_NAMES = {
     "sap": "SAP",
     "microsoft": "Microsoft",
     "google": "Google",
+    "iliad.france": "Groupe iliad",
+    "iliad.scaleway": "Scaleway",
     "n26": "N26",
     "salesforce": "Salesforce",
     "alan": "Alan",
