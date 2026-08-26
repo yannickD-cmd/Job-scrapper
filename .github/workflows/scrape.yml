@@ -103,6 +103,7 @@ jobs:
           - mckinsey
           - siapartners
           - sap
+          - microsoft
           - n26
           - salesforce
           - alan

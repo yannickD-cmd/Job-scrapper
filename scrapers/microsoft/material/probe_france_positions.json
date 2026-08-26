@@ -1,0 +1,451 @@
+{
+ "200044417": {
+  "id": 1970393556940392,
+  "displayJobId": "200044417",
+  "name": "Principal Consulting Project Manager France",
+  "locations": [
+   "France, Hauts-de-Seine, Issy Les Moulineaux"
+  ],
+  "standardizedLocations": [
+   "Issy-les-Moulineaux, IDF, FR"
+  ],
+  "postedTs": 1787649199,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Consulting Project Management",
+  "creationTs": 1784310636,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200044417",
+  "positionUrl": "/careers/job/1970393556940392"
+ },
+ "200043421": {
+  "id": 1970393556932405,
+  "displayJobId": "200043421",
+  "name": "Senior Data Center Technician",
+  "locations": [
+   "France, Paris, Paris"
+  ],
+  "standardizedLocations": [
+   "Paris, IDF, FR"
+  ],
+  "postedTs": 1787321979,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Data Center Technicians",
+  "creationTs": 1783719792,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200043421",
+  "positionUrl": "/careers/job/1970393556932405"
+ },
+ "200048953": {
+  "id": 1970393556962708,
+  "displayJobId": "200048953",
+  "name": "Datacenter Operations Manager",
+  "locations": [
+   "France, Paris, Paris"
+  ],
+  "standardizedLocations": [
+   "Paris, IDF, FR"
+  ],
+  "postedTs": 1787048873,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Data Center Operations Management",
+  "creationTs": 1786642973,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200048953",
+  "positionUrl": "/careers/job/1970393556962708"
+ },
+ "200048580": {
+  "id": 1970393556961701,
+  "displayJobId": "200048580",
+  "name": "Critical Environment Field Service Engineer",
+  "locations": [
+   "France, Alpes-de-Haute-Provence, Marseille",
+   "France, Paris, Paris"
+  ],
+  "standardizedLocations": [
+   "Marseille, Provence-Alpes-Côte d'Azur, FR",
+   "Paris, IDF, FR"
+  ],
+  "postedTs": 1786629621,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Data Center Operations Management",
+  "creationTs": 1786520907,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200048580",
+  "positionUrl": "/careers/job/1970393556961701"
+ },
+ "200048654": {
+  "id": 1970393556961985,
+  "displayJobId": "200048654",
+  "name": "AI Transformation Consulting Leader",
+  "locations": [
+   "United Kingdom, Berkshire, Reading",
+   "France, Paris, Paris",
+   "Netherlands, Noord-Holland, Amsterdam"
+  ],
+  "standardizedLocations": [
+   "Reading, England, GB",
+   "Paris, IDF, FR",
+   "Amsterdam, NH, NL"
+  ],
+  "postedTs": 1786561224,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Solution Architecture",
+  "creationTs": 1786548103,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200048654",
+  "positionUrl": "/careers/job/1970393556961985"
+ },
+ "200047380": {
+  "id": 1970393556958044,
+  "displayJobId": "200047380",
+  "name": "Senior IT Support Data Center Technician",
+  "locations": [
+   "France, Paris, Paris"
+  ],
+  "standardizedLocations": [
+   "Paris, IDF, FR"
+  ],
+  "postedTs": 1786531683,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Data Center Technicians",
+  "creationTs": 1786023020,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200047380",
+  "positionUrl": "/careers/job/1970393556958044"
+ },
+ "200043988": {
+  "id": 1970393556938801,
+  "displayJobId": "200043988",
+  "name": "Data Center Operations Country Director",
+  "locations": [
+   "France, Paris, Paris"
+  ],
+  "standardizedLocations": [
+   "Paris, IDF, FR"
+  ],
+  "postedTs": 1786522213,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Data Center Operations Management",
+  "creationTs": 1784137959,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200043988",
+  "positionUrl": "/careers/job/1970393556938801"
+ },
+ "200046905": {
+  "id": 1970393556956224,
+  "displayJobId": "200046905",
+  "name": "Sales Specialist - Windows & Device Sales (France)",
+  "locations": [
+   "France, Multiple Locations, Multiple Locations"
+  ],
+  "standardizedLocations": [
+   "FR"
+  ],
+  "postedTs": 1786465623,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Solution Area Specialists",
+  "creationTs": 1785863838,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200046905",
+  "positionUrl": "/careers/job/1970393556956224"
+ },
+ "200036015": {
+  "id": 1970393556861892,
+  "displayJobId": "200036015",
+  "name": "Data Center Technician",
+  "locations": [
+   "France, Paris, Paris"
+  ],
+  "standardizedLocations": [
+   "Paris, IDF, FR"
+  ],
+  "postedTs": 1786372431,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Data Center Technicians",
+  "creationTs": 1777056610,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200036015",
+  "positionUrl": "/careers/job/1970393556861892"
+ },
+ "200040579": {
+  "id": 1970393556875877,
+  "displayJobId": "200040579",
+  "name": "Logistics Technician",
+  "locations": [
+   "France, Alpes-de-Haute-Provence, Marseille"
+  ],
+  "standardizedLocations": [
+   "Marseille, Provence-Alpes-Côte d'Azur, FR"
+  ],
+  "postedTs": 1785508388,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Logistics Technician",
+  "creationTs": 1781629670,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200040579",
+  "positionUrl": "/careers/job/1970393556875877"
+ },
+ "200045524": {
+  "id": 1970393556945201,
+  "displayJobId": "200045524",
+  "name": "Strategic Account Technology - Energy",
+  "locations": [
+   "France, Hauts-de-Seine, Issy Les Moulineaux"
+  ],
+  "standardizedLocations": [
+   "Issy-les-Moulineaux, IDF, FR"
+  ],
+  "postedTs": 1785507595,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Strategic Account Technology",
+  "creationTs": 1785158208,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200045524",
+  "positionUrl": "/careers/job/1970393556945201"
+ },
+ "200045377": {
+  "id": 1970393556944329,
+  "displayJobId": "200045377",
+  "name": "Sales Director FSI",
+  "locations": [
+   "France, Hauts-de-Seine, Issy Les Moulineaux"
+  ],
+  "standardizedLocations": [
+   "Issy-les-Moulineaux, IDF, FR"
+  ],
+  "postedTs": 1785506614,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Sales Management",
+  "creationTs": 1784902366,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200045377",
+  "positionUrl": "/careers/job/1970393556944329"
+ },
+ "200045358": {
+  "id": 1970393556944027,
+  "displayJobId": "200045358",
+  "name": "Strategic Account Technologist - Manufacturing Industry",
+  "locations": [
+   "France, Hauts-de-Seine, Issy Les Moulineaux"
+  ],
+  "standardizedLocations": [
+   "Issy-les-Moulineaux, IDF, FR"
+  ],
+  "postedTs": 1785484414,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Strategic Account Technology",
+  "creationTs": 1784898327,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200045358",
+  "positionUrl": "/careers/job/1970393556944027"
+ },
+ "200041811": {
+  "id": 1970393556917675,
+  "displayJobId": "200041811",
+  "name": "Data Center Technician",
+  "locations": [
+   "France, Paris, Paris"
+  ],
+  "standardizedLocations": [
+   "Paris, IDF, FR"
+  ],
+  "postedTs": 1785254034,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Data Center Technicians",
+  "creationTs": 1782748822,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200041811",
+  "positionUrl": "/careers/job/1970393556917675"
+ },
+ "200043961": {
+  "id": 1970393556938763,
+  "displayJobId": "200043961",
+  "name": "Senior Sales Specialist - Windows & Device Sales (France)",
+  "locations": [
+   "France, Multiple Locations, Multiple Locations"
+  ],
+  "standardizedLocations": [
+   "FR"
+  ],
+  "postedTs": 1785169666,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Solution Area Specialists",
+  "creationTs": 1784136083,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200043961",
+  "positionUrl": "/careers/job/1970393556938763"
+ },
+ "200043343": {
+  "id": 1970393556929337,
+  "displayJobId": "200043343",
+  "name": "Logistics Technician Manager",
+  "locations": [
+   "France, Paris, Paris"
+  ],
+  "standardizedLocations": [
+   "Paris, IDF, FR"
+  ],
+  "postedTs": 1784805942,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Logistics Technician",
+  "creationTs": 1783702712,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200043343",
+  "positionUrl": "/careers/job/1970393556929337"
+ },
+ "200041629": {
+  "id": 1970393556915312,
+  "displayJobId": "200041629",
+  "name": "Sales Director - AI Business Process (CRM)",
+  "locations": [
+   "France, Hauts-de-Seine, Issy Les Moulineaux"
+  ],
+  "standardizedLocations": [
+   "Issy-les-Moulineaux, IDF, FR"
+  ],
+  "postedTs": 1784639450,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Solution Area Specialists",
+  "creationTs": 1782490654,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200041629",
+  "positionUrl": "/careers/job/1970393556915312"
+ },
+ "200041353": {
+  "id": 1970393556913275,
+  "displayJobId": "200041353",
+  "name": "Logistics/Warehouse Technician",
+  "locations": [
+   "France, Paris, Paris"
+  ],
+  "standardizedLocations": [
+   "Paris, IDF, FR"
+  ],
+  "postedTs": 1784218115,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Logistics Technician",
+  "creationTs": 1782283190,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200041353",
+  "positionUrl": "/careers/job/1970393556913275"
+ },
+ "200037955": {
+  "id": 1970393556868214,
+  "displayJobId": "200037955",
+  "name": "Critical Environment Program Manager",
+  "locations": [
+   "France, Paris, Paris",
+   "France, Alpes-de-Haute-Provence, Marseille"
+  ],
+  "standardizedLocations": [
+   "Paris, IDF, FR",
+   "Marseille, Provence-Alpes-Côte d'Azur, FR"
+  ],
+  "postedTs": 1783414528,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Data Center Operations Management",
+  "creationTs": 1779287406,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200037955",
+  "positionUrl": "/careers/job/1970393556868214"
+ },
+ "200032870": {
+  "id": 1970393556851884,
+  "displayJobId": "200032870",
+  "name": "Critical Environment Technician Manager",
+  "locations": [
+   "France, Yvelines, Vélizy-Villacoublay"
+  ],
+  "standardizedLocations": [
+   "Vélizy-Villacoublay, IDF, FR"
+  ],
+  "postedTs": 1782978291,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Critical Environment Ops",
+  "creationTs": 1774281808,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200032870",
+  "positionUrl": "/careers/job/1970393556851884"
+ },
+ "200040593": {
+  "id": 1970393556875898,
+  "displayJobId": "200040593",
+  "name": "Data Center Technician Manager",
+  "locations": [
+   "France, Paris, Paris"
+  ],
+  "standardizedLocations": [
+   "Paris, IDF, FR"
+  ],
+  "postedTs": 1781862728,
+  "solrScore": null,
+  "stars": 0,
+  "department": "Data Center Technicians",
+  "creationTs": 1781630950,
+  "isHot": 0,
+  "workLocationOption": "onsite",
+  "locationFlexibility": null,
+  "atsJobId": "200040593",
+  "positionUrl": "/careers/job/1970393556875898"
+ }
+}

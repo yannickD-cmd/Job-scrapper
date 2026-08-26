@@ -1,0 +1,191 @@
+[
+ {
+  "id": "200044417",
+  "name": "Principal Consulting Project Manager France",
+  "discipline": "Consulting Project Management",
+  "profession": "Consulting Services",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "3 days / week in-office"
+ },
+ {
+  "id": "200043421",
+  "name": "Senior Data Center Technician",
+  "discipline": "Data Center Technicians",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200048953",
+  "name": "Datacenter Operations Manager",
+  "discipline": "Data Center Operations Management",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "People Manager",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200048580",
+  "name": "Critical Environment Field Service Engineer",
+  "discipline": "Data Center Operations Management",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200048654",
+  "name": "AI Transformation Consulting Leader",
+  "discipline": "Solution Architecture",
+  "profession": "Consulting Services",
+  "emp": "Full-Time",
+  "roletype": "People Manager",
+  "worksite": "1 day / week in-office"
+ },
+ {
+  "id": "200047380",
+  "name": "Senior IT Support Data Center Technician",
+  "discipline": "Data Center Technicians",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200043988",
+  "name": "Data Center Operations Country Director",
+  "discipline": "Data Center Operations Management",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "People Manager",
+  "worksite": "4 days / week in-office"
+ },
+ {
+  "id": "200046905",
+  "name": "Sales Specialist - Windows & Device Sales (France)",
+  "discipline": "Solution Area Specialists",
+  "profession": "Sales",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "3 days / week in-office"
+ },
+ {
+  "id": "200036015",
+  "name": "Data Center Technician",
+  "discipline": "Data Center Technicians",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200040579",
+  "name": "Logistics Technician",
+  "discipline": "Logistics Technician",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200045524",
+  "name": "Strategic Account Technology - Energy",
+  "discipline": "Strategic Account Technology",
+  "profession": "Technology Sales",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "2 days / week in-office"
+ },
+ {
+  "id": "200045377",
+  "name": "Sales Director FSI",
+  "discipline": "Sales Management",
+  "profession": "Sales",
+  "emp": "Full-Time",
+  "roletype": "People Manager",
+  "worksite": "2 days / week in-office"
+ },
+ {
+  "id": "200045358",
+  "name": "Strategic Account Technologist - Manufacturing Industry",
+  "discipline": "Strategic Account Technology",
+  "profession": "Technology Sales",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "2 days / week in-office"
+ },
+ {
+  "id": "200041811",
+  "name": "Data Center Technician",
+  "discipline": "Data Center Technicians",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200043961",
+  "name": "Senior Sales Specialist - Windows & Device Sales (France)",
+  "discipline": "Solution Area Specialists",
+  "profession": "Sales",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "2 days / week in-office"
+ },
+ {
+  "id": "200043343",
+  "name": "Logistics Technician Manager",
+  "discipline": "Logistics Technician",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "People Manager",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200041629",
+  "name": "Sales Director - AI Business Process (CRM)",
+  "discipline": "Solution Area Specialists",
+  "profession": "Sales",
+  "emp": "Full-Time",
+  "roletype": "People Manager",
+  "worksite": "3 days / week in-office"
+ },
+ {
+  "id": "200041353",
+  "name": "Logistics/Warehouse Technician",
+  "discipline": "Logistics Technician",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200037955",
+  "name": "Critical Environment Program Manager",
+  "discipline": "Data Center Operations Management",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "Individual Contributor",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200032870",
+  "name": "Critical Environment Technician Manager",
+  "discipline": "Critical Environment Ops",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "People Manager",
+  "worksite": "Fully on-site"
+ },
+ {
+  "id": "200040593",
+  "name": "Data Center Technician Manager",
+  "discipline": "Data Center Technicians",
+  "profession": "Data Center",
+  "emp": "Full-Time",
+  "roletype": "People Manager",
+  "worksite": "Fully on-site"
+ }
+]

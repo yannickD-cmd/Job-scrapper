@@ -85,6 +85,7 @@ COMPANY_NAMES = {
     "mckinsey": "McKinsey & Company",
     "siapartners": "Sia Partners",
     "sap": "SAP",
+    "microsoft": "Microsoft",
     "n26": "N26",
     "salesforce": "Salesforce",
     "alan": "Alan",
