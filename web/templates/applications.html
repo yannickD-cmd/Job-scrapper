@@ -19,7 +19,7 @@
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen">
 
-<header class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-6">
+<header class="w-full px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-6">
   {# ---- tab bar, shared with the offers page ---- #}
   <nav class="flex items-center gap-1 mb-6 border-b border-zinc-800">
     <a href="/" class="px-4 py-2 text-sm border-b-2 border-transparent text-zinc-400 hover:text-white">Offres</a>
@@ -76,9 +76,11 @@
   {% endif %}
 </header>
 
-<section class="max-w-7xl mx-auto px-4 sm:px-6 pb-6">
+<section class="w-full px-4 sm:px-6 lg:px-8 pb-6">
   <form method="get" action="/applications"
-        class="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] items-start bg-zinc-900/60 border border-zinc-800 rounded-2xl p-3 sm:p-4">
+        {# Controls are capped and the trailing 1fr soaks up the rest: on a wide
+           screen a full-bleed form would stretch three selects to 600px each. #}
+        class="grid min-w-0 gap-3 sm:grid-cols-[minmax(0,22rem)_minmax(0,22rem)_minmax(0,16rem)_minmax(0,1fr)] items-start bg-zinc-900/60 border border-zinc-800 rounded-2xl p-3 sm:p-4">
 
     {# ---- statut : multi-select ---- #}
     <div class="relative min-w-0 w-full">
@@ -124,15 +126,19 @@
       {% endfor %}
     </select>
 
-    <div class="sm:col-span-full grid gap-3 sm:grid-cols-[auto_auto_1fr] items-center border-t border-zinc-800 pt-3">
-      <div class="flex items-center gap-2 text-sm text-zinc-400" title="Période de candidature (applied_on), bornes incluses.">
+    {# min-w-0 on the grid and on the date row: a grid item defaults to
+       min-width:auto, and two input[type=date] have a min-content width of
+       ~150px each, so without this the row refuses to shrink, widens the whole
+       form past the viewport and pushes every card off-screen on a phone. #}
+    <div class="sm:col-span-full min-w-0 grid gap-3 sm:grid-cols-[auto_auto_1fr] items-center border-t border-zinc-800 pt-3">
+      <div class="flex flex-wrap items-center gap-2 min-w-0 text-sm text-zinc-400" title="Période de candidature (applied_on), bornes incluses.">
         <span class="text-xs text-zinc-500 whitespace-nowrap">Postulé</span>
         <input type="date" name="date_from" id="date-from" value="{{ date_from }}"
-               class="min-w-0 bg-zinc-950 border rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-zinc-600
+               class="min-w-0 flex-1 basis-32 sm:flex-none sm:basis-auto bg-zinc-950 border rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-zinc-600
                       {% if date_from %}border-sky-600 text-sky-200{% else %}border-zinc-800 text-zinc-300{% endif %}">
         <span class="text-zinc-600">→</span>
         <input type="date" name="date_to" id="date-to" value="{{ date_to }}"
-               class="min-w-0 bg-zinc-950 border rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-zinc-600
+               class="min-w-0 flex-1 basis-32 sm:flex-none sm:basis-auto bg-zinc-950 border rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-zinc-600
                       {% if date_to %}border-sky-600 text-sky-200{% else %}border-zinc-800 text-zinc-300{% endif %}">
       </div>
 
@@ -157,20 +163,55 @@
   </div>
 </section>
 
-<main class="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
-  <div class="border border-zinc-800 rounded-2xl overflow-x-auto">
-    <table class="w-full text-sm">
+<main class="w-full px-4 sm:px-6 lg:px-8 pb-24">
+  {# ---------------------------------------------------------------------
+     Two renderings of the same list, because nine columns and a phone are
+     irreconcilable. md+ gets the table; below that it becomes cards, which
+     is the only honest way to keep every field readable without a
+     horizontal scroller that hides the Société column off-screen.
+     The macros below are shared by both so the two can never drift.
+     --------------------------------------------------------------------- #}
+  {% macro status_badge(a) %}
+    {% set meta = status_meta.get(a.status, (a.status, '', '')) %}
+    <span class="inline-block text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border whitespace-nowrap {{ meta[1] }}"
+          title="{{ meta[2] }}">{{ meta[0]|upper }}</span>
+  {% endmacro %}
+
+  {% macro row_flags(a) %}
+    {% if a.pending_drafts %}
+      <span class="inline-block text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border whitespace-nowrap bg-amber-500/15 text-amber-300 border-amber-500/40"
+            title="Un mail est rédigé dans Gmail pour cette candidature mais n'a pas encore été envoyé.">BROUILLON MAIL</span>
+    {% endif %}
+    {% if a.bounced_contacts %}
+      <span class="inline-block text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border whitespace-nowrap bg-rose-500/20 text-rose-300 border-rose-500/50"
+            title="{{ a.bounced_contacts }} adresse(s) en bounce : le mail n'a jamais atteint un humain.">{{ a.bounced_contacts }} BOUNCED</span>
+    {% endif %}
+  {% endmacro %}
+
+  {# Staleness colour is a live-only signal: a rejection silent for 200 days
+     is not urgent, it is over. #}
+  {% macro stale_class(a) %}
+    {%- if a.is_live and a.days_stale is not none and a.days_stale >= 30 %}text-rose-300
+    {%- elif a.is_live and a.days_stale is not none and a.days_stale >= 7 %}text-amber-300
+    {%- else %}text-zinc-500{% endif -%}
+  {% endmacro %}
+
+  {% set divider_label = '↓ terminées, retirées, ou jamais envoyées' %}
+
+  {# ---- md+ : the table ---- #}
+  <div class="hidden md:block border border-zinc-800 rounded-2xl overflow-hidden">
+    <table class="w-full table-auto text-sm">
       <thead class="bg-zinc-900/70 text-zinc-500 text-[11px] uppercase tracking-wider">
         <tr>
-          <th class="text-left font-medium px-4 py-3">Société</th>
+          <th class="text-left font-medium px-4 py-3 w-[15%]">Société</th>
           <th class="text-left font-medium px-3 py-3">Poste</th>
-          <th class="text-left font-medium px-3 py-3 hidden lg:table-cell">Réf ATS</th>
-          <th class="text-left font-medium px-3 py-3 whitespace-nowrap">Postulé le</th>
-          <th class="text-left font-medium px-3 py-3">Statut</th>
-          <th class="text-right font-medium px-3 py-3" title="Jours écoulés depuis la dernière touche, ou depuis la candidature s'il n'y a jamais eu de touche.">Jours sans<br>nouvelle</th>
-          <th class="text-right font-medium px-3 py-3">Contacts</th>
-          <th class="text-right font-medium px-3 py-3" title="Touches entrantes de type réponse humaine ou invitation à un entretien.">Réponses<br>humaines</th>
-          <th class="text-left font-medium px-3 py-3 whitespace-nowrap hidden md:table-cell">Dernier contact</th>
+          <th class="text-left font-medium px-3 py-3 w-[9%] hidden xl:table-cell">Réf ATS</th>
+          <th class="text-left font-medium px-3 py-3 w-[8%]">Postulé le</th>
+          <th class="text-left font-medium px-3 py-3 w-[11%]">Statut</th>
+          <th class="text-right font-medium px-3 py-3 w-[7%]" title="Jours écoulés depuis la dernière touche, ou depuis la candidature s'il n'y a jamais eu de touche.">Jours sans<br>nouvelle</th>
+          <th class="text-right font-medium px-3 py-3 w-[6%]">Contacts</th>
+          <th class="text-right font-medium px-3 py-3 w-[7%]" title="Touches entrantes de type réponse humaine ou invitation à un entretien.">Réponses<br>humaines</th>
+          <th class="text-left font-medium px-3 py-3 w-[9%] hidden lg:table-cell">Dernier contact</th>
         </tr>
       </thead>
       <tbody class="divide-y divide-zinc-800/70">
@@ -181,39 +222,31 @@
           {% if ns.prev_rank is not none and ns.prev_rank == 0 and a.rank != 0 %}
             <tr class="bg-zinc-900/40">
               <td colspan="9" class="px-4 py-1.5 text-[11px] uppercase tracking-wider text-zinc-600">
-                ↓ terminées, retirées, ou jamais envoyées
+                {{ divider_label }}
               </td>
             </tr>
           {% endif %}
           {% set ns.prev_rank = a.rank %}
-          {% set meta = status_meta.get(a.status, (a.status, '', '')) %}
           <tr data-app-id="{{ a.id }}"
               class="app-row cursor-pointer hover:bg-zinc-900/60 transition
                      {% if a.status == 'draft' %}bg-amber-500/[0.07] border-l-2 border-l-amber-500{% elif not a.is_live and a.status != 'offer' %}opacity-60{% endif %}">
-            <td class="px-4 py-3 font-medium whitespace-nowrap">{{ a.company }}</td>
-            <td class="px-3 py-3 text-zinc-300 min-w-[14rem]">
+            {# No whitespace-nowrap on the two text columns: forcing them wide
+               is what pushed the table into a horizontal scroller and clipped
+               Société off the left edge. Long names wrap instead. #}
+            <td class="px-4 py-3 font-medium break-words">{{ a.company }}</td>
+            <td class="px-3 py-3 text-zinc-300 break-words">
               {{ a.role }}
-              {% if a.pending_drafts %}
-                <span class="ml-1 text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border bg-amber-500/15 text-amber-300 border-amber-500/40"
-                      title="Un mail est rédigé dans Gmail pour cette candidature mais n'a pas encore été envoyé.">BROUILLON MAIL</span>
-              {% endif %}
-              {% if a.bounced_contacts %}
-                <span class="ml-1 text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border bg-rose-500/20 text-rose-300 border-rose-500/50"
-                      title="{{ a.bounced_contacts }} adresse(s) en bounce : le mail n'a jamais atteint un humain.">{{ a.bounced_contacts }} BOUNCED</span>
-              {% endif %}
+              <span class="inline-flex flex-wrap gap-1 align-middle">{{ row_flags(a) }}</span>
             </td>
-            <td class="px-3 py-3 text-zinc-500 font-mono text-xs hidden lg:table-cell">{{ a.req_ref or '—' }}</td>
-            <td class="px-3 py-3 text-zinc-400 whitespace-nowrap">{{ a.applied_on.strftime('%Y-%m-%d') if a.applied_on else '—' }}</td>
-            <td class="px-3 py-3 whitespace-nowrap">
-              <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border {{ meta[1] }}" title="{{ meta[2] }}">{{ meta[0]|upper }}</span>
+            <td class="px-3 py-3 text-zinc-500 font-mono text-xs break-all hidden xl:table-cell">{{ a.req_ref or '—' }}</td>
+            <td class="px-3 py-3 text-zinc-400 tabular-nums">{{ a.applied_on.strftime('%Y-%m-%d') if a.applied_on else '—' }}</td>
+            <td class="px-3 py-3">
+              {{ status_badge(a) }}
               {% if a.close_reason and a.status in ('closed', 'withdrawn') %}
                 <div class="text-[10px] text-zinc-500 mt-1">{{ a.close_reason }}</div>
               {% endif %}
             </td>
-            <td class="px-3 py-3 text-right tabular-nums
-                       {% if a.is_live and a.days_stale is not none and a.days_stale >= 30 %}text-rose-300
-                       {% elif a.is_live and a.days_stale is not none and a.days_stale >= 7 %}text-amber-300
-                       {% else %}text-zinc-500{% endif %}">
+            <td class="px-3 py-3 text-right tabular-nums {{ stale_class(a) }}">
               {{ a.days_stale if a.days_stale is not none else '—' }}
             </td>
             <td class="px-3 py-3 text-right tabular-nums {% if a.contact_count %}text-zinc-300{% else %}text-zinc-600{% endif %}">
@@ -222,7 +255,7 @@
             <td class="px-3 py-3 text-right tabular-nums {% if a.human_replies %}text-emerald-300 font-medium{% else %}text-zinc-600{% endif %}">
               {{ a.human_replies }}
             </td>
-            <td class="px-3 py-3 text-zinc-400 whitespace-nowrap hidden md:table-cell">
+            <td class="px-3 py-3 text-zinc-400 tabular-nums hidden lg:table-cell">
               {{ a.last_touch_on.strftime('%Y-%m-%d') if a.last_touch_on else '—' }}
             </td>
           </tr>
@@ -232,11 +265,45 @@
       </tbody>
     </table>
   </div>
+
+  {# ---- below md : cards ---- #}
+  <div class="md:hidden space-y-2">
+    {% set ns2 = namespace(prev_rank=none) %}
+    {% for a in applications %}
+      {% if ns2.prev_rank is not none and ns2.prev_rank == 0 and a.rank != 0 %}
+        <div class="pt-3 pb-1 text-[11px] uppercase tracking-wider text-zinc-600">{{ divider_label }}</div>
+      {% endif %}
+      {% set ns2.prev_rank = a.rank %}
+      <button type="button" data-app-id="{{ a.id }}"
+              class="app-row w-full text-left border rounded-xl p-3.5 transition hover:bg-zinc-900/60
+                     {% if a.status == 'draft' %}border-amber-500/50 bg-amber-500/[0.07]{% else %}border-zinc-800 bg-zinc-900/30{% endif %}
+                     {% if not a.is_live and a.status not in ('offer', 'draft') %}opacity-60{% endif %}">
+        <div class="flex items-start justify-between gap-2">
+          <span class="font-medium break-words">{{ a.company }}</span>
+          {{ status_badge(a) }}
+        </div>
+        <div class="text-sm text-zinc-300 mt-1 break-words">{{ a.role }}</div>
+        <div class="flex flex-wrap gap-1 mt-1.5">{{ row_flags(a) }}</div>
+        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mt-2.5 pt-2.5 border-t border-zinc-800/70 text-xs text-zinc-500">
+          <span class="tabular-nums">Postulé {{ a.applied_on.strftime('%Y-%m-%d') if a.applied_on else '—' }}</span>
+          <span class="{{ stale_class(a) }} tabular-nums">
+            {{ a.days_stale if a.days_stale is not none else '—' }} j sans nouvelle
+          </span>
+          <span class="{% if a.contact_count %}text-zinc-400{% endif %} tabular-nums">{{ a.contact_count }} contact{{ 's' if a.contact_count != 1 }}</span>
+          <span class="{% if a.human_replies %}text-emerald-300 font-medium{% endif %} tabular-nums">{{ a.human_replies }} réponse{{ 's' if a.human_replies != 1 }}</span>
+          {% if a.req_ref %}<span class="font-mono break-all">{{ a.req_ref }}</span>{% endif %}
+          {% if a.close_reason and a.status in ('closed', 'withdrawn') %}<span>{{ a.close_reason }}</span>{% endif %}
+        </div>
+      </button>
+    {% else %}
+      <div class="px-5 py-12 text-center text-zinc-500 border border-zinc-800 rounded-xl">Aucune candidature ne correspond à ces filtres.</div>
+    {% endfor %}
+  </div>
 </main>
 
 <!-- Detail panel -->
 <div id="modal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start sm:items-center justify-center p-2 sm:p-4">
-  <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-3xl w-full max-h-[92vh] sm:max-h-[88vh] overflow-hidden flex flex-col">
+  <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-5xl w-full max-h-[92vh] sm:max-h-[88vh] overflow-hidden flex flex-col">
     <div class="flex items-start justify-between gap-4 px-5 sm:px-6 py-4 border-b border-zinc-800">
       <div class="min-w-0">
         <div id="m-role" class="text-lg sm:text-xl font-semibold leading-tight"></div>
