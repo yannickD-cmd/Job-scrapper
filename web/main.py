@@ -10,13 +10,24 @@ Routes:
   POST /api/jobs/{id}/to-apply          toggle the "to apply" flag from the modal
   POST /api/run/{company}               dispatch scrape-one.yml on GitHub Actions
   GET  /api/run/{run_id}/status         poll run status + log tail when finished
-  GET  /applications                    application tracker page with filters
-  GET  /api/applications/{id}           JSON payload for the tracker detail panel
+  GET    /applications                  application tracker page with filters
+  GET    /api/applications/{id}         JSON payload for the tracker detail panel
+  POST   /api/applications              create a candidature by hand
+  PATCH  /api/applications/{id}         edit any field, including the status
+  POST   /api/applications/{id}/contacts       attach (or create) a person
+  DELETE /api/applications/{id}/contacts/{cid} detach a person
+  PATCH  /api/contacts/{id}             edit a person (notably email_status)
+  POST   /api/applications/{id}/touches log an exchange
+  PATCH  /api/touches/{id}              edit one (usually draft -> sent)
+  DELETE /api/touches/{id}              undo a mis-logged exchange
 
-The /applications routes are strictly READ ONLY. The four tracker tables are
-written from outside this repo (a Cowork session sweeps Gmail and runs SQL in
-the Supabase editor), so there is deliberately no POST/PATCH/PUT against them
-here — see web/applications.py.
+The tracker tables are edited from two places that hold identical rights: this
+dashboard, by hand, and a Cowork session running SQL in the Supabase editor
+when there are dozens to process at once. Neither can do more than the other.
+
+The tracker is independent of the scraper: `jobs` and `applications` share no
+key, because most openings are found on LinkedIn, WTTJ or by referral rather
+than by a scraper. The offer is just a URL on the candidature.
 """
 from __future__ import annotations
 
@@ -37,6 +48,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import db  # noqa: E402
 from run import COMPANY_NAMES  # noqa: E402
 from web import applications as apps  # noqa: E402
+from web import tracker_write as tw  # noqa: E402
 from web.filters import (  # noqa: E402
     DATE_CHURN_COMPANIES,
     REGION_KEYS,
@@ -607,6 +619,15 @@ def applications_page(
         "awaiting": awaiting,
         "result_count": len(visible),
         "live_count": sum(1 for r in visible if r["is_live"]),
+        # Vocabularies for the add/edit forms, straight from the write layer so
+        # a dropdown can never offer a value the validator would reject.
+        "sources": tw.SOURCES,
+        "close_reasons": tw.CLOSE_REASONS,
+        "roles_in_process": tw.ROLES_IN_PROCESS,
+        "touch_kinds": tw.TOUCH_KINDS,
+        "channels": sorted(tw.CHANNELS),
+        "email_statuses": sorted(tw.EMAIL_STATUSES),
+        "today": date.today().isoformat(),
     })
 
 
@@ -618,19 +639,105 @@ def application_detail(application_id: int):
             raise HTTPException(status_code=404, detail="Application not found")
         contacts = apps.fetch_contacts(cur, application_id)
         timeline = apps.fetch_timeline(cur, application_id)
-        # job_id is NULL for most rows (no scraper for that company, or no
-        # confident match) — the panel just omits the description section.
-        job = (
-            _job_description_payload(cur, application["job_id"])
-            if application["job_id"] else None
-        )
 
     return JSONResponse({
         "application": application,
-        "job": job,
         "contacts": contacts,
         "timeline": timeline,
     })
+
+
+# ---------------------------------------------------------------------------
+# Tracker writes — the "advanced sheet" half of the Candidatures tab.
+#
+# The dashboard is no longer read-only on these four tables: adding a
+# candidature, moving a status and recording who was contacted all happen here,
+# by hand. A Cowork mailbox sweep does the same things in bulk through SQL and
+# holds no privilege these endpoints do not.
+#
+# There is no DELETE on an application on purpose — a dead candidature is
+# marked rejected/closed/withdrawn and filtered out, never destroyed. See
+# web/tracker_write.py.
+# ---------------------------------------------------------------------------
+def _write(fn, *args, **kwargs):
+    """Run one write in its own transaction and translate the failure modes.
+
+    ValidationError -> 400 with the offending field named.
+    ConflictError   -> 409 (a UNIQUE index, e.g. the same company+role+date).
+    Anything else propagates as a 500, because it is a bug, not bad input.
+    """
+    try:
+        with db.get_connection() as conn, conn.cursor() as cur:
+            result = fn(cur, *args, **kwargs)
+            conn.commit()
+            return result
+    except tw.ConflictError as exc:
+        raise HTTPException(status_code=409, detail=str(exc)) from None
+    except tw.ValidationError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from None
+
+
+@app.post("/api/applications")
+async def create_application(request: Request):
+    payload = await request.json()
+    new_id = _write(tw.create_application, payload)
+    return JSONResponse({"id": new_id}, status_code=201)
+
+
+@app.patch("/api/applications/{application_id}")
+async def update_application(application_id: int, request: Request):
+    payload = await request.json()
+    if not _write(tw.update_application, application_id, payload):
+        raise HTTPException(status_code=404, detail="Application not found")
+    return JSONResponse({"ok": True})
+
+
+@app.post("/api/applications/{application_id}/contacts")
+async def add_contact(application_id: int, request: Request):
+    payload = await request.json()
+    contact_id, created = _write(tw.attach_contact, application_id, payload)
+    return JSONResponse({"contact_id": contact_id, "created": created},
+                        status_code=201)
+
+
+@app.delete("/api/applications/{application_id}/contacts/{contact_id}")
+def remove_contact(application_id: int, contact_id: int):
+    """Detach only: the person stays on file for other candidatures."""
+    if not _write(tw.detach_contact, application_id, contact_id):
+        raise HTTPException(status_code=404, detail="Contact not linked")
+    return JSONResponse({"ok": True})
+
+
+@app.patch("/api/contacts/{contact_id}")
+async def update_contact(contact_id: int, request: Request):
+    payload = await request.json()
+    if not _write(tw.update_contact, contact_id, payload):
+        raise HTTPException(status_code=404, detail="Contact not found")
+    return JSONResponse({"ok": True})
+
+
+@app.post("/api/applications/{application_id}/touches")
+async def add_touch(application_id: int, request: Request):
+    payload = await request.json()
+    touch_id = _write(tw.create_touch, application_id, payload)
+    return JSONResponse({"id": touch_id}, status_code=201)
+
+
+@app.patch("/api/touches/{touch_id}")
+async def update_touch(touch_id: int, request: Request):
+    """Mostly {"state": "sent"} — a drafted relance actually went out."""
+    payload = await request.json()
+    if not _write(tw.update_touch, touch_id, payload):
+        raise HTTPException(status_code=404, detail="Touch not found")
+    return JSONResponse({"ok": True})
+
+
+@app.delete("/api/touches/{touch_id}")
+def remove_touch(touch_id: int):
+    """Undo a mis-logged exchange — it would skew days_stale permanently."""
+    if not _write(tw.delete_touch, touch_id):
+        raise HTTPException(status_code=404, detail="Touch not found")
+    return JSONResponse({"ok": True})
 
 
 @app.get("/healthz")

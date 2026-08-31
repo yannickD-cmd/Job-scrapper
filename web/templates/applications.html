@@ -10,11 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     html, body { font-family: 'Inter', system-ui, sans-serif; }
-    .job-desc :where(p, ul, ol) { margin-bottom: 0.75rem; }
-    .job-desc ul { list-style: disc; padding-left: 1.25rem; }
-    .job-desc ol { list-style: decimal; padding-left: 1.25rem; }
-    .job-desc a { color: #a5b4fc; text-decoration: underline; }
-    .job-desc h1, .job-desc h2, .job-desc h3 { font-weight: 600; margin: 1rem 0 0.5rem; }
   </style>
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen">
@@ -66,15 +61,97 @@
 
   {# Drafts are an action to take, not a state to archive — surfaced next to
      the stats rather than buried in the list. #}
-  {% if stats.draft %}
-    <a href="/applications?status=draft"
-       class="inline-flex items-center gap-2 mt-5 border border-amber-500/50 bg-amber-500/10 text-amber-300 rounded-lg px-3 py-2 text-sm hover:bg-amber-500/20">
-      <span aria-hidden="true">✎</span>
-      <span><strong>{{ stats.draft }}</strong> candidature{{ 's' if stats.draft > 1 else '' }} jamais finalisée{{ 's' if stats.draft > 1 else '' }}</span>
-      <span class="text-amber-400/70 text-xs">— à terminer</span>
-    </a>
-  {% endif %}
+  <div class="flex flex-wrap items-center gap-3 mt-5">
+    <button type="button" id="add-btn"
+            class="inline-flex items-center gap-2 bg-white text-zinc-900 rounded-lg px-4 py-2 text-sm font-medium hover:bg-zinc-200">
+      <span aria-hidden="true">+</span> Ajouter une candidature
+    </button>
+
+    {% if stats.draft %}
+      <a href="/applications?status=draft"
+         class="inline-flex items-center gap-2 border border-amber-500/50 bg-amber-500/10 text-amber-300 rounded-lg px-3 py-2 text-sm hover:bg-amber-500/20">
+        <span aria-hidden="true">✎</span>
+        <span><strong>{{ stats.draft }}</strong> candidature{{ 's' if stats.draft > 1 else '' }} jamais finalisée{{ 's' if stats.draft > 1 else '' }}</span>
+        <span class="text-amber-400/70 text-xs">— à terminer</span>
+      </a>
+    {% endif %}
+  </div>
 </header>
+
+{# ---- Ajouter une candidature. Only company and role are required: an offer
+       spotted on LinkedIn is worth recording before you know the ATS
+       reference, or even whether you will apply (status "Brouillon"). ---- #}
+<div id="add-modal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start sm:items-center justify-center p-2 sm:p-4">
+  <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full max-h-[92vh] overflow-hidden flex flex-col">
+    <div class="flex items-start justify-between gap-4 px-5 sm:px-6 py-4 border-b border-zinc-800">
+      <div>
+        <div class="text-lg font-semibold">Ajouter une candidature</div>
+        <div class="text-xs text-zinc-500 mt-0.5">Société et poste suffisent — le reste peut venir plus tard.</div>
+      </div>
+      <button type="button" data-close="add-modal" class="text-zinc-500 hover:text-white text-2xl leading-none">&times;</button>
+    </div>
+    <form id="add-form" class="px-5 sm:px-6 py-5 overflow-y-auto flex-1 grid gap-3 sm:grid-cols-2 text-sm">
+      <label class="grid gap-1 sm:col-span-2">
+        <span class="text-xs text-zinc-500">Lien de l'offre</span>
+        <input name="apply_url" type="url" placeholder="https://…"
+               class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 focus:outline-none focus:border-zinc-600">
+      </label>
+      <label class="grid gap-1">
+        <span class="text-xs text-zinc-500">Société <span class="text-rose-400">*</span></span>
+        <input name="company" required
+               class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 focus:outline-none focus:border-zinc-600">
+      </label>
+      <label class="grid gap-1">
+        <span class="text-xs text-zinc-500">Poste <span class="text-rose-400">*</span></span>
+        <input name="role" required
+               class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 focus:outline-none focus:border-zinc-600">
+      </label>
+      <label class="grid gap-1">
+        <span class="text-xs text-zinc-500">Réf ATS</span>
+        <input name="req_ref" placeholder="R169232, 2026-131466…"
+               class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 focus:outline-none focus:border-zinc-600">
+      </label>
+      <label class="grid gap-1">
+        <span class="text-xs text-zinc-500">Source</span>
+        <select name="source" class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 focus:outline-none focus:border-zinc-600">
+          <option value="">—</option>
+          {% for s in sources %}<option value="{{ s }}">{{ s }}</option>{% endfor %}
+        </select>
+      </label>
+      <label class="grid gap-1">
+        <span class="text-xs text-zinc-500">Postulé le</span>
+        <input name="applied_on" type="date" value="{{ today }}"
+               class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 focus:outline-none focus:border-zinc-600">
+      </label>
+      <label class="grid gap-1">
+        <span class="text-xs text-zinc-500">Statut</span>
+        <select name="status" class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 focus:outline-none focus:border-zinc-600">
+          {% for key in status_order %}
+            <option value="{{ key }}" {% if key == 'applied' %}selected{% endif %}>{{ status_meta[key][0] }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label class="grid gap-1 sm:col-span-2">
+        <span class="text-xs text-zinc-500">Lien du CV envoyé</span>
+        <input name="resume_url" type="url" placeholder="https://…"
+               class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 focus:outline-none focus:border-zinc-600">
+      </label>
+      <label class="grid gap-1 sm:col-span-2">
+        <span class="text-xs text-zinc-500">Notes</span>
+        <textarea name="notes" rows="3"
+                  class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 focus:outline-none focus:border-zinc-600"></textarea>
+      </label>
+      <div id="add-error" class="hidden sm:col-span-2 text-sm text-rose-300 bg-rose-500/10 border border-rose-500/30 rounded-lg px-3 py-2"></div>
+    </form>
+    <div class="px-5 sm:px-6 py-4 border-t border-zinc-800 flex justify-end gap-3">
+      <button type="button" data-close="add-modal" class="px-3 py-2 rounded-lg text-sm text-zinc-400 hover:text-white">Annuler</button>
+      <button type="submit" form="add-form" id="add-submit"
+              class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-200 disabled:opacity-50">
+        Enregistrer
+      </button>
+    </div>
+  </div>
+</div>
 
 <section class="w-full px-4 sm:px-6 lg:px-8 pb-6">
   <form method="get" action="/applications"
@@ -316,6 +393,20 @@
 </div>
 
 <script>
+  // Vocabularies come from web/tracker_write.py via the route, so the forms
+  // and the validator can never disagree about what a valid value is.
+  const VOCAB = {
+    statuses:      {{ status_order|tojson }},
+    statusMeta:    {{ status_meta|tojson }},
+    sources:       {{ sources|tojson }},
+    closeReasons:  {{ close_reasons|tojson }},
+    rolesInProcess:{{ roles_in_process|tojson }},
+    touchKinds:    {{ touch_kinds|tojson }},
+    channels:      {{ channels|tojson }},
+    emailStatuses: {{ email_statuses|tojson }},
+    today:         {{ today|tojson }},
+  };
+
   // --- status multi-select ---
   const statusBtn = document.getElementById('status-btn');
   const statusDropdown = document.getElementById('status-dropdown');
@@ -356,70 +447,89 @@
       ${inner}
     </section>`;
 
-  // --- 1. header block -------------------------------------------------------
-  function renderHeader(a) {
-    const rows = [
-      ['Société', esc(a.company)],
-      ['Réf ATS', a.req_ref ? `<span class="font-mono text-xs">${esc(a.req_ref)}</span>` : '<span class="text-zinc-600">—</span>'],
-      ['Postulé le', esc(or(a.applied_on, '—'))],
-      ['Statut depuis', esc(or(a.status_since, '—'))],
-      ['Source', esc(or(a.source, '—'))],
-    ];
-    if (a.close_reason) {
-      // Spelled out, because `closed` and `rejected` mean opposite things
-      // about the candidate and the raw enum does not say so.
-      const explain = a.status === 'closed'
-        ? "la requisition est morte — ce n'est pas un refus"
-        : (a.status === 'rejected' ? 'refus explicite' : '');
-      rows.push(['Motif', `${esc(a.close_reason)}${explain ? ` <span class="text-zinc-500">— ${esc(explain)}</span>` : ''}`]);
+  // --- write helpers ---------------------------------------------------------
+  async function api(method, url, body) {
+    const init = { method };
+    if (body !== undefined) {
+      init.headers = { 'Content-Type': 'application/json' };
+      init.body = JSON.stringify(body);
     }
-    const links = [];
-    if (a.apply_url) {
-      links.push(`<a href="${esc(a.apply_url)}" target="_blank" rel="noopener"
-         class="text-indigo-300 hover:text-indigo-200 underline">Voir l'offre →</a>${
-         a.apply_url_from_job ? '<span class="text-zinc-600 text-xs ml-1">(lien de l\'offre scrapée)</span>' : ''}`);
+    const r = await fetch(url, init);
+    if (!r.ok) {
+      // tracker_write.py names the offending field in `detail`; show that
+      // rather than a bare status code.
+      let detail = 'Erreur ' + r.status;
+      try { const j = await r.json(); if (j && j.detail) detail = j.detail; } catch (_) {}
+      throw new Error(detail);
     }
-    if (a.resume_url) {
-      links.push(`<a href="${esc(a.resume_url)}" target="_blank" rel="noopener"
-         class="text-indigo-300 hover:text-indigo-200 underline">CV envoyé →</a>`);
-    }
+    try { return await r.json(); } catch (_) { return null; }
+  }
+
+  // A write from the panel moves the row's staleness, its counters and the
+  // stat band. Rather than patch the table in place and risk showing numbers
+  // the database disagrees with, the page reloads once the panel closes.
+  let listStale = false;
+
+  const INPUT = 'w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600';
+
+  const opts = (values, selected, blank) => (
+    (blank ? '<option value="">' + esc(blank) + '</option>' : '') +
+    values.map(v => '<option value="' + esc(v) + '"' +
+      (v === selected ? ' selected' : '') + '>' + esc(v) + '</option>').join('')
+  );
+
+  const field = (label, inner, span) => `
+    <label class="grid gap-1 ${span || ''}">
+      <span class="text-xs text-zinc-500">${esc(label)}</span>
+      ${inner}
+    </label>`;
+
+  // Read a form into a plain object. Empty strings are kept, not dropped:
+  // clearing a field must actually clear it, and the server maps '' to NULL.
+  const formData = (form) => Object.fromEntries(new FormData(form).entries());
+
+  function flash(el, message, ok) {
+    if (!el) return;
+    el.textContent = message;
+    el.className = 'form-msg text-xs ' + (ok ? 'text-emerald-300' : 'text-rose-300');
+    if (ok) setTimeout(() => { el.textContent = ''; }, 2500);
+  }
+
+  // --- 1. the candidature itself, editable ------------------------------------
+  function renderApplicationForm(a) {
+    const statusOptions = VOCAB.statuses.map(k =>
+      '<option value="' + esc(k) + '"' + (k === a.status ? ' selected' : '') +
+      '>' + esc(VOCAB.statusMeta[k][0]) + '</option>').join('');
     return section('Candidature', `
-      <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-sm">
-        ${rows.map(([k, v]) => `
-          <dt class="text-zinc-500">${esc(k)}</dt><dd class="text-zinc-200">${v}</dd>`).join('')}
-      </dl>
-      ${links.length ? `<div class="flex flex-wrap gap-4 mt-4 text-sm">${links.join('')}</div>` : ''}
-      ${a.notes ? `<p class="mt-4 text-zinc-400 border-l-2 border-zinc-700 pl-3">${esc(a.notes)}</p>` : ''}
-    `);
+      <form id="app-form" data-id="${a.id}" class="grid gap-3 sm:grid-cols-2">
+        ${field('Société', `<input name="company" required value="${esc(a.company)}" class="${INPUT}">`)}
+        ${field('Poste', `<input name="role" required value="${esc(a.role)}" class="${INPUT}">`)}
+        ${field('Lien de l’offre', `<input name="apply_url" type="url" value="${esc(or(a.apply_url, ''))}" class="${INPUT}">`, 'sm:col-span-2')}
+        ${field('Réf ATS', `<input name="req_ref" value="${esc(or(a.req_ref, ''))}" class="${INPUT}">`)}
+        ${field('Source', `<select name="source" class="${INPUT}">${opts(VOCAB.sources, a.source, '—')}</select>`)}
+        ${field('Postulé le', `<input name="applied_on" type="date" value="${esc(or(a.applied_on, ''))}" class="${INPUT}">`)}
+        ${field('Statut', `<select name="status" class="${INPUT}">${statusOptions}</select>`)}
+        ${field('Statut depuis', `<input name="status_since" type="date" value="${esc(or(a.status_since, ''))}" class="${INPUT}">`)}
+        ${field('Motif de fin', `<select name="close_reason" class="${INPUT}">${opts(VOCAB.closeReasons, a.close_reason, '—')}</select>`)}
+        ${field('Lien du CV envoyé', `<input name="resume_url" type="url" value="${esc(or(a.resume_url, ''))}" class="${INPUT}">`, 'sm:col-span-2')}
+        ${field('Notes', `<textarea name="notes" rows="3" class="${INPUT}">${esc(or(a.notes, ''))}</textarea>`, 'sm:col-span-2')}
+        <div class="sm:col-span-2 flex flex-wrap items-center gap-3">
+          <button type="submit" class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-200">Enregistrer</button>
+          ${a.apply_url ? `<a href="${esc(a.apply_url)}" target="_blank" rel="noopener" class="text-sm text-indigo-300 hover:text-indigo-200 underline">Voir l’offre →</a>` : ''}
+          ${a.resume_url ? `<a href="${esc(a.resume_url)}" target="_blank" rel="noopener" class="text-sm text-indigo-300 hover:text-indigo-200 underline">CV envoyé →</a>` : ''}
+          <span class="form-msg text-xs"></span>
+        </div>
+        <p class="sm:col-span-2 text-xs text-zinc-600">
+          Le motif de fin ne vaut que pour Refusée, Req. fermée et Retirée : si la candidature repart, il est effacé.
+          Changer le statut remet « statut depuis » à aujourd’hui, sauf si tu renseignes la date toi-même.
+        </p>
+      </form>`);
   }
 
-  // --- 2. the scraped offer --------------------------------------------------
-  function renderJob(job) {
-    if (!job) {
-      return section('L’offre', `
-        <p class="text-zinc-500">Pas d’offre scrapée rattachée à cette candidature — soit la société n’a pas de scraper, soit aucun rapprochement sûr n’a été trouvé.</p>`);
-    }
-    const dateLabel = job.base_date
-      ? (job.date_churned ? `premier suivi ${job.base_date}` : job.base_date)
-      : null;
-    const meta = [job.location, job.category, dateLabel].filter(Boolean).map(esc).join(' · ');
-    return section('L’offre', `
-      <div class="text-zinc-300 font-medium">${esc(job.title)}</div>
-      <div class="text-xs text-zinc-500 mt-0.5 mb-3">${meta}${job.still_open ? '' : ' · <span class="text-zinc-400">FERMÉE</span>'}</div>
-      <div class="job-desc text-zinc-300 leading-relaxed border border-zinc-800 rounded-xl p-4 max-h-80 overflow-y-auto"></div>`);
-  }
-
-  // --- 3. contacts — the section this whole page exists for ------------------
+  // --- 2. contacts — the section this whole page exists for --------------------
   function renderContacts(contacts) {
-    if (!contacts.length) {
-      return section('Contacts', '<p class="text-zinc-500">Aucun contact rattaché.</p>');
-    }
     const replied = contacts.filter(c => c.got_human_reply).length;
     const cards = contacts.map(c => {
-      // Label, colours and tooltip all come from EMAIL_STATUS_META in
-      // web/applications.py — the same table the list page renders from. A
-      // second copy here would be one more thing to keep in step when a new
-      // address state appears.
       const badge = c.email_badge;
       const silence = c.days_since_last_contact;
       return `
@@ -432,13 +542,13 @@
               ${c.has_pending_draft ? `<span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border bg-amber-500/15 text-amber-300 border-amber-500/40">BROUILLON EN ATTENTE</span>` : ''}
             </div>
             <div class="text-xs text-zinc-500 mt-0.5">
-              ${esc(or(c.title, 'titre inconnu'))}${c.role_in_process ? ` · ${esc(c.role_in_process)}` : ''}
+              ${esc(or(c.title, 'titre inconnu'))}${c.role_in_process ? ' · ' + esc(c.role_in_process) : ''}
             </div>
             ${c.email ? `<div class="text-xs font-mono mt-1 ${c.email_status === 'bounced' ? 'text-rose-400 line-through' : 'text-zinc-400'}">${esc(c.email)}</div>` : ''}
           </div>
           <div class="text-right shrink-0">
             ${c.got_human_reply
-              ? `<span class="text-[10px] tracking-wider font-semibold px-2 py-1 rounded border bg-emerald-500/15 text-emerald-300 border-emerald-500/40">A RÉPONDU${c.replied_on ? ` · ${esc(c.replied_on)}` : ''}</span>`
+              ? `<span class="text-[10px] tracking-wider font-semibold px-2 py-1 rounded border bg-emerald-500/15 text-emerald-300 border-emerald-500/40">A RÉPONDU${c.replied_on ? ' · ' + esc(c.replied_on) : ''}</span>`
               : `<span class="text-[10px] tracking-wider font-semibold px-2 py-1 rounded border bg-zinc-800 text-zinc-500 border-zinc-700">SANS RÉPONSE</span>`}
           </div>
         </div>
@@ -447,31 +557,50 @@
           <div><div class="text-zinc-600">Dernier</div><div class="text-zinc-300">${esc(or(c.last_contacted_on, '—'))}</div></div>
           <div><div class="text-zinc-600">Emails</div><div class="text-zinc-300 tabular-nums">${esc(c.emails_sent)}</div></div>
           <div><div class="text-zinc-600">Relances</div><div class="text-zinc-300 tabular-nums">${esc(c.relances_sent)}</div></div>
-          <div><div class="text-zinc-600">Silence</div><div class="tabular-nums ${
-            !c.got_human_reply && silence !== null && silence >= 14 ? 'text-amber-300' : 'text-zinc-300'
-          }">${silence === null || silence === undefined ? '—' : esc(silence) + ' j'}</div></div>
+          <div><div class="text-zinc-600">Silence</div><div class="tabular-nums ${!c.got_human_reply && silence !== null && silence >= 14 ? 'text-amber-300' : 'text-zinc-300'}">${silence === null || silence === undefined ? '—' : esc(silence) + ' j'}</div></div>
         </div>
-        ${c.email_status === 'bounced'
-          ? `<p class="text-xs text-rose-400/90 mt-3">Le mail n’a jamais atteint un humain : le silence de ce contact ne veut rien dire.</p>` : ''}
+        ${c.email_status === 'bounced' ? `<p class="text-xs text-rose-400/90 mt-3">Le mail n’a jamais atteint un humain : le silence de ce contact ne veut rien dire.</p>` : ''}
+        <div class="flex flex-wrap items-center gap-2 mt-3 pt-3 border-t border-zinc-800/70 text-xs">
+          <span class="text-zinc-600">État de l’adresse</span>
+          <select class="email-status bg-zinc-950 border border-zinc-800 rounded-lg px-2 py-1 text-xs focus:outline-none focus:border-zinc-600"
+                  data-contact-id="${c.contact_id}">
+            ${opts(VOCAB.emailStatuses, c.email_status)}
+          </select>
+          <button type="button" class="detach-contact ml-auto text-zinc-600 hover:text-rose-300"
+                  data-contact-id="${c.contact_id}" data-name="${esc(c.full_name)}"
+                  title="Détacher de cette candidature. La personne reste enregistrée pour les autres.">Détacher</button>
+        </div>
       </div>`;
     }).join('');
-    return section('Contacts', `<div class="grid gap-3">${cards}</div>`,
-      `${contacts.length} contact${contacts.length > 1 ? 's' : ''} · ${replied} réponse${replied > 1 ? 's' : ''} humaine${replied > 1 ? 's' : ''}`);
+
+    const addForm = `
+      <form id="contact-form" class="border border-dashed border-zinc-700 rounded-xl p-3.5 grid gap-3 sm:grid-cols-2 mt-3">
+        <div class="sm:col-span-2 text-xs text-zinc-500">Ajouter une personne contactée</div>
+        ${field('Nom', `<input name="full_name" required class="${INPUT}">`)}
+        ${field('Email', `<input name="email" type="email" class="${INPUT}">`)}
+        ${field('Titre / poste', `<input name="title" class="${INPUT}">`)}
+        ${field('Rôle dans le process', `<select name="role_in_process" class="${INPUT}">${opts(VOCAB.rolesInProcess, null, '—')}</select>`)}
+        ${field('LinkedIn', `<input name="linkedin_url" type="url" class="${INPUT}">`, 'sm:col-span-2')}
+        <div class="sm:col-span-2 flex flex-wrap items-center gap-3">
+          <button type="submit" class="border border-zinc-700 text-zinc-200 px-3 py-1.5 rounded-lg text-sm hover:border-zinc-500">Ajouter le contact</button>
+          <span class="form-msg text-xs"></span>
+          <span class="text-xs text-zinc-600">Une adresse déjà connue réutilise la fiche existante.</span>
+        </div>
+      </form>`;
+
+    return section('Contacts',
+      (contacts.length ? `<div class="grid gap-3">${cards}</div>` : '<p class="text-zinc-500">Aucun contact rattaché.</p>') + addForm,
+      contacts.length ? `${contacts.length} contact${contacts.length > 1 ? 's' : ''} · ${replied} réponse${replied > 1 ? 's' : ''} humaine${replied > 1 ? 's' : ''}` : '');
   }
 
-  // --- 4. timeline -----------------------------------------------------------
-  function renderTimeline(timeline) {
-    if (!timeline.length) {
-      return section('Historique', '<p class="text-zinc-500">Aucune touche enregistrée.</p>');
-    }
+  // --- 3. timeline ------------------------------------------------------------
+  function renderTimeline(timeline, contacts) {
     const items = timeline.map(t => {
       const isDraft = t.state === 'draft';
       const outgoing = t.direction === 'out';
       return `
       <li class="flex gap-3 ${isDraft ? 'italic' : ''}">
-        <div class="shrink-0 mt-0.5 w-5 text-center ${
-          isDraft ? 'text-amber-400' : (outgoing ? 'text-sky-400' : 'text-emerald-400')
-        }" title="${outgoing ? 'sortant' : 'entrant'}">${outgoing ? '↑' : '↓'}</div>
+        <div class="shrink-0 mt-0.5 w-5 text-center ${isDraft ? 'text-amber-400' : (outgoing ? 'text-sky-400' : 'text-emerald-400')}" title="${outgoing ? 'sortant' : 'entrant'}">${outgoing ? '↑' : '↓'}</div>
         <div class="min-w-0 flex-1 pb-4 border-b border-zinc-800/60">
           <div class="flex items-baseline gap-2 flex-wrap ${isDraft ? 'text-amber-300' : ''}">
             <span class="${isDraft ? 'text-amber-300' : 'text-zinc-300'} tabular-nums text-xs">${esc(or(t.occurred_on, '—'))}</span>
@@ -480,42 +609,159 @@
             ${t.channel && t.channel !== 'email' ? `<span class="text-xs text-zinc-600">· ${esc(t.channel)}</span>` : ''}
             ${isDraft ? `<span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border bg-amber-500/15 text-amber-300 border-amber-500/40 not-italic">BROUILLON — NON ENVOYÉ</span>` : ''}
             ${isDraft && t.due_on ? `<span class="text-xs text-amber-400/80">à envoyer le ${esc(t.due_on)}</span>` : ''}
+            <span class="ml-auto flex items-center gap-2 not-italic">
+              ${isDraft ? `<button type="button" class="touch-sent text-xs text-emerald-300 hover:text-emerald-200" data-touch-id="${t.id}" title="Le brouillon est parti : il compte à partir de maintenant dans le calcul du silence.">Marquer envoyé</button>` : ''}
+              <button type="button" class="touch-del text-xs text-zinc-600 hover:text-rose-300" data-touch-id="${t.id}" title="Supprimer cet échange (saisie erronée).">×</button>
+            </span>
           </div>
           ${t.subject ? `<div class="text-sm mt-1 ${isDraft ? 'text-amber-200/90' : 'text-zinc-200'}">${esc(t.subject)}</div>` : ''}
           ${t.excerpt ? `<p class="text-xs mt-1 ${isDraft ? 'text-amber-200/70' : 'text-zinc-500'} leading-relaxed">${esc(t.excerpt)}</p>` : ''}
         </div>
       </li>`;
     }).join('');
-    return section('Historique', `<ul class="space-y-4">${items}</ul>`,
-      `${timeline.length} touche${timeline.length > 1 ? 's' : ''}, plus récente en premier`);
+
+    const contactOptions = '<option value="">— aucun contact —</option>' +
+      contacts.map(c => '<option value="' + esc(c.contact_id) + '">' + esc(c.full_name) + '</option>').join('');
+
+    const addForm = `
+      <form id="touch-form" class="border border-dashed border-zinc-700 rounded-xl p-3.5 grid gap-3 sm:grid-cols-2 mt-4">
+        <div class="sm:col-span-2 text-xs text-zinc-500">Enregistrer un échange</div>
+        ${field('Sens', `<select name="direction" class="${INPUT}"><option value="out">Sortant — j’ai écrit</option><option value="in">Entrant — j’ai reçu</option></select>`)}
+        ${field('Type', `<select name="kind" class="${INPUT}">${opts(VOCAB.touchKinds, 'cold_email', '—')}</select>`)}
+        ${field('Date', `<input name="occurred_on" type="date" value="${esc(VOCAB.today)}" class="${INPUT}">`)}
+        ${field('Contact', `<select name="contact_id" class="${INPUT}">${contactOptions}</select>`)}
+        ${field('Canal', `<select name="channel" class="${INPUT}">${opts(VOCAB.channels, 'email')}</select>`)}
+        ${field('État', `<select name="state" class="${INPUT}"><option value="sent">Envoyé</option><option value="draft">Brouillon — pas encore envoyé</option></select>`)}
+        ${field('Objet', `<input name="subject" class="${INPUT}">`, 'sm:col-span-2')}
+        ${field('Extrait', `<textarea name="excerpt" rows="2" class="${INPUT}"></textarea>`, 'sm:col-span-2')}
+        <div class="sm:col-span-2 flex flex-wrap items-center gap-3">
+          <button type="submit" class="border border-zinc-700 text-zinc-200 px-3 py-1.5 rounded-lg text-sm hover:border-zinc-500">Enregistrer l’échange</button>
+          <span class="form-msg text-xs"></span>
+          <span class="text-xs text-zinc-600">Un brouillon ne compte pas dans le calcul du silence.</span>
+        </div>
+      </form>`;
+
+    return section('Historique',
+      (timeline.length ? `<ul class="space-y-4">${items}</ul>` : '<p class="text-zinc-500">Aucune touche enregistrée.</p>') + addForm,
+      timeline.length ? `${timeline.length} touche${timeline.length > 1 ? 's' : ''}, plus récente en premier` : '');
   }
 
-  document.querySelectorAll('.app-row').forEach(row => {
-    row.addEventListener('click', async () => {
-      const id = row.dataset.appId;
-      mRole.textContent = 'Chargement…';
-      mMeta.textContent = '';
-      mBody.textContent = 'Chargement…';
-      modal.classList.remove('hidden');
-      try {
-        const r = await fetch(`/api/applications/${id}`);
-        if (!r.ok) throw new Error('fetch failed');
-        const d = await r.json();
-        const a = d.application;
-        mRole.textContent = a.role;
-        mMeta.innerHTML = `${esc(a.company)} · <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border ${a.status_badge}" title="${esc(a.status_tip)}">${esc(a.status_label).toUpperCase()}</span>`;
-        mBody.innerHTML = renderHeader(a) + renderJob(d.job)
-                        + renderContacts(d.contacts) + renderTimeline(d.timeline);
-        // Scraper HTML, injected the same way the offers tab injects it.
-        const descBox = mBody.querySelector('.job-desc');
-        if (descBox && d.job) {
-          descBox.innerHTML = d.job.description
-            || '<span class="text-zinc-500">Aucune description capturée pour cette offre.</span>';
-        }
-      } catch (e) {
-        mBody.textContent = 'Échec du chargement du détail.';
+  // --- detail panel -----------------------------------------------------------
+  let currentAppId = null;
+
+  async function openDetail(id) {
+    currentAppId = id;
+    mRole.textContent = 'Chargement…';
+    mMeta.textContent = '';
+    mBody.textContent = 'Chargement…';
+    modal.classList.remove('hidden');
+    try {
+      const d = await api('GET', `/api/applications/${id}`);
+      const a = d.application;
+      mRole.textContent = a.role;
+      mMeta.innerHTML = `${esc(a.company)} · <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border ${a.status_badge}" title="${esc(a.status_tip)}">${esc(a.status_label).toUpperCase()}</span>`;
+      mBody.innerHTML = renderApplicationForm(a) + renderContacts(d.contacts)
+                      + renderTimeline(d.timeline, d.contacts);
+    } catch (e) {
+      mBody.textContent = 'Échec du chargement du détail : ' + e.message;
+    }
+  }
+
+  // One delegated listener per event on the panel body: the markup is rebuilt
+  // after every write, so binding per element would leak handlers each refresh.
+  mBody.addEventListener('submit', async (e) => {
+    const form = e.target;
+    e.preventDefault();
+    const msg = form.querySelector('.form-msg');
+    const submit = form.querySelector('button[type="submit"]');
+    if (submit) submit.disabled = true;
+    try {
+      if (form.id === 'app-form') {
+        await api('PATCH', `/api/applications/${currentAppId}`, formData(form));
+      } else if (form.id === 'contact-form') {
+        await api('POST', `/api/applications/${currentAppId}/contacts`, formData(form));
+      } else if (form.id === 'touch-form') {
+        await api('POST', `/api/applications/${currentAppId}/touches`, formData(form));
+      } else { return; }
+      listStale = true;
+      flash(msg, 'Enregistré.', true);
+      await openDetail(currentAppId);
+    } catch (err) {
+      flash(msg, err.message, false);
+    } finally {
+      if (submit) submit.disabled = false;
+    }
+  });
+
+  mBody.addEventListener('change', async (e) => {
+    if (!e.target.classList.contains('email-status')) return;
+    const select = e.target;
+    select.disabled = true;
+    try {
+      await api('PATCH', `/api/contacts/${select.dataset.contactId}`, { email_status: select.value });
+      listStale = true;
+      await openDetail(currentAppId);
+    } catch (err) {
+      alert(err.message);
+      select.disabled = false;
+    }
+  });
+
+  mBody.addEventListener('click', async (e) => {
+    const detach = e.target.closest('.detach-contact');
+    const sent = e.target.closest('.touch-sent');
+    const del = e.target.closest('.touch-del');
+    if (!detach && !sent && !del) return;
+    try {
+      if (detach) {
+        if (!confirm('Détacher ' + detach.dataset.name + ' de cette candidature ? La personne reste enregistrée.')) return;
+        await api('DELETE', `/api/applications/${currentAppId}/contacts/${detach.dataset.contactId}`);
+      } else if (sent) {
+        await api('PATCH', `/api/touches/${sent.dataset.touchId}`, { state: 'sent' });
+      } else {
+        if (!confirm('Supprimer cet échange ?')) return;
+        await api('DELETE', `/api/touches/${del.dataset.touchId}`);
       }
-    });
+      listStale = true;
+      await openDetail(currentAppId);
+    } catch (err) {
+      alert(err.message);
+    }
+  });
+
+  document.querySelectorAll('.app-row').forEach(row => {
+    row.addEventListener('click', () => openDetail(row.dataset.appId));
+  });
+
+  // --- add a candidature ------------------------------------------------------
+  const addModal = document.getElementById('add-modal');
+  const addForm = document.getElementById('add-form');
+  const addError = document.getElementById('add-error');
+  const addSubmit = document.getElementById('add-submit');
+
+  document.getElementById('add-btn').addEventListener('click', () => {
+    addError.classList.add('hidden');
+    addModal.classList.remove('hidden');
+    addForm.querySelector('[name="company"]').focus();
+  });
+  document.querySelectorAll('[data-close="add-modal"]').forEach(b =>
+    b.addEventListener('click', () => addModal.classList.add('hidden')));
+  addModal.addEventListener('click', (e) => { if (e.target === addModal) addModal.classList.add('hidden'); });
+
+  addForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    addError.classList.add('hidden');
+    addSubmit.disabled = true;
+    try {
+      await api('POST', '/api/applications', formData(addForm));
+      // Reload rather than splice a row in: the sort, the divider and the whole
+      // stat band depend on where the new row lands.
+      window.location.reload();
+    } catch (err) {
+      addError.textContent = err.message;
+      addError.classList.remove('hidden');
+      addSubmit.disabled = false;
+    }
   });
 </script>
 

@@ -39,9 +39,10 @@
 
 CREATE TABLE IF NOT EXISTS applications (
     id             BIGSERIAL PRIMARY KEY,
-    -- Link to the scraped offer when the company has a scraper. NULL is normal:
-    -- plenty of applications came from LinkedIn or boards we do not scrape.
-    job_id         BIGINT REFERENCES jobs(id) ON DELETE SET NULL,
+    -- No FK to jobs on purpose. The tracker is fully decoupled from the scraper:
+    -- most applications come from LinkedIn, WTTJ or referrals and have no
+    -- scraped row, and a hard link would rot as the jobs table churns.
+    -- apply_url below carries the offer link, as plain text.
     company        TEXT NOT NULL,
     role           TEXT NOT NULL,
     -- ATS reference (2026-131466, R169232, JR10433316...). This is the join key
@@ -134,12 +135,25 @@ SELECT
     a.status,
     a.applied_on,
     a.close_reason,
-    (SELECT max(t.occurred_on) FROM touches t WHERE t.application_id = a.id)          AS last_touch_on,
+    -- state = 'sent' everywhere below, matching v_contact_followup.
+    --
+    -- A draft is a mail written in Gmail and NOT sent, so it is not a signal
+    -- and must not move the silence clock. Without this filter, drafting a
+    -- relance stamps today's date on the application, days_stale drops to 0,
+    -- and the row falls out of v_relance_queue and out of the dashboard's
+    -- "À relancer" filter -- the application disappears from the working list
+    -- precisely because a relance was prepared and never sent, while
+    -- last_touch_on advertises a date on which nothing left the mailbox.
+    -- Drafts stay visible through v_contact_followup.has_pending_draft.
+    (SELECT max(t.occurred_on) FROM touches t
+       WHERE t.application_id = a.id AND t.state = 'sent')                            AS last_touch_on,
     (CURRENT_DATE - COALESCE(
-        (SELECT max(t.occurred_on) FROM touches t WHERE t.application_id = a.id),
+        (SELECT max(t.occurred_on) FROM touches t
+           WHERE t.application_id = a.id AND t.state = 'sent'),
         a.applied_on))                                                                AS days_stale,
     (SELECT count(*) FROM touches t
-       WHERE t.application_id = a.id AND t.direction = 'out')                         AS emails_sent,
+       WHERE t.application_id = a.id AND t.direction = 'out'
+         AND t.state = 'sent')                                                        AS emails_sent,
     (SELECT count(*) FROM touches t
        WHERE t.application_id = a.id AND t.direction = 'in'
          AND t.kind IN ('human_reply','interview_invite'))                            AS human_replies,

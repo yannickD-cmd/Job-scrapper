@@ -5,11 +5,15 @@ logic (geographic tiers, date-churn boards, evergreen age rules) and has
 nothing to say about a pipeline of candidatures. Mixing them would make two
 unrelated domains share one blast radius.
 
-READ ONLY. The four tracker tables (applications, contacts,
-application_contacts, touches) are written from outside this repo - a Cowork
-session sweeps the Gmail mailbox and runs SQL in the Supabase SQL editor. The
-dashboard is a window onto that, never a writer, so there is no INSERT/UPDATE
-anywhere in this module and no write endpoint anywhere in web/main.py.
+This is the READ half. Writes live in web/tracker_write.py, which carries the
+validation; nothing in this module inserts or updates. The tables are edited
+from two places holding identical rights: the dashboard, by hand, and a Cowork
+session running SQL in the Supabase editor when dozens need processing at once.
+
+Independent of the scraper. `applications` used to hold a job_id FK into
+`jobs`; it was dropped, because most openings are found on LinkedIn, WTTJ or by
+referral, so a hard link modelled the exception as the rule. The offer is now
+just a URL on the candidature, and no query here joins the two datasets.
 
 Everything derived (staleness, counters, per-contact follow-up) already lives
 in the three views declared in tracker/schema.sql - v_pipeline,
@@ -176,7 +180,7 @@ KIND_LABELS: dict[str, str] = {
 _PIPELINE_SQL = """
     SELECT p.id, p.company, p.role, a.req_ref, p.applied_on, p.status,
            p.close_reason, p.last_touch_on, p.days_stale, p.emails_sent,
-           p.human_replies, p.contact_count, a.job_id, a.apply_url,
+           p.human_replies, p.contact_count, a.apply_url,
            a.source, a.notes, a.status_since,
            COALESCE(f.contacts_no_reply, 0),
            COALESCE(f.contacts_replied, 0),
@@ -234,15 +238,14 @@ def fetch_applications(cur) -> list[dict]:
             "emails_sent": r[9],
             "human_replies": r[10],
             "contact_count": r[11],
-            "job_id": r[12],
-            "apply_url": r[13],
-            "source": r[14],
-            "notes": r[15],
-            "status_since": r[16],
-            "contacts_no_reply": r[17],
-            "contacts_replied": r[18],
-            "pending_drafts": r[19],
-            "bounced_contacts": r[20],
+            "apply_url": r[12],
+            "source": r[13],
+            "notes": r[14],
+            "status_since": r[15],
+            "contacts_no_reply": r[16],
+            "contacts_replied": r[17],
+            "pending_drafts": r[18],
+            "bounced_contacts": r[19],
             "rank": _sort_rank(r[5]),
             "is_live": r[5] in LIVE_STATUSES,
         }
@@ -357,11 +360,8 @@ def fetch_application(cur, application_id: int) -> dict | None:
     cur.execute(
         "SELECT a.id, a.company, a.role, a.req_ref, a.apply_url, a.source, "
         "       a.applied_on, a.resume_url, a.status, a.status_since, "
-        "       a.close_reason, a.notes, a.job_id, "
-        "       j.apply_url, j.title, j.company, j.still_open "
-        "FROM applications a "
-        "LEFT JOIN jobs j ON j.id = a.job_id "
-        "WHERE a.id = %s",
+        "       a.close_reason, a.notes "
+        "FROM applications a WHERE a.id = %s",
         (application_id,),
     )
     row = cur.fetchone()
@@ -373,11 +373,10 @@ def fetch_application(cur, application_id: int) -> dict | None:
         "company": row[1],
         "role": row[2],
         "req_ref": row[3],
-        # Seeded rows carry no apply_url of their own - the Gmail sweep had no
-        # link to record. Fall back to the linked job's, which is the same
-        # posting by construction when link_jobs matched it.
-        "apply_url": row[4] or row[13],
-        "apply_url_from_job": not row[4] and bool(row[13]),
+        # The offer is a URL you pasted, nothing more. No join to `jobs`:
+        # most openings are found on LinkedIn, WTTJ or by referral, so tying a
+        # candidature to a scraped row modelled the exception as the rule.
+        "apply_url": row[4],
         "source": row[5],
         "applied_on": row[6].isoformat() if row[6] else None,
         "resume_url": row[7],
@@ -388,10 +387,6 @@ def fetch_application(cur, application_id: int) -> dict | None:
         "status_since": row[9].isoformat() if row[9] else None,
         "close_reason": row[10],
         "notes": row[11],
-        "job_id": row[12],
-        "job_title": row[14],
-        "job_company": row[15],
-        "job_still_open": row[16],
     }
 
 
