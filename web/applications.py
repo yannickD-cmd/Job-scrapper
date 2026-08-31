@@ -360,7 +360,7 @@ def fetch_application(cur, application_id: int) -> dict | None:
     cur.execute(
         "SELECT a.id, a.company, a.role, a.req_ref, a.apply_url, a.source, "
         "       a.applied_on, a.resume_url, a.status, a.status_since, "
-        "       a.close_reason, a.notes "
+        "       a.close_reason, a.notes, a.description "
         "FROM applications a WHERE a.id = %s",
         (application_id,),
     )
@@ -387,6 +387,10 @@ def fetch_application(cur, application_id: int) -> dict | None:
         "status_since": row[9].isoformat() if row[9] else None,
         "close_reason": row[10],
         "notes": row[11],
+        # Snapshot of the ad, pasted at entry. Boards pull a posting down while
+        # the process is still live, so this is often the only copy left by the
+        # time a recruiter calls back.
+        "description": row[12],
     }
 
 

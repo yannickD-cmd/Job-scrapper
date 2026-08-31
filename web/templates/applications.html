@@ -136,6 +136,20 @@
         <input name="resume_url" type="url" placeholder="https://…"
                class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 focus:outline-none focus:border-zinc-600">
       </label>
+      {# Collapsed by default — it is long, and most of the time you are just
+         recording that you applied. Worth filling in all the same: the board
+         takes the ad down while the process is still running. #}
+      <details class="sm:col-span-2 border border-zinc-800 rounded-lg bg-zinc-950/40">
+        <summary class="cursor-pointer select-none px-3 py-2 text-zinc-300 hover:text-white">
+          Description de l'offre
+          <span class="text-xs text-zinc-500">— l'annonce sera retirée du site, pas d'ici</span>
+        </summary>
+        <div class="px-3 pb-3">
+          <textarea name="description" rows="12" placeholder="Colle ici le texte de l'annonce…"
+                    class="w-full min-w-0 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 font-mono text-xs leading-relaxed focus:outline-none focus:border-zinc-600"></textarea>
+        </div>
+      </details>
+
       <label class="grid gap-1 sm:col-span-2">
         <span class="text-xs text-zinc-500">Notes</span>
         <textarea name="notes" rows="3"
@@ -488,6 +502,12 @@
   // clearing a field must actually clear it, and the server maps '' to NULL.
   const formData = (form) => Object.fromEntries(new FormData(form).entries());
 
+  // Shown on the collapsed summary so you can tell whether the ad was captured
+  // without having to open the section.
+  const descHint = (d) => (d && d.trim())
+    ? '— ' + d.length.toLocaleString('fr-FR') + ' caractères'
+    : '— vide, rien à retrouver si l’annonce tombe';
+
   function flash(el, message, ok) {
     if (!el) return;
     el.textContent = message;
@@ -512,6 +532,21 @@
         ${field('Statut depuis', `<input name="status_since" type="date" value="${esc(or(a.status_since, ''))}" class="${INPUT}">`)}
         ${field('Motif de fin', `<select name="close_reason" class="${INPUT}">${opts(VOCAB.closeReasons, a.close_reason, '—')}</select>`)}
         ${field('Lien du CV envoyé', `<input name="resume_url" type="url" value="${esc(or(a.resume_url, ''))}" class="${INPUT}">`, 'sm:col-span-2')}
+        <details class="sm:col-span-2 border border-zinc-800 rounded-lg bg-zinc-950/40">
+          <summary class="cursor-pointer select-none px-3 py-2 text-sm text-zinc-300 hover:text-white">
+            Description de l’offre
+            <span class="text-xs text-zinc-500">${esc(descHint(a.description))}</span>
+          </summary>
+          <div class="px-3 pb-3">
+            <textarea name="description" rows="16" placeholder="Colle ici le texte de l’annonce…"
+                      class="${INPUT} font-mono text-xs leading-relaxed">${esc(or(a.description, ''))}</textarea>
+            <p class="text-xs text-zinc-600 mt-1">
+              Conservée ici parce que les sites retirent l’annonce alors que le process continue :
+              c’est souvent la seule copie qui reste quand un recruteur rappelle.
+            </p>
+          </div>
+        </details>
+
         ${field('Notes', `<textarea name="notes" rows="3" class="${INPUT}">${esc(or(a.notes, ''))}</textarea>`, 'sm:col-span-2')}
         <div class="sm:col-span-2 flex flex-wrap items-center gap-3">
           <button type="submit" class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-200">Enregistrer</button>

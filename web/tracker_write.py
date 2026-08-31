@@ -149,8 +149,9 @@ def create_application(cur, payload: dict) -> int:
         cur.execute(
             "INSERT INTO applications "
             "  (company, role, req_ref, apply_url, source, applied_on, "
-            "   resume_url, status, status_since, close_reason, notes) "
-            "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id",
+            "   resume_url, status, status_since, close_reason, notes, "
+            "   description) "
+            "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id",
             (
                 company,
                 role,
@@ -162,7 +163,8 @@ def create_application(cur, payload: dict) -> int:
                 status,
                 status_since,
                 close_reason,
-                _text(payload, "notes", max_len=5000),
+                _text(payload, "notes", max_len=_MAX_LEN["notes"]),
+                _text(payload, "description", max_len=_MAX_LEN["description"]),
             ),
         )
         return cur.fetchone()[0]
@@ -184,9 +186,17 @@ def create_application(cur, payload: dict) -> int:
 _APPLICATION_FIELDS: dict[str, str] = {
     "company": "text", "role": "text", "req_ref": "text", "apply_url": "text",
     "source": "text", "resume_url": "text", "notes": "text",
-    "close_reason": "text", "status": "status",
+    "description": "text", "close_reason": "text", "status": "status",
     "applied_on": "date", "status_since": "date",
 }
+
+# `description` is a snapshot of the offer text, kept because boards take the
+# posting down while the process is still running — when a recruiter calls back
+# three weeks later, the original ad is gone from the internet but not from
+# here. It is pasted in, never fetched: the two datasets are decoupled
+# (see the module docstring), and a long ad easily runs past the default cap.
+_MAX_LEN: dict[str, int] = {"description": 100_000, "notes": 5_000}
+_DEFAULT_MAX_LEN = 2_000
 
 
 def update_application(cur, application_id: int, payload: dict) -> bool:
@@ -210,7 +220,8 @@ def update_application(cur, application_id: int, payload: dict) -> bool:
         elif kind == "status":
             value = _enum(payload, field, STATUSES, required=True)
         else:
-            value = _text(payload, field, max_len=5000)
+            value = _text(payload, field,
+                          max_len=_MAX_LEN.get(field, _DEFAULT_MAX_LEN))
         if field in ("company", "role") and value is None:
             raise ValidationError(f"Le champ « {field} » ne peut pas être vidé.")
         sets.append(f"{field} = %s")

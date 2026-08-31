@@ -59,6 +59,12 @@ CREATE TABLE IF NOT EXISTS applications (
     -- Only meaningful for rejected / closed / withdrawn.
     close_reason   TEXT,                       -- their_no / req_cancelled / req_frozen / filled / seniority / my_choice
     notes          TEXT,
+    -- Snapshot of the ad, pasted in when the candidature is recorded. Boards
+    -- take a posting down while the process is still running, so by the time a
+    -- recruiter calls back this is routinely the only copy left anywhere. Not
+    -- fetched from `jobs`: the two datasets are decoupled, and most offers were
+    -- never scraped in the first place.
+    description    TEXT,
     created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
