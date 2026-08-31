@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr" class="bg-zinc-950">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Candidatures · tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { font-family: 'Inter', system-ui, sans-serif; }
+    .job-desc :where(p, ul, ol) { margin-bottom: 0.75rem; }
+    .job-desc ul { list-style: disc; padding-left: 1.25rem; }
+    .job-desc ol { list-style: decimal; padding-left: 1.25rem; }
+    .job-desc a { color: #a5b4fc; text-decoration: underline; }
+    .job-desc h1, .job-desc h2, .job-desc h3 { font-weight: 600; margin: 1rem 0 0.5rem; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen">
+
+<header class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-6">
+  {# ---- tab bar, shared with the offers page ---- #}
+  <nav class="flex items-center gap-1 mb-6 border-b border-zinc-800">
+    <a href="/" class="px-4 py-2 text-sm border-b-2 border-transparent text-zinc-400 hover:text-white">Offres</a>
+    <a href="/applications" class="px-4 py-2 text-sm border-b-2 border-white font-medium text-white">Candidatures</a>
+  </nav>
+
+  <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+    <div>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">Candidatures</h1>
+      <p class="text-zinc-400 text-sm mt-1">
+        {{ stats.total }} candidatures suivies · {{ stats.contacts_total }} prises de contact.
+      </p>
+    </div>
+
+    {# ---- stat band. `Refusées` and `Reqs mortes` are separate tiles on
+           purpose and must never be summed: one is a verdict on the
+           candidate, the other is a requisition that died underneath it. ---- #}
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:items-end gap-4 sm:gap-6 text-sm">
+      <div title="applied / acked / screening / interview / final — les candidatures encore en mouvement.">
+        <div class="text-zinc-500 uppercase tracking-wider text-[10px] whitespace-nowrap">Vivantes</div>
+        <div class="text-2xl font-semibold text-sky-300">{{ stats.live }}</div>
+      </div>
+      <div title="Ils ont explicitement dit non.">
+        <div class="text-zinc-500 uppercase tracking-wider text-[10px] whitespace-nowrap">Refusées</div>
+        <div class="text-2xl font-semibold text-rose-300">{{ stats.rejected }}</div>
+      </div>
+      <div title="30 jours sans aucun signal depuis la dernière touche.">
+        <div class="text-zinc-500 uppercase tracking-wider text-[10px] whitespace-nowrap">Ghostées</div>
+        <div class="text-2xl font-semibold text-stone-300">{{ stats.ghosted }}</div>
+      </div>
+      <div title="La requisition est morte : annulée, gelée, ou pourvue par quelqu'un d'autre. Ce n'est pas un refus — rien n'a été jugé.">
+        <div class="text-zinc-500 uppercase tracking-wider text-[10px] whitespace-nowrap">Reqs mortes</div>
+        <div class="text-2xl font-semibold text-slate-300">{{ stats.closed }}</div>
+      </div>
+      <div title="Prises de contact ayant reçu une réponse humaine, sur le total des prises de contact (une même personne contactée pour deux postes compte deux fois).">
+        <div class="text-zinc-500 uppercase tracking-wider text-[10px] whitespace-nowrap">Réponse humaine</div>
+        <div class="text-2xl font-semibold text-emerald-300">
+          {% if stats.reply_rate is not none %}{{ '%.0f'|format(stats.reply_rate) }}%{% else %}—{% endif %}
+        </div>
+        <div class="text-[11px] text-zinc-500">{{ stats.contacts_replied }}/{{ stats.contacts_total }} contacts</div>
+      </div>
+    </div>
+  </div>
+
+  {# Drafts are an action to take, not a state to archive — surfaced next to
+     the stats rather than buried in the list. #}
+  {% if stats.draft %}
+    <a href="/applications?status=draft"
+       class="inline-flex items-center gap-2 mt-5 border border-amber-500/50 bg-amber-500/10 text-amber-300 rounded-lg px-3 py-2 text-sm hover:bg-amber-500/20">
+      <span aria-hidden="true">✎</span>
+      <span><strong>{{ stats.draft }}</strong> candidature{{ 's' if stats.draft > 1 else '' }} jamais finalisée{{ 's' if stats.draft > 1 else '' }}</span>
+      <span class="text-amber-400/70 text-xs">— à terminer</span>
+    </a>
+  {% endif %}
+</header>
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 pb-6">
+  <form method="get" action="/applications"
+        class="grid gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] items-start bg-zinc-900/60 border border-zinc-800 rounded-2xl p-3 sm:p-4">
+
+    {# ---- statut : multi-select ---- #}
+    <div class="relative min-w-0 w-full">
+      <button type="button" id="status-btn"
+              class="w-full bg-zinc-950 border rounded-lg px-3 py-2 text-sm text-left flex items-center justify-between gap-2 hover:border-zinc-600 focus:outline-none
+                     {% if selected_statuses %}border-sky-600 text-sky-200{% else %}border-zinc-800{% endif %}">
+        <span class="truncate">
+          {% if selected_statuses %}
+            {{ selected_statuses|length }} statut{{ 's' if selected_statuses|length > 1 else '' }}
+          {% else %}Tous les statuts{% endif %}
+        </span>
+        <span class="text-zinc-500 shrink-0">▾</span>
+      </button>
+      <div id="status-dropdown"
+           class="hidden absolute z-20 mt-1 left-0 right-0 bg-zinc-900 border border-zinc-800 rounded-lg max-h-80 overflow-y-auto p-1 shadow-xl">
+        {% for key in status_order %}
+          {% set meta = status_meta[key] %}
+          <label class="flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-zinc-800 rounded cursor-pointer" title="{{ meta[2] }}">
+            <input type="checkbox" name="status" value="{{ key }}"
+                   class="rounded border-zinc-700 bg-zinc-950"
+                   {% if key in selected_statuses %}checked{% endif %}>
+            <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border {{ meta[1] }}">{{ meta[0]|upper }}</span>
+            <span class="text-zinc-500 text-xs ml-auto">{{ stats.by_status.get(key, 0) }}</span>
+          </label>
+        {% endfor %}
+      </div>
+    </div>
+
+    <select name="company" onchange="this.form.submit()"
+            class="min-w-0 w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600">
+      <option value="">Toutes les sociétés</option>
+      {% for c in companies %}
+        <option value="{{ c }}" {% if c == selected_company %}selected{% endif %}>{{ c }}</option>
+      {% endfor %}
+    </select>
+
+    <select name="stale"
+            class="min-w-0 w-full bg-zinc-950 border rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-zinc-600
+                   {% if selected_stale %}border-amber-600 text-amber-200{% else %}border-zinc-800{% endif %}"
+            title="Candidatures encore vivantes et sans signal depuis N jours — la file de relance. Une candidature refusée n'est jamais 'à relancer'.">
+      {% for value, label in stale_choices %}
+        <option value="{{ value }}" {% if value == selected_stale %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+
+    <div class="sm:col-span-full grid gap-3 sm:grid-cols-[auto_auto_1fr] items-center border-t border-zinc-800 pt-3">
+      <div class="flex items-center gap-2 text-sm text-zinc-400" title="Période de candidature (applied_on), bornes incluses.">
+        <span class="text-xs text-zinc-500 whitespace-nowrap">Postulé</span>
+        <input type="date" name="date_from" id="date-from" value="{{ date_from }}"
+               class="min-w-0 bg-zinc-950 border rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-zinc-600
+                      {% if date_from %}border-sky-600 text-sky-200{% else %}border-zinc-800 text-zinc-300{% endif %}">
+        <span class="text-zinc-600">→</span>
+        <input type="date" name="date_to" id="date-to" value="{{ date_to }}"
+               class="min-w-0 bg-zinc-950 border rounded-lg px-2 py-2 text-sm focus:outline-none focus:border-zinc-600
+                      {% if date_to %}border-sky-600 text-sky-200{% else %}border-zinc-800 text-zinc-300{% endif %}">
+      </div>
+
+      <label class="flex items-center gap-2 text-sm text-zinc-400 cursor-pointer select-none"
+             title="Au moins un contact à qui un mail est parti et qui n'a jamais répondu. Un contact jamais sollicité ne compte pas : il n'a rien à répondre.">
+        <input type="checkbox" name="awaiting" value="true" {% if awaiting %}checked{% endif %}
+               class="rounded border-zinc-700 bg-zinc-950">
+        A des contacts sans réponse
+      </label>
+
+      <div class="flex flex-wrap items-center gap-2 sm:justify-end">
+        <button type="submit" class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-200">Filtrer</button>
+        <a href="/applications" class="px-3 py-2 rounded-lg text-sm text-zinc-400 hover:text-white">Réinitialiser</a>
+      </div>
+    </div>
+  </form>
+
+  <div class="text-zinc-500 text-xs mt-3 ml-1">
+    {{ result_count }} candidature{{ 's' if result_count != 1 }}
+    {%- if live_count %} · <span class="text-sky-300">{{ live_count }} vivante{{ 's' if live_count != 1 }}</span>{% endif %}
+    · <span class="text-zinc-600">tri : vivantes d'abord, les plus silencieuses en tête</span>
+  </div>
+</section>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
+  <div class="border border-zinc-800 rounded-2xl overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead class="bg-zinc-900/70 text-zinc-500 text-[11px] uppercase tracking-wider">
+        <tr>
+          <th class="text-left font-medium px-4 py-3">Société</th>
+          <th class="text-left font-medium px-3 py-3">Poste</th>
+          <th class="text-left font-medium px-3 py-3 hidden lg:table-cell">Réf ATS</th>
+          <th class="text-left font-medium px-3 py-3 whitespace-nowrap">Postulé le</th>
+          <th class="text-left font-medium px-3 py-3">Statut</th>
+          <th class="text-right font-medium px-3 py-3" title="Jours écoulés depuis la dernière touche, ou depuis la candidature s'il n'y a jamais eu de touche.">Jours sans<br>nouvelle</th>
+          <th class="text-right font-medium px-3 py-3">Contacts</th>
+          <th class="text-right font-medium px-3 py-3" title="Touches entrantes de type réponse humaine ou invitation à un entretien.">Réponses<br>humaines</th>
+          <th class="text-left font-medium px-3 py-3 whitespace-nowrap hidden md:table-cell">Dernier contact</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-zinc-800/70">
+        {% set ns = namespace(prev_rank=none) %}
+        {% for a in applications %}
+          {# One divider where the live block ends, so "everything above this
+             line still needs something from me" is readable at a glance. #}
+          {% if ns.prev_rank is not none and ns.prev_rank == 0 and a.rank != 0 %}
+            <tr class="bg-zinc-900/40">
+              <td colspan="9" class="px-4 py-1.5 text-[11px] uppercase tracking-wider text-zinc-600">
+                ↓ terminées, retirées, ou jamais envoyées
+              </td>
+            </tr>
+          {% endif %}
+          {% set ns.prev_rank = a.rank %}
+          {% set meta = status_meta.get(a.status, (a.status, '', '')) %}
+          <tr data-app-id="{{ a.id }}"
+              class="app-row cursor-pointer hover:bg-zinc-900/60 transition
+                     {% if a.status == 'draft' %}bg-amber-500/[0.07] border-l-2 border-l-amber-500{% elif not a.is_live and a.status != 'offer' %}opacity-60{% endif %}">
+            <td class="px-4 py-3 font-medium whitespace-nowrap">{{ a.company }}</td>
+            <td class="px-3 py-3 text-zinc-300 min-w-[14rem]">
+              {{ a.role }}
+              {% if a.pending_drafts %}
+                <span class="ml-1 text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border bg-amber-500/15 text-amber-300 border-amber-500/40"
+                      title="Un mail est rédigé dans Gmail pour cette candidature mais n'a pas encore été envoyé.">BROUILLON MAIL</span>
+              {% endif %}
+              {% if a.bounced_contacts %}
+                <span class="ml-1 text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border bg-rose-500/20 text-rose-300 border-rose-500/50"
+                      title="{{ a.bounced_contacts }} adresse(s) en bounce : le mail n'a jamais atteint un humain.">{{ a.bounced_contacts }} BOUNCED</span>
+              {% endif %}
+            </td>
+            <td class="px-3 py-3 text-zinc-500 font-mono text-xs hidden lg:table-cell">{{ a.req_ref or '—' }}</td>
+            <td class="px-3 py-3 text-zinc-400 whitespace-nowrap">{{ a.applied_on.strftime('%Y-%m-%d') if a.applied_on else '—' }}</td>
+            <td class="px-3 py-3 whitespace-nowrap">
+              <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border {{ meta[1] }}" title="{{ meta[2] }}">{{ meta[0]|upper }}</span>
+              {% if a.close_reason and a.status in ('closed', 'withdrawn') %}
+                <div class="text-[10px] text-zinc-500 mt-1">{{ a.close_reason }}</div>
+              {% endif %}
+            </td>
+            <td class="px-3 py-3 text-right tabular-nums
+                       {% if a.is_live and a.days_stale is not none and a.days_stale >= 30 %}text-rose-300
+                       {% elif a.is_live and a.days_stale is not none and a.days_stale >= 7 %}text-amber-300
+                       {% else %}text-zinc-500{% endif %}">
+              {{ a.days_stale if a.days_stale is not none else '—' }}
+            </td>
+            <td class="px-3 py-3 text-right tabular-nums {% if a.contact_count %}text-zinc-300{% else %}text-zinc-600{% endif %}">
+              {{ a.contact_count }}
+            </td>
+            <td class="px-3 py-3 text-right tabular-nums {% if a.human_replies %}text-emerald-300 font-medium{% else %}text-zinc-600{% endif %}">
+              {{ a.human_replies }}
+            </td>
+            <td class="px-3 py-3 text-zinc-400 whitespace-nowrap hidden md:table-cell">
+              {{ a.last_touch_on.strftime('%Y-%m-%d') if a.last_touch_on else '—' }}
+            </td>
+          </tr>
+        {% else %}
+          <tr><td colspan="9" class="px-5 py-12 text-center text-zinc-500">Aucune candidature ne correspond à ces filtres.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- Detail panel -->
+<div id="modal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start sm:items-center justify-center p-2 sm:p-4">
+  <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-3xl w-full max-h-[92vh] sm:max-h-[88vh] overflow-hidden flex flex-col">
+    <div class="flex items-start justify-between gap-4 px-5 sm:px-6 py-4 border-b border-zinc-800">
+      <div class="min-w-0">
+        <div id="m-role" class="text-lg sm:text-xl font-semibold leading-tight"></div>
+        <div id="m-meta" class="text-sm text-zinc-400 mt-1"></div>
+      </div>
+      <button id="modal-close" class="text-zinc-500 hover:text-white text-2xl leading-none shrink-0">&times;</button>
+    </div>
+    <div id="m-body" class="px-5 sm:px-6 py-5 overflow-y-auto flex-1 text-sm">Chargement…</div>
+  </div>
+</div>
+
+<script>
+  // --- status multi-select ---
+  const statusBtn = document.getElementById('status-btn');
+  const statusDropdown = document.getElementById('status-dropdown');
+  statusBtn.addEventListener('click', () => statusDropdown.classList.toggle('hidden'));
+  document.addEventListener('click', (e) => {
+    if (statusBtn.contains(e.target) || statusDropdown.contains(e.target)) return;
+    statusDropdown.classList.add('hidden');
+  });
+
+  const modal  = document.getElementById('modal');
+  const mRole  = document.getElementById('m-role');
+  const mMeta  = document.getElementById('m-meta');
+  const mBody  = document.getElementById('m-body');
+
+  function closeModal() { modal.classList.add('hidden'); }
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Tracker text comes out of a Gmail mailbox — subjects, excerpts and contact
+  // names are other people's words, so everything from those tables is escaped
+  // before it goes near innerHTML. The single exception is the scraped job
+  // description, which the offers tab already renders as trusted HTML.
+  const esc = (v) => {
+    if (v === null || v === undefined) return '';
+    return String(v).replace(/[&<>"']/g, (ch) => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]
+    ));
+  };
+  const or = (v, fallback) => (v === null || v === undefined || v === '' ? fallback : v);
+
+  const section = (title, inner, note) => `
+    <section class="mb-7">
+      <h3 class="text-[11px] uppercase tracking-wider text-zinc-500 mb-3 flex items-baseline gap-2">
+        <span>${esc(title)}</span>
+        ${note ? `<span class="text-zinc-600 normal-case tracking-normal">${esc(note)}</span>` : ''}
+      </h3>
+      ${inner}
+    </section>`;
+
+  // --- 1. header block -------------------------------------------------------
+  function renderHeader(a) {
+    const rows = [
+      ['Société', esc(a.company)],
+      ['Réf ATS', a.req_ref ? `<span class="font-mono text-xs">${esc(a.req_ref)}</span>` : '<span class="text-zinc-600">—</span>'],
+      ['Postulé le', esc(or(a.applied_on, '—'))],
+      ['Statut depuis', esc(or(a.status_since, '—'))],
+      ['Source', esc(or(a.source, '—'))],
+    ];
+    if (a.close_reason) {
+      // Spelled out, because `closed` and `rejected` mean opposite things
+      // about the candidate and the raw enum does not say so.
+      const explain = a.status === 'closed'
+        ? "la requisition est morte — ce n'est pas un refus"
+        : (a.status === 'rejected' ? 'refus explicite' : '');
+      rows.push(['Motif', `${esc(a.close_reason)}${explain ? ` <span class="text-zinc-500">— ${esc(explain)}</span>` : ''}`]);
+    }
+    const links = [];
+    if (a.apply_url) {
+      links.push(`<a href="${esc(a.apply_url)}" target="_blank" rel="noopener"
+         class="text-indigo-300 hover:text-indigo-200 underline">Voir l'offre →</a>${
+         a.apply_url_from_job ? '<span class="text-zinc-600 text-xs ml-1">(lien de l\'offre scrapée)</span>' : ''}`);
+    }
+    if (a.resume_url) {
+      links.push(`<a href="${esc(a.resume_url)}" target="_blank" rel="noopener"
+         class="text-indigo-300 hover:text-indigo-200 underline">CV envoyé →</a>`);
+    }
+    return section('Candidature', `
+      <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-sm">
+        ${rows.map(([k, v]) => `
+          <dt class="text-zinc-500">${esc(k)}</dt><dd class="text-zinc-200">${v}</dd>`).join('')}
+      </dl>
+      ${links.length ? `<div class="flex flex-wrap gap-4 mt-4 text-sm">${links.join('')}</div>` : ''}
+      ${a.notes ? `<p class="mt-4 text-zinc-400 border-l-2 border-zinc-700 pl-3">${esc(a.notes)}</p>` : ''}
+    `);
+  }
+
+  // --- 2. the scraped offer --------------------------------------------------
+  function renderJob(job) {
+    if (!job) {
+      return section('L’offre', `
+        <p class="text-zinc-500">Pas d’offre scrapée rattachée à cette candidature — soit la société n’a pas de scraper, soit aucun rapprochement sûr n’a été trouvé.</p>`);
+    }
+    const dateLabel = job.base_date
+      ? (job.date_churned ? `premier suivi ${job.base_date}` : job.base_date)
+      : null;
+    const meta = [job.location, job.category, dateLabel].filter(Boolean).map(esc).join(' · ');
+    return section('L’offre', `
+      <div class="text-zinc-300 font-medium">${esc(job.title)}</div>
+      <div class="text-xs text-zinc-500 mt-0.5 mb-3">${meta}${job.still_open ? '' : ' · <span class="text-zinc-400">FERMÉE</span>'}</div>
+      <div class="job-desc text-zinc-300 leading-relaxed border border-zinc-800 rounded-xl p-4 max-h-80 overflow-y-auto"></div>`);
+  }
+
+  // --- 3. contacts — the section this whole page exists for ------------------
+  function renderContacts(contacts) {
+    if (!contacts.length) {
+      return section('Contacts', '<p class="text-zinc-500">Aucun contact rattaché.</p>');
+    }
+    const replied = contacts.filter(c => c.got_human_reply).length;
+    const cards = contacts.map(c => {
+      // Label, colours and tooltip all come from EMAIL_STATUS_META in
+      // web/applications.py — the same table the list page renders from. A
+      // second copy here would be one more thing to keep in step when a new
+      // address state appears.
+      const badge = c.email_badge;
+      const silence = c.days_since_last_contact;
+      return `
+      <div class="border rounded-xl p-3.5 ${c.has_pending_draft ? 'border-amber-500/50 bg-amber-500/[0.06]' : 'border-zinc-800 bg-zinc-950/40'}">
+        <div class="flex items-start justify-between gap-3 flex-wrap">
+          <div class="min-w-0">
+            <div class="font-medium text-zinc-100 flex items-center gap-2 flex-wrap">
+              ${esc(c.full_name)}
+              ${badge ? `<span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border ${c.email_badge_class}" title="${esc(c.email_badge_tip)}">${esc(badge)}</span>` : ''}
+              ${c.has_pending_draft ? `<span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border bg-amber-500/15 text-amber-300 border-amber-500/40">BROUILLON EN ATTENTE</span>` : ''}
+            </div>
+            <div class="text-xs text-zinc-500 mt-0.5">
+              ${esc(or(c.title, 'titre inconnu'))}${c.role_in_process ? ` · ${esc(c.role_in_process)}` : ''}
+            </div>
+            ${c.email ? `<div class="text-xs font-mono mt-1 ${c.email_status === 'bounced' ? 'text-rose-400 line-through' : 'text-zinc-400'}">${esc(c.email)}</div>` : ''}
+          </div>
+          <div class="text-right shrink-0">
+            ${c.got_human_reply
+              ? `<span class="text-[10px] tracking-wider font-semibold px-2 py-1 rounded border bg-emerald-500/15 text-emerald-300 border-emerald-500/40">A RÉPONDU${c.replied_on ? ` · ${esc(c.replied_on)}` : ''}</span>`
+              : `<span class="text-[10px] tracking-wider font-semibold px-2 py-1 rounded border bg-zinc-800 text-zinc-500 border-zinc-700">SANS RÉPONSE</span>`}
+          </div>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-x-3 gap-y-2 mt-3 pt-3 border-t border-zinc-800/70 text-xs">
+          <div><div class="text-zinc-600">1er contact</div><div class="text-zinc-300">${esc(or(c.first_contacted_on, '—'))}</div></div>
+          <div><div class="text-zinc-600">Dernier</div><div class="text-zinc-300">${esc(or(c.last_contacted_on, '—'))}</div></div>
+          <div><div class="text-zinc-600">Emails</div><div class="text-zinc-300 tabular-nums">${esc(c.emails_sent)}</div></div>
+          <div><div class="text-zinc-600">Relances</div><div class="text-zinc-300 tabular-nums">${esc(c.relances_sent)}</div></div>
+          <div><div class="text-zinc-600">Silence</div><div class="tabular-nums ${
+            !c.got_human_reply && silence !== null && silence >= 14 ? 'text-amber-300' : 'text-zinc-300'
+          }">${silence === null || silence === undefined ? '—' : esc(silence) + ' j'}</div></div>
+        </div>
+        ${c.email_status === 'bounced'
+          ? `<p class="text-xs text-rose-400/90 mt-3">Le mail n’a jamais atteint un humain : le silence de ce contact ne veut rien dire.</p>` : ''}
+      </div>`;
+    }).join('');
+    return section('Contacts', `<div class="grid gap-3">${cards}</div>`,
+      `${contacts.length} contact${contacts.length > 1 ? 's' : ''} · ${replied} réponse${replied > 1 ? 's' : ''} humaine${replied > 1 ? 's' : ''}`);
+  }
+
+  // --- 4. timeline -----------------------------------------------------------
+  function renderTimeline(timeline) {
+    if (!timeline.length) {
+      return section('Historique', '<p class="text-zinc-500">Aucune touche enregistrée.</p>');
+    }
+    const items = timeline.map(t => {
+      const isDraft = t.state === 'draft';
+      const outgoing = t.direction === 'out';
+      return `
+      <li class="flex gap-3 ${isDraft ? 'italic' : ''}">
+        <div class="shrink-0 mt-0.5 w-5 text-center ${
+          isDraft ? 'text-amber-400' : (outgoing ? 'text-sky-400' : 'text-emerald-400')
+        }" title="${outgoing ? 'sortant' : 'entrant'}">${outgoing ? '↑' : '↓'}</div>
+        <div class="min-w-0 flex-1 pb-4 border-b border-zinc-800/60">
+          <div class="flex items-baseline gap-2 flex-wrap ${isDraft ? 'text-amber-300' : ''}">
+            <span class="${isDraft ? 'text-amber-300' : 'text-zinc-300'} tabular-nums text-xs">${esc(or(t.occurred_on, '—'))}</span>
+            <span class="text-xs ${isDraft ? 'text-amber-300' : 'text-zinc-400'}">${esc(or(t.kind_label, t.kind))}</span>
+            ${t.contact_name ? `<span class="text-xs text-zinc-500">· ${esc(t.contact_name)}</span>` : ''}
+            ${t.channel && t.channel !== 'email' ? `<span class="text-xs text-zinc-600">· ${esc(t.channel)}</span>` : ''}
+            ${isDraft ? `<span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border bg-amber-500/15 text-amber-300 border-amber-500/40 not-italic">BROUILLON — NON ENVOYÉ</span>` : ''}
+            ${isDraft && t.due_on ? `<span class="text-xs text-amber-400/80">à envoyer le ${esc(t.due_on)}</span>` : ''}
+          </div>
+          ${t.subject ? `<div class="text-sm mt-1 ${isDraft ? 'text-amber-200/90' : 'text-zinc-200'}">${esc(t.subject)}</div>` : ''}
+          ${t.excerpt ? `<p class="text-xs mt-1 ${isDraft ? 'text-amber-200/70' : 'text-zinc-500'} leading-relaxed">${esc(t.excerpt)}</p>` : ''}
+        </div>
+      </li>`;
+    }).join('');
+    return section('Historique', `<ul class="space-y-4">${items}</ul>`,
+      `${timeline.length} touche${timeline.length > 1 ? 's' : ''}, plus récente en premier`);
+  }
+
+  document.querySelectorAll('.app-row').forEach(row => {
+    row.addEventListener('click', async () => {
+      const id = row.dataset.appId;
+      mRole.textContent = 'Chargement…';
+      mMeta.textContent = '';
+      mBody.textContent = 'Chargement…';
+      modal.classList.remove('hidden');
+      try {
+        const r = await fetch(`/api/applications/${id}`);
+        if (!r.ok) throw new Error('fetch failed');
+        const d = await r.json();
+        const a = d.application;
+        mRole.textContent = a.role;
+        mMeta.innerHTML = `${esc(a.company)} · <span class="text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded border ${a.status_badge}" title="${esc(a.status_tip)}">${esc(a.status_label).toUpperCase()}</span>`;
+        mBody.innerHTML = renderHeader(a) + renderJob(d.job)
+                        + renderContacts(d.contacts) + renderTimeline(d.timeline);
+        // Scraper HTML, injected the same way the offers tab injects it.
+        const descBox = mBody.querySelector('.job-desc');
+        if (descBox && d.job) {
+          descBox.innerHTML = d.job.description
+            || '<span class="text-zinc-500">Aucune description capturée pour cette offre.</span>';
+        }
+      } catch (e) {
+        mBody.textContent = 'Échec du chargement du détail.';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

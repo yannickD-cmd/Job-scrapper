@@ -21,7 +21,13 @@
 </head>
 <body class="bg-zinc-950 text-zinc-100 min-h-screen">
 
-<header class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-6 sm:pb-8">
+<header class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-6 sm:pb-8">
+  {# ---- tab bar, shared with the candidatures page ---- #}
+  <nav class="flex items-center gap-1 mb-6 border-b border-zinc-800">
+    <a href="/" class="px-4 py-2 text-sm border-b-2 border-white font-medium text-white">Offres</a>
+    <a href="/applications" class="px-4 py-2 text-sm border-b-2 border-transparent text-zinc-400 hover:text-white">Candidatures</a>
+  </nav>
+
   <div class="flex flex-col gap-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
     <div>
       <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">Job offers</h1>

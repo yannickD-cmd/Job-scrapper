@@ -10,6 +10,13 @@ Routes:
   POST /api/jobs/{id}/to-apply          toggle the "to apply" flag from the modal
   POST /api/run/{company}               dispatch scrape-one.yml on GitHub Actions
   GET  /api/run/{run_id}/status         poll run status + log tail when finished
+  GET  /applications                    application tracker page with filters
+  GET  /api/applications/{id}           JSON payload for the tracker detail panel
+
+The /applications routes are strictly READ ONLY. The four tracker tables are
+written from outside this repo (a Cowork session sweeps Gmail and runs SQL in
+the Supabase editor), so there is deliberately no POST/PATCH/PUT against them
+here — see web/applications.py.
 """
 from __future__ import annotations
 
@@ -29,6 +36,7 @@ from fastapi.templating import Jinja2Templates
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import db  # noqa: E402
 from run import COMPANY_NAMES  # noqa: E402
+from web import applications as apps  # noqa: E402
 from web.filters import (  # noqa: E402
     DATE_CHURN_COMPANIES,
     REGION_KEYS,
@@ -370,24 +378,28 @@ def dashboard(
     })
 
 
-@app.get("/api/jobs/{job_id}/description")
-def job_description(job_id: int):
-    with db.get_connection() as conn, conn.cursor() as cur:
-        cur.execute(
-            "SELECT title, company, location, category, posted_date, "
-            "       description, apply_url, still_open, to_apply, "
-            "       first_seen_at::date "
-            "FROM jobs WHERE id = %s",
-            (job_id,),
-        )
-        row = cur.fetchone()
+def _job_description_payload(cur, job_id: int) -> dict | None:
+    """The description-modal payload for one scraped job, or None if absent.
+
+    Factored out so the tracker's detail panel renders a linked offer through
+    exactly the same query, the same churn-date rule and the same field names
+    as the offers tab — one description mechanism, two callers.
+    """
+    cur.execute(
+        "SELECT title, company, location, category, posted_date, "
+        "       description, apply_url, still_open, to_apply, "
+        "       first_seen_at::date "
+        "FROM jobs WHERE id = %s",
+        (job_id,),
+    )
+    row = cur.fetchone()
     if not row:
-        raise HTTPException(status_code=404, detail="Job not found")
+        return None
     # Same base-date rule as the list: a churn board's posted_date is today's
     # crawl date, so the modal shows when we first tracked the listing instead.
     churned = row[1] in DATE_CHURN_COMPANIES
     base = row[9] if churned else row[4]
-    return JSONResponse({
+    return {
         "title": row[0],
         "company": row[1],
         "location": row[2],
@@ -399,7 +411,16 @@ def job_description(job_id: int):
         "apply_url": row[6],
         "still_open": row[7],
         "to_apply": row[8],
-    })
+    }
+
+
+@app.get("/api/jobs/{job_id}/description")
+def job_description(job_id: int):
+    with db.get_connection() as conn, conn.cursor() as cur:
+        payload = _job_description_payload(cur, job_id)
+    if payload is None:
+        raise HTTPException(status_code=404, detail="Job not found")
+    return JSONResponse(payload)
 
 
 @app.post("/api/jobs/{job_id}/to-apply")
@@ -530,6 +551,86 @@ def run_status(run_id: int):
                 payload["log_tail"] = _clean_run_log(log_resp.text)
 
     return JSONResponse(payload)
+
+
+# ---------------------------------------------------------------------------
+# Candidatures — the application tracker. Read only, always: these tables are
+# maintained from a Gmail sweep run outside this repo. See web/applications.py.
+# ---------------------------------------------------------------------------
+@app.get("/applications", response_class=HTMLResponse)
+def applications_page(
+    request: Request,
+    status: list[str] = Query(default=[]),
+    company: str | None = None,
+    date_from: str | None = None,
+    date_to: str | None = None,
+    stale: str = "",
+    awaiting: bool = False,
+):
+    # Unknown status keys are dropped rather than 422'd — a hand-edited URL
+    # should degrade to "no filter", same rule as _parse_date on the offers tab.
+    statuses = [s for s in status if s in apps.STATUS_META]
+    stale = stale if stale in apps.STALE_VALUES else ""
+    stale_days = int(stale) if stale else None
+    d_from, d_to = _parse_date(date_from), _parse_date(date_to)
+
+    with db.get_connection() as conn, conn.cursor() as cur:
+        rows = apps.fetch_applications(cur)
+        contact_totals = apps.fetch_contact_totals(cur)
+
+    # Stats describe the whole tracker, the result counter describes the
+    # selection — the same split the offers tab uses.
+    stats = apps.compute_stats(rows, contact_totals)
+    companies = sorted({r["company"] for r in rows}, key=str.lower)
+    visible = apps.apply_filters(
+        rows,
+        statuses=statuses,
+        company=company or "",
+        date_from=d_from,
+        date_to=d_to,
+        stale_days=stale_days,
+        awaiting_reply=awaiting,
+    )
+
+    return templates.TemplateResponse(request, "applications.html", {
+        "applications": visible,
+        "companies": companies,
+        "stats": stats,
+        "status_meta": apps.STATUS_META,
+        "status_order": list(apps.STATUS_META),
+        "selected_statuses": statuses,
+        "selected_company": company or "",
+        "date_from": date_from or "",
+        "date_to": date_to or "",
+        "stale_choices": apps.STALE_CHOICES,
+        "selected_stale": stale,
+        "awaiting": awaiting,
+        "result_count": len(visible),
+        "live_count": sum(1 for r in visible if r["is_live"]),
+    })
+
+
+@app.get("/api/applications/{application_id}")
+def application_detail(application_id: int):
+    with db.get_connection() as conn, conn.cursor() as cur:
+        application = apps.fetch_application(cur, application_id)
+        if application is None:
+            raise HTTPException(status_code=404, detail="Application not found")
+        contacts = apps.fetch_contacts(cur, application_id)
+        timeline = apps.fetch_timeline(cur, application_id)
+        # job_id is NULL for most rows (no scraper for that company, or no
+        # confident match) — the panel just omits the description section.
+        job = (
+            _job_description_payload(cur, application["job_id"])
+            if application["job_id"] else None
+        )
+
+    return JSONResponse({
+        "application": application,
+        "job": job,
+        "contacts": contacts,
+        "timeline": timeline,
+    })
 
 
 @app.get("/healthz")

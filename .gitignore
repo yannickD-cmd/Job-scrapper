@@ -10,3 +10,7 @@ sanofi_*.xml
 sanofi_*.json
 _*.html
 .claude/
+
+# Tracker scratch files from the Supabase SQL-editor seeding session.
+tracker/_*.sql
+tracker/schema_compact.sql
