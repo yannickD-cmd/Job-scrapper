@@ -214,14 +214,14 @@ def _sort_rank(status: str) -> int:
 def fetch_applications(cur) -> list[dict]:
     """Every application, already sorted the way the page renders them.
 
-    Default order: live applications first, most stale first - that is the
-    working list, the one that answers "who have I not heard from the
-    longest". Then the offer, then drafts, then everything terminal. Within
-    the terminal block, most recently applied first, since an old rejection is
-    not more interesting than a fresh one.
+    Default order: live applications first, freshest first - the ones still
+    moving are the ones worth seeing on opening the page. Then the offer, then
+    drafts, then everything terminal. Within the terminal block, most recently
+    applied first, since an old rejection is not more interesting than a fresh
+    one.
 
-    NULL days_stale (no touches and no applied_on) sorts as -1 rather than
-    being dropped: an unknown staleness is not an urgent one.
+    The stale end of the live block is reached through the "À relancer" filter
+    rather than by sorting the whole list around it.
     """
     cur.execute(_PIPELINE_SQL)
     rows = [
@@ -252,18 +252,24 @@ def fetch_applications(cur) -> list[dict]:
         for r in cur.fetchall()
     ]
     def order(a: dict) -> tuple:
-        # Staleness only ranks the live block. Applying it everywhere would
-        # order the terminal block oldest-first — surfacing a March rejection
-        # above last week's — so below the live block the key is the
-        # application date, newest first.
-        stale = a["days_stale"] if a["days_stale"] is not None else -1
+        # Staleness only ranks the live block, ascending: the candidatures you
+        # have heard from most recently sit at the top. The silent end is not
+        # lost — the "À relancer" filter is exactly that view, on demand.
+        #
+        # Applying staleness everywhere would order the terminal block
+        # oldest-first, surfacing a March rejection above last week's, so below
+        # the live block the key is the application date, newest first.
+        stale = a["days_stale"]
         recency = -(a["applied_on"].toordinal() if a["applied_on"] else 0)
-        return (
-            a["rank"],
-            -stale if a["rank"] == _LIVE_RANK else recency,
-            recency,
-            a["company"].lower(),
-        )
+        if a["rank"] == _LIVE_RANK:
+            # A NULL staleness (no touch and no applied_on) sorted last for
+            # free while this was descending. Ascending it would lead the
+            # list, so it is pushed to the end of the live block explicitly:
+            # an unknown silence is not a fresh one.
+            second: tuple = (stale is None, stale if stale is not None else 0)
+        else:
+            second = (False, recency)
+        return (a["rank"], second, recency, a["company"].lower())
 
     rows.sort(key=order)
     return rows
